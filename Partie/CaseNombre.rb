@@ -11,7 +11,11 @@ class CaseNombre < Case
 		super(x,y)
 		@valeur=val
 	end
-
+	
+	def <=>(c)
+		return @valeur<=>c.valeur 
+	end
+	
 	attr :valeur, false
 	
 end

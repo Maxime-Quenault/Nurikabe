@@ -19,5 +19,8 @@ class CaseJouable < Case
 		@etat=e
 	end
 	
+	def <=>(c)
+		return @etat<=>c.etat 
+	end
 end
 
