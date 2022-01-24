@@ -3,20 +3,18 @@ class CaseNombre < Case
 
 	@valeur
 
-	def CaseNombre.creer(val, x, y)
-		new(val,x,y)
+	def CaseNombre.creer(val)
+		new(val)
 	end
 	private_class_method :new
-	def initialize(val,x,y)
-		super(x,y)
+	def initialize(val)
 		@valeur=val
 	end
-	
-	def <=>(c)
-		return @valeur<=>c.valeur 
-	end
-	
-	attr :valeur, false
-	
-end
 
+	def <=>(c)
+		return @valeur<=>c.valeur
+	end
+
+	attr :valeur, false
+
+end
