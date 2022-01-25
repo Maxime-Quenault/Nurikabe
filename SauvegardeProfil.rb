@@ -1,4 +1,5 @@
 require "yaml.rb"
+require "fileutils"
 
 class SauvegardeProfil
 
@@ -16,6 +17,7 @@ class SauvegardeProfil
     def creerProfil(unPseudo)
         if(!@listeProfil.include?(unPseudo))
             @listeProfil.push(unPseudo)
+            system 'mkdir', '-p', "./SauvegardeProfil/#{unPseudo}"
             File.open("./SauvegardeProfil/listeProfil.yml", "w") { |file| file.write(listeProfil.to_yaml) }
         else
             print "profil déjà existant\n"
@@ -25,6 +27,7 @@ class SauvegardeProfil
     def supprimerProfil(unPseudo)
         if(@listeProfil.include?(unPseudo))
             @listeProfil.delete(unPseudo)
+            system 'rmdir', "./SauvegardeProfil/#{unPseudo}"
             File.open("./SauvegardeProfil/listeProfil.yml", "w") { |file| file.write(listeProfil.to_yaml) }
         else
             print "le profil n'existe pas\n"
@@ -44,7 +47,10 @@ end
 test = SauvegardeProfil.new()
 test.creerProfil("Maxime")
 test.creerProfil("Leo")
-test.supprimerProfil("Test")
+test.supprimerProfil("Maxime")
+test.supprimerProfil("Leo")
 print test.index?("Maxime")
+print "\n"
 print test.index?("Leo")
+print "\n"
 p test.listeProfil
