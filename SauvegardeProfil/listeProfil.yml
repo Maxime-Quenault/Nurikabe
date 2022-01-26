@@ -1,1 +1,26 @@
---- []
+---
+- !ruby/object:Profil
+  pseudo: Maxime
+  parametre: !ruby/object:Parametre
+    langue: fr
+    couleur: noir
+- !ruby/object:Profil
+  pseudo: Maxime
+  parametre: !ruby/object:Parametre
+    langue: fr
+    couleur: noir
+- !ruby/object:Profil
+  pseudo: Leo
+  parametre: !ruby/object:Parametre
+    langue: fr
+    couleur: noir
+- !ruby/object:Profil
+  pseudo: Maxime
+  parametre: !ruby/object:Parametre
+    langue: fr
+    couleur: noir
+- !ruby/object:Profil
+  pseudo: Leo
+  parametre: !ruby/object:Parametre
+    langue: fr
+    couleur: noir
