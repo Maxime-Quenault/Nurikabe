@@ -45,8 +45,8 @@ class SauvegardeProfil
 end
 
 test = SauvegardeProfil.new()
-test.creerProfil("Maxime")
-test.creerProfil("Leo")
+#test.creerProfil("Maxime")
+#test.creerProfil("Leo")
 test.supprimerProfil("Maxime")
 test.supprimerProfil("Leo")
 print test.index?("Maxime")
