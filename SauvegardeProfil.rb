@@ -17,7 +17,6 @@ class SauvegardeProfil
     def ajoutProfil(unProfil)
         @listeProfil.each do |key, value|
             if(key.pseudo == unProfil.pseudo)
-                print "profil existe deja\n"
                 return
             end
         end
@@ -33,8 +32,6 @@ class SauvegardeProfil
                 @listeProfil.delete(key)    
                 File.open("./SauvegardeProfil/listeProfil.yml", "w") { |file| file.write(listeProfil.to_yaml) }
                 @listeProfil = YAML.load(File.read("./SauvegardeProfil/listeProfil.yml"))
-            else
-                print "profil existe pas\n"
             end
         end
     end
@@ -53,4 +50,3 @@ profil1 = Profil.new("Maxime")
 test.ajoutProfil(profil1)
 profil2 = Profil.new("Leo")
 test.ajoutProfil(profil2)
-p test.listeProfil
