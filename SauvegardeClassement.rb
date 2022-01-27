@@ -1,4 +1,4 @@
-class SauvegardeClassementSurvie
+class SauvegardeClassement
     attr_accessor :listeTemps
 
     def initialize()
