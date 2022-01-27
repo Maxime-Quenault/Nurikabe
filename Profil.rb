@@ -9,7 +9,7 @@ class Profil
     end
 
     
-    def to_string()
+    def to_s()
         "mon pseudo : #{@pseudo}, mes parametres : #{@parametre}"
     end
 end

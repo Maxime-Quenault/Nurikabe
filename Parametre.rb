@@ -17,7 +17,7 @@ class Parametre
         @couleur = uneCouleur
     end
 
-    def to_string
+    def to_s
         "{langue \"#{@langue}\" / couleur \"#{@couleur}\"}"
     end
 end

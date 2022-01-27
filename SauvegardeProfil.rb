@@ -49,7 +49,7 @@ class SauvegardeProfil
     end
 end
 
-##  PROGRAMME DE TEST  ##
+##  TEST UNITAIRE  ##
 
 #test = SauvegardeProfil.new()
 #profil1 = test.chargerProfil("Maxime")

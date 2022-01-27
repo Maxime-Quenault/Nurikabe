@@ -16,7 +16,7 @@ class Grille
         @grille += uneChaine
     end
 
-    def to_string()
+    def to_s()
         @grille
     end
 end
