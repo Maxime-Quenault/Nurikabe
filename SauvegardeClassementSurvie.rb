@@ -1,16 +1,18 @@
 class SauvegardeClassementSurvie
-    attr_accessor :listeScore
+    attr_accessor :listeTemps
 
     def initialize()
         if(!File.exist?("./SauvegardeScore/scoreSurvie.yml"))
-            @listeScore = Array.new
+            @listeTemps = Array.new
         else
-            @listeScore = YAML.load(File.read("./SauvegardeScore/scoreSurvie.yml"))
+            @listeTemps = YAML.load(File.read("./SauvegardeScore/scoreSurvie.yml"))
         end
     end
 
-    def ajoutScore(unScore)
-        @listeScore.push(unScore).sort
+    def ajoutTemps(unTemps)
+        @listeTemps = YAML.load(File.read("./SauvegardeScore/scoreSurvie.yml"))
+        @listeTemps.push(unTemps).sort
+        File.open("./SauvegardeScore/scoreSurvie.yml", "w") { |file| file.write(listeTemps.to_yaml) }
     end
 
 end

@@ -4,7 +4,7 @@ load "Profil.rb"
 class SauvegardeProfil
 
 
-    attr_accessor :listeProfil, :profil
+    attr_accessor :listeProfil
     
     def initialize()
         if(!File.exist?("./SauvegardeProfil/listeProfil.yml"))
@@ -43,10 +43,16 @@ class SauvegardeProfil
             end
         end
     end
+
+    def afficherSauvegarde()
+        #a faire en GTK3
+    end
 end
 
-test = SauvegardeProfil.new()
-profil1 = Profil.new("Maxime")
-test.ajoutProfil(profil1)
-profil2 = Profil.new("Leo")
-test.ajoutProfil(profil2)
+##  PROGRAMME DE TEST  ##
+
+#test = SauvegardeProfil.new()
+#profil1 = test.chargerProfil("Maxime")
+#test.supprimerProfil(profil1)
+#profil2 = test.chargerProfil("Leo")
+#test.supprimerProfil(profil2)

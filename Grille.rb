@@ -1,3 +1,5 @@
+# ATTENTION : CLASSE NON OFFICIELLE #
+
 class Grille
     @grille
     @identifiant
