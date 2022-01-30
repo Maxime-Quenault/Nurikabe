@@ -1,8 +1,8 @@
 
 class Score
-    attr_accessor :heures, :minutes, :secondes
+    attr_accessor :heures, :minutes, :secondes, :profil
 
-    def initialize(unTemps)
+    def initialize(unTemps, unProfil)
         @heures = unTemps/3600
         unTemps = unTemps%3600
 
@@ -10,6 +10,8 @@ class Score
         unTemps = unTemps%60
 
         @secondes = unTemps
+
+        @profil = unProfil
     end
 
     def getHeures

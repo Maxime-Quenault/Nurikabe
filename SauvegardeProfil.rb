@@ -30,6 +30,14 @@ class SauvegardeProfil
         File.open("./SauvegardeProfil/listeProfil.yml", "w") { |file| file.write(listeProfil.to_yaml) }
         @listeProfil = YAML.load(File.read("./SauvegardeProfil/listeProfil.yml"))
         @nbProfil = @nbProfil + 1
+        return
+    end
+
+    def suppAllProfil
+        @listeProfil.each do |key, value|
+            supprimerProfil(key)
+        end
+        print @listeProfil
     end
 
     def supprimerProfil(unProfil)
@@ -38,9 +46,10 @@ class SauvegardeProfil
                 @listeProfil.delete(key)    
                 File.open("./SauvegardeProfil/listeProfil.yml", "w") { |file| file.write(listeProfil.to_yaml) }
                 @listeProfil = YAML.load(File.read("./SauvegardeProfil/listeProfil.yml"))
+                @nbProfil = @nbProfil - 1
             end
         end
-        @nbProfil = @nbProfil - 1
+        
     end
 
     def getNbProfil
@@ -183,7 +192,7 @@ class SauvegardeProfil
         }
 
         #Affichage de la fenêtre
-        fenetre.show_all #ne marche pas
+        monBuilder.show#faire en sorte d'afficher la fenetre 
         Gtk.main           
     end
 
@@ -195,10 +204,15 @@ end
 
 ##  TEST UNITAIRE  ##
 
-uneSave = SauvegardeProfil.new()
-profil1 = Profil.new("Maxime")
-uneSave.ajoutProfil(profil1)
-uneSave.afficherSauvegardeV1
-print "\n"
+#uneSave = SauvegardeProfil.new()
+
+#uneSave.suppAllProfil
+
+
+#uneSave.afficherSauvegardeV2
+#print "\n"
+
+
+
 #profil2 = uneSave.chargerProfil("Leo")
 #uneSave.supprimerProfil(profil2)
