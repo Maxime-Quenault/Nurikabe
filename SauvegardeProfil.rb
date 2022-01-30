@@ -22,7 +22,7 @@ class SauvegardeProfil
     def ajoutProfil(unProfil)
         @listeProfil.each do |key, value|
             if(key.pseudo == unProfil.pseudo)
-                return
+                return -1
             end
         end
         print "\n\nunProfil : #{unProfil}"
@@ -30,7 +30,7 @@ class SauvegardeProfil
         File.open("./SauvegardeProfil/listeProfil.yml", "w") { |file| file.write(listeProfil.to_yaml) }
         @listeProfil = YAML.load(File.read("./SauvegardeProfil/listeProfil.yml"))
         @nbProfil = @nbProfil + 1
-        return
+        return 1
     end
 
     def suppAllProfil
@@ -139,7 +139,9 @@ class SauvegardeProfil
             pseudo = zoneText.text.to_s
             if pseudo.length != 0
                 profil = Profil.new(pseudo)
-                self.ajoutProfil(profil)
+                if self.ajoutProfil(profil) == -1
+                    profil = chargerProfil(pseudo)
+                end
                 print "Tu as selectionné le profil \"#{profil.pseudo}\""
                 destruction
             end
@@ -192,7 +194,8 @@ class SauvegardeProfil
         }
 
         #Affichage de la fenêtre
-        monBuilder.show#faire en sorte d'afficher la fenetre 
+        #monBuilder.show#faire en sorte d'afficher la fenetre 
+        fenetre.show_all
         Gtk.main           
     end
 
@@ -204,13 +207,13 @@ end
 
 ##  TEST UNITAIRE  ##
 
-#uneSave = SauvegardeProfil.new()
+uneSave = SauvegardeProfil.new()
 
 #uneSave.suppAllProfil
 
 
-#uneSave.afficherSauvegardeV2
-#print "\n"
+uneSave.afficherSauvegardeV1
+print "\n"
 
 
 

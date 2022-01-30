@@ -25,9 +25,10 @@ class SauvegardeClassementSurvie
         @tabScore = YAML.load(File.read("./SauvegardeScore/scoreSurvie.yml"))
         #inclure le module comparable à la classe Score
         tabTampon = Array.new(10)
-        i = 1
-        y = 1
-        while y < 11
+        i = 0
+        y = 0
+        #on compare avec une valeur nil, donc marche pas, à corriger.
+        while y < 10
         	if unScore < @tabScore[i]
         		tabTampon[y] = unScore
         		y = y+1
@@ -72,7 +73,7 @@ class SauvegardeClassementSurvie
         temps9 = monBuilder.get_object("temps9")
         temps10 = monBuilder.get_object("temps10")
 
-        if @tabScore[1] != nil
+        if @tabScore[0] != nil
         	pseudo1.set_text(@tabScore[0].profil.pseudo)
         	temps1.set_text("#{@tabScore[0].getHeures}h#{@tabScore[0].getMinutes}m#{@tabScore[0].getSecondes}s")
         else
@@ -80,12 +81,20 @@ class SauvegardeClassementSurvie
         	temps1.set_text("-:-:-")
         end
 
-        if @tabScore[2] != nil
+        if @tabScore[1] != nil
         	pseudo2.set_text(@tabScore[1].profil.pseudo)
         	temps2.set_text("#{@tabScore[1].getHeures}h#{@tabScore[1].getMinutes}m#{@tabScore[1].getSecondes}s")
         else
         	pseudo2.set_text("-")
         	temps2.set_text("-:-:-")
+        end
+
+        if @tabScore[2] != nil
+            pseudo3.set_text(@tabScore[2].profil.pseudo)
+            temps3.set_text("#{@tabScore[2].getHeures}h#{@tabScore[2].getMinutes}m#{@tabScore[2].getSecondes}s")
+        else
+            pseudo3.set_text("-")
+            temps3.set_text("-:-:-")
         end
 
         # a faire pour tous les temps
