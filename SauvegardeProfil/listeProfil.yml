@@ -1,1 +1,37 @@
---- []
+---
+- !ruby/object:Profil
+  pseudo: Maxime
+  parametre: !ruby/object:Parametre
+    langue: fr
+    couleur: noir
+  listeGrilleCommence: []
+- !ruby/object:Profil
+  pseudo: Leo
+  parametre: !ruby/object:Parametre
+    langue: fr
+    couleur: noir
+  listeGrilleCommence: []
+- !ruby/object:Profil
+  pseudo: test
+  parametre: !ruby/object:Parametre
+    langue: fr
+    couleur: noir
+  listeGrilleCommence: []
+- !ruby/object:Profil
+  pseudo: test2
+  parametre: !ruby/object:Parametre
+    langue: fr
+    couleur: noir
+  listeGrilleCommence: []
+- !ruby/object:Profil
+  pseudo: j'ai fini enfin
+  parametre: !ruby/object:Parametre
+    langue: fr
+    couleur: noir
+  listeGrilleCommence: []
+- !ruby/object:Profil
+  pseudo: c'est une dinguerie
+  parametre: !ruby/object:Parametre
+    langue: fr
+    couleur: noir
+  listeGrilleCommence: []
