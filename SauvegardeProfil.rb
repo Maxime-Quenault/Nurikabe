@@ -87,7 +87,7 @@ class SauvegardeProfil
     #
     # cette version de "afficherSauvegarde" est fonctionnel
     #
-    def afficherSauvegardeV1
+    def afficherSauvegarde
 
         def destruction
             Gtk.main_quit
@@ -184,7 +184,7 @@ uneSave = SauvegardeProfil.new()
 #uneSave.suppAllProfil
 
 
-uneSave.afficherSauvegardeV1
+uneSave.afficherSauvegarde
 #print "\n"
 
 
