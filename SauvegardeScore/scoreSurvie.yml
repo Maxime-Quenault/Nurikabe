@@ -1,0 +1,110 @@
+---
+- !ruby/object:Score
+  heures: 0
+  minutes: 1
+  secondes: 40
+  profil: !ruby/object:Profil
+    pseudo: Maxime
+    parametre: !ruby/object:Parametre
+      langue: fr
+      couleur: noir
+    listeGrilleCommence: []
+- !ruby/object:Score
+  heures: 0
+  minutes: 3
+  secondes: 5
+  profil: !ruby/object:Profil
+    pseudo: Maxime
+    parametre: !ruby/object:Parametre
+      langue: fr
+      couleur: noir
+    listeGrilleCommence: []
+- !ruby/object:Score
+  heures: 0
+  minutes: 3
+  secondes: 15
+  profil: !ruby/object:Profil
+    pseudo: Maxime
+    parametre: !ruby/object:Parametre
+      langue: fr
+      couleur: noir
+    listeGrilleCommence: []
+- !ruby/object:Score
+  heures: 0
+  minutes: 3
+  secondes: 15
+  profil: !ruby/object:Profil
+    pseudo: Maxime
+    parametre: !ruby/object:Parametre
+      langue: fr
+      couleur: noir
+    listeGrilleCommence: []
+- !ruby/object:Score
+  heures: 0
+  minutes: 4
+  secondes: 16
+  profil: !ruby/object:Profil
+    pseudo: Maxime
+    parametre: !ruby/object:Parametre
+      langue: fr
+      couleur: noir
+    listeGrilleCommence: []
+- !ruby/object:Score
+  heures: 0
+  minutes: 5
+  secondes: 50
+  profil: !ruby/object:Profil
+    pseudo: Leo
+    parametre: !ruby/object:Parametre
+      langue: fr
+      couleur: noir
+    listeGrilleCommence: []
+- !ruby/object:Score
+  heures: 0
+  minutes: 5
+  secondes: 50
+  profil: !ruby/object:Profil
+    pseudo: Leo
+    parametre: !ruby/object:Parametre
+      langue: fr
+      couleur: noir
+    listeGrilleCommence: []
+- !ruby/object:Score
+  heures: 0
+  minutes: 6
+  secondes: 40
+  profil: !ruby/object:Profil
+    pseudo: Leo
+    parametre: !ruby/object:Parametre
+      langue: fr
+      couleur: noir
+    listeGrilleCommence: []
+- !ruby/object:Score
+  heures: 0
+  minutes: 6
+  secondes: 40
+  profil: !ruby/object:Profil
+    pseudo: Leo
+    parametre: !ruby/object:Parametre
+      langue: fr
+      couleur: noir
+    listeGrilleCommence: []
+- !ruby/object:Score
+  heures: 0
+  minutes: 7
+  secondes: 30
+  profil: !ruby/object:Profil
+    pseudo: Maxime
+    parametre: !ruby/object:Parametre
+      langue: fr
+      couleur: noir
+    listeGrilleCommence: []
+-
+-
+-
+-
+-
+-
+-
+-
+-
