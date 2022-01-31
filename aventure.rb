@@ -1,7 +1,31 @@
 # Classes à charger :
+# Sûrement d'autres à ajouter
 load "Grille.rb";
 
+# Définition de la classe Aventure
 class Aventure{
+
+  #############################################################################################################################
+  # Explications sur la manière de concevoir cette classe ,                                                                   #
+  # En se basant sur le modèle de l'interface du mode Aventure,                                                               #
+  # => L'interface possède 3 niveaux de difficultée (Facile,Normal,Difficile)                                                 #
+  # => Le joueur peut changer de difficulté                                                                                   #
+  # => Le joueur possède un compteur d'étoile, qu'il augmente si il termine des grilles                                       #    
+  #                                                                                                                           #
+  # En partant de cela on peut supposer/déduire qu'il y aurait 3 objets de classe Aventure,                                   #
+  # => un objet par difficulté, dont une VI qui aurait une valeur différente                                                  #
+  # => les structures sont les mêmes et les objets ont les mêmes comportements,                                               #
+  # seules les valeurs changent (le parcours (l'ensemble des grilles forment l'aventure), la position de la grille courante   #
+  # dans l'aventure, la prochaine difficulté, la diificulté précédente)                                                       #
+  # => faire 3 objets Aventures permet de ne pas dupliquer de code et de ne pas stocker les 3 trois parcours aventure         #
+  # dans le même objet, ...                                                                                                   #
+  #                                                                                                                           #
+  # Ainsi pour faire la liaison entre les différentes aventures, on place en tant que variable de classe:                     #
+  # => le nombre d'étoile du joueur (reste le même lorsqu'il changent de difficulté d'aventure)                               #
+  # => les coûts des "paliers" (le nombre d'étoile nécessaire pour les difficultés reste le même)                             #
+  # => les accès aux difficultés déjà débloquées (si un joueur débloque la difficulté Normale et qu'il commence cette         #
+  # aventure, la difficulté Facile sera considérée comme étant toujours débloquée)                                            #
+  #############################################################################################################################
 
   # entier qui représente le score du joueur en nombre d'étoiles
   @@nbEtoiles
@@ -19,7 +43,7 @@ class Aventure{
   # tableau de 3 booléens indiquant pour chaque difficultée, si elles sont débloquée ou non
   @@difficuleAcquise
   # Aventure précédente (dans l'ordre chronologique)
-  # Par exemple :: pour l'aventure "Normale" precedente sera "Facile"
+  # Par exemple : pour l'aventure "Normale" precedente sera "Facile"
   @precedente
   # Même cas pour l'aventure suivante
   @suivante
@@ -78,6 +102,16 @@ class Aventure{
     }
   }
 
+  # On se déplace sur l'aventure de difficulté inférieure
+  def difficultePrecedente(){
+    return @precedente;
+  }
+
+  # On se déplace sur l'aventure de difficulté supérieure
+  def difficulteSuivante(){
+    return @suivante;
+  }
+
   # Le joueur a terminé sa grille et obtient des étoiles :
   # ces étoiles sont ajoutées à son compteur
   def etoilesEnPlus(desEtoiles){
@@ -96,7 +130,13 @@ class Aventure{
   # 2 -> Hard
   def choixDifficulte(uneDiff){
     if(uneDiff >= 0 && uneDiff < 3 && @@difficuleAcquise[uneDiff] == true){
-      @difficulte = uneDiff;
+      if(unDiff > @difficulte){
+        @suivante.choixDifficulte(uneDiff);
+      }else{
+        if(unDiff < @difficulte){
+          @precedente.choixDifficulte(uneDiff);
+        }
+      }
     }
   }
 
