@@ -68,6 +68,17 @@ class SauvegardeProfil
         end
     end
 
+    def modifierPseudo(unProfil)
+        @listeProfil.each do |key, value|
+            if key.pseudo == unProfil.pseudo
+                index = @listeProfil.index(key) 
+                @listeProfil[index].pseudo = "Leo"   
+                File.open("./SauvegardeProfil/listeProfil.yml", "w") { |file| file.write(listeProfil.to_yaml) }
+                @listeProfil = YAML.load(File.read("./SauvegardeProfil/listeProfil.yml"))                
+            end
+        end
+    end
+
 
 
 
@@ -76,7 +87,12 @@ class SauvegardeProfil
     #
     # cette version de "afficherSauvegarde" est fonctionnel
     #
-    def afficherSauvegardeV1()
+    def afficherSauvegardeV1
+
+        def destruction
+            Gtk.main_quit
+            return
+        end
 
 
         ##################################
@@ -92,7 +108,7 @@ class SauvegardeProfil
         # L'application est toujours centrée
         monApplication.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
         # Quand l'UI est détruite il faut quitter
-        monApplication.signal_connect('destroy') {self.destruction}
+        monApplication.signal_connect('destroy') {destruction}
         ##################################
 
 
@@ -159,50 +175,6 @@ class SauvegardeProfil
         Gtk.main           
     end
 
-
-
-
-
-
-    #
-    # Cette version 2 utilise un model glade, pour cela il faut creer un builder qui va recuperer le fichier, 
-    # ensuite on recupere dans des variable les objets creer sur le model glade (les noms c'est moi qui les ais
-    # mis lors de la création de l'objet sur glade). Tout fonctionne sauf le "show_all" et actuellement il est 00h42
-    # et ça fait presque 40 min que je cherche comment faire pour afficher un builder à l'ecran.
-    #
-
-    def afficherSauvegardeV2()
-        #Ne pas oublier cela sinon ca plante grave
-        Gtk.init 
-
-        monBuilder = Gtk::Builder.new
-
-        monBuilder.add_from_file("glade/choixProfil.glade") 
-        monBuilder.connect_signals {|handler| method(handler) }
-
-        bouton = monBuilder.get_object("bouton")
-        zoneText = monBuilder.get_object("zoneText")
-        fenetre = monBuilder.get_object("maFenetre")
-
-        bouton.signal_connect('clicked') {
-            text = zoneText.text.to_s
-            if text.length != 0
-                profil = Profil.new(text)
-                self.ajoutProfil(profil)
-                destruction
-            end
-        }
-
-        #Affichage de la fenêtre
-        #monBuilder.show#faire en sorte d'afficher la fenetre 
-        fenetre.show_all
-        Gtk.main           
-    end
-
-    def destruction
-        Gtk.main_quit
-        return
-    end
 end
 
 ##  TEST UNITAIRE  ##
@@ -213,9 +185,9 @@ uneSave = SauvegardeProfil.new()
 
 
 uneSave.afficherSauvegardeV1
-print "\n"
+#print "\n"
 
 
 
-#profil2 = uneSave.chargerProfil("Leo")
+#profil2 = uneSave.chargerProfil("LeoModifPseudo")
 #uneSave.supprimerProfil(profil2)

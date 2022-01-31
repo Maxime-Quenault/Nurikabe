@@ -11,3 +11,9 @@
     langue: fr
     couleur: noir
   listeGrilleCommence: []
+- !ruby/object:Profil
+  pseudo: coucou
+  parametre: !ruby/object:Parametre
+    langue: fr
+    couleur: noir
+  listeGrilleCommence: []
