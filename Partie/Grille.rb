@@ -21,19 +21,39 @@ class Grille
 	end
 
 	def copierMatrice(mat2)
-		@matriceCases=mat2
+		for i in 0..@taille-1  do
+			for j in 0..@taille-1 do
+				if(mat2[j][i].is_a?(CaseJouable))
+					c = CaseJouable.creer()
+					c.changerEtat(mat2[j][i].etat)
+					@matriceCases[j][i]=c
+				else
+					@matriceCases[j][i]=CaseNombre.creer(mat2[j][i].valeur)
+				end
+			end 
+		end 
 	end
 	
+	def to_s()
+		for i in 0..@taille-1  do
+			for j in 0..@taille-1 do
+				print @matriceCases[j][i].to_s
+				print " "
+			end 
+			print "\n"
+		end 
+	end
+
 	def pourcentageCompletion(grilleCmp)
 		nbPareil = 0
 		for i in 0..@taille - 1
 			for j in 0..@taille - 1
-				if(@matriceCases[i][j]==grilleCmp.matriceCases[i][j]&&@matriceCases[i][j].is_a?(CaseJouable))
+				if(@matriceCases[i][j].is_a?(CaseJouable) && @matriceCases[i][j].etat==grilleCmp.matriceCases[i][j].etat)
 					nbPareil += 1
 				end
 			end
 		end
-		return nbPareil/(@taille*@taille)
+		return (nbPareil/(@taille*@taille).to_f)*100
 	end
 
 	def nbErreurs(grilleCmp)

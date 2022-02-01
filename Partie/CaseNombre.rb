@@ -14,6 +14,10 @@ class CaseNombre < Case
 	def <=>(c)
 		return @valeur<=>c.valeur
 	end
+	
+	def to_s
+		print @valeur
+	end
 
 	attr :valeur, false
 
