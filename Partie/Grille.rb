@@ -1,4 +1,6 @@
 require './CaseNombre'
+require './Case'
+require './CaseJouable'
 class Grille
 	@numero
 	@taille

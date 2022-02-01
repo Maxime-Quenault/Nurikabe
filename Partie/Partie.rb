@@ -1,3 +1,6 @@
+require './Grille'
+require './Coup'
+
 class Partie
   @grilleEnCours
   @grilleBase
@@ -20,7 +23,7 @@ class Partie
   end
 
   def undoPossible?()
-    return indiceCoup>0
+    return @indiceCoup>0
   end
   def undo()
     tmpEtat=@tabCoup[@indiceCoup-1].case.etat
@@ -31,6 +34,10 @@ class Partie
   end
 
   def redoPossible
-
+	return @tabCoup[@indiceCoup+1]!=null
+  end
+  
+  def redo()
+   
   end
 end

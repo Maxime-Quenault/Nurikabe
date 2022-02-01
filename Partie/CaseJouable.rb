@@ -3,14 +3,14 @@ require './Case'
 class CaseJouable < Case
 	@etat
 
-	def CaseJouable.creer(couleur)
-		new(couleur)
+	def CaseJouable.creer()
+		new()
 	end
 
 	private_class_method :new
 	attr :etat, true
 
-	def initialize(couleur){
+	def initialize(){
 		@etat=0
 	end
 

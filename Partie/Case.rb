@@ -1,13 +1,11 @@
 class Case
 
-	@posX
-	@posY
+	
 	
 	private_class_method :new
 	
-	def initialize(x,y)
-		@posX=x
-		@posY=y
+	def initialize()
+		
 	end
 
 	attr :posX, false
