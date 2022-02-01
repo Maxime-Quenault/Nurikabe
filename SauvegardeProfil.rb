@@ -68,14 +68,13 @@ class SauvegardeProfil
         end
     end
 
-    def modifierPseudo(unProfil)
+    def modifierPseudo(unPseudo)
         @listeProfil.each do |key, value|
-            if key.pseudo == unProfil.pseudo
-                index = @listeProfil.index(key) 
-                @listeProfil[index].pseudo = "Leo"   
-                File.open("./SauvegardeProfil/listeProfil.yml", "w") { |file| file.write(listeProfil.to_yaml) }
-                @listeProfil = YAML.load(File.read("./SauvegardeProfil/listeProfil.yml"))                
+            if key.pseudo == self.pseudo 
+                key.pseudo = unPseudo                   
             end
+            File.open("./SauvegardeProfil/listeProfil.yml", "w") { |file| file.write(listeProfil.to_yaml) }
+            @listeProfil = YAML.load(File.read("./SauvegardeProfil/listeProfil.yml"))
         end
     end
 
@@ -184,7 +183,7 @@ uneSave = SauvegardeProfil.new()
 #uneSave.suppAllProfil
 
 
-uneSave.afficherSauvegarde
+#uneSave.afficherSauvegarde
 #print "\n"
 
 

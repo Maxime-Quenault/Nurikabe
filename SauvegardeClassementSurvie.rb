@@ -54,6 +54,8 @@ class SauvegardeClassementSurvie
         File.open("./SauvegardeScore/scoreSurvie.yml", "w") { |file| file.write(@tabScore.to_yaml) }
     end
 
+    
+
     def getNbScoreOccupe
         nombre = 0
         @tabScore.each do |key, value|
@@ -191,11 +193,11 @@ end
 
 
 unClassement = SauvegardeClassementSurvie.new
-
+unClassement.afficheToi2
 
 
 
 #unClassement.ajoutScore(score1)
 #unClassement.ajoutScore(score2)
 
-unClassement.afficheToi2
+
