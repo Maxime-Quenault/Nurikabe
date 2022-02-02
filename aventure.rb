@@ -16,10 +16,10 @@ class Aventure{
   # En partant de cela on peut supposer/déduire qu'il y aurait 3 objets de classe Aventure,                                   #
   # => un objet par difficulté, dont une VI qui aurait une valeur différente                                                  #
   # => les structures sont les mêmes et les objets ont les mêmes comportements,                                               #
-  # seules les valeurs changent (le parcours (l'ensemble des grilles forment l'aventure), la position de la grille courante   #
-  # dans l'aventure, la prochaine difficulté, la diificulté précédente)                                                       #
+  # seules les valeurs changent (le parcours (l'ensemble des grilles formant l'aventure), la position de la grille courante   #
+  # dans l'aventure, la prochaine difficulté, la difficulté précédente)                                                       #
   # => faire 3 objets Aventures permet de ne pas dupliquer de code et de ne pas stocker les 3 trois parcours aventure         #
-  # dans le même objet, ...                                                                                                   #
+  # dans le même objet, de même si l'on souhaite ajouter une difficulté supplémentaire il suffira de créer un nouvel objet    #
   #                                                                                                                           #
   # Ainsi pour faire la liaison entre les différentes aventures, on place en tant que variable de classe:                     #
   # => le nombre d'étoile du joueur (reste le même lorsqu'il changent de difficulté d'aventure)                               #
