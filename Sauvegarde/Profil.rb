@@ -1,4 +1,3 @@
-load "../Parametre/Parametre.rb"
 class Profil
     attr_accessor :pseudo, :parametre, :listeGrilleCommence
 
