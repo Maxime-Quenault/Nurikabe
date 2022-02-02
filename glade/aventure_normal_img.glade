@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkWindow">
+  <object class="GtkWindow" id="fenetre_aventure">
     <property name="can_focus">False</property>
     <property name="default_width">750</property>
     <property name="default_height">900</property>
