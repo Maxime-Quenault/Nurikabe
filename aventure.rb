@@ -98,7 +98,7 @@ class Aventure{
 
   # On se déplace sur le plateau du mode Aventure : ici on se place sur un niveau précis
   def placerSurGrille(numero){
-    if(@posCourante > 0 && @posCourante < @desGrilles.length()){
+    if((@posCourante > 0) && (@posCourante < @desGrilles.length())){
       @posCourante = numero;
     }
   }
@@ -151,7 +151,7 @@ class Aventure{
       }else{
         print("\nTu ne possèdes pas assez d'étoiles pour débloquer cette difficulté...\nRefais d'autres niveaux.");
       }
-    }elsif(@difficulte == 1 && @@difficulteAcquise[2] == false){
+    }elsif((@difficulte == 1) && (@@difficulteAcquise[2] == false)){
       # Dans le cas où la difficulté Normal est débloquée
         if(self.assezEtoiles?(@@palierHard)){
           @@difficulteAcquise[2] = true;
