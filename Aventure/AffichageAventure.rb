@@ -1,7 +1,7 @@
 require "yaml.rb"
 require 'gtk3'
 include Gtk
-load "Aventure.rb";
+load "Aventure.rb"
 
 class AffichageAventure
 
