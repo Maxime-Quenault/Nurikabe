@@ -50,7 +50,7 @@ class Aventure{
   @suivanteDiff
 
   # Coding Assistant pour faciliter les accès des différentes variables
-  attr_reader :palierNormal, :palierHard, :desGrilles, :difficuleAcquise, :difficulte;
+  attr_reader :palierNormal, :palierHard, :desGrilles, :difficuleAcquise, :difficulte, :precedenteDiff, :suivanteDiff;
   attr :posCourante, :nbEtoiles true;
 
   # On définit notre propre façon de générer une Aventure
