@@ -1,6 +1,4 @@
-require './Case'
-
-class CaseJouable < Case
+class CaseJouable
 	@etat
 
 	def CaseJouable.creer()
@@ -14,10 +12,17 @@ class CaseJouable < Case
 		@etat=0
 	end
 
-	def changerEtat(e)
-		@etat=e
+	def changerEtat()
+		if(@etat==0)
+			@etat=1
+		elsif(@etat==1)
+			@etat=2
+		else
+			@etat=0
+		end
+		return self
 	end
-	
+
 	def to_s
 		if @etat==0 then
 			print "."

@@ -1,5 +1,4 @@
-require './Case'
-class CaseNombre < Case
+class CaseNombre
 
 	@valeur
 
@@ -14,7 +13,7 @@ class CaseNombre < Case
 	def <=>(c)
 		return @valeur<=>c.valeur
 	end
-	
+
 	def to_s
 		print @valeur
 	end
