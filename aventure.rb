@@ -34,6 +34,8 @@ class Aventure{
   @@palierNormal
   # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée hard
   @@palierHard
+  # tableau de 3 booléens indiquant pour chaque difficultée, si elles sont débloquée ou non
+  @@difficuleAcquise
   # tableau contenant les grilles du mode aventure
   @desGrilles
   # position courante dans le mode Aventure
@@ -41,8 +43,6 @@ class Aventure{
   # entier représentant la difficultée actuelle associée à cette Aventure
   # 0 -> Facile   1 -> Normal   2 -> Hard
   @difficulte
-  # tableau de 3 booléens indiquant pour chaque difficultée, si elles sont débloquée ou non
-  @@difficuleAcquise
   # Aventure précédente (dans l'ordre chronologique)
   # Par exemple : pour l'aventure "Normale" precedente sera "Facile"
   @precedenteDiff
@@ -60,8 +60,9 @@ class Aventure{
 
   # on redéfinit la méthode initialize() pour générer l'Aventure selon nos critères
   def initialize(aventurePreced, uneDifficulte, aventureSuiv){
+    # Consernant les valeurs des deux VI palier ci-dessous elles sont provisoires(test) -> se mettre d'accord plus tard
     @@palierNormal = 30;
-    @@palierHard = 50;
+    @@palierHard = 70;
     @@nbEtoiles = 0;
     @desGrilles = Array.new();
     @posCourante = 0;
@@ -161,3 +162,9 @@ class Aventure{
         }
     }
 }
+
+
+
+#monBuildeur = Gtk::Builder.new
+#monBuildeur.add_file("../modeles/[]nom.glade")
+#unBouton = monBuildeur.get_object("bouton1")
