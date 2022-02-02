@@ -1,7 +1,8 @@
 # Classes à charger :
 # Sûrement d'autres à ajouter
 load "Grille.rb";
-
+load "Chronometre.rb";
+load "Profil.rb";
 # Définition de la classe Aventure
 class Aventure{
 
@@ -10,7 +11,7 @@ class Aventure{
   # En se basant sur le modèle de l'interface du mode Aventure,                                                               #
   # => L'interface possède 3 niveaux de difficultée (Facile,Normal,Difficile)                                                 #
   # => Le joueur peut changer de difficulté                                                                                   #
-  # => Le joueur possède un compteur d'étoile, qu'il augmente si il termine des grilles                                       #    
+  # => Le joueur possède un compteur d'étoile, qu'il augmente si il termine des grilles                                       #
   #                                                                                                                           #
   # En partant de cela on peut supposer/déduire qu'il y aurait 3 objets de classe Aventure,                                   #
   # => un objet par difficulté, dont une VI qui aurait une valeur différente                                                  #
@@ -44,34 +45,34 @@ class Aventure{
   @@difficuleAcquise
   # Aventure précédente (dans l'ordre chronologique)
   # Par exemple : pour l'aventure "Normale" precedente sera "Facile"
-  @precedente
+  @precedenteDiff
   # Même cas pour l'aventure suivante
-  @suivante
+  @suivanteDiff
 
   # Coding Assistant pour faciliter les accès des différentes variables
-  attr_reader :nbEtoiles, :palierNormal, :palierHard, :desGrilles;
-  attr :posCourante, :difficuleAcquise, :difficulte, true;
+  attr_reader :palierNormal, :palierHard, :desGrilles, :difficuleAcquise, :difficulte;
+  attr :posCourante, :nbEtoiles true;
 
   # On définit notre propre façon de générer une Aventure
-  def Aventure.creer(nbEtoileNorm, nbEtoileHard, aventurePreced, uneDifficulte, aventureSuiv){
-    new(nbEtoileNorm, nbEtoileHard, aventurePreced, uneDifficulte, aventureSuiv);
+  def Aventure.creer(aventurePreced, uneDifficulte, aventureSuiv){
+    new(aventurePreced, uneDifficulte, aventureSuiv);
   }
 
   # on redéfinit la méthode initialize() pour générer l'Aventure selon nos critères
-  def initialize(nbEtoileNorm, nbEtoileHard, aventurePreced, uneDifficulte, aventureSuiv){
-    @@palierNormal = nbEtoileNorm;
-    @@palierHard = nbEtoileHard;
+  def initialize(aventurePreced, uneDifficulte, aventureSuiv){
+    @@palierNormal = 30;
+    @@palierHard = 50;
     @@nbEtoiles = 0;
     @desGrilles = Array.new();
     @posCourante = 0;
     @difficulte = uneDifficulte;
     # Ici on initialise le tableau de sorte que seule la première difficulté(Facile) soit débloquée
-    @@difficuleAcquise = Array.new();
-    @@difficuleAcquise[0] = true;
-    @@difficuleAcquise[1] = @@difficuleAcquise[2] = false;
+    @@difficulteAcquise = Array.new();
+    @@difficulteAcquise[0] = true;
+    @@difficulteAcquise[1] = @@difficulteAcquise[2] = false;
     # Lien entre les différentes aventures
-    @precedente = aventurePreced;
-    @suivante = aventureSuiv;
+    @precedenteDiff = aventurePreced;
+    @suivanteDiff = aventureSuiv;
   }
 
   # Pour générer l'aventure(suite de niveaux), on fait appel à la classe Grille pour générer les niveaux
@@ -104,12 +105,12 @@ class Aventure{
 
   # On se déplace sur l'aventure de difficulté inférieure
   def difficultePrecedente(){
-    return @precedente;
+    return @precedenteDiff;
   }
 
   # On se déplace sur l'aventure de difficulté supérieure
   def difficulteSuivante(){
-    return @suivante;
+    return @suivanteDiff;
   }
 
   # Le joueur a terminé sa grille et obtient des étoiles :
@@ -129,13 +130,11 @@ class Aventure{
   # 1 -> Normal
   # 2 -> Hard
   def choixDifficulte(uneDiff){
-    if(uneDiff >= 0 && uneDiff < 3 && @@difficuleAcquise[uneDiff] == true){
-      if(unDiff > @difficulte){
-        @suivante.choixDifficulte(uneDiff);
-      }else{
-        if(unDiff < @difficulte){
-          @precedente.choixDifficulte(uneDiff);
-        }
+    if((uneDiff >= 0) && (uneDiff < 3) && (@@difficulteAcquise[uneDiff] == true)){
+      if(uneDiff > @difficulte){
+        @suivanteDiff.choixDifficulte(uneDiff);
+      }elsif(uneDiff < @difficulte){
+          @precedenteDiff.choixDifficulte(uneDiff);
       }
     }
   }
@@ -145,23 +144,20 @@ class Aventure{
   # On affiche un message selon si il possède ou non assez d'étoiles, et si c'est le cas on actualise le tableau des difficultés acquises
   def unlockDifficulte(){
     # Dans le cas où seule la difficulté Facile est débloquée
-    if(@difficulte == 0 && @@difficuleAcquise[1] == false){
-      if(self.assezEtoiles?(1)){
-        @@difficuleAcquise[1] = true;
+    if((@difficulte == 0) && (@@difficulteAcquise[1] == false)){
+      if(self.assezEtoiles?(@@palierNormal)){
+        @@difficulteAcquise[1] = true;
         print("\nBravo tu viens de débloquer la difficulté Normal !");
       }else{
         print("\nTu ne possèdes pas assez d'étoiles pour débloquer cette difficulté...\nRefais d'autres niveaux.");
       }
-    }else{
+    }elsif(@difficulte == 1 && @@difficulteAcquise[2] == false){
       # Dans le cas où la difficulté Normal est débloquée
-      if(@difficulte == 1 && @@difficuleAcquise[2] == false){
-        if(self.assezEtoiles?(2)){
-          @@difficuleAcquise[2] = true;
+        if(self.assezEtoiles?(@@palierHard)){
+          @@difficulteAcquise[2] = true;
           print("\nBravo tu viens de débloquer la difficulté Hard !");
         }else{
           print("\nTu ne possèdes pas assez d'étoiles pour débloquer cette difficulté...\nRefais d'autres niveaux.");
         }
-      }
     }
-
 }
