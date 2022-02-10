@@ -34,7 +34,7 @@ class Partie
   def clicSurCase(x,y)
 	anc_etat =@grilleEnCours.matriceCases[x][y].etat
 	@grilleEnCours.matriceCases[x][y].changerEtat
-	self.nouveauCoup(Coup.creer(@grilleEnCours.matriceCases[x[y],anc_etat,@grilleEnCours.matriceCases[x][y].etat))
+	self.nouveauCoup(Coup.creer(@grilleEnCours.matriceCases[x][y],anc_etat,@grilleEnCours.matriceCases[x][y].etat))
   end
 
   def undoPossible?()
