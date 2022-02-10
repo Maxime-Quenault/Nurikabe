@@ -32,8 +32,9 @@ class Partie
   end
 
   def clicSurCase(x,y)
-		self.nouveauCoup(Coup.creer(@grilleEnCours.matriceCases[x][y],@grilleEnCours.matriceCases[x][y].etat))
-		@grilleEnCours.matriceCases[x][y].changerEtat()
+		anc_etat =@grilleEnCours.matriceCases[x][y].etat
+    @grilleEnCours.matriceCases[x][y].changerEtat
+		self.nouveauCoup(Coup.creer(@grilleEnCours.matriceCases[x][y],anc_etat,@grilleEnCours.matriceCases[x][y].etat))
   end
 
   def undoPossible?()
@@ -45,7 +46,6 @@ class Partie
       tmpEtat=@tabCoup[@indiceCoup-1].case.etat
       tmpCase=@tabCoup[@indiceCoup-1].case
       @tabCoup[@indiceCoup-1].case.etat=@tabCoup[@indiceCoup-1].ancienEtat
-      @tabCoup[@indiceCoup]=Coup.creer(tmpCase,tmpEtat)
       @indiceCoup-=1
     end
   end
@@ -55,7 +55,7 @@ class Partie
   end
 
   def redo()
-    @tabCoup[indiceCoup+1].case.etat=@tabCoup[indiceCoup+1].ancienEtat
+    @tabCoup[indiceCoup].case.etat=@tabCoup[indiceCoup].etat
     @indiceCoup+=1
   end
 
@@ -70,12 +70,17 @@ class Partie
     return @grilleEnCours.grilleFinie
   end
 
-
-# Erreur ne reviens pas au bon moment
   def reviensALaBonnePosition()
     while(@grilleEnCours.nbErreurs>0)
       puts @grilleEnCours
       self.undo
     end
   end
+
+  def metToiEnPause()
+  end
+
+  def reprend()
+  end
+
 end

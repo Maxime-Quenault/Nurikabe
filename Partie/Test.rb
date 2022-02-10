@@ -99,6 +99,7 @@ class Test
 
 		puts " On reviens ou il n'y avait pas derreur "
 		partie.reviensALaBonnePosition
+
 		puts partie.grilleEnCours
 	end
 
