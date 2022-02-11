@@ -1,4 +1,6 @@
+# Représentes une case sur laquelle on peut cliquer
 class CaseJouable
+	# l'état indique si la case est une case île, océan ou non jouée
 	@etat
 
 	def CaseJouable.creer()
@@ -12,6 +14,7 @@ class CaseJouable
 		@etat=0
 	end
 
+	#changes l'état de la case en fonction de son état courant
 	def changerEtat()
 		if(@etat==0)
 			@etat=1

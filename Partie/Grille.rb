@@ -2,6 +2,12 @@ require './CaseNombre'
 require './Case'
 require './CaseJouable'
 class Grille
+	#Représntes une grille, contient : 
+	#un numéro (identifiant de la grille)
+	#une hauteur et une largeur
+	#une matrice de cases sur laquelle on jouera
+	#une matrice de cases corrigée
+	#un nombre d'étoiles
 	@numero
 	@hauteur
 	@largeur
@@ -29,6 +35,7 @@ class Grille
 		@etoiles=0
 	end
 
+	#affectes les cases de la matrice passée en paramètre à la matriceCases
 	def copierMatrice(mat2)
 		for i in 0..@hauteur-1  do
 			for j in 0..@largeur-1 do
@@ -43,6 +50,7 @@ class Grille
 		end
 	end
 
+	#affectes les cases de la matrice passée en paramètre à la matrice correction
 	def copierCorrection(mat2)
 		for i in 0..@hauteur-1  do
 			for j in 0..@largeur-1 do
@@ -68,7 +76,7 @@ class Grille
 		end
 	end
 
-
+	# retournes le pourcentage de complétion de la matriceCases
 	def pourcentageCompletion()
 		nbPareil = 0
 		nbCasesNombre = 0
@@ -84,6 +92,7 @@ class Grille
 		return (nbPareil/(@hauteur*@largeur-nbCasesNombre).to_f)*100
 	end
 
+	# retournes le nombre d'erreurs de la matriceCases
 	def nbErreurs()
 		nbErr = 0
 		for i in 0..@hauteur - 1
@@ -96,6 +105,7 @@ class Grille
 		return nbErr
 	end
 
+	# retournes un booléen : vrai si la matriceCases est finie, faux sinon
 	def grilleFinie()
 		nbErr = 0
 		for i in 0..@hauteur - 1
@@ -108,6 +118,7 @@ class Grille
 		return nbErr==0
 	end
 
+	# Remet toutes les cases jouables de la matriceCases à l'état non joué
 	def raz()
 		for i in 0..@hauteur - 1
 			for j in 0..@largeur - 1
