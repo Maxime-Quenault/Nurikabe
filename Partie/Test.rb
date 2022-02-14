@@ -101,6 +101,16 @@ class Test
 		partie.reviensALaBonnePosition
 		puts partie.grilleEnCours
 
+		puts " On met une case à l'état non jouée à coté d'une case 1"
+		partie.clicSurCase(2,0)
+		partie.clicSurCase(2,0)
+		puts partie.grilleEnCours
+
+		ile1NonEntouree = partie.indice_ile1NonEntouree
+		if(ile1NonEntouree!=nil) 
+			puts "Ile 1 non entouree aux coordonnées x = #{ile1NonEntouree[0]} y = #{ile1NonEntouree[1]}"
+		end
+
 
 	end
 

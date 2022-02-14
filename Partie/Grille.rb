@@ -21,10 +21,11 @@ class Grille
 
 	private_class_method :new
 	attr :matriceCases, false
-	attr :taille, false
 	attr :numero, false
 	attr :correction, false
 	attr :etoiles, true
+	attr :hauteur, false
+	attr :largeur, false
 
 	def initialize(num,h,l)
 		@numero=num

@@ -106,4 +106,47 @@ class Partie
   def reprend()
   end
 
+  # Recherche et retourne les coordonnées d'une case Ile de valeur 1 non entourée (si elle existe, sinon on retourne nil)
+  def indice_ile1NonEntouree()
+    for i in 0..@grilleEnCours.largeur-1
+      for j in 0..@grilleEnCours.hauteur-1
+        # On regarde si une case est une case ile de valeur 1 et si les cases autours ne sont pas jouées
+        if @grilleEnCours.matriceCases[i][j].is_a?(CaseNombre) && @grilleEnCours.matriceCases[i][j].valeur==1
+          if i+1 < @grilleEnCours.largeur && @grilleEnCours.matriceCases[i+1][j].etat==0
+            return [i,j]
+          elsif j+1 < @grilleEnCours.hauteur && @grilleEnCours.matriceCases[i][j+1].etat==0
+            return [i,j]
+          elsif j-1 >= 0 && @grilleEnCours.matriceCases[i][j-1].etat==0 
+            return [i,j]
+          elsif i-1 >= 0 && @grilleEnCours.matriceCases[i-1][j].etat==0
+            return [i,j]
+          end
+        end
+      end
+    end
+    return nil
+  end
+
+  # NON TESTEE POUR LINSANT IL FAUT FAIRE UNE AUTRE GRILLE DANS LE FICHIER TEST
+  # Recherche et retourne les coordonnées d'une case jouable non jouée séparant deux cases îles (si elle existe, sinon on retourne nil)
+  def indice_IlesVoisinesNonSeparees()
+    for i in 0..@grilleEnCours.hauteur-1
+      for j in 0..@grilleEnCours.largeur-1
+        # On regarde si il existe deux cases îles séparées par une case jouable non jouée
+        if @grilleEnCours.matriceCases[i][j].is_a?(CaseNombre)
+          if i+2 < @grilleEnCours.hauteur-1 && @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==0 && @grilleEnCours.matriceCases[i+2][j].is_a?(CaseNombre)
+            return [i+1,j]
+          elsif j+2 < @grilleEnCours.largeur-1 && @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==0 && @grilleEnCours.matriceCases[i][j+2].is_a?(CaseNombre)
+            return [i,j+1]
+          elsif j-2 >= 0 && @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==0 && @grilleEnCours.matriceCases[i][j-2].is_a?(CaseNombre)
+            return [i,j-1]
+          elsif i-2 >= 0 && @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==0 && @grilleEnCours.matriceCases[i-2][j].is_a?(CaseNombre)
+            return [i-1,j]
+          end
+        end
+      end
+    end
+    return nil
+  end
+    
 end
