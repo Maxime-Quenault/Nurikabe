@@ -85,10 +85,17 @@ class Test
 
 		puts partie.grilleEnCours
 		puts "Partie finie ? = #{partie.partieFinie?}"
-		puts partie.grilleEnCours.nbErreurs
+		puts " Nb erreurs : #{partie.grilleEnCours.nbErreurs}"
+
+		puts " On undo, clic sur une case puis on test si on peux redo"
+		partie.undo
+		puts " Avant de cliquer sur une case :"
+		puts partie.redoPossible?
+		partie.clicSurCase(1,1)
+		puts " Après avoir cliqué sur une case :"
+		puts partie.redoPossible?
 
 		puts "On fait des erreurs"
-
 		partie.clicSurCase(2,0)
 		puts partie.grilleEnCours
 		partie.clicSurCase(2,1)
@@ -110,6 +117,7 @@ class Test
 		if(ile1NonEntouree!=nil) 
 			puts "Ile 1 non entouree aux coordonnées x = #{ile1NonEntouree[0]} y = #{ile1NonEntouree[1]}"
 		end
+		
 
 
 	end

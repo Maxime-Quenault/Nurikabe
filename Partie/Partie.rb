@@ -33,7 +33,7 @@ class Partie
 
   # ajoutes le coup passé en paramètre au tableau de coups et incrémente l'indiceCoup
   def nouveauCoup(unCoup)
-    @tabCoup.append(unCoup)
+    @tabCoup[@indiceCoup]=unCoup
     @indiceCoup+=1
   end
 
@@ -43,10 +43,10 @@ class Partie
 	  	anc_etat =@grilleEnCours.matriceCases[x][y].etat
       @grilleEnCours.matriceCases[x][y].changerEtat
 		  self.nouveauCoup(Coup.creer(@grilleEnCours.matriceCases[x][y],anc_etat,@grilleEnCours.matriceCases[x][y].etat))
-      if(tabCoup[indiceCoup+1].is_a?(Coup))
-        i=indiceCoup+1
+      if(tabCoup[@indiceCoup].is_a?(Coup))
+        i=@indiceCoup
         while(tabCoup[i].is_a?(Coup))
-          tabCoup[i]==nil
+          tabCoup[i]=nil
           i+=1
         end
       end
@@ -70,7 +70,7 @@ class Partie
 
   # vrai si on peut redo, faux sinon
   def redoPossible?()
-	   return @tabCoup[@indiceCoup+1].is_a?(Coup)
+	   return @tabCoup[@indiceCoup].is_a?(Coup)
   end
 
   # Retournes à l'état suivant
