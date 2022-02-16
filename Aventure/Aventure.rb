@@ -77,7 +77,7 @@ class Aventure
   end
 
   # Pour générer l'aventure(suite de niveaux), on fait appel à la classe Grille pour générer les niveaux
-  def generationAventure(nbNiveau)end
+  def generationAventure(nbNiveau)
     for(int i; i < nbNiveau; i++)
       @desGrilles[i] = Grille.new()
     end
@@ -102,6 +102,11 @@ class Aventure
     if((@posCourante > 0) && (@posCourante < @desGrilles.length()))
       @posCourante = numero
     end
+  end
+
+  # Méthode d'accès en lecture de la position courante
+  def getEtoileCourante
+    return @desGrilles[@posCourante].getEtoiles
   end
 
   # On se déplace sur l'aventure de difficulté inférieure
