@@ -5,6 +5,11 @@ load "Aventure.rb"
 
 class AffichageAventure
 
+  @couleurBase = "white"
+  @couleurVisible = "grey"
+
+  attr :couleurBase, :couleurVisible true
+  
   def destruction
     Gtk.main_quit
     return
@@ -54,10 +59,6 @@ class AffichageAventure
       imgEtoile5 = gtk_image_new_from_file ("etoile2.png")
     end
   end
-
-
-  @couleurBase = "white"
-  @couleurVisible = "grey"
 
   def afficheToi
 
