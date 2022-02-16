@@ -5,7 +5,10 @@ load "Aventure.rb"
 
 class AffichageAventure
 
+  # Deux VI accessibles en lecture et écriture pour de simplifier l'implémentation de thèmes
+  # @couleurBase -> couleur d'origine des boutons
   @couleurBase = "white"
+  # couleurVisible -> couleur des boutons lorsque l'on clique dessus ("effet de surbrillance")
   @couleurVisible = "grey"
 
   attr :couleurBase, :couleurVisible true
