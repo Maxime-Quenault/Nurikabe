@@ -78,6 +78,12 @@ class Test
 		partie.redo
 		puts partie.grilleEnCours
 
+		diagonalesNonSeparees = partie.indice_IlesDiagonalesNonSeparees()
+		if(diagonalesNonSeparees!=nil) 
+			puts "Cases jouables non séparées en diagonales aux coordonnées x = #{diagonalesNonSeparees[0]} y = #{diagonalesNonSeparees[1]}"
+		end
+
+		puts "On joue des coups pour finir la grille"
 		partie.clicSurCase(2,1)
 		partie.clicSurCase(1,1)
 		partie.clicSurCase(0,2)
@@ -86,14 +92,6 @@ class Test
 		puts partie.grilleEnCours
 		puts "Partie finie ? = #{partie.partieFinie?}"
 		puts " Nb erreurs : #{partie.grilleEnCours.nbErreurs}"
-
-		puts " On undo, clic sur une case puis on test si on peux redo"
-		partie.undo
-		puts " Avant de cliquer sur une case :"
-		puts partie.redoPossible?
-		partie.clicSurCase(1,1)
-		puts " Après avoir cliqué sur une case :"
-		puts partie.redoPossible?
 
 		puts "On fait des erreurs"
 		partie.clicSurCase(2,0)
@@ -110,6 +108,7 @@ class Test
 
 		puts " On met une case à l'état non jouée à coté d'une case 1"
 		partie.clicSurCase(2,0)
+		puts partie.grilleEnCours
 		partie.clicSurCase(2,0)
 		puts partie.grilleEnCours
 
@@ -118,7 +117,15 @@ class Test
 			puts "Ile 1 non entouree aux coordonnées x = #{ile1NonEntouree[0]} y = #{ile1NonEntouree[1]}"
 		end
 		
-
+		puts " On undo, clic sur une case puis on test si on peux redo"
+		partie.undo
+		puts " Avant de cliquer sur une case :"
+		puts partie.grilleEnCours
+		puts "Redo possible ? #{partie.redoPossible?}"
+		partie.clicSurCase(1,1)
+		puts " Après avoir cliqué sur une case :"
+		puts partie.grilleEnCours
+		puts "Redo possible ? #{partie.redoPossible?}"
 
 	end
 

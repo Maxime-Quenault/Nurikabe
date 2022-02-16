@@ -31,11 +31,11 @@ class CaseJouable
 
 	def to_s
 		if @etat==0 then
-			print "."
+			return "."
 		elsif @etat==1 then
-			print "x"
+			return "x"
 		else
-			print "o"
+			return "o"
 		end
 	end
 

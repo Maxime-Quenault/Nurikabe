@@ -148,5 +148,44 @@ class Partie
     end
     return nil
   end
+
+  # Recherche et retourne les coordonnées d'une case jouable non jouée séparant deux cases îles en diagonales (si elle existe, sinon on retourne nil)
+  def indice_IlesDiagonalesNonSeparees()
+    for i in 0..@grilleEnCours.hauteur-1
+      for j in 0..@grilleEnCours.largeur-1
+        if @grilleEnCours.matriceCases[i][j].is_a?(CaseNombre)
+          if i+1 < @grilleEnCours.matriceCases.size && j+1 < @grilleEnCours.matriceCases.size && @grilleEnCours.matriceCases[i+1][j+1].is_a?(CaseNombre)
+            if @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==0
+              return [i+1,j]
+            elsif @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==0
+              return [i,j+1]
+            end
+          end
+          if i+1 < @grilleEnCours.matriceCases.size && j-1 >= 0 && @grilleEnCours.matriceCases[i+1][j-1].is_a?(CaseNombre)
+            if @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==0
+              return [i+1,j]
+            elsif @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==0
+              return [i,j-1]
+            end
+          end
+          if i-1 >= 0 && j+1 < @grilleEnCours.matriceCases.size && @grilleEnCours.matriceCases[i-1][j+1].is_a?(CaseNombre)
+            if @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==0
+              return [i-1,j]
+            elsif @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==0
+              return [i,j+1]
+            end
+          end
+          if i-1 >= 0 && j-1 >= 0 && @grilleEnCours.matriceCases[i-1][j-1].is_a?(CaseNombre)
+            if @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==0
+              return [i-1,j]
+            elsif @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==0
+              return [i,j-1]
+            end
+          end
+        end
+      end
+    end
+    return nil
+  end
     
 end

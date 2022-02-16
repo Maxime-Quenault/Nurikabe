@@ -68,13 +68,15 @@ class Grille
 
 
 	def to_s()
+		res = "-------------\n"
 		for i in 0..@hauteur-1  do
 			for j in 0..@largeur-1 do
-				print @matriceCases[j][i].to_s
-				print " "
+				res+= @matriceCases[j][i].to_s
+				res+= " "
 			end
-			print "\n"
+			res+= "\n"
 		end
+		return res
 	end
 
 	# retournes le pourcentage de complétion de la matriceCases

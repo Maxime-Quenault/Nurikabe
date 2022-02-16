@@ -16,7 +16,7 @@ class CaseNombre
 	end
 
 	def to_s
-		print @valeur
+		return @valeur.to_s
 	end
 
 	attr :valeur, false
