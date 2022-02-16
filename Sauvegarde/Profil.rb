@@ -9,6 +9,6 @@ class Profil
 
     
     def to_s()
-        "mon pseudo : #{@pseudo}, mes parametres : #{@parametre}"
+        "coucou\n"
     end
 end

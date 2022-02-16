@@ -1,21 +1,15 @@
 load "Sauvegarde/SauvegardeProfil.rb"
 load "Sauvegarde/Profil.rb"
 load "Parametre/Parametre.rb"
-load "InterfaceMenu.rb"
+load "Interfaces/FenetreMenu.rb"
 
 class Jeu
 
-    def initialize
-
-        @interface = InterfaceMenu.new
-
-    end
-
     def lanceToi
-
-        save = SauvegardeProfil.new
-        unProfil = save.afficherSauvegarde
-        @interface.afficheToi
+        interface = FenetreMenu.new
+        print interface.profil
+        print "test\n"
+        interface.afficheToi
     end
 
 end
