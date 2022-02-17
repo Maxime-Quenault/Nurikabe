@@ -5,18 +5,13 @@ load "Sauvegarde/Profil.rb"
 
 class FenetreProfil
 
-    attr_accessor :save
+    attr_accessor :save,:profil
 
     def initialize
         @save = SauvegardeProfil.new
     end
 
     def afficheToi
-
-        def destruction(profil)
-            Gtk.main_quit
-            return profil  
-        end
 
 
         ##################################
@@ -36,7 +31,7 @@ class FenetreProfil
         ##################################
 
 
-
+        
 
         ####################################
         ## CREATION DES BOX DE LA FENÊTRE ##
@@ -62,10 +57,8 @@ class FenetreProfil
                 boutonProfil = Button.new(:label => key.pseudo)
                 laFenetrePrincipale.add(boutonProfil)
                 boutonProfil.signal_connect('clicked'){
-                    profil = @save.chargerProfil(key.pseudo)
-
-                    print "Tu as selectionné le profil \"#{profil.pseudo}\"\n"
-                    destruction(profil)
+                    @profil = @save.chargerProfil(key.pseudo)
+                    event(monApplication)
                 }
             end
         end 
@@ -79,12 +72,11 @@ class FenetreProfil
         boutonValider.signal_connect('clicked') {
             pseudo = zoneText.text.to_s
             if pseudo.length != 0
-                profil = Profil.new(pseudo)
+                @profil = Profil.new(pseudo)
                 if @save.ajoutProfil(profil) == -1
-                    profil = @save.chargerProfil(pseudo)
+                    @profil = @save.chargerProfil(pseudo)
                 end
-                #print "Tu as selectionné le profil \"#{profil.pseudo}\""
-                destruction(profil)
+                event(monApplication)
             end
         }
         ############################################
@@ -94,6 +86,12 @@ class FenetreProfil
         ## AFFICHAGE DE LA FENETRE ##
         monApplication.show_all
         #############################
+
+
+        def event(monApplication)
+            monApplication.hide
+            Gtk.main_quit  
+        end
 
         Gtk.main           
     end

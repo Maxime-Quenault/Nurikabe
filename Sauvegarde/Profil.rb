@@ -9,6 +9,6 @@ class Profil
 
     
     def to_s()
-        "coucou\n"
+        pseudo+"\n"
     end
 end

@@ -1,16 +1,17 @@
-class Libre
+require 'gtk3'
+include Gtk
 
+load "Sauvegarde/SauvegardeProfil.rb"
+load "Sauvegarde/Profil.rb"
+load "Libre/Libre.rb"
 
-	def not_yet_implemented(object)
-		puts "#{object.class.name} sent a signal!"
-	end
+class FenetreLibre
 
-	def on_main_window_destroy(object)
-		Gtk.main_quit()
-	end
+    attr_accessor :modeLibre
 
-	def initialize
-		main_window_res = '../glade/menu-libre.glade'
+    def initialize
+        @modeLibre = Libre.new
+        main_window_res = 'glade/menu-libre.glade'
 
 		@builder = Gtk::Builder.new(:file => main_window_res)
 
@@ -23,16 +24,23 @@ class Libre
 				method('not_yet_implemented')
 			end
 		end
+    end
 
-	end
-
-	def afficheToi
+    def afficheToi
 
 		main_window = @builder.get_object('main_window')
 		main_window.show()
 
 		Gtk.main
 
+	end
+
+    def not_yet_implemented(object)
+		puts "#{object.class.name} sent a signal!"
+	end
+
+	def on_main_window_destroy(object)
+		Gtk.main_quit()
 	end
 
 	def ajouterGrille(id)
@@ -63,36 +71,5 @@ class Libre
 		liste_grille.show_all
 
 	end
-
-
-    def toGrilleJouable(unIndex, uneDifficulte)
-
-        chaine = lireGrille(unIndex, uneDifficulte)
-
-        numeroCases = chaine.lines.first.split(' ')
-        grille = chaine.lines.drop(1)
-
-        #Création de la matrice de cases
-        matriceCases = Array.new(grille.length) {Array.new(grille[0].split.lenght)}
-
-        y = 0 
-        compteur = 0
-
-        grille.each_with_index do |line, index|
-            x = 0
-            for j in grille[index].split do
-                if( j=="0" || j == 0 )
-                    matriceCases[y][x] = grille[index][line] + 1 
-                else
-                    matriceCases[y][x] = j.to_i
-                    
-                end
-
-                x += 1
-            end
-            y += 1
-        end
-
-    end
 
 end

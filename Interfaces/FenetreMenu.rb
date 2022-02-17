@@ -1,6 +1,7 @@
 require 'gtk3'
 include Gtk
 load "Interfaces/FenetreProfil.rb"
+load "Interfaces/FenetreLibre.rb"
 load "Sauvegarde/Profil.rb"
 
 class FenetreMenu
@@ -11,14 +12,17 @@ class FenetreMenu
         @builder = Gtk::Builder.new
         @builder.add_from_file("glade/menu.glade")
 
+        @interfaceLibre = FenetreLibre.new
         @interfaceProfil = FenetreProfil.new
-        @profil = @interfaceProfil.afficheToi
+        @interfaceProfil.afficheToi
+        @profil = @interfaceProfil.profil
 
     end
 
 
     def afficheToi
         print "profil = #{@profil}\n"
+
         #Recuperation de la fenetre
         mainWindow = @builder.get_object("mainWindow")
 
@@ -33,7 +37,11 @@ class FenetreMenu
 
         #Gestion des signaux
         mainWindow.signal_connect('destroy') {Gtk.main_quit}
-        btn_libre.signal_connect('clicked') {print "tu as clique sur le mode libre\n"}
+        btn_libre.signal_connect('clicked') {
+            mainWindow.hide
+            @interfaceLibre.afficheToi
+            mainWindow.show_all
+        }
         btn_survie.signal_connect('clicked') {print "tu as clique sur le mode survie\n"}
         btn_contre_montre.signal_connect('clicked') {print "tu as clique sur le mode contre la montre\n"}
         btn_aventure.signal_connect('clicked') {print "tu as clique sur le mode aventure\n"}
