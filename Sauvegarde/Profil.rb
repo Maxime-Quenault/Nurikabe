@@ -1,4 +1,3 @@
-load "../Parametre/Parametre.rb"
 class Profil
     attr_accessor :pseudo, :parametre, :listeGrilleCommence
 
@@ -10,6 +9,6 @@ class Profil
 
     
     def to_s()
-        "mon pseudo : #{@pseudo}, mes parametres : #{@parametre}"
+        pseudo+"\n"
     end
 end
