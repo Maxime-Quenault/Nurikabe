@@ -1,8 +1,7 @@
 # Classes à charger :
 # Sûrement d'autres à ajouter
-load "Grille.rb"
-load "Chronometre.rb"
-load "Profil.rb"
+load "../Partie/Grille.rb"
+load "../Libre/Chronometre.rb"
 # Définition de la classe Aventure
 class Aventure
 
@@ -65,6 +64,9 @@ class Aventure
     @@palierHard = 70
     @@nbEtoiles = 0
     @desGrilles = Array.new()
+    #Tableau qui contiendra les étoiles de chaque grille
+    @desEtoiles = Array.new()
+
     @posCourante = 0
     @difficulte = uneDifficulte
     # Ici on initialise le tableau de sorte que seule la première difficulté(Facile) soit débloquée
@@ -80,6 +82,7 @@ class Aventure
   def generationAventure(nbNiveau)
     for(int i; i < nbNiveau; i++)
       @desGrilles[i] = Grille.new()
+      @desEtoiles[i] = 0
     end
   end
 
@@ -106,7 +109,14 @@ class Aventure
 
   # Méthode d'accès en lecture de la position courante
   def getEtoileCourante
-    return @desGrilles[@posCourante].getEtoiles
+    return @desEtoiles[@posCourante]
+  end
+
+  def setEtoileCourante(unNombre)
+    if(unNombre > self.getEtoileCourante())
+      etoilesEnPlus(unNombre - self.getEtoileCourante())
+      @desEtoiles[@posCourante] = unNombre
+    end
   end
 
   # On se déplace sur l'aventure de difficulté inférieure
