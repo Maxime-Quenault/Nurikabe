@@ -1,5 +1,6 @@
 require './Grille'
 require './Coup'
+require './Indice'
 # Représentes une partie, contient :
 # une grille en cours, sur laquelle on va jouer
 # un chronomètre
@@ -37,7 +38,7 @@ class Partie
     @indiceCoup+=1
   end
 
-  # changes l'état de la case cliquée et créer un nouveau coup correspondant
+  # changes l'état de la case cliquée et créer un nouveau coup correspondant, supprimmes les coups suivants
   def clicSurCase(x,y)
     if(@grilleEnCours.matriceCases[x][y].is_a?(CaseJouable))
 	  	anc_etat =@grilleEnCours.matriceCases[x][y].etat
@@ -113,13 +114,13 @@ class Partie
         # On regarde si une case est une case ile de valeur 1 et si les cases autours ne sont pas jouées
         if @grilleEnCours.matriceCases[i][j].is_a?(CaseNombre) && @grilleEnCours.matriceCases[i][j].valeur==1
           if i+1 < @grilleEnCours.largeur && @grilleEnCours.matriceCases[i+1][j].etat==0
-            return [i,j]
+            return Indice.creer(:ile1NonEntouree,[i,j])
           elsif j+1 < @grilleEnCours.hauteur && @grilleEnCours.matriceCases[i][j+1].etat==0
-            return [i,j]
+            return Indice.creer(:ile1NonEntouree,[i,j])
           elsif j-1 >= 0 && @grilleEnCours.matriceCases[i][j-1].etat==0 
-            return [i,j]
+            return Indice.creer(:ile1NonEntouree,[i,j])
           elsif i-1 >= 0 && @grilleEnCours.matriceCases[i-1][j].etat==0
-            return [i,j]
+            return Indice.creer(:ile1NonEntouree,[i,j])
           end
         end
       end
@@ -135,13 +136,13 @@ class Partie
         # On regarde si il existe deux cases îles séparées par une case jouable non jouée
         if @grilleEnCours.matriceCases[i][j].is_a?(CaseNombre)
           if i+2 < @grilleEnCours.hauteur-1 && @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==0 && @grilleEnCours.matriceCases[i+2][j].is_a?(CaseNombre)
-            return [i+1,j]
+            return Indice.creer(:ilesVoisinesNonSeparees,[i+1,j])
           elsif j+2 < @grilleEnCours.largeur-1 && @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==0 && @grilleEnCours.matriceCases[i][j+2].is_a?(CaseNombre)
-            return [i,j+1]
+            return Indice.creer(:ilesVoisinesNonSeparees,[i,j+1])
           elsif j-2 >= 0 && @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==0 && @grilleEnCours.matriceCases[i][j-2].is_a?(CaseNombre)
-            return [i,j-1]
+            return Indice.creer(:ilesVoisinesNonSeparees,[i,j-1])
           elsif i-2 >= 0 && @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==0 && @grilleEnCours.matriceCases[i-2][j].is_a?(CaseNombre)
-            return [i-1,j]
+            return Indice.creer(:ilesVoisinesNonSeparees,[i-1,j])
           end
         end
       end
@@ -154,34 +155,48 @@ class Partie
     for i in 0..@grilleEnCours.hauteur-1
       for j in 0..@grilleEnCours.largeur-1
         if @grilleEnCours.matriceCases[i][j].is_a?(CaseNombre)
-          if i+1 < @grilleEnCours.matriceCases.size && j+1 < @grilleEnCours.matriceCases.size && @grilleEnCours.matriceCases[i+1][j+1].is_a?(CaseNombre)
+          if i+1 < @grilleEnCours.hauteur-1 && j+1 < @grilleEnCours.largeur-1 && @grilleEnCours.matriceCases[i+1][j+1].is_a?(CaseNombre)
             if @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==0
-              return [i+1,j]
+              return Indice.creer(:ilesDiagonalesNonSeparees,[i+1,j])
             elsif @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==0
-              return [i,j+1]
+              return Indice.creer(:ilesDiagonalesNonSeparees,[i,j+1])
             end
           end
-          if i+1 < @grilleEnCours.matriceCases.size && j-1 >= 0 && @grilleEnCours.matriceCases[i+1][j-1].is_a?(CaseNombre)
+          if i+1 < @grilleEnCours.hauteur-1 && j-1 >= 0 && @grilleEnCours.matriceCases[i+1][j-1].is_a?(CaseNombre)
             if @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==0
-              return [i+1,j]
+              return Indice.creer(:ilesDiagonalesNonSeparees,[i+1,j])
             elsif @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==0
-              return [i,j-1]
+              return Indice.creer(:ilesDiagonalesNonSeparees,[i,j-1])
             end
           end
-          if i-1 >= 0 && j+1 < @grilleEnCours.matriceCases.size && @grilleEnCours.matriceCases[i-1][j+1].is_a?(CaseNombre)
+          if i-1 >= 0 && j+1 < @grilleEnCours.largeur-1 && @grilleEnCours.matriceCases[i-1][j+1].is_a?(CaseNombre)
             if @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==0
-              return [i-1,j]
+              return Indice.creer(:ilesDiagonalesNonSeparees,[i-1,j])
             elsif @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==0
-              return [i,j+1]
+              return Indice.creer(:ilesDiagonalesNonSeparees,[i,j+1])
             end
           end
           if i-1 >= 0 && j-1 >= 0 && @grilleEnCours.matriceCases[i-1][j-1].is_a?(CaseNombre)
             if @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==0
-              return [i-1,j]
+              return Indice.creer(:ilesDiagonalesNonSeparees,[i-1,j])
             elsif @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==0
-              return [i,j-1]
+              return Indice.creer(:ilesDiagonalesNonSeparees,[i,j-1])
             end
           end
+        end
+      end
+    end
+    return nil
+  end
+
+  # NON TESTEE POUR LINSANT IL FAUT FAIRE UNE AUTRE GRILLE DANS LE FICHIER TEST
+  # Recherche un carré de cases océan de taille 2x2 et retourne ses coordonnées (si il existe, sinon on retourne nil)
+  def indice_Ocean2x2()
+    for i in 0..@grilleEnCours.hauteur-2
+      for j in 0..@grilleEnCours.largeur-2
+        # si les cases aux coordonnées [i,j],[i+1,j],[i,j+1],[i+1,j+1] sont jouables et ont l'état océan, on retourne les coordonnées i,j
+        if @grilleEnCours.matriceCases[i][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j].etat==1 && @grilleEnCours.matriceCases[i+1][j].etat==1 && @grilleEnCours.matriceCases[i][j+1].etat==1 && @grilleEnCours.matriceCases[i+1][j+1].etat==1 
+          return(Indice.creer(:ocean2x2,[i,j]))
         end
       end
     end

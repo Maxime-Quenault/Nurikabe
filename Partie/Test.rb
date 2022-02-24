@@ -3,8 +3,10 @@ require './CaseNombre'
 require './Case'
 require './CaseJouable'
 require './Partie'
+require './Indice'
 class Test
 	def Test.test()
+		# On créer des cases, les mets dans une matrice et on les copie dans une grille de taille 3*3
 		c1 = CaseJouable.creer()
 		c2 = CaseJouable.creer()
 		c3 = CaseJouable.creer()
@@ -28,6 +30,7 @@ class Test
 		mat[2][2]=cn3
 		g.copierMatrice(mat)
 
+		# On créer des cases, on change leur état, les mets dans une matrice et on les copie dans une grille de taille 3*3 en tant que matrice corrigée
 		cc1 = CaseJouable.creer()
 		cc2 = CaseJouable.creer()
 		cc3 = CaseJouable.creer()
@@ -80,7 +83,7 @@ class Test
 
 		diagonalesNonSeparees = partie.indice_IlesDiagonalesNonSeparees()
 		if(diagonalesNonSeparees!=nil) 
-			puts "Cases jouables non séparées en diagonales aux coordonnées x = #{diagonalesNonSeparees[0]} y = #{diagonalesNonSeparees[1]}"
+			puts "Cases jouables non séparées en diagonales aux coordonnées x = #{diagonalesNonSeparees.coordonneesCase[0]} y = #{diagonalesNonSeparees.coordonneesCase[1]}"
 		end
 
 		puts "On joue des coups pour finir la grille"
@@ -114,7 +117,7 @@ class Test
 
 		ile1NonEntouree = partie.indice_ile1NonEntouree
 		if(ile1NonEntouree!=nil) 
-			puts "Ile 1 non entouree aux coordonnées x = #{ile1NonEntouree[0]} y = #{ile1NonEntouree[1]}"
+			puts "Ile 1 non entouree aux coordonnées x = #{ile1NonEntouree.coordonneesCase[0]} y = #{ile1NonEntouree.coordonneesCase[1]}"
 		end
 		
 		puts " On undo, clic sur une case puis on test si on peux redo"
