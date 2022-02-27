@@ -119,6 +119,10 @@ class Aventure
     end
   end
 
+  def getPosCourante
+    return @posCourante
+  end
+  
   # On se déplace sur l'aventure de difficulté inférieure
   def difficultePrecedente
     return @precedenteDiff
