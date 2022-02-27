@@ -203,6 +203,7 @@ class Partie
     return nil
   end
 
+  # Cherche si il y a un indice à donner à l'utilisateur dans l'ordre du plus simple au plus complexe et le retourne (si il existe, sinon on retourne nil)
   def clicSurIndice()
     indice = self.indice_ile1NonEntouree
     if indice!=nil

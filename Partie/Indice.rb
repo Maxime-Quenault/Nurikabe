@@ -1,8 +1,9 @@
+# Un indice est défini par un type d'indice (en fonction des différents patternes) et par les coordonnées de la case concernée
 class Indice
     @type
     @coordonneesCase
 
-   
+    # Différents types possibles
     :ile1NonEntouree
     :ilesDiagonalesNonSeparees
     :ilesVoisinesNonSeparees
@@ -20,6 +21,7 @@ class Indice
     attr :type, false
     attr :coordonneesCase, false
 
+    #affichage d'un indice
     def to_s()
         res = ""
         case @type
