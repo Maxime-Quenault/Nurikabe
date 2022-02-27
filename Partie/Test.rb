@@ -6,6 +6,7 @@ require './Partie'
 require './Indice'
 class Test
 	def Test.test()
+=begin
 		# On créer des cases, les mets dans une matrice et on les copie dans une grille de taille 3*3
 		c1 = CaseJouable.creer()
 		c2 = CaseJouable.creer()
@@ -123,6 +124,153 @@ class Test
 		puts " Après avoir cliqué sur une case :"
 		puts partie.grilleEnCours
 		puts "Redo possible ? #{partie.redoPossible?}"
+=end
+		puts "On créer une grille et charge les matrices depuis le fichier txt"
+		g2=Grille.creer(2,8,6)
+		g2.toGrilleJouable(g2.numero,0)
+		partie = Partie.creeToi(g2)
+		puts partie.grilleEnCours
+
+		puts "On demande un indice"
+		puts partie.clicSurIndice
+
+		puts "On résoud l'indice"
+		partie.clicSurCase(3,1)
+		partie.clicSurCase(2,2)
+		partie.clicSurCase(4,2)
+		partie.clicSurCase(3,3)
+		puts partie.grilleEnCours
+
+		puts "Pourcentage Completion: #{partie.grilleEnCours.pourcentageCompletion}"
+
+		puts "On demande un indice"
+		puts partie.clicSurIndice
+
+		puts "On résoud l'indice"
+		partie.clicSurCase(1,7)
+		puts partie.grilleEnCours
+
+		puts "On demande un indice"
+		puts partie.clicSurIndice
+
+		puts "On résoud l'indice"
+		partie.clicSurCase(1,3)
+		puts partie.grilleEnCours
+
+		puts "On demande un indice"
+		puts partie.clicSurIndice
+
+		puts "On créer volontairement un carré d'océan de taille 2*2"
+		partie.clicSurCase(3,4)
+		partie.clicSurCase(4,4)
+		partie.clicSurCase(3,5)
+		partie.clicSurCase(4,5)
+		puts partie.grilleEnCours
+
+		puts "On demande un indice"
+		puts partie.clicSurIndice
+
+		puts "On résoud l'indice "
+		partie.clicSurCase(3,4)
+		puts partie.grilleEnCours
+
+
+
+		puts "Nb erreurs (fonction nbErreurs) : #{partie.grilleEnCours.nbErreurs}"
+		puts "On fait volontairement une erreur"
+		partie.clicSurCase(5,0)
+		puts partie.grilleEnCours
+		puts "On fait volontairement une autre erreur"
+		partie.clicSurCase(3,0)
+		puts partie.grilleEnCours
+
+		puts "Nb erreurs (fonction nbErreurs) : #{partie.grilleEnCours.nbErreurs}"
+
+		puts "On undo"
+		partie.undo
+		puts partie.grilleEnCours
+
+		puts "On undo encore"
+		partie.undo
+		puts partie.grilleEnCours
+
+		puts "On redo"
+		partie.redo
+		puts partie.grilleEnCours
+
+		puts "On redo encore"
+		partie.redo
+		puts partie.grilleEnCours
+
+		puts " On reviens ou il n'y avait pas derreur avec la fonction reviensALaBonnePosition"
+		partie.reviensALaBonnePosition 
+		puts partie.grilleEnCours
+
+
+		puts " On undo, clic sur une case puis on test si on peux redo"
+		partie.undo
+		puts " Avant de cliquer sur une case :"
+		puts partie.grilleEnCours
+		puts "Redo possible ? #{partie.redoPossible?}"
+		partie.clicSurCase(1,1)
+		puts " Après avoir cliqué sur une case :"
+		puts partie.grilleEnCours
+		puts "Redo possible ? #{partie.redoPossible?}"
+		puts " On tente quand même de redo"
+		partie.redo
+		puts partie.grilleEnCours
+		puts " Rien ne se passe, c'est bon"
+
+		puts "On joue maintenant tout les coups pour finir la partie"
+		partie.clicSurCase(0,0)
+		partie.clicSurCase(1,0)
+		partie.clicSurCase(2,0)
+		partie.clicSurCase(3,0)
+		partie.clicSurCase(3,0)
+		partie.clicSurCase(5,0)
+		partie.clicSurCase(5,0)
+		partie.clicSurCase(0,1)
+		partie.clicSurCase(1,1)
+		partie.clicSurCase(2,1)
+		partie.clicSurCase(4,1)
+		partie.clicSurCase(5,1)
+		partie.clicSurCase(5,1)
+		partie.clicSurCase(0,2)
+		partie.clicSurCase(5,2)
+		partie.clicSurCase(5,2)
+		partie.clicSurCase(0,3)
+		partie.clicSurCase(4,3)
+		partie.clicSurCase(5,3)
+		partie.clicSurCase(5,3)
+		partie.clicSurCase(0,4)
+		partie.clicSurCase(1,4)
+		partie.clicSurCase(1,4)
+		partie.clicSurCase(2,4)
+		partie.clicSurCase(2,4)
+		partie.clicSurCase(3,4)
+		partie.clicSurCase(5,4)
+		partie.clicSurCase(5,4)
+		partie.clicSurCase(0,5)
+		partie.clicSurCase(0,5)
+		partie.clicSurCase(1,5)
+		partie.clicSurCase(2,5)
+		partie.clicSurCase(5,5)
+		partie.clicSurCase(0,6)
+		partie.clicSurCase(0,6)
+		partie.clicSurCase(1,6)
+		partie.clicSurCase(2,6)
+		partie.clicSurCase(2,6)
+		partie.clicSurCase(3,6)
+		partie.clicSurCase(4,6)
+		partie.clicSurCase(4,6)
+		partie.clicSurCase(3,7)
+		partie.clicSurCase(4,7)
+		partie.clicSurCase(4,7)
+		partie.clicSurCase(5,7)
+		partie.clicSurCase(5,7)
+		puts partie.grilleEnCours
+		puts "Nb erreurs (fonction nbErreurs) : #{partie.grilleEnCours.nbErreurs}"
+		puts "Partie finie ?(fonction partieFinie?) = #{partie.partieFinie?}"
 
 	end
 

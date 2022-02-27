@@ -23,6 +23,9 @@ class Indice
 
     #affichage d'un indice
     def to_s()
+        if self.type==nil
+            return "Pas d'indice disponible"
+        end
         res = ""
         case @type
         when :ile1NonEntouree
