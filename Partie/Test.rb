@@ -81,10 +81,7 @@ class Test
 		partie.redo
 		puts partie.grilleEnCours
 
-		diagonalesNonSeparees = partie.indice_IlesDiagonalesNonSeparees()
-		if(diagonalesNonSeparees!=nil) 
-			puts "Cases jouables non séparées en diagonales aux coordonnées x = #{diagonalesNonSeparees.coordonneesCase[0]} y = #{diagonalesNonSeparees.coordonneesCase[1]}"
-		end
+		puts partie.clicSurIndice
 
 		puts "On joue des coups pour finir la grille"
 		partie.clicSurCase(2,1)
@@ -115,10 +112,7 @@ class Test
 		partie.clicSurCase(2,0)
 		puts partie.grilleEnCours
 
-		ile1NonEntouree = partie.indice_ile1NonEntouree
-		if(ile1NonEntouree!=nil) 
-			puts "Ile 1 non entouree aux coordonnées x = #{ile1NonEntouree.coordonneesCase[0]} y = #{ile1NonEntouree.coordonneesCase[1]}"
-		end
+		puts partie.clicSurIndice
 		
 		puts " On undo, clic sur une case puis on test si on peux redo"
 		partie.undo

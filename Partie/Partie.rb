@@ -202,5 +202,29 @@ class Partie
     end
     return nil
   end
+
+  def clicSurIndice()
+    indice = self.indice_ile1NonEntouree
+    if indice!=nil
+      return indice
+    else
+      indice = self.indice_Ocean2x2
+      if indice!=nil
+        return indice
+      else
+       indice = self.indice_IlesVoisinesNonSeparees
+        if indice!=nil
+          return indice
+        else  
+          indice = self.indice_IlesDiagonalesNonSeparees
+          if indice!=nil
+            return indice
+          else  
+            return nil
+          end
+        end
+      end
+    end
+  end
     
 end
