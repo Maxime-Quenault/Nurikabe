@@ -1,5 +1,5 @@
-#load "Profil.rb"
-#load "../Parametre/Parametre.rb"
+load "Sauvegarde/Profil.rb"
+load "Parametre/Parametre.rb"
 
 require 'gtk3'
 include Gtk

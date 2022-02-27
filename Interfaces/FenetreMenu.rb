@@ -1,7 +1,9 @@
 require 'gtk3'
 include Gtk
+
 load "Interfaces/FenetreProfil.rb"
 load "Interfaces/FenetreLibre.rb"
+load "Parametre/AffichageParametre.rb"
 load "Sauvegarde/Profil.rb"
 
 class FenetreMenu
@@ -17,6 +19,7 @@ class FenetreMenu
         @interfaceProfil.afficheToi
         @profil = @interfaceProfil.profil
 
+        @interfaceParametre = AffichageParametre.new
     end
 
 
@@ -47,7 +50,11 @@ class FenetreMenu
         btn_aventure.signal_connect('clicked') {print "tu as clique sur le mode aventure\n"}
         btn_tuto.signal_connect('clicked') {print "tu as clique sur le mode tuto\n"}
         btn_propos.signal_connect('clicked') {print "tu as clique sur le mode a propos\n"}
-        btn_parametre.signal_connect('clicked') {print "tu as clique sur le mode parametre\n"}
+        btn_parametre.signal_connect('clicked') {
+            mainWindow.hide
+            @interfaceParametre.afficheLesParametres
+            mainWindow.show_all
+        }
 
         #affichage de la fenetre
         mainWindow.show_all
