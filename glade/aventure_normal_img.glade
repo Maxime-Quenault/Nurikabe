@@ -567,7 +567,7 @@
                       <object class="GtkImage" id="etoile_1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="pixbuf">../Image/etoile2.png</property>
+                        <property name="pixbuf">../../../Images/etoile2.png</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -579,7 +579,7 @@
                       <object class="GtkImage" id="etoile_2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="pixbuf">../Image/etoile2.png</property>
+                        <property name="pixbuf">../../../Images/etoile2.png</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -591,7 +591,7 @@
                       <object class="GtkImage" id="etoile_3">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="pixbuf">../Image/etoile2.png</property>
+                        <property name="pixbuf">../../../Images/etoile2.png</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -603,7 +603,7 @@
                       <object class="GtkImage" id="etoile_4">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="pixbuf">../Image/etoile2.png</property>
+                        <property name="pixbuf">../../../Images/etoile2.png</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -615,7 +615,7 @@
                       <object class="GtkImage" id="etoile_5">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="pixbuf">../Image/etoile2.png</property>
+                        <property name="pixbuf">../../../Images/etoile2.png</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
