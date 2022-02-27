@@ -3,8 +3,10 @@ require './CaseNombre'
 require './Case'
 require './CaseJouable'
 require './Partie'
+require './Indice'
 class Test
 	def Test.test()
+		# On créer des cases, les mets dans une matrice et on les copie dans une grille de taille 3*3
 		c1 = CaseJouable.creer()
 		c2 = CaseJouable.creer()
 		c3 = CaseJouable.creer()
@@ -28,6 +30,7 @@ class Test
 		mat[2][2]=cn3
 		g.copierMatrice(mat)
 
+		# On créer des cases, on change leur état, les mets dans une matrice et on les copie dans une grille de taille 3*3 en tant que matrice corrigée
 		cc1 = CaseJouable.creer()
 		cc2 = CaseJouable.creer()
 		cc3 = CaseJouable.creer()
@@ -78,6 +81,9 @@ class Test
 		partie.redo
 		puts partie.grilleEnCours
 
+		puts partie.clicSurIndice
+
+		puts "On joue des coups pour finir la grille"
 		partie.clicSurCase(2,1)
 		partie.clicSurCase(1,1)
 		partie.clicSurCase(0,2)
@@ -85,10 +91,9 @@ class Test
 
 		puts partie.grilleEnCours
 		puts "Partie finie ? = #{partie.partieFinie?}"
-		puts partie.grilleEnCours.nbErreurs
+		puts " Nb erreurs : #{partie.grilleEnCours.nbErreurs}"
 
 		puts "On fait des erreurs"
-
 		partie.clicSurCase(2,0)
 		puts partie.grilleEnCours
 		partie.clicSurCase(2,1)
@@ -99,8 +104,30 @@ class Test
 
 		puts " On reviens ou il n'y avait pas derreur "
 		partie.reviensALaBonnePosition
+<<<<<<< HEAD
 		
+=======
 		puts partie.grilleEnCours
+
+		puts " On met une case à l'état non jouée à coté d'une case 1"
+		partie.clicSurCase(2,0)
+		puts partie.grilleEnCours
+		partie.clicSurCase(2,0)
+		puts partie.grilleEnCours
+
+		puts partie.clicSurIndice
+		
+		puts " On undo, clic sur une case puis on test si on peux redo"
+		partie.undo
+		puts " Avant de cliquer sur une case :"
+>>>>>>> Julian
+		puts partie.grilleEnCours
+		puts "Redo possible ? #{partie.redoPossible?}"
+		partie.clicSurCase(1,1)
+		puts " Après avoir cliqué sur une case :"
+		puts partie.grilleEnCours
+		puts "Redo possible ? #{partie.redoPossible?}"
+
 	end
 
 	Test.test()

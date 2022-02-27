@@ -1,5 +1,6 @@
+# Représentes une case contenant un nombre
 class CaseNombre
-
+	#cette case a une valeur
 	@valeur
 
 	def CaseNombre.creer(val)
@@ -15,7 +16,7 @@ class CaseNombre
 	end
 
 	def to_s
-		print @valeur
+		return @valeur.to_s
 	end
 
 	attr :valeur, false
