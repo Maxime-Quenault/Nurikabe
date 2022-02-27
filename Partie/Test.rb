@@ -104,9 +104,6 @@ class Test
 
 		puts " On reviens ou il n'y avait pas derreur "
 		partie.reviensALaBonnePosition
-<<<<<<< HEAD
-		
-=======
 		puts partie.grilleEnCours
 
 		puts " On met une case à l'état non jouée à coté d'une case 1"
@@ -120,7 +117,6 @@ class Test
 		puts " On undo, clic sur une case puis on test si on peux redo"
 		partie.undo
 		puts " Avant de cliquer sur une case :"
->>>>>>> Julian
 		puts partie.grilleEnCours
 		puts "Redo possible ? #{partie.redoPossible?}"
 		partie.clicSurCase(1,1)
