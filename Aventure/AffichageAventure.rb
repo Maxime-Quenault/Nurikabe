@@ -114,253 +114,255 @@ class AffichageAventure
     end
   end
 
-  @couleurBase = "white"
-  @couleurVisible = "grey"
-  @image = gtk_image_new_from_file("../Image/grilleVide.png")
+  def afficheToi
+    @couleurBase = "white"
+    @couleurVisible = "grey"
+    @image = gtk_image_new_from_file("../Image/grilleVide.png")
 
-  monBuildeur = Gtk::Builder.new()
-  monBuildeur.add_from_file("../glade/aventure_normal_img.glade")
+    monBuildeur = Gtk::Builder.new()
+    monBuildeur.add_from_file("../glade/aventure_normal_img.glade")
 
-  aventureFacile.generationAventure(10)
-  aventureNormale.generationAventure(10)
-  aventureHard.generationAventure(10)
+    aventureFacile.generationAventure(10)
+    aventureNormale.generationAventure(10)
+    aventureHard.generationAventure(10)
 
-  aventure = Aventure.creer(aventureFacile,aventureNormale,aventureHard)
+    aventure = Aventure.creer(aventureFacile,aventureNormale,aventureHard)
 
-  bouton1 = monBuildeur.get_object('btn_grille_1')
-  bouton2 = monBuildeur.get_object('btn_grille_2')
-  bouton3 = monBuildeur.get_object('btn_grille_3')
-  bouton4 = monBuildeur.get_object('btn_grille_4')
-  bouton5 = monBuildeur.get_object('btn_grille_5')
-  bouton6 = monBuildeur.get_object('btn_grille_6')
-  bouton7 = monBuildeur.get_object('btn_grille_7')
-  bouton8 = monBuildeur.get_object('btn_grille_8')
-  bouton9 = monBuildeur.get_object('btn_grille_9')
-  bouton10 = monBuildeur.get_object('btn_grille_10')
+    bouton1 = monBuildeur.get_object('btn_grille_1')
+    bouton2 = monBuildeur.get_object('btn_grille_2')
+    bouton3 = monBuildeur.get_object('btn_grille_3')
+    bouton4 = monBuildeur.get_object('btn_grille_4')
+    bouton5 = monBuildeur.get_object('btn_grille_5')
+    bouton6 = monBuildeur.get_object('btn_grille_6')
+    bouton7 = monBuildeur.get_object('btn_grille_7')
+    bouton8 = monBuildeur.get_object('btn_grille_8')
+    bouton9 = monBuildeur.get_object('btn_grille_9')
+    bouton10 = monBuildeur.get_object('btn_grille_10')
 
-  modeFacile = monBuildeur.get_object('btn_facile')
-  modeNormal = monBuildeur.get_object('btn_normal')
-  modeHard = monBuildeur.get_object('btn_difficile')
+    modeFacile = monBuildeur.get_object('btn_facile')
+    modeNormal = monBuildeur.get_object('btn_normal')
+    modeHard = monBuildeur.get_object('btn_difficile')
 
-  btnPreced = monBuildeur.get_object('btn_grille_preced')
-  btnSuivant = monBuildeur.get_object('btn_grille_suiv')
+    btnPreced = monBuildeur.get_object('btn_grille_preced')
+    btnSuivant = monBuildeur.get_object('btn_grille_suiv')
 
-  imgEtoile1 = monBuildeur.get_object('etoile_1')
-  imgEtoile2 = monBuildeur.get_object('etoile_2')
-  imgEtoile3 = monBuildeur.get_object('etoile_3')
-  imgEtoile4 = monBuildeur.get_object('etoile_4')
-  imgEtoile5 = monBuildeur.get_object('etoile_5')
+    imgEtoile1 = monBuildeur.get_object('etoile_1')
+    imgEtoile2 = monBuildeur.get_object('etoile_2')
+    imgEtoile3 = monBuildeur.get_object('etoile_3')
+    imgEtoile4 = monBuildeur.get_object('etoile_4')
+    imgEtoile5 = monBuildeur.get_object('etoile_5')
 
-  fenetre = monBuilder.get_object('fenetre_aventure')
+    fenetre = monBuilder.get_object('fenetre_aventure')
 
-  fenetre.signal_connect('btn_retour') {
-    self.destruction()
-  }
+    fenetre.signal_connect('btn_retour') {
+      self.destruction()
+    }
 
-  fenetre.signal_connect('btn_grille_preced') {
-    aventure.grillePrecedente()
-    self.boutonSuivPreced()
-  }
+    fenetre.signal_connect('btn_grille_preced') {
+      aventure.grillePrecedente()
+      self.boutonSuivPreced()
+    }
 
-  fenetre.signal_connect('btn_grille_suiv') {
-    aventure.prochaineGrille()
-    self.boutonSuivPreced()
-  }
+    fenetre.signal_connect('btn_grille_suiv') {
+      aventure.prochaineGrille()
+      self.boutonSuivPreced()
+    }
 
-  fenetre.signal_connect('btn_facile') {
-    aventure.choixDifficulte(0)
-    aventure.placerSurGrille(0)
-    self.affichageEtoile(aventure.getEtoileCourante())
-    self.affichageImage()
-    self.setBackground(modeFacile,@couleurVisible)
-    self.setBackground(modeNormal,@couleurBase)
-    self.setBackground(modeHard,@couleurBase)
-  }
-  
-  fenetre.signal_connect('btn_normal') {
-    aventure.choixDifficulte(1)
-    aventure.unlockDifficulte()
-    aventure.placerSurGrille(0)
-    self.affichageEtoile(aventure.getEtoileCourante())
-    self.affichageImage()
-    self.setBackground(modeFacile,@couleurBase)
-    self.setBackground(modeNormal,@couleurVisible)
-    self.setBackground(modeHard,@couleurBase)
-  }
+    fenetre.signal_connect('btn_facile') {
+      aventure.choixDifficulte(0)
+      aventure.placerSurGrille(0)
+      self.affichageEtoile(aventure.getEtoileCourante())
+      self.affichageImage()
+      self.setBackground(modeFacile,@couleurVisible)
+      self.setBackground(modeNormal,@couleurBase)
+      self.setBackground(modeHard,@couleurBase)
+    }
+    
+    fenetre.signal_connect('btn_normal') {
+      aventure.choixDifficulte(1)
+      aventure.unlockDifficulte()
+      aventure.placerSurGrille(0)
+      self.affichageEtoile(aventure.getEtoileCourante())
+      self.affichageImage()
+      self.setBackground(modeFacile,@couleurBase)
+      self.setBackground(modeNormal,@couleurVisible)
+      self.setBackground(modeHard,@couleurBase)
+    }
 
-  fenetre.signal_connect('btn_difficile') {
-    aventure.choixDifficulte(2)
-    aventure.unlockDifficulte()
-    aventure.placerSurGrille(0)
-    self.affichageEtoile(aventure.getEtoileCourante())
-    self.affichageImage()
-    self.setBackground(modeFacile,@couleurBase)
-    self.setBackground(modeNormal,@couleurBase)
-    self.setBackground(modeHard,@couleurVisible)
-  }
+    fenetre.signal_connect('btn_difficile') {
+      aventure.choixDifficulte(2)
+      aventure.unlockDifficulte()
+      aventure.placerSurGrille(0)
+      self.affichageEtoile(aventure.getEtoileCourante())
+      self.affichageImage()
+      self.setBackground(modeFacile,@couleurBase)
+      self.setBackground(modeNormal,@couleurBase)
+      self.setBackground(modeHard,@couleurVisible)
+    }
 
-  fenetre.signal_connect('img_grille') {
-    # Ajouter méthode de lancement de la partie
-  }
+    fenetre.signal_connect('img_grille') {
+      # Ajouter méthode de lancement de la partie
+    }
 
-  fenetre.signal_connect('btn_grille_1') {
-    aventure.placerSurGrille(0)
-    self.affichageEtoile(aventure.getEtoileCourante())
-    self.affichageImage()
-    self.setBackground(bouton1,@couleurVisible)
-    self.setBackground(bouton2,@couleurBase)
-    self.setBackground(bouton3,@couleurBase)
-    self.setBackground(bouton4,@couleurBase)
-    self.setBackground(bouton5,@couleurBase)
-    self.setBackground(bouton6,@couleurBase)
-    self.setBackground(bouton7,@couleurBase)
-    self.setBackground(bouton8,@couleurBase)
-    self.setBackground(bouton9,@couleurBase)
-    self.setBackground(bouton10,@couleurBase)
-  }
+    fenetre.signal_connect('btn_grille_1') {
+      aventure.placerSurGrille(0)
+      self.affichageEtoile(aventure.getEtoileCourante())
+      self.affichageImage()
+      self.setBackground(bouton1,@couleurVisible)
+      self.setBackground(bouton2,@couleurBase)
+      self.setBackground(bouton3,@couleurBase)
+      self.setBackground(bouton4,@couleurBase)
+      self.setBackground(bouton5,@couleurBase)
+      self.setBackground(bouton6,@couleurBase)
+      self.setBackground(bouton7,@couleurBase)
+      self.setBackground(bouton8,@couleurBase)
+      self.setBackground(bouton9,@couleurBase)
+      self.setBackground(bouton10,@couleurBase)
+    }
 
-  fenetre.signal_connect('btn_grille_2') {
-    aventure.placerSurGrille(1)
-    self.affichageEtoile(aventure.getEtoileCourante())
-    self.affichageImage()
-    self.setBackground(bouton1,@couleurBase)
-    self.setBackground(bouton2,@couleurVisible)
-    self.setBackground(bouton3,@couleurBase)
-    self.setBackground(bouton4,@couleurBase)
-    self.setBackground(bouton5,@couleurBase)
-    self.setBackground(bouton6,@couleurBase)
-    self.setBackground(bouton7,@couleurBase)
-    self.setBackground(bouton8,@couleurBase)
-    self.setBackground(bouton9,@couleurBase)
-    self.setBackground(bouton10,@couleurBase)
-  }
+    fenetre.signal_connect('btn_grille_2') {
+      aventure.placerSurGrille(1)
+      self.affichageEtoile(aventure.getEtoileCourante())
+      self.affichageImage()
+      self.setBackground(bouton1,@couleurBase)
+      self.setBackground(bouton2,@couleurVisible)
+      self.setBackground(bouton3,@couleurBase)
+      self.setBackground(bouton4,@couleurBase)
+      self.setBackground(bouton5,@couleurBase)
+      self.setBackground(bouton6,@couleurBase)
+      self.setBackground(bouton7,@couleurBase)
+      self.setBackground(bouton8,@couleurBase)
+      self.setBackground(bouton9,@couleurBase)
+      self.setBackground(bouton10,@couleurBase)
+    }
 
-  fenetre.signal_connect('btn_grille_3') {
-    aventure.placerSurGrille(2)
-    self.affichageEtoile(aventure.getEtoileCourante())
-    self.affichageImage()
-    self.setBackground(bouton1,@couleurBase)
-    self.setBackground(bouton2,@couleurBase)
-    self.setBackground(bouton3,@couleurVisible)
-    self.setBackground(bouton4,@couleurBase)
-    self.setBackground(bouton5,@couleurBase)
-    self.setBackground(bouton6,@couleurBase)
-    self.setBackground(bouton7,@couleurBase)
-    self.setBackground(bouton8,@couleurBase)
-    self.setBackground(bouton9,@couleurBase)
-    self.setBackground(bouton10,@couleurBase)
-  }
+    fenetre.signal_connect('btn_grille_3') {
+      aventure.placerSurGrille(2)
+      self.affichageEtoile(aventure.getEtoileCourante())
+      self.affichageImage()
+      self.setBackground(bouton1,@couleurBase)
+      self.setBackground(bouton2,@couleurBase)
+      self.setBackground(bouton3,@couleurVisible)
+      self.setBackground(bouton4,@couleurBase)
+      self.setBackground(bouton5,@couleurBase)
+      self.setBackground(bouton6,@couleurBase)
+      self.setBackground(bouton7,@couleurBase)
+      self.setBackground(bouton8,@couleurBase)
+      self.setBackground(bouton9,@couleurBase)
+      self.setBackground(bouton10,@couleurBase)
+    }
 
-  fenetre.signal_connect('btn_grille_4') {
-    aventure.placerSurGrille(3)
-    self.affichageEtoile(aventure.getEtoileCourante())
-    self.affichageImage()
-    self.setBackground(bouton1,@couleurBase)
-    self.setBackground(bouton2,@couleurBase)
-    self.setBackground(bouton3,@couleurBase)
-    self.setBackground(bouton4,@couleurVisible)
-    self.setBackground(bouton5,@couleurBase)
-    self.setBackground(bouton6,@couleurBase)
-    self.setBackground(bouton7,@couleurBase)
-    self.setBackground(bouton8,@couleurBase)
-    self.setBackground(bouton9,@couleurBase)
-    self.setBackground(bouton10,@couleurBase)
-  }
+    fenetre.signal_connect('btn_grille_4') {
+      aventure.placerSurGrille(3)
+      self.affichageEtoile(aventure.getEtoileCourante())
+      self.affichageImage()
+      self.setBackground(bouton1,@couleurBase)
+      self.setBackground(bouton2,@couleurBase)
+      self.setBackground(bouton3,@couleurBase)
+      self.setBackground(bouton4,@couleurVisible)
+      self.setBackground(bouton5,@couleurBase)
+      self.setBackground(bouton6,@couleurBase)
+      self.setBackground(bouton7,@couleurBase)
+      self.setBackground(bouton8,@couleurBase)
+      self.setBackground(bouton9,@couleurBase)
+      self.setBackground(bouton10,@couleurBase)
+    }
 
-  fenetre.signal_connect('btn_grille_5') {
-    aventure.placerSurGrille(4)
-    self.affichageEtoile(aventure.getEtoileCourante())
-    self.affichageImage()
-    self.setBackground(bouton1,@couleurBase)
-    self.setBackground(bouton2,@couleurBase)
-    self.setBackground(bouton3,@couleurBase)
-    self.setBackground(bouton4,@couleurBase)
-    self.setBackground(bouton5,@couleurVisible)
-    self.setBackground(bouton6,@couleurBase)
-    self.setBackground(bouton7,@couleurBase)
-    self.setBackground(bouton8,@couleurBase)
-    self.setBackground(bouton9,@couleurBase)
-    self.setBackground(bouton10,@couleurBase)
-  }
+    fenetre.signal_connect('btn_grille_5') {
+      aventure.placerSurGrille(4)
+      self.affichageEtoile(aventure.getEtoileCourante())
+      self.affichageImage()
+      self.setBackground(bouton1,@couleurBase)
+      self.setBackground(bouton2,@couleurBase)
+      self.setBackground(bouton3,@couleurBase)
+      self.setBackground(bouton4,@couleurBase)
+      self.setBackground(bouton5,@couleurVisible)
+      self.setBackground(bouton6,@couleurBase)
+      self.setBackground(bouton7,@couleurBase)
+      self.setBackground(bouton8,@couleurBase)
+      self.setBackground(bouton9,@couleurBase)
+      self.setBackground(bouton10,@couleurBase)
+    }
 
-  fenetre.signal_connect('btn_grille_6') {
-    aventure.placerSurGrille(5)
-    self.affichageEtoile(aventure.getEtoileCourante())
-    self.affichageImage()
-    self.setBackground(bouton1,@couleurBase)
-    self.setBackground(bouton2,@couleurBase)
-    self.setBackground(bouton3,@couleurBase)
-    self.setBackground(bouton4,@couleurBase)
-    self.setBackground(bouton5,@couleurBase)
-    self.setBackground(bouton6,@couleurVisible)
-    self.setBackground(bouton7,@couleurBase)
-    self.setBackground(bouton8,@couleurBase)
-    self.setBackground(bouton9,@couleurBase)
-    self.setBackground(bouton10,@couleurBase)
-  }
+    fenetre.signal_connect('btn_grille_6') {
+      aventure.placerSurGrille(5)
+      self.affichageEtoile(aventure.getEtoileCourante())
+      self.affichageImage()
+      self.setBackground(bouton1,@couleurBase)
+      self.setBackground(bouton2,@couleurBase)
+      self.setBackground(bouton3,@couleurBase)
+      self.setBackground(bouton4,@couleurBase)
+      self.setBackground(bouton5,@couleurBase)
+      self.setBackground(bouton6,@couleurVisible)
+      self.setBackground(bouton7,@couleurBase)
+      self.setBackground(bouton8,@couleurBase)
+      self.setBackground(bouton9,@couleurBase)
+      self.setBackground(bouton10,@couleurBase)
+    }
 
-  fenetre.signal_connect('btn_grille_7') {
-    aventure.placerSurGrille(6)
-    self.affichageEtoile(aventure.getEtoileCourante())
-    self.affichageImage()
-    self.setBackground(bouton1,@couleurBase)
-    self.setBackground(bouton2,@couleurBase)
-    self.setBackground(bouton3,@couleurBase)
-    self.setBackground(bouton4,@couleurBase)
-    self.setBackground(bouton5,@couleurBase)
-    self.setBackground(bouton6,@couleurBase)
-    self.setBackground(bouton7,@couleurVisible)
-    self.setBackground(bouton8,@couleurBase)
-    self.setBackground(bouton9,@couleurBase)
-    self.setBackground(bouton10,@couleurBase)
-  }
+    fenetre.signal_connect('btn_grille_7') {
+      aventure.placerSurGrille(6)
+      self.affichageEtoile(aventure.getEtoileCourante())
+      self.affichageImage()
+      self.setBackground(bouton1,@couleurBase)
+      self.setBackground(bouton2,@couleurBase)
+      self.setBackground(bouton3,@couleurBase)
+      self.setBackground(bouton4,@couleurBase)
+      self.setBackground(bouton5,@couleurBase)
+      self.setBackground(bouton6,@couleurBase)
+      self.setBackground(bouton7,@couleurVisible)
+      self.setBackground(bouton8,@couleurBase)
+      self.setBackground(bouton9,@couleurBase)
+      self.setBackground(bouton10,@couleurBase)
+    }
 
-  fenetre.signal_connect('btn_grille_8') {
-    aventure.placerSurGrille(7)
-    self.affichageEtoile(aventure.getEtoileCourante())
-    self.affichageImage()
-    self.setBackground(bouton1,@couleurBase)
-    self.setBackground(bouton2,@couleurBase)
-    self.setBackground(bouton3,@couleurBase)
-    self.setBackground(bouton4,@couleurBase)
-    self.setBackground(bouton5,@couleurBase)
-    self.setBackground(bouton6,@couleurBase)
-    self.setBackground(bouton7,@couleurBase)
-    self.setBackground(bouton8,@couleurVisible)
-    self.setBackground(bouton9,@couleurBase)
-    self.setBackground(bouton10,@couleurBase)
-  }
+    fenetre.signal_connect('btn_grille_8') {
+      aventure.placerSurGrille(7)
+      self.affichageEtoile(aventure.getEtoileCourante())
+      self.affichageImage()
+      self.setBackground(bouton1,@couleurBase)
+      self.setBackground(bouton2,@couleurBase)
+      self.setBackground(bouton3,@couleurBase)
+      self.setBackground(bouton4,@couleurBase)
+      self.setBackground(bouton5,@couleurBase)
+      self.setBackground(bouton6,@couleurBase)
+      self.setBackground(bouton7,@couleurBase)
+      self.setBackground(bouton8,@couleurVisible)
+      self.setBackground(bouton9,@couleurBase)
+      self.setBackground(bouton10,@couleurBase)
+    }
 
-  fenetre.signal_connect('btn_grille_9') {
-    aventure.placerSurGrille(8)
-    self.affichageEtoile(aventure.getEtoileCourante())
-    self.affichageImage()
-    self.setBackground(bouton1,@couleurBase)
-    self.setBackground(bouton2,@couleurBase)
-    self.setBackground(bouton3,@couleurBase)
-    self.setBackground(bouton4,@couleurBase)
-    self.setBackground(bouton5,@couleurBase)
-    self.setBackground(bouton6,@couleurBase)
-    self.setBackground(bouton7,@couleurBase)
-    self.setBackground(bouton8,@couleurBase)
-    self.setBackground(bouton9,@couleurVisible)
-    self.setBackground(bouton10,@couleurBase)
-  }
+    fenetre.signal_connect('btn_grille_9') {
+      aventure.placerSurGrille(8)
+      self.affichageEtoile(aventure.getEtoileCourante())
+      self.affichageImage()
+      self.setBackground(bouton1,@couleurBase)
+      self.setBackground(bouton2,@couleurBase)
+      self.setBackground(bouton3,@couleurBase)
+      self.setBackground(bouton4,@couleurBase)
+      self.setBackground(bouton5,@couleurBase)
+      self.setBackground(bouton6,@couleurBase)
+      self.setBackground(bouton7,@couleurBase)
+      self.setBackground(bouton8,@couleurBase)
+      self.setBackground(bouton9,@couleurVisible)
+      self.setBackground(bouton10,@couleurBase)
+    }
 
-  fenetre.signal_connect('btn_grille_10') {
-    aventure.placerSurGrille(9)
-    self.affichageEtoile(aventure.getEtoileCourante())
-    self.affichageImage()
-    self.setBackground(bouton1,@couleurBase)
-    self.setBackground(bouton2,@couleurBase)
-    self.setBackground(bouton3,@couleurBase)
-    self.setBackground(bouton4,@couleurBase)
-    self.setBackground(bouton5,@couleurBase)
-    self.setBackground(bouton6,@couleurBase)
-    self.setBackground(bouton7,@couleurBase)
-    self.setBackground(bouton8,@couleurBase)
-    self.setBackground(bouton9,@couleurBase)
-    self.setBackground(bouton10,@couleurVisible)
-  }
+    fenetre.signal_connect('btn_grille_10') {
+      aventure.placerSurGrille(9)
+      self.affichageEtoile(aventure.getEtoileCourante())
+      self.affichageImage()
+      self.setBackground(bouton1,@couleurBase)
+      self.setBackground(bouton2,@couleurBase)
+      self.setBackground(bouton3,@couleurBase)
+      self.setBackground(bouton4,@couleurBase)
+      self.setBackground(bouton5,@couleurBase)
+      self.setBackground(bouton6,@couleurBase)
+      self.setBackground(bouton7,@couleurBase)
+      self.setBackground(bouton8,@couleurBase)
+      self.setBackground(bouton9,@couleurBase)
+      self.setBackground(bouton10,@couleurVisible)
+    }
+  end
 
 end

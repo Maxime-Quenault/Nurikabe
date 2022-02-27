@@ -3,6 +3,7 @@ include Gtk
 load "Interfaces/FenetreProfil.rb"
 load "Interfaces/FenetreLibre.rb"
 load "Sauvegarde/Profil.rb"
+#load "Aventure/AffichageAventure.rb"
 
 class FenetreMenu
 
@@ -13,6 +14,7 @@ class FenetreMenu
         @builder.add_from_file("glade/menu.glade")
 
         @interfaceLibre = FenetreLibre.new
+        #@interfaceAventure = AffichageAventure.new
         @interfaceProfil = FenetreProfil.new
         @interfaceProfil.afficheToi
         @profil = @interfaceProfil.profil
@@ -44,7 +46,12 @@ class FenetreMenu
         }
         btn_survie.signal_connect('clicked') {print "tu as clique sur le mode survie\n"}
         btn_contre_montre.signal_connect('clicked') {print "tu as clique sur le mode contre la montre\n"}
-        btn_aventure.signal_connect('clicked') {print "tu as clique sur le mode aventure\n"}
+
+        btn_aventure.signal_connect('clicked') {
+            mainWindow.hide
+            #@interfaceAventure.afficheToi
+            mainWindow.show_all
+        }
         btn_tuto.signal_connect('clicked') {print "tu as clique sur le mode tuto\n"}
         btn_propos.signal_connect('clicked') {print "tu as clique sur le mode a propos\n"}
         btn_parametre.signal_connect('clicked') {print "tu as clique sur le mode parametre\n"}
