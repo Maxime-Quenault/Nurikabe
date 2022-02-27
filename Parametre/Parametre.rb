@@ -1,7 +1,7 @@
 require 'gtk3'
 
 ##
-# Auteurs Moriceau Sanna Scherrer
+# Auteurs Sanna Scherrer
 # Version 0.2 : Date : Mon Jan 24 15:30:00 CET 2022
 #
 ####
@@ -51,6 +51,7 @@ class Parametre
         effetSonore = true
         langue = 'fr'
     end    
+
 
     ##
     # Redéfinition de la méthode to_s afin d'afficher les données de la classe 

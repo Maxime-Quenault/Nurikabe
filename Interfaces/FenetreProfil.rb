@@ -17,7 +17,7 @@ class FenetreProfil
         ##################################
         ## FONCTION BASIQUE DE CREATION ##
         #Gtk.init
-        #Ne pas oublier cela sinon ca plante grave
+        #Ne pas oublier cela sinon ça plante grave
         #Gtk.init 
         monApplication = Window.new
         monApplication.set_title("Choix profil")

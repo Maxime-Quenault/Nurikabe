@@ -1,6 +1,6 @@
-require 'gtk3'
+# https://prod.liveshare.vsengsaas.visualstudio.com/join?13F7D10A27BAEEA470A4FBFA2AB41657A004require 'gtk3'
 
-load '../Sauvegarde/SauvegardeProfil.rb'
+#load 'Sauvegarde/Profil.rb'
 
 =begin
         La classe AffichageParamètre :::
@@ -19,10 +19,11 @@ class AffichageParametre
 
     def initialize()
         self
+        @interfaceProfil = FenetreProfil.new
     end
 
-    def afficheLesParametres( uneSave )
-        Gtk.init()
+    def afficheLesParametres()
+        #Gtk.init()
 
         def detruitLeBuilder()
             Gtk.main_quit
@@ -30,7 +31,7 @@ class AffichageParametre
         end
 
         unBuilder = Gtk::Builder.new
-        unBuilder.add_from_file("../glade/settingsNurikabe.glade")
+        unBuilder.add_from_file("glade/settingsNurikabe.glade")
 
         window = unBuilder.get_object("window_settings")
         window.signal_connect('destroy') {detruitLeBuilder} # destruction de la fenêtre quand on appuie sur la croix
@@ -44,7 +45,17 @@ class AffichageParametre
         switchTheme = unBuilder.get_object("switch_theme")
         switchAudio = unBuilder.get_object("switch_audio")
 
-        btnProfils.signal_connect( "clicked" ) { puts "Bouton profil cliqué\n" }
+        btnProfils.signal_connect( "clicked" ) { 
+            #puts "Bouton profil cliqué\n"
+            window.hide
+            @interfaceProfil.afficheToi
+            window.show_all
+        }
+
+        btnRetour.signal_connect( "clicked" ) { 
+            window.hide
+            detruitLeBuilder
+        }
 
         window.show_all()
         Gtk.main
@@ -52,6 +63,8 @@ class AffichageParametre
 
 end
 
-uneSave = SauvegardeProfil.new()
-W_settings = AffichageParametre.new()
-W_settings.afficheLesParametres(uneSave)
+### TESTS UNITAIRES ###
+
+#uneSave = SauvegardeProfil.new()
+#W_settings = AffichageParametre.new()
+#W_settings.afficheLesParametres(uneSave)

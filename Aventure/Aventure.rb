@@ -64,6 +64,9 @@ class Aventure
     @@palierHard = 70
     @@nbEtoiles = 0
     @desGrilles = Array.new()
+    #Tableau qui contiendra les étoiles de chaque grille
+    @desEtoiles = Array.new()
+
     @posCourante = 0
     @difficulte = uneDifficulte
     # Ici on initialise le tableau de sorte que seule la première difficulté(Facile) soit débloquée
@@ -76,9 +79,10 @@ class Aventure
   end
 
   # Pour générer l'aventure(suite de niveaux), on fait appel à la classe Grille pour générer les niveaux
-  def generationAventure(nbNiveau)end
+  def generationAventure(nbNiveau)
     for(int i; i < nbNiveau; i++)
       @desGrilles[i] = Grille.new()
+      @desEtoiles[i] = 0
     end
   end
 
@@ -103,6 +107,22 @@ class Aventure
     end
   end
 
+  # Méthode d'accès en lecture de la position courante
+  def getEtoileCourante
+    return @desEtoiles[@posCourante]
+  end
+
+  def setEtoileCourante(unNombre)
+    if(unNombre > self.getEtoileCourante())
+      etoilesEnPlus(unNombre - self.getEtoileCourante())
+      @desEtoiles[@posCourante] = unNombre
+    end
+  end
+
+  def getPosCourante
+    return @posCourante
+  end
+  
   # On se déplace sur l'aventure de difficulté inférieure
   def difficultePrecedente
     return @precedenteDiff
