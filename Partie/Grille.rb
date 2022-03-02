@@ -15,6 +15,8 @@ class Grille
 	@correction
 	@etoiles
 
+	FACILE = 0
+	
 	def Grille.creer(num,h,l)
 		new(num,h,l)
 	end
@@ -83,8 +85,8 @@ class Grille
 	def pourcentageCompletion()
 		nbPareil = 0
 		nbCasesNombre = 0
-		for i in 0..@hauteur - 1
-			for j in 0..@largeur - 1
+		for j in 0..@hauteur - 1
+			for i in 0..@largeur - 1
 				if(@matriceCases[i][j].is_a?(CaseJouable) && @matriceCases[i][j].etat==@correction[i][j].etat)
 					nbPareil += 1
 				elsif (@matriceCases[i][j].is_a?(CaseNombre))
@@ -98,8 +100,8 @@ class Grille
 	# retournes le nombre d'erreurs de la matriceCases
 	def nbErreurs()
 		nbErr = 0
-		for i in 0..@hauteur - 1
-			for j in 0..@largeur - 1
+		for j in 0..@hauteur - 1
+			for i in 0..@largeur - 1
 				if(@matriceCases[i][j].is_a?(CaseJouable)&&@matriceCases[i][j].etat!=@correction[i][j].etat&&@matriceCases[i][j].etat!=0)
 					nbErr += 1
 				end
@@ -111,8 +113,8 @@ class Grille
 	# retournes un booléen : vrai si la matriceCases est finie, faux sinon
 	def grilleFinie()
 		nbErr = 0
-		for i in 0..@hauteur - 1
-			for j in 0..@largeur - 1
+		for j in 0..@hauteur - 1
+			for i in 0..@largeur - 1
 				if(@matriceCases[i][j].is_a?(CaseJouable)&&@matriceCases[i][j].etat!=@correction[i][j].etat)
 					nbErr += 1
 				end
@@ -123,8 +125,8 @@ class Grille
 
 	# Remet toutes les cases jouables de la matriceCases à l'état non joué
 	def raz()
-		for i in 0..@hauteur - 1
-			for j in 0..@largeur - 1
+		for j in 0..@hauteur - 1
+			for i in 0..@largeur - 1
 				if(@matriceCases[i][j].is_a?(CaseJouable))
 					@matriceCases[i][j].etat=0
 				end
@@ -132,8 +134,65 @@ class Grille
 		end
 	end
 
-	def affichage()
-		print @matriceCases
-	end
+	def lireGrille(unIndex, uneDifficulte)
+        compteur = 0
+        chaine = ""
+
+        if (uneDifficulte == FACILE)
+            File.foreach('./grillesEasy.txt') do |line|
+
+                if line.eql?("\n")
+                    compteur += 1
+				elsif compteur == unIndex
+                    chaine << line
+                end
+
+                return chaine if (compteur == unIndex + 1)
+
+            end
+        end
+
+    end
+
+    def toGrilleJouable(unIndex, uneDifficulte)
+
+        chaine = lireGrille(unIndex, uneDifficulte)
+        
+        numeroCases = chaine.lines.first.split(' ')
+        grille = chaine.lines.drop(1)
+
+		# p grille[0].split <-- print chaque caractère de la ligne à part
+
+		# Génération de la matrice de cases
+		matriceCases = Array.new(grille.length) { Array.new(grille[0].split.length) }
+		correction = Array.new(grille.length) { Array.new(grille[0].split.length) }
+
+		x = 0, y = 0, compteur = 0
+		grille.each_with_index do |line, index|
+			x = 0
+			for j in grille[index].split do
+				if (j == "2" || j == 2)
+					correction[x][y] = CaseNombre.creer(numeroCases[compteur].to_i) 
+					matriceCases[x][y] = CaseNombre.creer(numeroCases[compteur].to_i) 
+					compteur += 1
+				else
+					correction[x][y] = CaseJouable.creer()
+					matriceCases[x][y] = CaseJouable.creer()
+					if j.to_i == 0
+						correction[x][y].etat=1
+					else
+						correction[x][y].etat=2
+					end
+				end
+				
+				x += 1
+			end
+			y += 1
+		end
+
+		self.copierMatrice(matriceCases)
+		self.copierCorrection(correction)
+
+    end
 
 end
