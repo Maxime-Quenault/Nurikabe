@@ -1,6 +1,6 @@
-require './CaseNombre'
-require './Case'
-require './CaseJouable'
+load "Partie/CaseNombre.rb"
+load "Partie/Case.rb"
+load "Partie/CaseJouable.rb"
 class Grille
 	#Représntes une grille, contient : 
 	#un numéro (identifiant de la grille)

@@ -1,16 +1,17 @@
-load "SauvegardeClassement.rb"
+load "Sauvegarde/Score.rb"
+load "Sauvegarde/SauvegardeProfil.rb"
 
-class SauvegardeClassementSurvie < SauvegardeClassement
+class SauvegardeClassementSurvie
 
     attr_accessor :tabScore, :nbScoreOccupe
 
-	def initialize()
-        if(!File.exist?("Sauvegarde/SauvegardeScore/scoreSurvie.yml"))
+    def initialize()
+        if(!File.exist?("Sauvegarde/SauvegardeScore/scoreSurvie.dump"))
             @tabScore = Array.new(10)
             @nbScoreOccupe = 0; 
-            File.open("Sauvegarde/SauvegardeScore/scoreSurvie.yml", "w") { |file| file.write(tabScore.to_yaml) }
+            File.open("Sauvegarde/SauvegardeScore/scoreSurvie.dump", "wb") { |file| file.write(Marshal.dump(@tabScore)) }
         else
-            @tabScore = YAML.load(File.read("./SauvegardeScore/scoreSurvie.yml"))
+            @tabScore = Marshal.load(File.binread("Sauvegarde/SauvegardeScore/scoreSurvie.dump"))
             @nbScoreOccupe = self.getNbScoreOccupe
         end
     end
@@ -18,7 +19,6 @@ class SauvegardeClassementSurvie < SauvegardeClassement
     def ajoutScore(unScore)
         i = 0
         flagAjoute = 0
-
         # Parcours tous les scores et insert le score en fonction des autres
         while i < nbScoreOccupe && flagAjoute == 0
         	if unScore < @tabScore[i]
@@ -37,7 +37,6 @@ class SauvegardeClassementSurvie < SauvegardeClassement
             @tabScore.insert(i, unScore)
         end
 
-        File.open("Sauvegarde/SauvegardeScore/scoreSurvie.yml", "w") { |file| file.write(tabScore.to_yaml) }
     end
 
     def getNbScoreOccupe
@@ -92,82 +91,82 @@ class SauvegardeClassementSurvie < SauvegardeClassement
 
         if @tabScore[0] != nil
         	pseudo1.set_text(@tabScore[0].profil.pseudo)
-        	temps1.set_text("#{@tabScore[0].getHeures}h#{@tabScore[0].getMinutes}m#{@tabScore[0].getSecondes}s")
+        	temps1.set_text("#{@tabScore[0]} grilles")
         else
         	pseudo1.set_text("-")
-        	temps1.set_text("-:-:-")
+        	temps1.set_text("-:-")
         end
 
         if @tabScore[1] != nil
         	pseudo2.set_text(@tabScore[1].profil.pseudo)
-        	temps2.set_text("#{@tabScore[1].getHeures}h#{@tabScore[1].getMinutes}m#{@tabScore[1].getSecondes}s")
+        	temps2.set_text("#{@tabScore[1]} grilles")
         else
         	pseudo2.set_text("-")
-        	temps2.set_text("-:-:-")
+        	temps2.set_text("-:-")
         end
 
         if @tabScore[2] != nil
             pseudo3.set_text(@tabScore[2].profil.pseudo)
-            temps3.set_text("#{@tabScore[2].getHeures}h#{@tabScore[2].getMinutes}m#{@tabScore[2].getSecondes}s")
+            temps3.set_text("#{@tabScore[2]} grilles")
         else
             pseudo3.set_text("-")
-            temps3.set_text("-:-:-")
+            temps3.set_text("-:-")
         end
 
         if @tabScore[3] != nil
             pseudo4.set_text(@tabScore[3].profil.pseudo)
-            temps4.set_text("#{@tabScore[3].getHeures}h#{@tabScore[3].getMinutes}m#{@tabScore[3].getSecondes}s")
+            temps4.set_text("#{@tabScore[3]} grilles")
         else
             pseudo4.set_text("-")
-            temps4.set_text("-:-:-")
+            temps4.set_text("-:-")
         end
 
         if @tabScore[4] != nil
             pseudo5.set_text(@tabScore[4].profil.pseudo)
-            temps5.set_text("#{@tabScore[4].getHeures}h#{@tabScore[4].getMinutes}m#{@tabScore[4].getSecondes}s")
+            temps5.set_text("#{@tabScore[4]} grilles")
         else
             pseudo5.set_text("-")
-            temps5.set_text("-:-:-")
+            temps5.set_text("-:-")
         end
 
         if @tabScore[5] != nil
             pseudo6.set_text(@tabScore[5].profil.pseudo)
-            temps6.set_text("#{@tabScore[5].getHeures}h#{@tabScore[5].getMinutes}m#{@tabScore[5].getSecondes}s")
+            temps6.set_text("#{@tabScore[5]} grilles")
         else
             pseudo6.set_text("-")
-            temps6.set_text("-:-:-")
+            temps6.set_text("-:-")
         end
 
         if @tabScore[6] != nil
             pseudo7.set_text(@tabScore[6].profil.pseudo)
-            temps7.set_text("#{@tabScore[6].getHeures}h#{@tabScore[6].getMinutes}m#{@tabScore[6].getSecondes}s")
+            temps7.set_text("#{@tabScore[6]} grilles")
         else
             pseudo7.set_text("-")
-            temps7.set_text("-:-:-")
+            temps7.set_text("-:-")
         end
 
         if @tabScore[7] != nil
             pseudo8.set_text(@tabScore[7].profil.pseudo)
-            temps8.set_text("#{@tabScore[7].getHeures}h#{@tabScore[7].getMinutes}m#{@tabScore[7].getSecondes}s")
+            temps8.set_text("#{@tabScore[7]} grilles")
         else
             pseudo8.set_text("-")
-            temps8.set_text("-:-:-")
+            temps8.set_text("-:-")
         end
 
         if @tabScore[8] != nil
             pseudo9.set_text(@tabScore[8].profil.pseudo)
-            temps9.set_text("#{@tabScore[8].getHeures}h#{@tabScore[8].getMinutes}m#{@tabScore[8].getSecondes}s")
+            temps9.set_text("#{@tabScore[8]} grilles")
         else
             pseudo9.set_text("-")
-            temps9.set_text("-:-:-")
+            temps9.set_text("-:-")
         end
 
         if @tabScore[9] != nil
             pseudo10.set_text(@tabScore[9].profil.pseudo)
-            temps10.set_text("#{@tabScore[9].getHeures}h#{@tabScore[9].getMinutes}m#{@tabScore[9].getSecondes}s")
+            temps10.set_text("#{@tabScore[9]} grilles")
         else
             pseudo10.set_text("-")
-            temps10.set_text("-:-:-")
+            temps10.set_text("-:-")
         end
 
         fenetre2.show_all

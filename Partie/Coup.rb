@@ -1,4 +1,4 @@
-require './Case'
+load "Partie/Case.rb"
 # Représentes un coup effectué lors d'une partie
 class Coup
 	# contient la case sur laquelle le coup a été joué

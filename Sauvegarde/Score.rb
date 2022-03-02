@@ -31,7 +31,7 @@ class Score
     end
 
     def to_s
-        "#{@heures}h#{@minutes}m#{@secondes}s"
+        "#{self.getTempsEnSecondes}"
     end
 end
 

@@ -1,9 +1,9 @@
-require './Grille'
-require './CaseNombre'
-require './Case'
-require './CaseJouable'
-require './Partie'
-require './Indice'
+load "Partie/Grille"
+load "Partie/CaseNombre"
+load "Partie/Case"
+load "Partie/CaseJouable"
+load "Partie/Partie"
+load "Partie/Indice"
 class Test
 	def Test.test()
 =begin

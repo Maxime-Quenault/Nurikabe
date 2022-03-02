@@ -1,5 +1,6 @@
 load "Sauvegarde/Profil.rb"
 load "Parametre/Parametre.rb"
+load "Partie/Grille.rb"
 
 require 'gtk3'
 include Gtk

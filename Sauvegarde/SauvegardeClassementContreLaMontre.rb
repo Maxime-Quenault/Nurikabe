@@ -1,20 +1,20 @@
 require "yaml.rb"
 require 'gtk3'
 include Gtk
-load "Score.rb"
-load "SauvegardeProfil.rb"
+load "Sauvegarde/Score.rb"
+load "Sauvegarde/SauvegardeProfil.rb"
 
 class SauvegardeClassementContreLaMontre
 
     attr_accessor :tabScore, :nbScoreOccupe
 
     def initialize()
-        if(!File.exist?("./SauvegardeScore/scoreContreLaMontre.yml"))
+        if(!File.exist?("Sauvegarde/SauvegardeScore/scoreContreLaMontre.dump"))
             @tabScore = Array.new(10)
             @nbScoreOccupe = 0; 
-            File.open("./SauvegardeScore/scoreContreLaMontre.dump", "wb") { |file| file.write(Marshal.dump(@tabScore)) }
+            File.open("Sauvegarde/SauvegardeScore/scoreContreLaMontre.dump", "wb") { |file| file.write(Marshal.dump(@tabScore)) }
         else
-            @tabScore = Marshal.load(File.binread("./SauvegardeScore/scoreContreLaMontre.dump"))
+            @tabScore = Marshal.load(File.binread("Sauvegarde/SauvegardeScore/scoreContreLaMontre.dump"))
             @nbScoreOccupe = self.getNbScoreOccupe
         end
     end
@@ -66,7 +66,7 @@ class SauvegardeClassementContreLaMontre
         end
 
         monBuilder = Gtk::Builder.new
-        monBuilder.add_from_file("../glade/contre_la_montre_nouvelle_partie.glade") 
+        monBuilder.add_from_file("./glade/contre_la_montre_nouvelle_partie.glade") 
         #monBuilder.connect_signals {|handler| method(handler) }
 
         #recuperation des variables

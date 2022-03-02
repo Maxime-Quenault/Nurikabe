@@ -1,6 +1,6 @@
-require './Grille'
-require './Coup'
-require './Indice'
+load "Partie/Grille.rb"
+load "Partie/Coup.rb"
+load "Partie/Indice.rb"
 # Représentes une partie, contient :
 # une grille en cours, sur laquelle on va jouer
 # un chronomètre
