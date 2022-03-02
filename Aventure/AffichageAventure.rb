@@ -18,6 +18,8 @@ class AffichageAventure
   @image
   # Variable d'instance qui contiendra la fenêtre de l'interface glade
   @fenetre
+  # Variable d'instance qui contient l'aventure en cours
+  @aventure
 
   # Méthode qui ferme la fenêtre du mode Aventure
   def destruction
@@ -56,10 +58,10 @@ class AffichageAventure
   # => grillePleine que l'on affichera si la grille actuelle a été terminée(peu importe le score)
   # Pas de miniature de la grille -> évite la triche
   def affichageImage
-    if(aventure.getEtoileCourante() == 0)
-      Gtk.gtk_image_set_from_file(@image,"../Image/grilleVide.png")
+    if(@aventure.getEtoileCourante() == 0)
+      Gtk::Image.gtk_image_set_from_file(@image,"../Image/grilleVide.png")
     else
-      Gtk.gtk_image_set_from_file(@image,"../Image/grillePleine.png")
+      Gtk::Image.gtk_image_set_from_file(@image,"../Image/grillePleine.png")
     end
   end
 
@@ -69,41 +71,41 @@ class AffichageAventure
   def affichageEtoile(nbEtoiles)
     case nbEtoiles
     when 0
-      imgEtoile1 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile2 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile3 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile4 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile5 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
     when 1
-      imgEtoile1 = gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile2 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile3 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile4 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile5 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
     when 2
-      imgEtoile1 = gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile2 = gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile3 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile4 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile5 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
     when 3
-      imgEtoile1 = gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile2 = gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile3 = gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile4 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile5 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
     when 4
-      imgEtoile1 = gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile2 = gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile3 = gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile4 = gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile5 = gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
     when 5
-      imgEtoile1 = gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile2 = gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile3 = gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile4 = gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile5 = gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
     end
   end
 
@@ -113,7 +115,7 @@ class AffichageAventure
   # Ainsi suivant la position du joueur(après le click sur suivant ou précédent)
   # On appel la méthode de "surbrillance" du bouton associé à notre position
   def boutonSuivPreced
-    case(aventure.getPosCourante())
+    case(@aventure.getPosCourante())
     when 0
       @fenetre.pack_start(bouton1)
       break
@@ -147,12 +149,14 @@ class AffichageAventure
     end
   end
 
+
   # Méthode d'affichage principale du mode Aventure qui sera appelé par les autres Classes
   def afficheToi
     @couleurBase = "white"
     @couleurVisible = "grey"
+
     # On attribue une image par défaut
-    @image = gtk_image_new_from_file("../Image/grilleVide.png")
+    @image = Gtk::Image.new("../Image/grilleVide.png")
 
     # On créer un buildeur qui récupère les éléments de notre fenêtre créée sur Glade
     monBuildeur = Gtk::Builder.new()
@@ -170,16 +174,16 @@ class AffichageAventure
     aventureDifficile.generationAventure(10)
 
     # On édite les liens entre les 3 aventures
-    aventureFacile.setPrecedent(null)
+    aventureFacile.setPrecedent(nil)
     aventureFacile.setSuivant(aventureNormale)
 
     aventureNormale.setPrecedent(aventureFacile)
     aventureNormale.setSuivant(aventureDifficile)
 
     aventureDifficile.setPrecedent(aventureNormale)
-    aventureDifficile.setSuivant(null)
+    aventureDifficile.setSuivant(nil)
 
-    aventure = aventureFacile
+    @aventure = aventureFacile
 
     # On déclare des objets que l'on associe aux éléments de la fenêtre Glade
 
@@ -231,21 +235,21 @@ class AffichageAventure
 
     # On associe le bouton Précédent avec la méthode grillePrecedente de la classe Aventure
     btnPreced.signal_connect('clicked') {
-      aventure.grillePrecedente()
+      @aventure.grillePrecedente()
       @fenetre.boutonSuivPreced()
     }
 
     # On associe le bouton Suivant avec la méthode prochaineGrille de la classe Aventure
     btnSuivant.signal_connect('clicked') {
-      aventure.prochaineGrille()
+      @aventure.prochaineGrille()
       @fenetre.boutonSuivPreced()
     }
 
     # On associe le bouton facile avec la méthode de choix de difficulté de la classe Aventure
     modeFacile.signal_connect('clicked') {
-      aventure.choixDifficulte(0)
-      aventure.placerSurGrille(0)
-      @fenetre.affichageEtoile(aventure.getEtoileCourante())
+      @aventure.choixDifficulte(0)
+      @aventure.placerSurGrille(0)
+      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageImage()
       @fenetre.setBackground(modeFacile,@couleurVisible)
       @fenetre.setBackground(modeNormal,@couleurBase)
@@ -254,11 +258,11 @@ class AffichageAventure
 
     # On associe le bouton normal avec la méthode de choix de difficulté de la classe Aventure
     modeNormal.signal_connect('clicked') {
-      if(aventure.unlockDifficulte())
-        aventure.choixDifficulte(1)
+      if(@aventure.unlockDifficulte())
+        @aventure.choixDifficulte(1)
       end
-      aventure.placerSurGrille(0)
-      @fenetre.affichageEtoile(aventure.getEtoileCourante())
+      @aventure.placerSurGrille(0)
+      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageImage()
       @fenetre.setBackground(modeFacile,@couleurBase)
       @fenetre.setBackground(modeNormal,@couleurVisible)
@@ -267,12 +271,12 @@ class AffichageAventure
 
     # On associe le bouton difficile avec la méthode de choix de difficulté de la classe Aventure
     modeHard.signal_connect('clicked') {
-      aventure.choixDifficulte(1)
-      if(aventure.unlockDifficulte())
-        aventure.choixDifficulte(2)
+      @aventure.choixDifficulte(1)
+      if(@aventure.unlockDifficulte())
+        @aventure.choixDifficulte(2)
       end
-      aventure.placerSurGrille(0)
-      @fenetre.affichageEtoile(aventure.getEtoileCourante())
+      @aventure.placerSurGrille(0)
+      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageImage()
       @fenetre.setBackground(modeFacile,@couleurBase)
       @fenetre.setBackground(modeNormal,@couleurBase)
@@ -289,8 +293,8 @@ class AffichageAventure
 
     # On associe le bouton 1 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
     bouton1.signal_connect('clicked') {
-      aventure.placerSurGrille(0)
-      @fenetre.affichageEtoile(aventure.getEtoileCourante())
+      @aventure.placerSurGrille(0)
+      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageImage()
       @fenetre.setBackground(bouton1,@couleurVisible)
       @fenetre.setBackground(bouton2,@couleurBase)
@@ -306,8 +310,8 @@ class AffichageAventure
 
     # On associe le bouton 2 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
     bouton2.signal_connect('clicked') {
-      aventure.placerSurGrille(1)
-      @fenetre.affichageEtoile(aventure.getEtoileCourante())
+      @aventure.placerSurGrille(1)
+      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageImage()
       @fenetre.setBackground(bouton1,@couleurBase)
       @fenetre.setBackground(bouton2,@couleurVisible)
@@ -323,8 +327,8 @@ class AffichageAventure
 
     # On associe le bouton 3 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
     bouton3.signal_connect('clicked') {
-      aventure.placerSurGrille(2)
-      @fenetre.affichageEtoile(aventure.getEtoileCourante())
+      @aventure.placerSurGrille(2)
+      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageImage()
       @fenetre.setBackground(bouton1,@couleurBase)
       @fenetre.setBackground(bouton2,@couleurBase)
@@ -340,8 +344,8 @@ class AffichageAventure
 
     # On associe le bouton 4 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
     bouton4.signal_connect('clicked') {
-      aventure.placerSurGrille(3)
-      @fenetre.affichageEtoile(aventure.getEtoileCourante())
+      @aventure.placerSurGrille(3)
+      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageImage()
       @fenetre.setBackground(bouton1,@couleurBase)
       @fenetre.setBackground(bouton2,@couleurBase)
@@ -357,8 +361,8 @@ class AffichageAventure
 
     # On associe le bouton 5 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
     bouton5.signal_connect('clicked') {
-      aventure.placerSurGrille(4)
-      @fenetre.affichageEtoile(aventure.getEtoileCourante())
+      @aventure.placerSurGrille(4)
+      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageImage()
       @fenetre.setBackground(bouton1,@couleurBase)
       @fenetre.setBackground(bouton2,@couleurBase)
@@ -374,8 +378,8 @@ class AffichageAventure
 
     # On associe le bouton 6 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
     bouton6.signal_connect('clicked') {
-      aventure.placerSurGrille(5)
-      @fenetre.affichageEtoile(aventure.getEtoileCourante())
+      @aventure.placerSurGrille(5)
+      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageImage()
       @fenetre.setBackground(bouton1,@couleurBase)
       @fenetre.setBackground(bouton2,@couleurBase)
@@ -391,8 +395,8 @@ class AffichageAventure
 
     # On associe le bouton 7 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
     bouton7.signal_connect('clicked') {
-      aventure.placerSurGrille(6)
-      @fenetre.affichageEtoile(aventure.getEtoileCourante())
+      @aventure.placerSurGrille(6)
+      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageImage()
       @fenetre.setBackground(bouton1,@couleurBase)
       @fenetre.setBackground(bouton2,@couleurBase)
@@ -408,8 +412,8 @@ class AffichageAventure
 
     # On associe le bouton 8 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
     bouton8.signal_connect('clicked') {
-      aventure.placerSurGrille(7)
-      @fenetre.affichageEtoile(aventure.getEtoileCourante())
+      @aventure.placerSurGrille(7)
+      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageImage()
       @fenetre.setBackground(bouton1,@couleurBase)
       @fenetre.setBackground(bouton2,@couleurBase)
@@ -425,8 +429,8 @@ class AffichageAventure
 
     # On associe le bouton 9 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
     bouton9.signal_connect('clicked') {
-      aventure.placerSurGrille(8)
-      @fenetre.affichageEtoile(aventure.getEtoileCourante())
+      @aventure.placerSurGrille(8)
+      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageImage()
       @fenetre.setBackground(bouton1,@couleurBase)
       @fenetre.setBackground(bouton2,@couleurBase)
@@ -442,8 +446,8 @@ class AffichageAventure
 
     # On associe le bouton 10 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
     bouton10.signal_connect('clicked') {
-      aventure.placerSurGrille(9)
-      @fenetre.affichageEtoile(aventure.getEtoileCourante())
+      @aventure.placerSurGrille(9)
+      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageImage()
       @fenetre.setBackground(bouton1,@couleurBase)
       @fenetre.setBackground(bouton2,@couleurBase)
