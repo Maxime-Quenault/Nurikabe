@@ -5,20 +5,27 @@ load "Interfaces/FenetreProfil.rb"
 load "Interfaces/FenetreLibre.rb"
 load "Parametre/AffichageParametre.rb"
 load "Sauvegarde/Profil.rb"
+load "Interfaces/FenetreAPropos.rb"
 #load "Aventure/AffichageAventure.rb"
 
 class FenetreMenu
 
-    attr_accessor :profil
+    attr_accessor :profil, :quit
     def initialize
         Gtk.init 
+        @quit = false
         @builder = Gtk::Builder.new
         @builder.add_from_file("glade/menu.glade")
+
+        @interfaceAPropos = FenetreAPropos.new
 
         @interfaceLibre = FenetreLibre.new
         #@interfaceAventure = AffichageAventure.new
         @interfaceProfil = FenetreProfil.new
         @interfaceProfil.afficheToi
+        if @interfaceProfil.quit
+            @quit = true
+        end
         @profil = @interfaceProfil.profil
 
         @interfaceParametre = AffichageParametre.new
@@ -40,6 +47,8 @@ class FenetreMenu
         btn_propos = @builder.get_object("btn_propos")
         btn_parametre = @builder.get_object("btn_parametre")
 
+        boxWindow = @builder.get_object("boxWindow")
+
         #Gestion des signaux
         mainWindow.signal_connect('destroy') {Gtk.main_quit}
         btn_libre.signal_connect('clicked') {
@@ -56,7 +65,11 @@ class FenetreMenu
             mainWindow.show_all
         }
         btn_tuto.signal_connect('clicked') {print "tu as clique sur le mode tuto\n"}
-        btn_propos.signal_connect('clicked') {print "tu as clique sur le mode a propos\n"}
+        btn_propos.signal_connect('clicked') {
+            boxWindow.hide
+            @interfaceAPropos.afficheToi
+            boxWindow.show_all
+        }
         btn_parametre.signal_connect('clicked') {
             mainWindow.hide
             @interfaceParametre.afficheLesParametres

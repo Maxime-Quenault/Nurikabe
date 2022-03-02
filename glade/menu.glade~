@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkWindow">
+  <object class="GtkWindow" id="mainWindow">
     <property name="can_focus">False</property>
     <child type="titlebar">
       <placeholder/>
@@ -38,7 +38,7 @@
             <property name="spacing">25</property>
             <property name="homogeneous">True</property>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="btn_libre">
                 <property name="label" translatable="yes">Libre</property>
                 <property name="name">boutonLibre</property>
                 <property name="visible">True</property>
@@ -52,7 +52,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="btn_aventure">
                 <property name="label" translatable="yes">Aventure</property>
                 <property name="name">boutonAventure</property>
                 <property name="visible">True</property>
@@ -66,7 +66,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="btn_contre_montre">
                 <property name="label" translatable="yes">Contre la Montre</property>
                 <property name="name">boutonMontre</property>
                 <property name="visible">True</property>
@@ -80,7 +80,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="btn_survie">
                 <property name="label" translatable="yes">Survie</property>
                 <property name="name">boutonSurvie</property>
                 <property name="visible">True</property>
@@ -113,7 +113,7 @@
             <property name="spacing">50</property>
             <property name="homogeneous">True</property>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="btn_tuto">
                 <property name="label" translatable="yes">Tuto</property>
                 <property name="name">boutonTuto</property>
                 <property name="visible">True</property>
@@ -127,7 +127,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="btn_propos">
                 <property name="label" translatable="yes">A Propos</property>
                 <property name="name">boutonPropos</property>
                 <property name="visible">True</property>
@@ -141,7 +141,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="btn_parametre">
                 <property name="label" translatable="yes">Paramètre</property>
                 <property name="name">boutonParam</property>
                 <property name="visible">True</property>

@@ -5,14 +5,22 @@ load "Interfaces/FenetreMenu.rb"
 
 class Jeu
 
+    attr_accessor :quit
+    def initialize
+        @interface = FenetreMenu.new
+        @quit = false
+        if @interface.quit
+            @quit = true
+        end
+    end
+
     def lanceToi
-        interface = FenetreMenu.new
-        print interface.profil
-        print "test\n"
-        interface.afficheToi
+        @interface.afficheToi
     end
 
 end
 
 unJeu = Jeu.new
-unJeu.lanceToi
+if !unJeu.quit
+    unJeu.lanceToi
+end
