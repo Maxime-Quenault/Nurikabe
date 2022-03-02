@@ -1,7 +1,7 @@
 # Classes à charger :
 # Sûrement d'autres à ajouter
-load "../Partie/Grille.rb"
-load "../Libre/Chronometre.rb"
+load "Grille.rb"
+load "Chronometre.rb"
 # Définition de la classe Aventure
 class Aventure
 
@@ -50,7 +50,7 @@ class Aventure
 
   # Coding Assistant pour faciliter les accès des différentes variables
   attr_reader :palierNormal, :palierHard, :desGrilles, :difficuleAcquise, :difficulte, :precedenteDiff, :suivanteDiff;
-  attr :posCourante, :nbEtoiles true;
+  attr :posCourante, :nbEtoiles, :desEtoiles true;
 
   # On définit notre propre façon de générer une Aventure
   def Aventure.creer(aventurePreced, uneDifficulte, aventureSuiv)
@@ -58,7 +58,7 @@ class Aventure
   end
 
   # on redéfinit la méthode initialize() pour générer l'Aventure selon nos critères
-  def initialize(aventurePreced, uneDifficulte, aventureSuiv)
+  def initialize(uneDifficulte)
     # Consernant les valeurs des deux VI palier ci-dessous elles sont provisoires(test) -> se mettre d'accord plus tard
     @@palierNormal = 30
     @@palierHard = 70
@@ -73,8 +73,16 @@ class Aventure
     @@difficulteAcquise = Array.new()
     @@difficulteAcquise[0] = true
     @@difficulteAcquise[1] = @@difficulteAcquise[2] = false
-    # Lien entre les différentes aventures
+  end
+
+  # Lien entre les différentes aventures
+  # Méthode d'accès en ecriture qui édite le lien de cette aventure avec la précédente(si il y en a)
+  def setPrecedent(aventurePreced)
     @precedenteDiff = aventurePreced
+  end
+
+  # Méthode d'accès en ecriture qui édite le lien de cette aventure avec la suivante(si il y en a)
+  def setSuivant(aventureSuiv)
     @suivanteDiff = aventureSuiv
   end
 
@@ -112,6 +120,7 @@ class Aventure
     return @desEtoiles[@posCourante]
   end
 
+  # Méthode d'accès en écriture du nombre d'étoiles de la grille
   def setEtoileCourante(unNombre)
     if(unNombre > self.getEtoileCourante())
       etoilesEnPlus(unNombre - self.getEtoileCourante())
@@ -119,10 +128,11 @@ class Aventure
     end
   end
 
+  # Méthode d'accès en lecture de la position courante sur le plateau
   def getPosCourante
     return @posCourante
   end
-  
+
   # On se déplace sur l'aventure de difficulté inférieure
   def difficultePrecedente
     return @precedenteDiff
