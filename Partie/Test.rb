@@ -272,6 +272,27 @@ class Test
 		puts "Nb erreurs (fonction nbErreurs) : #{partie.grilleEnCours.nbErreurs}"
 		puts "Partie finie ?(fonction partieFinie?) = #{partie.partieFinie?}"
 
+		puts "On clic sur une case pour la rendre isolée (entourée d'océan ou des bords de la grille) et on lui donne l'état non joué"
+		partie.clicSurCase(0,3)
+		partie.clicSurCase(0,3)
+		puts partie.grilleEnCours
+
+		puts "On demande un indice"
+		puts partie.clicSurIndice
+
+		puts "On résoud l'indice"
+		partie.clicSurCase(0,3)
+		puts partie.grilleEnCours
+
+		puts "On clic 2 fois sur la case à x=1 y=6"
+		partie.clicSurCase(1,6)
+		partie.clicSurCase(1,6)
+		puts partie.grilleEnCours
+
+		puts "On demande un indice"
+		puts partie.clicSurIndice
+
+
 	end
 
 	Test.test()

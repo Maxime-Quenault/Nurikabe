@@ -129,7 +129,6 @@ class Partie
     return nil
   end
 
-  # NON TESTEE POUR LINSANT IL FAUT FAIRE UNE AUTRE GRILLE DANS LE FICHIER TEST
   # Recherche et retourne les coordonnées d'une case jouable non jouée séparant deux cases îles (si elle existe, sinon on retourne nil)
   def indice_IlesVoisinesNonSeparees()
     for j in 0..@grilleEnCours.hauteur-1
@@ -190,7 +189,6 @@ class Partie
     return nil
   end
 
-  # NON TESTEE POUR LINSANT IL FAUT FAIRE UNE AUTRE GRILLE DANS LE FICHIER TEST
   # Recherche un carré de cases océan de taille 2x2 et retourne ses coordonnées (si il existe, sinon on retourne nil)
   def indice_Ocean2x2()
     for j in 0..@grilleEnCours.hauteur-2
@@ -206,6 +204,93 @@ class Partie
     return nil
   end
 
+  # Recherche une case jouable (avec l'état non joué ou île) entourée de cases océan ou des bords le la grille (si elle existe, sinon on retourne nil)
+  def indice_caseJouableIsolee()
+    for j in 0..@grilleEnCours.hauteur-1
+      for i in 0..@grilleEnCours.largeur-1
+        gauche = false
+        droite = false
+        bas = false
+        haut = false
+        if @grilleEnCours.matriceCases[i][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j].etat!=1
+          if(i==0 || @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==1)
+            gauche = true
+          end 
+          if(j==0 || @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==1)
+            haut = true
+          end
+          if(j==@grilleEnCours.hauteur-1 || @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==1)
+            bas = true
+          end
+          if(i==@grilleEnCours.largeur-1 || @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==1)
+            droite = true
+          end
+        end
+        if(gauche && droite && haut && bas)
+          return(Indice.creer(:caseJouableIsolee, [i,j]))
+        end
+      end
+    end
+    return nil
+  end
+
+  # prends en paramètre les coordonnées d'une case, si cette case n'est atteignable par une seule autre case jouable on retourne les coordonnées de celle ci, sinon on retourne nil
+  def caseAtteignableQueDUnCote(i,j)
+      gauche =  false
+      droite = false
+      bas = false
+      haut = false
+      if(i==0 || @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==1 ||  @grilleEnCours.matriceCases[i-1][j].is_a?(CaseNombre) )
+        gauche = true
+      end 
+      if(j==0 || @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==1 ||  @grilleEnCours.matriceCases[i][j-1].is_a?(CaseNombre) )
+        haut = true
+      end
+      if(j==@grilleEnCours.hauteur-1 || @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==1 ||  @grilleEnCours.matriceCases[i][j+1].is_a?(CaseNombre) )
+        bas = true
+      end
+      if(i==@grilleEnCours.largeur-1 || @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==1 ||  @grilleEnCours.matriceCases[i+1][j].is_a?(CaseNombre) )
+        droite = true
+    end
+    if (gauche && droite && haut)
+      return([i,j+1])
+    elsif (gauche && droite && bas)
+      return([i,j-1])
+    elsif (gauche && haut && bas)
+      return([i+1,j])
+    elsif (haut && droite && bas)
+      return([i-1,j])
+    else
+      return[nil,nil]
+    end
+  end
+
+
+  # NE FONCTIONNE PAS POUR LINSTANT
+  def indice_expansionMur()
+    for j in 0..@grilleEnCours.hauteur-1
+      for i in 0..@grilleEnCours.largeur-1
+        if @grilleEnCours.matriceCases[i][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j].etat==0
+          if i>0 && @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==1 && caseAtteignableQueDUnCote(i-1,j)[0]==i && caseAtteignableQueDUnCote(i-1,j)[1]==j
+            return(Indice.creer(:expansionMur,[i,j]))
+          end
+          if j>0 && @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==1 && caseAtteignableQueDUnCote(i,j-1)[0]==i && caseAtteignableQueDUnCote(i,j-1)[1]==j
+            return(Indice.creer(:expansionMur,[i,j]))
+          end
+          if i<@grilleEnCours.largeur-1 && @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==1 && caseAtteignableQueDUnCote(i+1,j)[0]==i && caseAtteignableQueDUnCote(i+1,j)[1]==j
+            return(Indice.creer(:expansionMur,[i,j]))
+          end
+          if j<@grilleEnCours.hauteur-1 && @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==1 && caseAtteignableQueDUnCote(i,j+1)[0]==i && caseAtteignableQueDUnCote(i,j+1)[1]==j
+            return(Indice.creer(:expansionMur,[i,j]))
+          end
+        end
+      end
+    end
+    return nil
+  end
+
+    
+
   # Cherche si il y a un indice à donner à l'utilisateur dans l'ordre du plus simple au plus complexe et le retourne (si il existe, sinon on retourne nil)
   def clicSurIndice()
     indice = self.indice_ile1NonEntouree
@@ -216,15 +301,25 @@ class Partie
       if indice!=nil
         return indice
       else
-       indice = self.indice_IlesVoisinesNonSeparees
+        indice = self.indice_caseJouableIsolee
         if indice!=nil
           return indice
-        else  
-          indice = self.indice_IlesDiagonalesNonSeparees
+        else
+          indice = self.indice_IlesVoisinesNonSeparees 
           if indice!=nil
             return indice
-          else  
-            return Indice.creer(nil,nil)
+          else 
+            indice = self.indice_IlesDiagonalesNonSeparees
+            if indice!=nil
+              return indice
+            else  
+              indice = self.indice_expansionMur
+              if indice!=nil
+                return indice
+              else  
+                return Indice.creer(nil,nil)
+              end
+            end
           end
         end
       end
