@@ -5,10 +5,11 @@ load "Sauvegarde/Profil.rb"
 
 class FenetreProfil
 
-    attr_accessor :save,:profil
+    attr_accessor :save,:profil,:quit
 
     def initialize
         @save = SauvegardeProfil.new
+        @quit = false
     end
 
     def afficheToi
@@ -27,7 +28,7 @@ class FenetreProfil
         # L'application est toujours centrée
         monApplication.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
         # Quand l'UI est détruite il faut quitter
-        monApplication.signal_connect('destroy') {Gtk.main_quit}
+        monApplication.signal_connect('destroy') {destruction}
         ##################################
 
 
@@ -91,6 +92,11 @@ class FenetreProfil
         def event(monApplication)
             monApplication.hide
             Gtk.main_quit  
+        end
+
+        def destruction()
+            @quit = true
+            Gtk.main_quit
         end
 
         Gtk.main           

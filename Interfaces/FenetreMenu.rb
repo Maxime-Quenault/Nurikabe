@@ -9,16 +9,20 @@ load "Sauvegarde/Profil.rb"
 
 class FenetreMenu
 
-    attr_accessor :profil
+    attr_accessor :profil, :quit
     def initialize
         Gtk.init 
         @builder = Gtk::Builder.new
         @builder.add_from_file("glade/menu.glade")
 
+        @quit = false
         @interfaceLibre = FenetreLibre.new
         #@interfaceAventure = AffichageAventure.new
         @interfaceProfil = FenetreProfil.new
         @interfaceProfil.afficheToi
+        if @interfaceProfil.quit
+            @quit = true
+        end
         @profil = @interfaceProfil.profil
 
         @interfaceParametre = AffichageParametre.new
