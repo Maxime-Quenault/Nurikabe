@@ -149,7 +149,7 @@ class Grille
         chaine = ""
 
         if (uneDifficulte == FACILE)
-            File.foreach('./grillesEasy.txt') do |line|
+            File.foreach('./Partie/grillesEasy.txt') do |line|
 
                 if line.eql?("\n")
                     compteur += 1

@@ -1,9 +1,9 @@
-load "Partie/Grille"
-load "Partie/CaseNombre"
-load "Partie/Case"
-load "Partie/CaseJouable"
-load "Partie/Partie"
-load "Partie/Indice"
+load "Partie/Grille.rb"
+load "Partie/CaseNombre.rb"
+load "Partie/Case.rb"
+load "Partie/CaseJouable.rb"
+load "Partie/Partie.rb"
+load "Partie/Indice.rb"
 class Test
 	def Test.test()
 =begin
