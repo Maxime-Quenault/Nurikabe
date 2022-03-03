@@ -67,6 +67,7 @@ class SauvegardeProfil
                 return key
             end
         end
+        return -1
     end
 
     def modifierPseudo(unPseudo, profilActuel)

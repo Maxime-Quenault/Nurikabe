@@ -10,6 +10,7 @@ class FenetreProfil
     def initialize
         @save = SauvegardeProfil.new
         @quit = false
+        @monApplication = Window.new()
     end
 
     def setmargin(obj, top, bottom, left, right)
@@ -28,15 +29,14 @@ class FenetreProfil
         #Gtk.init
         #Ne pas oublier cela sinon ça plante grave
         #Gtk.init 
-        monApplication = Window.new
-        monApplication.set_title("Choix profil")
-        monApplication.border_width=10
+        @monApplication.set_title("Choix profil")
+        @monApplication.border_width=10
         # On ne peut pas redimensionner
-        monApplication.set_resizable(false)
+        @monApplication.set_resizable(false)
         # L'application est toujours centrée
-        monApplication.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
+        @monApplication.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
         # Quand l'UI est détruite il faut quitter
-        monApplication.signal_connect('destroy') {destruction}
+        @monApplication.signal_connect('destroy') {destruction}
         ##################################
 
 
@@ -44,7 +44,7 @@ class FenetreProfil
 
         ####################################
         ## CREATION DES BOX DE LA FENÊTRE ##
-        monApplication.add(laFenetrePrincipale=Gtk::Box.new(:vertical, (@save.nbProfil + 1) ) )
+        @monApplication.add(laFenetrePrincipale=Gtk::Box.new(:vertical, (@save.nbProfil + 1) ) )
         laFenetrePrincipale.add(haut=Gtk::Box.new(:horizontal, 2))
         ####################################
 
@@ -63,23 +63,45 @@ class FenetreProfil
 
         if @save.nbProfil != 0
             @save.listeProfil.each do |key, value|
-                imageSupprimer = Gtk::Image.new("Image/trash.png")
-                ligneProfil=Gtk::Box.new(:horizontal, 2)
+                ligneProfil=Gtk::Box.new(:horizontal, 3) # Box pour l'image du profil, son nom et le bouton supprimer
+
+                imageProfil = Gtk::Image.new(key.imageJoueur)
+                ligneProfil.add(imageProfil)     
+
                 boutonProfil = Button.new(:label => key.pseudo)
-                boutonProfil.set_width_request(169)
+                boutonProfil.set_width_request(140)
                 ligneProfil.add(boutonProfil)
+
+                imageSupprimer = Gtk::Image.new("Image/trash.png")
                 boutonSupprimer = Button.new()
                 boutonSupprimer.image = imageSupprimer
                 boutonSupprimer.set_width_request(60)
                 ligneProfil.add(setmargin(boutonSupprimer, 0, 0, 5, 0))
+
                 laFenetrePrincipale.add(ligneProfil)
+                
                 boutonProfil.signal_connect('clicked'){
                     @profil = @save.chargerProfil(key.pseudo)
-                    event(monApplication)
+                    event(@monApplication)
                 }
+
                 boutonSupprimer.signal_connect('clicked'){
-                    @save.supprimerProfil(key)
-                    laFenetrePrincipale.remove(ligneProfil)
+                    d = Gtk::MessageDialog.new(@monApplication,
+                    Gtk::Dialog::DESTROY_WITH_PARENT,
+                    Gtk::MessageDialog::WARNING,
+                    Gtk::MessageDialog::BUTTONS_YES_NO,
+                    "Voulez-vous supprimer le profil #{key.pseudo} ?")
+
+                    response = d.run
+
+                    case response
+                        when Gtk::ResponseType::YES
+                            @save.supprimerProfil(key)
+                            laFenetrePrincipale.remove(ligneProfil)
+                            d.destroy
+                        else
+                            d.destroy
+                    end
                 }
             end
         end 
@@ -94,10 +116,18 @@ class FenetreProfil
             pseudo = zoneText.text.to_s
             if pseudo.length != 0
                 @profil = Profil.new(pseudo)
-                if @save.ajoutProfil(profil) == -1
+                if @save.ajoutProfil(profil) != -1
                     @profil = @save.chargerProfil(pseudo)
+                else
+                    d = Gtk::MessageDialog.new(@monApplication,
+                    Gtk::Dialog::DESTROY_WITH_PARENT,
+                    Gtk::MessageDialog::WARNING,
+                    Gtk::MessageDialog::BUTTONS_CLOSE,
+                    "Le pseudo #{pseudo} existe déjà...")
+
+                    d.run
+                    d.destroy
                 end
-                event(monApplication)
             end
         }
         ############################################
@@ -105,7 +135,7 @@ class FenetreProfil
         
         #############################
         ## AFFICHAGE DE LA FENETRE ##
-        monApplication.show_all
+        @monApplication.show_all
         #############################
 
 
