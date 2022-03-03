@@ -8,6 +8,8 @@ class Indice
     :ilesDiagonalesNonSeparees
     :ilesVoisinesNonSeparees
     :ocean2x2
+    :caseJouableIsolee
+    :expansionMur
 
 
     def Indice.creer(t,c)
@@ -36,6 +38,10 @@ class Indice
             res=res+"Des cases voisines ne sont pas séparées par une case Océan"
         when :ocean2x2
             res=res+"Il y a un carré de cases Océan de taille 2 * 2"
+        when :caseJouableIsolee
+            res=res+"Il y a une case Jouable qui est isolée"
+        when :expansionMur
+            res=res+"On peut étendre le mur avec une case Océan"
         else
             res=res+"Pas d'indice trouvé"
         end
