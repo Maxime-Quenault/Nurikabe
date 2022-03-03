@@ -1,8 +1,9 @@
 load "Partie/Grille.rb"
 class Profil
-    attr_accessor :pseudo, :parametre, :listeGrilleCommence
+    attr_accessor :pseudo, :parametre, :listeGrilleCommence, :imageJoueur
 
     def initialize(unPseudo)
+        @imageJoueur = "Image/user.png"
         @pseudo = unPseudo
         @parametre = Parametre.new()
         @listeGrilleCommence = []
