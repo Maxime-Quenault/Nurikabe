@@ -126,8 +126,8 @@ class Test
 		puts "Redo possible ? #{partie.redoPossible?}"
 =end
 		puts "On créer une grille et charge les matrices depuis le fichier txt"
-		g2=Grille.creer(2,8,6)
-		g2.toGrilleJouable(g2.numero,0)
+		g2=Grille.creer()
+		g2.chargerGrille(2,0)
 		partie = Partie.creeToi(g2)
 		puts partie.grilleEnCours
 
@@ -284,6 +284,11 @@ class Test
 		partie.clicSurCase(0,3)
 		puts partie.grilleEnCours
 
+		puts "On demande un indice"
+		puts partie.clicSurIndice
+
+		partie.clicSurCase(0,3)
+		puts partie.grilleEnCours
 
 	end
 

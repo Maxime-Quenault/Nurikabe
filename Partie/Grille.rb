@@ -16,9 +16,15 @@ class Grille
 	@etoiles
 
 	FACILE = 0
-	
+	MOYEN = 1
+	DIFFICILE = 2
+	#constructeur de test
 	def Grille.creer(num,h,l)
 		new(num,h,l)
+	end
+	#Constructeur pour chargement via fichier texte
+	def Grille.creer()
+		new()
 	end
 
 	private_class_method :new
@@ -35,6 +41,10 @@ class Grille
 		@largeur=l
 		@matriceCases=Array.new(@largeur){Array.new(@hauteur)}
 		@correction=Array.new(@largeur){Array.new(@hauteur)}
+		@etoiles=0
+	end
+
+	def initialize()
 		@etoiles=0
 	end
 
@@ -154,7 +164,7 @@ class Grille
 
     end
 
-    def toGrilleJouable(unIndex, uneDifficulte)
+    def chargerGrille(unIndex, uneDifficulte)
 
         chaine = lireGrille(unIndex, uneDifficulte)
         
@@ -189,10 +199,13 @@ class Grille
 			end
 			y += 1
 		end
-
+		@numero=unIndex
+		@hauteur=y
+		@largeur=x
+		@matriceCases=Array.new(@largeur){Array.new(@hauteur)}
+		@correction=Array.new(@largeur){Array.new(@hauteur)}
 		self.copierMatrice(matriceCases)
 		self.copierCorrection(correction)
-
     end
 
 end
