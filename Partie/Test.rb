@@ -284,14 +284,6 @@ class Test
 		partie.clicSurCase(0,3)
 		puts partie.grilleEnCours
 
-		puts "On clic 2 fois sur la case à x=1 y=6"
-		partie.clicSurCase(1,6)
-		partie.clicSurCase(1,6)
-		puts partie.grilleEnCours
-
-		puts "On demande un indice"
-		puts partie.clicSurIndice
-
 
 	end
 

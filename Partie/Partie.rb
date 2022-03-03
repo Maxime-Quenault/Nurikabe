@@ -234,61 +234,78 @@ class Partie
     return nil
   end
 
-  # prends en paramètre les coordonnées d'une case, si cette case n'est atteignable par une seule autre case jouable on retourne les coordonnées de celle ci, sinon on retourne nil
-  def caseAtteignableQueDUnCote(i,j)
-      gauche =  false
-      droite = false
-      bas = false
-      haut = false
-      if(i==0 || @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==1 ||  @grilleEnCours.matriceCases[i-1][j].is_a?(CaseNombre) )
-        gauche = true
-      end 
-      if(j==0 || @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==1 ||  @grilleEnCours.matriceCases[i][j-1].is_a?(CaseNombre) )
-        haut = true
-      end
-      if(j==@grilleEnCours.hauteur-1 || @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==1 ||  @grilleEnCours.matriceCases[i][j+1].is_a?(CaseNombre) )
-        bas = true
-      end
-      if(i==@grilleEnCours.largeur-1 || @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==1 ||  @grilleEnCours.matriceCases[i+1][j].is_a?(CaseNombre) )
-        droite = true
+  
+  # Retourne vrai si la case aux coordonnées passées en paramètre a seulement une case Jouable à l'état océan autour d'elle et deux cases non jouables (CaseNombre ou bord de grille)
+  def caseAccessibleQueDUneDirection(i,j)
+    aUneCaseOceanAdjacente = false
+    gaucheNonJouable = false
+    droiteNonJouable = false
+    hautNonJouable = false
+    basNonJouable = false
+    if (j==0 || @grilleEnCours.matriceCases[i][j-1].is_a?(CaseNombre))
+      hautNonJouable=true
     end
-    if (gauche && droite && haut)
-      return([i,j+1])
-    elsif (gauche && droite && bas)
-      return([i,j-1])
-    elsif (gauche && haut && bas)
-      return([i+1,j])
-    elsif (haut && droite && bas)
-      return([i-1,j])
-    else
-      return[nil,nil]
+    if (i==0 || @grilleEnCours.matriceCases[i-1][j].is_a?(CaseNombre))
+      gaucheNonJouable=true
     end
+    if (j==@grilleEnCours.hauteur-1 || @grilleEnCours.matriceCases[i][j+1].is_a?(CaseNombre))
+      basNonJouable=true
+    end
+    if(i==@grilleEnCours.largeur-1 || @grilleEnCours.matriceCases[i+1][j].is_a?(CaseNombre))
+      droiteNonJouable=true
+    end
+    if(hautNonJouable && basNonJouable)
+      if(!droiteNonJouable && @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==1 || !gaucheNonJouable && @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==1)
+        return(true)
+      end
+    end
+    if(hautNonJouable && droiteNonJouable)
+      if(!basNonJouable && @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==1 || !gaucheNonJouable &&  @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==1)
+        return(true)
+      end
+    end
+    if(hautNonJouable && gaucheNonJouable)
+      if(!droiteNonJouable && @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==1 || !basNonJouable &&  @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==1)
+        return(true)
+      end
+    end
+    if(basNonJouable && gaucheNonJouable)
+      if(!droiteNonJouable && @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==1 ||!hautNonJouable &&  @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==1)
+        return(true)
+      end
+    end
+    if(basNonJouable && droiteNonJouable)
+      if(!gaucheNonJouable && @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==1 || !hautNonJouable && @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==1)
+        return(true)
+      end
+    end
+    if(droiteNonJouable && gaucheNonJouable)
+      if(!basNonJouable && @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==1 || !hautNonJouable && @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==1)
+        return(true)
+      end
+    end
+    return false
   end
 
-
-  # NE FONCTIONNE PAS POUR LINSTANT
+  # Recherche si un "mur" peut être étendu en mettant une case jouable à l'état océan et on retourne ses coordonnées (si elle existe, sinon on retourne nil)
   def indice_expansionMur()
-    for j in 0..@grilleEnCours.hauteur-1
-      for i in 0..@grilleEnCours.largeur-1
-        if @grilleEnCours.matriceCases[i][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j].etat==0
-          if i>0 && @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==1 && caseAtteignableQueDUnCote(i-1,j)[0]==i && caseAtteignableQueDUnCote(i-1,j)[1]==j
-            return(Indice.creer(:expansionMur,[i,j]))
-          end
-          if j>0 && @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==1 && caseAtteignableQueDUnCote(i,j-1)[0]==i && caseAtteignableQueDUnCote(i,j-1)[1]==j
-            return(Indice.creer(:expansionMur,[i,j]))
-          end
-          if i<@grilleEnCours.largeur-1 && @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==1 && caseAtteignableQueDUnCote(i+1,j)[0]==i && caseAtteignableQueDUnCote(i+1,j)[1]==j
-            return(Indice.creer(:expansionMur,[i,j]))
-          end
-          if j<@grilleEnCours.hauteur-1 && @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==1 && caseAtteignableQueDUnCote(i,j+1)[0]==i && caseAtteignableQueDUnCote(i,j+1)[1]==j
-            return(Indice.creer(:expansionMur,[i,j]))
+    for i in 0..@grilleEnCours.largeur-1
+      for j in 0..@grilleEnCours.hauteur-1
+        if @grilleEnCours.matriceCases[i][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j].etat==0 && caseAccessibleQueDUneDirection(i,j)
+          if i+1 < @grilleEnCours.largeur && @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==0 
+            return Indice.creer(:expansionMur,[i+1,j])
+          elsif j+1 < @grilleEnCours.hauteur && @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==0 
+            return Indice.creer(:expansionMur,[i,j+1])
+          elsif j-1 >= 0 && @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==0 
+            return Indice.creer(:expansionMur,[i,j-1])
+          elsif i-1 >= 0 && @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==0 
+            return Indice.creer(:expansionMur,[i-1,j])
           end
         end
       end
     end
     return nil
   end
-
     
 
   # Cherche si il y a un indice à donner à l'utilisateur dans l'ordre du plus simple au plus complexe et le retourne (si il existe, sinon on retourne nil)
