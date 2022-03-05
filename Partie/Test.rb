@@ -1,9 +1,9 @@
-require './Grille'
-require './CaseNombre'
-require './Case'
-require './CaseJouable'
-require './Partie'
-require './Indice'
+load "Partie/Grille.rb"
+load "Partie/CaseNombre.rb"
+load "Partie/Case.rb"
+load "Partie/CaseJouable.rb"
+load "Partie/Partie.rb"
+load "Partie/Indice.rb"
 class Test
 	def Test.test()
 =begin
@@ -160,6 +160,25 @@ class Test
 		puts "On demande un indice"
 		puts partie.clicSurIndice
 
+		puts "On résoud l'indice"
+		partie.clicSurCase(1,6)
+		puts partie.grilleEnCours
+
+		puts "On demande un indice"
+		puts partie.clicSurIndice
+
+		puts "On résoud l'indice "
+		partie.clicSurCase(2,1)
+		puts partie.grilleEnCours
+
+		puts "On demande un indice"
+		puts partie.clicSurIndice
+
+		puts "On résoud l'indice "
+		partie.clicSurCase(0,6)
+		partie.clicSurCase(0,6)
+		puts partie.grilleEnCours
+
 		puts "On créer volontairement un carré d'océan de taille 2*2"
 		partie.clicSurCase(3,4)
 		partie.clicSurCase(4,4)
@@ -231,7 +250,6 @@ class Test
 		partie.clicSurCase(5,0)
 		partie.clicSurCase(0,1)
 		partie.clicSurCase(1,1)
-		partie.clicSurCase(2,1)
 		partie.clicSurCase(4,1)
 		partie.clicSurCase(5,1)
 		partie.clicSurCase(5,1)
@@ -255,9 +273,6 @@ class Test
 		partie.clicSurCase(1,5)
 		partie.clicSurCase(2,5)
 		partie.clicSurCase(5,5)
-		partie.clicSurCase(0,6)
-		partie.clicSurCase(0,6)
-		partie.clicSurCase(1,6)
 		partie.clicSurCase(2,6)
 		partie.clicSurCase(2,6)
 		partie.clicSurCase(3,6)
@@ -281,12 +296,6 @@ class Test
 		puts partie.clicSurIndice
 
 		puts "On résoud l'indice"
-		partie.clicSurCase(0,3)
-		puts partie.grilleEnCours
-
-		puts "On demande un indice"
-		puts partie.clicSurIndice
-
 		partie.clicSurCase(0,3)
 		puts partie.grilleEnCours
 

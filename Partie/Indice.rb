@@ -10,6 +10,7 @@ class Indice
     :ocean2x2
     :caseJouableIsolee
     :expansionMur
+    :expansionIle
 
 
     def Indice.creer(t,c)
@@ -42,6 +43,8 @@ class Indice
             res=res+"Il y a une case Jouable qui est isolée"
         when :expansionMur
             res=res+"On peut étendre le mur avec une case Océan"
+        when :expansionIle
+            res=res+"On peut étendre l'île avec une case île"
         else
             res=res+"Pas d'indice trouvé"
         end
