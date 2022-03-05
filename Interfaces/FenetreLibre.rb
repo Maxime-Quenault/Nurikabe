@@ -1,47 +1,55 @@
 require 'gtk3'
-include Gtk
 
 load "Sauvegarde/SauvegardeProfil.rb"
 load "Sauvegarde/Profil.rb"
 load "Libre/Libre.rb"
+load "Interfaces/Fenetre.rb"
 
-class FenetreLibre
+class FenetreLibre < Fenetre
 
-    attr_accessor :modeLibre
+    attr_accessor :modeLibre, :object
 
     def initialize
-        @modeLibre = Libre.new
-        main_window_res = 'glade/menu-libre.glade'
+        self.initialiseToi
+        @builder = Gtk::Builder.new(:file => 'glade/menu-libre.glade')
+        @object = @builder.get_object("menu")
 
-		@builder = Gtk::Builder.new(:file => main_window_res)
-
-		# Attach signals handlers
-		@builder.connect_signals do |handler|
-		begin
-			method(handler)
-			rescue
-				puts "#{handler} not yet implemented!"
-				method('not_yet_implemented')
-			end
-		end
+		@btn_facile = @builder.get_object("lvl_facile")
+		@btn_moyen = @builder.get_object("lvl_moyen")
+		@btn_difficile = @builder.get_object("lvl_difficile") 
+		@btn_retour = @builder.get_object("btn_retour")
     end
 
     def afficheToi
 
-		main_window = @builder.get_object('main_window')
-		main_window.show()
+		
 
-		Gtk.main
+		@btn_facile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Facile"}
+		@btn_moyen.signal_connect("clicked"){print "\nTu as cliqué sur le mode Moyen"}
+		@btn_difficile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Difficile"}
+
+		@btn_retour.signal_connect("clicked"){
+			Gtk.main_quit
+		}
+
+		self.affichage
 
 	end
 
-    def not_yet_implemented(object)
+	def affichage
+		super(@object, "Mode Libre")
+	end
+
+=begin
+	def not_yet_implemented(object)
 		puts "#{object.class.name} sent a signal!"
 	end
 
 	def on_main_window_destroy(object)
 		Gtk.main_quit()
 	end
+
+
 
 	def ajouterGrille(id)
 		liste_grille = @builder.get_object('liste_grille')
@@ -71,5 +79,6 @@ class FenetreLibre
 		liste_grille.show_all
 
 	end
+=end
 
 end

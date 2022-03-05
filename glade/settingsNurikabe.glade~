@@ -11,7 +11,7 @@
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkButton" id="button_jeu">
+          <object class="GtkButton" id="button_jeu1">
             <property name="label" translatable="yes">Jeu</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -28,7 +28,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button_profils">
+          <object class="GtkButton" id="button_profils1">
             <property name="label" translatable="yes">Profils</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -44,7 +44,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button_retour">
+          <object class="GtkButton" id="button_retour1">
             <property name="label" translatable="yes">Retour</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
@@ -106,7 +106,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBoxText" id="cbt_langue">
+                      <object class="GtkComboBoxText" id="cbt_langue1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="active">0</property>
@@ -137,7 +137,7 @@
                     <property name="margin_top">30</property>
                     <property name="margin_bottom">20</property>
                     <child>
-                      <object class="GtkSwitch" id="switch_audio">
+                      <object class="GtkSwitch" id="switch_audio1">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="active">True</property>
@@ -176,7 +176,7 @@
                     <property name="margin_top">30</property>
                     <property name="margin_bottom">20</property>
                     <child>
-                      <object class="GtkSwitch" id="switch_theme">
+                      <object class="GtkSwitch" id="switch_theme1">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                       </object>

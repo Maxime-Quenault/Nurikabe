@@ -1,43 +1,48 @@
 require 'gtk3'
-include Gtk
 
 load "Interfaces/FenetreProfil.rb"
 load "Interfaces/FenetreLibre.rb"
-load "Parametre/AffichageParametre.rb"
-load "Sauvegarde/Profil.rb"
+load "Interfaces/FenetreParametre.rb"
 load "Interfaces/FenetreAPropos.rb"
+load "Interfaces/Fenetre.rb"
+load "Sauvegarde/Profil.rb"
+
 #load "Aventure/AffichageAventure.rb"
 
-class FenetreMenu
+class FenetreMenu < Fenetre
 
     attr_accessor :profil, :quit
     def initialize
-        Gtk.init 
-        @quit = false
-        @builder = Gtk::Builder.new
-        @builder.add_from_file("glade/menu.glade")
+        self.initialiseToi
+        @builder = Gtk::Builder.new(:file => 'glade/menu.glade')
+        @object = @builder.get_object("menu")
+
+        
 
         @interfaceAPropos = FenetreAPropos.new
-
         @interfaceLibre = FenetreLibre.new
         #@interfaceAventure = AffichageAventure.new
         @interfaceProfil = FenetreProfil.new
+        @interfaceParametre = FenetreParametre.new
+
+        #On récupere le profil séléctionné par le joueur.
         @interfaceProfil.afficheToi
+        @profil = @interfaceProfil.profil
+
+        #Ici on vérifie si le joueur souhaite quitter le jeu en etant sur la fenêtre du choix de profil.
+        @quit = false
         if @interfaceProfil.quit
             @quit = true
         end
-        @profil = @interfaceProfil.profil
 
-        @interfaceParametre = AffichageParametre.new
+        print "\ntu initialise l'interface menu\n"
+        
     end
 
 
     def afficheToi
         print "profil = #{@profil}\n"
-
-        #Recuperation de la fenetre
-        mainWindow = @builder.get_object("mainWindow")
-
+    
         #Recuperation des variables bouton
         btn_libre = @builder.get_object("btn_libre")
         btn_survie = @builder.get_object("btn_survie")
@@ -47,38 +52,35 @@ class FenetreMenu
         btn_propos = @builder.get_object("btn_propos")
         btn_parametre = @builder.get_object("btn_parametre")
 
-        boxWindow = @builder.get_object("boxWindow")
-
         #Gestion des signaux
-        mainWindow.signal_connect('destroy') {Gtk.main_quit}
         btn_libre.signal_connect('clicked') {
-            mainWindow.hide
+            self.remove(@object)
             @interfaceLibre.afficheToi
-            mainWindow.show_all
+            self.remove(@interfaceLibre.object)
+            self.affichage
         }
+
         btn_survie.signal_connect('clicked') {print "tu as clique sur le mode survie\n"}
+
         btn_contre_montre.signal_connect('clicked') {print "tu as clique sur le mode contre la montre\n"}
 
-        btn_aventure.signal_connect('clicked') {
-            mainWindow.hide
-            #@interfaceAventure.afficheToi
-            mainWindow.show_all
-        }
+        btn_aventure.signal_connect('clicked') {print "tu as clique sur le mode Aventure\n"}
+
         btn_tuto.signal_connect('clicked') {print "tu as clique sur le mode tuto\n"}
-        btn_propos.signal_connect('clicked') {
-            boxWindow.hide
-            @interfaceAPropos.afficheToi
-            boxWindow.show_all
-        }
+
+        btn_propos.signal_connect('clicked') {print "tu as clique sur a propos\n"}
+
         btn_parametre.signal_connect('clicked') {
-            mainWindow.hide
-            @interfaceParametre.afficheLesParametres
-            mainWindow.show_all
+            self.remove(@object)
+            @interfaceParametre.afficheToi
+            self.remove(@interfaceParametre.object)
+            self.affichage
         }
 
-        #affichage de la fenetre
-        mainWindow.show_all
+        self.affichage
+    end
 
-        Gtk.main
+    def affichage
+        super(@object, "Menu")
     end
 end
