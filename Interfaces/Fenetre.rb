@@ -4,11 +4,12 @@ class Fenetre
 
     @@window = nil
 
+    private
     def initialize
-
         Gtk.init
         
         @@window = Gtk::Window.new()
+        @@setGtkMain = false
 
         #Option de la fenetre
         @@window.set_default_size(745,850)
@@ -30,7 +31,6 @@ class Fenetre
     ##
     # Permet d'initialiser une seule fois une fenetre
     def initialiseToi()
-        puts @@window
         if @@window == nil
             Fenetre.new()
         else
@@ -48,7 +48,21 @@ class Fenetre
         @@window.add(unObjet)
         self.set_sousTitre(unSousTitre)
         @@window.show_all
+        print "\nvoici le nombre de fils : #{@@window.children.length}"
         Gtk.main
+    end
+
+    ##
+    # Permet de supprimer toutes les classes filles sauf la headerbar
+    def deleteChildren()
+        i = 0
+        while @@window.children.length > 1
+            if( @@window.children[i] == @@window.titlebar )
+                i += 1
+            end
+            @@window.remove( @@window.children[i] )
+        end
+        print "\nvoici le nombre de fils : #{@@window.children.length}"
     end
 
     def remove(unObjet)

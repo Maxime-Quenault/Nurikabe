@@ -71,10 +71,9 @@ class FenetreMenu < Fenetre
         btn_propos.signal_connect('clicked') {print "tu as clique sur a propos\n"}
 
         btn_parametre.signal_connect('clicked') {
-            self.remove(@object)
-            @interfaceParametre.afficheToi
-            self.remove(@interfaceParametre.object)
-            self.affichage
+            self.deleteChildren()
+            #@interfaceParametre.afficheToi
+            #self.affichage
         }
 
         self.affichage

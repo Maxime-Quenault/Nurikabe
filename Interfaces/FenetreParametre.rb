@@ -46,8 +46,9 @@ class FenetreParametre < Fenetre
             @interfaceProfil.afficheToi
         }
 
-        btnRetour.signal_connect( "clicked" ) { 
-            Gtk.quit
+        btnRetour.signal_connect( "clicked" ) {
+            self.deleteChildren()
+            Gtk.main_quit
         }
 
         self.affichage
@@ -56,6 +57,7 @@ class FenetreParametre < Fenetre
     
 
     def affichage
+        print "\nj'affiche le fenetre parametre"
         super(@object, "Parametre")
     end
 

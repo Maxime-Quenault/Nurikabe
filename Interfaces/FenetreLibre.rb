@@ -29,6 +29,7 @@ class FenetreLibre < Fenetre
 		@btn_difficile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Difficile"}
 
 		@btn_retour.signal_connect("clicked"){
+			self.deleteChildren()
 			Gtk.main_quit
 		}
 
@@ -37,6 +38,7 @@ class FenetreLibre < Fenetre
 	end
 
 	def affichage
+		print "\nj'affiche le fenetre libre"
 		super(@object, "Mode Libre")
 	end
 
