@@ -18,12 +18,20 @@ class FenetreLibre < Fenetre
 		@btn_moyen = @builder.get_object("lvl_moyen")
 		@btn_difficile = @builder.get_object("lvl_difficile") 
 		@btn_retour = @builder.get_object("btn_retour")
+
+		self.gestionSignaux
     end
 
     def afficheToi
+		self.affichage
+	end
 
-		
+	def affichage
+		print "\nj'affiche le fenetre libre"
+		super(@object, "Mode Libre")
+	end
 
+	def gestionSignaux
 		@btn_facile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Facile"}
 		@btn_moyen.signal_connect("clicked"){print "\nTu as cliqué sur le mode Moyen"}
 		@btn_difficile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Difficile"}
@@ -32,14 +40,6 @@ class FenetreLibre < Fenetre
 			self.deleteChildren()
 			Gtk.main_quit
 		}
-
-		self.affichage
-
-	end
-
-	def affichage
-		print "\nj'affiche le fenetre libre"
-		super(@object, "Mode Libre")
 	end
 
 =begin

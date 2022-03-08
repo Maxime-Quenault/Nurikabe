@@ -69,6 +69,8 @@ class Fenetre
     end
 
     def quitter
+        print "\n"
+        self.deleteChildren
         Gtk.main_quit
     end
 

@@ -26,39 +26,39 @@ class FenetreParametre < Fenetre
         @object = @builder.get_object("menuParam")
 
         @interfaceProfil = FenetreProfil.new
+
+        @langue = @builder.get_object("cbt_langue")
+
+        @btnJeu = @builder.get_object("button_jeu")
+        @btnRetour = @builder.get_object("button_retour")
+        @btnProfils = @builder.get_object("button_profils")
+
+        @switchTheme = @builder.get_object("switch_theme")
+        @switchAudio = @builder.get_object("switch_audio")
+
+        self.gestionSignaux
     end
 
     def afficheToi
-
-
-        print "\nje suis bien dans le afficheToi de parametre"
-        langue = @builder.get_object("cbt_langue")
-
-        btnJeu = @builder.get_object("button_jeu")
-        btnRetour = @builder.get_object("button_retour")
-        btnProfils = @builder.get_object("button_profils")
-
-        switchTheme = @builder.get_object("switch_theme")
-        switchAudio = @builder.get_object("switch_audio")
-
-        btnProfils.signal_connect( "clicked" ) { 
-            print "\nTu as clique sur profil"
-            @interfaceProfil.afficheToi
-        }
-
-        btnRetour.signal_connect( "clicked" ) {
-            self.deleteChildren()
-            Gtk.main_quit
-        }
-
         self.affichage
     end
 
     
 
     def affichage
-        print "\nj'affiche le fenetre parametre"
         super(@object, "Parametre")
+    end
+
+    def gestionSignaux
+        @btnProfils.signal_connect( "clicked" ) { 
+            print "\nTu as clique sur profil"
+            @interfaceProfil.afficheToi
+        }
+
+        @btnRetour.signal_connect( "clicked" ) {
+            self.deleteChildren()
+            Gtk.main_quit
+        }
     end
 
 end
