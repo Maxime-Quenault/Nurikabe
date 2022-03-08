@@ -12,6 +12,7 @@ load "Sauvegarde/Profil.rb"
 class FenetreMenu < Fenetre
 
     attr_accessor :profil, :quit
+
     def initialize
         self.initialiseToi
         @builder = Gtk::Builder.new(:file => 'glade/menu.glade')
@@ -36,7 +37,6 @@ class FenetreMenu < Fenetre
         end
 
         print "\ntu initialise l'interface menu\n"
-        
     end
 
 
@@ -54,10 +54,8 @@ class FenetreMenu < Fenetre
 
         #Gestion des signaux
         btn_libre.signal_connect('clicked') {
-            self.remove(@object)
+            self.deleteChildren()
             @interfaceLibre.afficheToi
-            self.remove(@interfaceLibre.object)
-            self.affichage
         }
 
         btn_survie.signal_connect('clicked') {print "tu as clique sur le mode survie\n"}
@@ -72,8 +70,7 @@ class FenetreMenu < Fenetre
 
         btn_parametre.signal_connect('clicked') {
             self.deleteChildren()
-            #@interfaceParametre.afficheToi
-            #self.affichage
+            @interfaceParametre.afficheToi
         }
 
         self.affichage

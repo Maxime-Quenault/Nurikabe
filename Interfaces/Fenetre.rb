@@ -9,7 +9,6 @@ class Fenetre
         Gtk.init
         
         @@window = Gtk::Window.new()
-        @@setGtkMain = false
 
         #Option de la fenetre
         @@window.set_default_size(745,850)
