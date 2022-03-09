@@ -10,6 +10,13 @@ load "Grille.rb"
 # Définition de la classe AffichageAventure qui affichera le mode Aventure
 class AffichageAventure
 
+  # Définition des constantes
+  SEUIL_5_ETOILES = 1.0
+  SEUIL_4_ETOILES = 1.20
+  SEUIL_3_ETOILES = 1.40
+  SEUIL_2_ETOILES = 2.0
+  SEUIL_1_ETOILE = 2.20
+
   # Variable d'instance qui représente la couleur générale de la fenêtre(thème)
   @couleurBase
   # Variable d'instance qui représente la couleur secondaire qui ressort de la couleur générale(thème)
@@ -286,9 +293,34 @@ class AffichageAventure
     # On associe l'image de la grille avec la méthode de lancement de la Partie
     # + attribution des récompenses en fonction du timer
     img_centre.signal_connect('clicked') {
+
+      chrono = Chronometre.creer(0,"+")
       # Ajouter méthode de lancement de la partie
+      partie = Partie.creerToi(@aventure.getGrilleCourante)
+      chrono.demarre()
       # + récupération du timer
+      while(!partie.estFinie?());
       # Puis attribution du nombre d'étoiles en fonction du timer (à définir)
+
+      temps = chrono.getTemps();
+
+      case temps
+      when temps <= SEUIL_5_ETOILES
+        recompense = 5
+      when temps <= SEUIL_4_ETOILES
+        recompense = 4
+      when temps <= SEUIL_3_ETOILES
+        recompense = 3
+      when temps <= SEUIL_2_ETOILES
+        recompense = 2
+      when temps <= SEUIL_1_ETOILES
+        recompense = 1
+      else
+        recompense = 0
+      end
+
+      @aventure.setEtoileCourante(recompense)
+      @aventure.etoilesEnPlus(recompense)
     }
 
     # On associe le bouton 1 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure

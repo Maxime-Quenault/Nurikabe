@@ -133,6 +133,11 @@ class Aventure
     return @posCourante
   end
 
+  # Méthode d'accès en lecture de la grille courante
+  def getGrilleCourante
+    return @desGrilles[@posCourante];
+  end
+
   # On se déplace sur l'aventure de difficulté inférieure
   def difficultePrecedente
     return @precedenteDiff
