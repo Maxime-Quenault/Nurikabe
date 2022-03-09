@@ -6,8 +6,16 @@ load "Interfaces/FenetreParametre.rb"
 load "Interfaces/FenetreAPropos.rb"
 load "Interfaces/Fenetre.rb"
 load "Sauvegarde/Profil.rb"
-
 #load "Aventure/AffichageAventure.rb"
+
+/*
+*
+*
+* 
+*
+*
+*
+*/
 
 class FenetreMenu < Fenetre
 
