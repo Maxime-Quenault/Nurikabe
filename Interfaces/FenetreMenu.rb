@@ -11,18 +11,18 @@ load "Sauvegarde/Profil.rb"
 
 class FenetreMenu < Fenetre
 
-    attr_accessor :profil, :quit
+    attr_accessor :profil, :quit, :object
 
     def initialize
         self.initialiseToi
         @builder = Gtk::Builder.new(:file => 'glade/menu.glade')
         @object = @builder.get_object("menu")      
 
-        @interfaceAPropos = FenetreAPropos.new
-        @interfaceLibre = FenetreLibre.new
+        @interfaceAPropos = FenetreAPropos.new(@object)
+        @interfaceLibre = FenetreLibre.new(@object)
         #@interfaceAventure = AffichageAventure.new
         @interfaceProfil = FenetreProfil.new
-        @interfaceParametre = FenetreParametre.new
+        @interfaceParametre = FenetreParametre.new(@object)
 
         #On récupere le profil séléctionné par le joueur.
         @interfaceProfil.afficheToi
@@ -47,20 +47,9 @@ class FenetreMenu < Fenetre
     end
 
 
-    def afficheToi      
-        self.affichage
-    end
-
-    def affichage
-        super(@object, "Menu")
-    end
-
-
     def gestionSignaux
         @btn_libre.signal_connect('clicked') {
-            self.deleteChildren()
-            @interfaceLibre.afficheToi
-            self.affichage
+            self.changerInterface(@interfaceLibre.getObjet, "Mode Libre")
         }
 
         @btn_survie.signal_connect('clicked') {print "tu as clique sur le mode survie\n"}
@@ -74,9 +63,7 @@ class FenetreMenu < Fenetre
         @btn_propos.signal_connect('clicked') {print "tu as clique sur a propos\n"}
 
         @btn_parametre.signal_connect('clicked') {
-            self.deleteChildren()
-            @interfaceParametre.afficheToi
-            self.affichage
+            self.changerInterface(@interfaceParametre.object, "Parametre")
         }
     end
 end

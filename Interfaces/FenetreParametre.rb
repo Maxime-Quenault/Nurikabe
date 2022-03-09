@@ -20,7 +20,7 @@ class FenetreParametre < Fenetre
 
     attr_accessor :object
 
-    def initialize()
+    def initialize(menuParent)
         self.initialiseToi
         @builder = Gtk::Builder.new(:file => 'glade/settingsNurikabe.glade')
         @object = @builder.get_object("menuParam")
@@ -37,17 +37,10 @@ class FenetreParametre < Fenetre
         @switchAudio = @builder.get_object("switch_audio")
 
         self.gestionSignaux
+
+        @menuParent = menuParent
     end
 
-    def afficheToi
-        self.affichage
-    end
-
-    
-
-    def affichage
-        super(@object, "Parametre")
-    end
 
     def gestionSignaux
         @btnProfils.signal_connect( "clicked" ) { 
@@ -56,8 +49,7 @@ class FenetreParametre < Fenetre
         }
 
         @btnRetour.signal_connect( "clicked" ) {
-            self.deleteChildren()
-            Gtk.main_quit
+            self.changerInterface(@menuParent, "Menu")
         }
     end
 

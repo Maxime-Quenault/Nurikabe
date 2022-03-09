@@ -15,7 +15,8 @@ class Jeu
     end
 
     def lanceToi
-        @interface.afficheToi
+        @interface.changerInterface(@interface.object, "Menu")
+        Gtk.main
     end
 
 end

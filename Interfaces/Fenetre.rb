@@ -1,11 +1,58 @@
 require 'gtk3'
 
+
+##
+#   @author Quenault Maxime
+#   
+#   Cette classe permet de creer une fenetre. Elle gere egalement les changement d'interface.
+#   
+#   Voici les methodes de la classe Fenetre :
+#
+#   - changerInterface : gere le changement d'interface sur la fenetre.
+#   - initialiseToi : permet d'initialiser une fenetre 1 seul fois, pour cela nous utilison le pattern SINGLETON.
+#   - set_sousTitre : permet de mettre à jour le sous-titre de la fenetre.
+#   - affichage : permet d'ajouter la nouvelle interface à la fenetre.
+#   - deleteChildren : permet de supprimer tous les objets fils de la fenetre sauf la headerbar.
+#   - remove : permet de supprimer un objet de la fenetre.
+#   - quitter : permet de quitter le programme "proprement".
+#
+#   Voici ses VI : 
+#
+#   @header : elle represente la haute bar de notre fenetre.
+#
+#
+#   Voici ses VC :
+#   
+#   @@window : elle represente notre fenetre, elle est initialisé qu'une seul fois.
+
+
 class Fenetre
 
     @@window = nil
 
+    ##
+    # Cette classe gère le changement d'interface, pour cela elle commence par supprimer
+    # tous les objets fils de la fenetre et ensuite fait appel la methode "Affichage".
+    # Cette methode est public car elle est appelé par la classe "Jeu.rb"
+    #
+    # @param uneInterface represente la nouvelle interface qu'il va falloire afficher.
+    # @param sousTitre represente le nouveau sous-titre qu'il faudra ajouter.
+    def changerInterface(uneInterface, sousTitre)
+        self.deleteChildren()
+        self.affichage(uneInterface, sousTitre)
+    end
+
+    # TOUTES LES METHODES QUI SUIVENT SONT PRIVEE !
+
     private
+
+    
+    ##
+    # Cette methode est le constructeur de notre classe, il initilise notre
+    # fenetre avec les bonnes dimenssion et les bons parametres. Il fait de
+    # même avec la headerbar.
     def initialize
+
         Gtk.init
         
         @@window = Gtk::Window.new()
@@ -25,11 +72,15 @@ class Fenetre
         @header.title = "Nurikabe"
         @header.subtitle = "-"
         @@window.titlebar = @header
+
     end
 
+
     ##
-    # Permet d'initialiser une seule fois une fenetre
-    def initialiseToi()
+    # Cette methode permet de gerer l'initialisation de notre fenetre. Pour vérifier que notre fenetre est initialisé
+    # qu'une seul fois on effectue une vérification avant de faire appel au constructeur. C'est cette méthode qui est appelé
+    # par toutes les autres classes.
+    def initialiseToi
         if @@window == nil
             Fenetre.new()
         else
@@ -37,22 +88,31 @@ class Fenetre
         end
     end
 
+
     ##
-    # Permet de changer les sous-titre de la fenetre
+    # Cette methode permet de mettre à jour les sous-titre de la fenetre.
+    #
+    # @param subtitle represente le nouveau sous-titre de la fenetre.
     def set_sousTitre(subtitle)
         @@window.titlebar.subtitle  = subtitle
     end
 
+
+    ##
+    # Cette methode permet d'afficher la nouvelle interface. Elle ajoute le nouvelle objet et
+    # met à jour le nouveau sous-titre.
+    #
+    # @param unObjet represente la nouvelle interface.
+    # @unSousTitre represente le nouveau sous-titre.
     def affichage(unObjet, unSousTitre)
         @@window.add(unObjet)
         self.set_sousTitre(unSousTitre)
-        @@window.show_all
-        print "\nvoici le nombre de fils : #{@@window.children.length}"
-        Gtk.main
+        @@window.show_all     
     end
 
+
     ##
-    # Permet de supprimer toutes les classes filles sauf la headerbar
+    # cette classe permet de supprimer tous les objets de notre fenetre, sauf la headerbar.
     def deleteChildren()
         i = 0
         while @@window.children.length > 1
@@ -61,16 +121,23 @@ class Fenetre
             end
             @@window.remove( @@window.children[i] )
         end
-        print "\nvoici le nombre de fils : #{@@window.children.length}"
     end
 
+
+    ##
+    # Cette methode permet de supprimer un objet de la fenetre.
+    #
+    # @param unObjet represente l'objet à supprimer de la fenetre.
     def remove(unObjet)
         @@window.remove(unObjet)
     end
 
+
+    ##
+    # Supprime tous les élements de la fenetre avant de quitter le programme.
     def quitter
-        print "\n"
         self.deleteChildren
+        self.remove(@header)
         Gtk.main_quit
     end
 

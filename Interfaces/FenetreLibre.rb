@@ -9,7 +9,7 @@ class FenetreLibre < Fenetre
 
     attr_accessor :modeLibre, :object
 
-    def initialize
+    def initialize(menuParent)
         self.initialiseToi
         @builder = Gtk::Builder.new(:file => 'glade/menu-libre.glade')
         @object = @builder.get_object("menu")
@@ -20,15 +20,14 @@ class FenetreLibre < Fenetre
 		@btn_retour = @builder.get_object("btn_retour")
 
 		self.gestionSignaux
+
+		@menuParent = menuParent
     end
 
-    def afficheToi
-		self.affichage
-	end
+    
 
-	def affichage
-		print "\nj'affiche le fenetre libre"
-		super(@object, "Mode Libre")
+	def getObjet
+		return @object
 	end
 
 	def gestionSignaux
@@ -37,8 +36,7 @@ class FenetreLibre < Fenetre
 		@btn_difficile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Difficile"}
 
 		@btn_retour.signal_connect("clicked"){
-			self.deleteChildren()
-			Gtk.main_quit
+			self.changerInterface(@menuParent, "Menu")
 		}
 	end
 
@@ -50,7 +48,6 @@ class FenetreLibre < Fenetre
 	def on_main_window_destroy(object)
 		Gtk.main_quit()
 	end
-
 
 
 	def ajouterGrille(id)
