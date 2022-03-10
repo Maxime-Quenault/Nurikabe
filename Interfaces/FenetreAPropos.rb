@@ -1,13 +1,13 @@
 require 'gtk3'
 include Gtk
 
-load "Sauvegarde/Profil.rb"
+load "Interfaces/Fenetre.rb"
 
-class FenetreAPropos
+class FenetreAPropos < Fenetre
 
-    attr_accessor :profil, :quit
     def initialize(menuParent)
-        @quit = false
+        self.initialiseToi
+
         @builder = Gtk::Builder.new
         @builder.add_from_file("glade/apropos.glade")
 

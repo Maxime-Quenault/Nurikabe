@@ -6,23 +6,31 @@ load "Libre/Libre.rb"
 load "Interfaces/Fenetre.rb"
 
 ##
-# @author Quenault Maxime / ... (mettez vos nom ce qu'on travailler sur l'interface du mode libre)
+# 	@author Quenault Maxime / ... (mettez vos nom ce qu'on travailler sur l'interface du mode libre)
 #
+#	Cette classe va gerer l'interface du mode Libre. Pour cela elle récupère le fichier glade associé
+#	et initialise toutes ses variables d'instance avec les objets du fichier glade.
 #
+#	Voici les methodes de la classe FenetreLibre :
 #
+#	- initialize : cette methode est le constructeur, elle recupere le fichier glade et initialise ses VI.
+#	- getObjet : permet de renvoyer sont interface à tous ceux qui la demande.
+#	- gestionSignaux : permet d'attribuer des actions à tous les objets de l'interface récupéré dans le constructeur.
 #
+#	Voici ses VI :
 #
-#
-#
-#
-#
-#
-#
-
+#	@menuParent : represente l'interface du menu parent
+#	@builder : represente le fichier glade
+#	@object : represente l'interface de la classe
+#	@btn_facile : represente l'objet bouton facile
+#	@btn_moyen : represente l'objet bouton moyen
+#	@btn_difficile : represente l'objet bouton difficile
+#	@btn_retour : represente l'objet bouton retour
+#	
 
 class FenetreLibre < Fenetre
 
-    attr_accessor :modeLibre, :object
+    attr_accessor :object
 
 	##
 	# initialize :
@@ -76,6 +84,41 @@ class FenetreLibre < Fenetre
 
 	end
 
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -119,4 +162,3 @@ class FenetreLibre < Fenetre
 	end
 =end
 
-end

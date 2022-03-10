@@ -3,16 +3,50 @@ include Gtk
 load "Sauvegarde/SauvegardeProfil.rb"
 load "Sauvegarde/Profil.rb"
 
+##
+#   @author Trottier Léo / Quenault Maxime
+#
+#   Cette classe permet de gerer l'affichage de l'interface qui s'occupe des profils.
+#   Pour cela elle va creer une nouvelle fenetre et va recupere la liste de tous les profil sauvegardé sur la machine
+#   pour les proposer à l'utilisateur. Cette classe est différentes des autres interface car elle est indépendante,
+#   et n'utilise pas de fichier glade.
+#
+#   Voici ses méthodes :
+#
+#   - initialize : est le constructeur de la classe, il va recuperer la listes des profils sauvegarder et initiliser une fenetre
+#   - setmargin : ??? (léo je te laisse ecrire)
+#   - afficheToi : permet d'afficher la fenetre avec tous les profils de la sauvegarde, gère egalement la suppresion et la création
+#   de nouveau profils.
+#   - event : permet de supprimer l'affichage de la fenetre profil quand on a selectionner/créé un profil
+#   - destruction : permet de supprimer la fenetre si l'utilisateur clique sur la croix.
+#
+#   Voici ses VI :
+#
+#   @save : recupere la sauvegarde de tous les profils present sur la machine actuelle
+#   @quit : permet de communiquer à FenetreMenu si la fenetre a été fermé ou pas
+#   @popUpProfil : représente la fenêtre qui va acceuillir l'interface
+#   @profil : stock le profil selectionné par l'utilisateur, est récupéré ensuite par FenetreMenu
+
+
 class FenetreProfil
 
     attr_accessor :save,:profil, :quit
 
+    ##
+    # initialize :
+    #   Cette méthode est le constructeur de la classe FenetreProfil, il permet d'initialiser ses VI et de récupérer
+    #   la sauvegarde des profils existant sur la machine actuelle.
     def initialize
         @save = SauvegardeProfil.new
         @quit = false
-        @monApplication = Window.new()
+        @popUpProfil = Window.new()
+        @profil = nil
     end
 
+    ##
+    # setMargin :
+    #   ???
+    #
     def setmargin(obj, top, bottom, left, right)
         obj.set_margin_top(top)
         obj.set_margin_bottom(bottom)
@@ -21,36 +55,22 @@ class FenetreProfil
         return obj
     end
 
+
+    ##
+    # afficheToi :
+    #   Cette méthode permet de creer et d'afficher l'interface du choix de profils, elle creer
+    #   autant de bouton qu'il y a de profils, ce qui permet une extension dynamique de la fenêtre.
+    #   Elle permet aussi de gerer la suppresion des profils ou la création.
     def afficheToi
 
+        @popUpProfil.set_title("Choix profil")
+        @popUpProfil.border_width=10
+        @popUpProfil.set_resizable(false)
+        @popUpProfil.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
+        @popUpProfil.signal_connect('destroy') {destruction}
+        @popUpProfil.add(laFenetrePrincipale=Gtk::Box.new(:vertical, (@save.nbProfil + 1) ) )
 
-        ##################################
-        ## FONCTION BASIQUE DE CREATION ##
-        #Gtk.init
-        #Ne pas oublier cela sinon ça plante grave
-        #Gtk.init 
-        @monApplication.set_title("Choix profil")
-        @monApplication.border_width=10
-        # On ne peut pas redimensionner
-        @monApplication.set_resizable(false)
-        # L'application est toujours centrée
-        @monApplication.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
-        # Quand l'UI est détruite il faut quitter
-        @monApplication.signal_connect('destroy') {destruction}
-        ##################################
-
-
-        
-
-        ####################################
-        ## CREATION DES BOX DE LA FENÊTRE ##
-        @monApplication.add(laFenetrePrincipale=Gtk::Box.new(:vertical, (@save.nbProfil + 1) ) )
         laFenetrePrincipale.add(haut=Gtk::Box.new(:horizontal, 2))
-        ####################################
-
-
-        ###################################
-        ## CREATION BOUTON + ZONE SAISIE ##
 
         zoneText = Entry.new
         haut.add(setmargin(zoneText, 0, 15, 0, 0))
@@ -82,11 +102,11 @@ class FenetreProfil
                 
                 boutonProfil.signal_connect('clicked'){
                     @profil = @save.chargerProfil(key.pseudo)
-                    event(@monApplication)
+                    event(@popUpProfil)
                 }
 
                 boutonSupprimer.signal_connect('clicked'){
-                    d = Gtk::MessageDialog.new(@monApplication,
+                    d = Gtk::MessageDialog.new(@popUpProfil,
                     Gtk::Dialog::DESTROY_WITH_PARENT,
                     Gtk::MessageDialog::WARNING,
                     Gtk::MessageDialog::BUTTONS_YES_NO,
@@ -105,12 +125,7 @@ class FenetreProfil
                 }
             end
         end 
-        ###################################
 
-
-
-        ############################################
-        ## GESTION SIGNAL DE CLIQUE SUR LE BOUTON ##
 
         boutonValider.signal_connect('clicked') {
             pseudo = zoneText.text.to_s
@@ -119,7 +134,7 @@ class FenetreProfil
                 if @save.ajoutProfil(profil) != -1
                     @profil = @save.chargerProfil(pseudo)
                 else
-                    d = Gtk::MessageDialog.new(@monApplication,
+                    d = Gtk::MessageDialog.new(@popUpProfil,
                     Gtk::Dialog::DESTROY_WITH_PARENT,
                     Gtk::MessageDialog::WARNING,
                     Gtk::MessageDialog::BUTTONS_CLOSE,
@@ -130,26 +145,27 @@ class FenetreProfil
                 end
             end
         }
-        ############################################
 
-        
-        #############################
-        ## AFFICHAGE DE LA FENETRE ##
-        @monApplication.show_all
-        #############################
-
-
-        def event(monApplication)
-            monApplication.hide
-            Gtk.main_quit  
-        end
-
-        def destruction()
-            @quit = true
-            Gtk.main_quit
-        end
+        @popUpProfil.show_all
 
         Gtk.main           
+    end
+
+    ##
+    # event :
+    #   Cette méthode permet de cacher la fenetre lorsque l'utilisateur a choisi/créé un profil
+    #   @param popUpProfil represente la fenetre à cacher.
+    def event(popUpProfil)
+        popUpProfil.hide
+        Gtk.main_quit  
+    end
+
+    ##
+    # destruction :
+    #   Cette méthode permet de supprimer la fenetre si l'utilisateur la ferme. Elle met donc le boolean "@quit" à jour.
+    def destruction()
+        @quit = true
+        Gtk.main_quit
     end
 
 end

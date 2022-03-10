@@ -4,8 +4,8 @@ require 'gtk3'
 ##
 #   @author Quenault Maxime
 #   
-#   Cette classe permet de creer une fenetre. Elle gere egalement les changement d'interface.
-#   seulement les classe filles peuvent creer la classe Fenetre, la methode new est privé.
+#   Cette classe permet de creer une fenetre. Elle gere egalement les changements d'interface.
+#   seulement les classes filles peuvent creer la classe Fenetre, la methode new est privé.
 #   
 #   Voici les methodes de la classe Fenetre :
 #
