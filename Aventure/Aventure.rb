@@ -27,12 +27,18 @@ class Aventure
   # aventure, la difficulté Facile sera considérée comme étant toujours débloquée)                                            #
   #############################################################################################################################
 
+  # Défionition des Constantes
+
+      # Consernant les valeurs des deux VI palier ci-dessous elles sont provisoires(test) -> se mettre d'accord plus tard
+  # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée normale
+  PALIER_NORMAL = 30
+  # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée hard
+  PALIER_HARD = 70
+
+  # Définition des VI
+
   # entier qui représente le score du joueur en nombre d'étoiles
   @@nbEtoiles
-  # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée normale
-  @@palierNormal
-  # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée hard
-  @@palierHard
   # tableau de 3 booléens indiquant pour chaque difficultée, si elles sont débloquée ou non
   @@difficuleAcquise
   # tableau contenant les grilles du mode aventure
@@ -64,9 +70,6 @@ class Aventure
 
   # on redéfinit la méthode initialize() pour générer l'Aventure selon nos critères
   def initialize(uneDifficulte)
-    # Consernant les valeurs des deux VI palier ci-dessous elles sont provisoires(test) -> se mettre d'accord plus tard
-    @@palierNormal = 30
-    @@palierHard = 70
     @@nbEtoiles = 0
     @desGrilles = Array.new()
     # Tableau qui contiendra les étoiles de chaque grille
@@ -199,7 +202,7 @@ class Aventure
   def unlockDifficulte
     # Dans le cas où seule la difficulté Facile est débloquée
     if((@difficulte == 0) && (@@difficulteAcquise[1] == false))
-      if(self.assezEtoiles?(@@palierNormal))
+      if(self.assezEtoiles?(PALIER_NORMAL))
         @@difficulteAcquise[1] = true;
         print("\nBravo tu viens de débloquer la difficulté Normal !")
       else
@@ -207,7 +210,7 @@ class Aventure
       end
     elsif((@difficulte == 1) && (@@difficulteAcquise[2] == false))
       # Dans le cas où la difficulté Normal est débloquée
-        if(self.assezEtoiles?(@@palierHard))
+        if(self.assezEtoiles?(PALIER_HARD))
           @@difficulteAcquise[2] = true
           print("\nBravo tu viens de débloquer la difficulté Hard !")
         else
