@@ -321,7 +321,10 @@ class AffichageAventure
     # + attribution des récompenses en fonction du timer
     img_centre.signal_connect('clicked') {
 
-      chrono = Chronometre.creer(0,"+")
+      # Pour la création du chronomètre le deuxième paramètre est censé être le sens du timer
+      # -> dans Chronometre.rb il n'est pas précisé la valeur attendu pour la création d'un timer ascendant
+      # Par défaut j'ai mis "1" si ce n'est pas le cas alors il faudra moidifier
+      chrono = Chronometre.creer(0,1)
       # Ajouter méthode de lancement de la partie
       partie = Partie.creerToi(@aventure.getGrilleCourante())
       chrono.demarre()
