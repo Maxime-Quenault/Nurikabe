@@ -1,5 +1,4 @@
 require 'gtk3'
-load 'Partie/Partie.rb'
 
 
 ##
@@ -31,9 +30,8 @@ load 'Partie/Partie.rb'
 class Fenetre
 
     @@window = nil
-    @@partie = nil
 
-    #private_method new
+    # private_method new
 
     ##
     # changerInterface :
@@ -79,6 +77,11 @@ class Fenetre
         @header.title = "Nurikabe"
         @header.subtitle = "-"
         @@window.titlebar = @header
+
+        # CSS
+        @css = Gtk::CssProvider.new
+        @css.load(path: "Interfaces/style.css")
+        Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @css, Gtk::StyleProvider::PRIORITY_APPLICATION)
 
     end
 
@@ -152,13 +155,6 @@ class Fenetre
         self.deleteChildren
         self.remove(@header)
         Gtk.main_quit
-    end
-
-    ##
-    # creerPartie :
-    #   Creer et affecte une partie à la variable de classe partie avec la grille passée en paramètre
-    def creerPartie(grille)
-        @@partie = Partie.creeToi(grille)
     end
 
 end
