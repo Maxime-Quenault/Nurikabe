@@ -256,28 +256,28 @@ class AffichageAventure
     fenetre = monBuilder.get_object('fenetre_aventure')
 
     # On associe le bouton Retour avec la méthode de fermeture du mode Aventure
-    retour.signal_connect('clicked') {
+    retour.signal_connect('clicked'){
       @fenetre.destruction()
     }
 
-    @fenetre.signal_connect('destroy') {
+    @fenetre.signal_connect('destroy'){
       @fenetre.destruction()
     }
 
     # On associe le bouton Précédent avec la méthode grillePrecedente de la classe Aventure
-    btnPreced.signal_connect('clicked') {
+    btnPreced.signal_connect('clicked'){
       @aventure.grillePrecedente()
       @fenetre.boutonSuivPreced()
     }
 
     # On associe le bouton Suivant avec la méthode prochaineGrille de la classe Aventure
-    btnSuivant.signal_connect('clicked') {
+    btnSuivant.signal_connect('clicked'){
       @aventure.prochaineGrille()
       @fenetre.boutonSuivPreced()
     }
 
     # On associe le bouton facile avec la méthode de choix de difficulté de la classe Aventure
-    modeFacile.signal_connect('clicked') {
+    modeFacile.signal_connect('clicked'){
       @aventure.choixDifficulte(0)
       @aventure.placerSurGrille(0)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
@@ -289,7 +289,7 @@ class AffichageAventure
     }
 
     # On associe le bouton normal avec la méthode de choix de difficulté de la classe Aventure
-    modeNormal.signal_connect('clicked') {
+    modeNormal.signal_connect('clicked'){
       if(@aventure.unlockDifficulte())
         @aventure.choixDifficulte(1)
       end
@@ -303,7 +303,7 @@ class AffichageAventure
     }
 
     # On associe le bouton difficile avec la méthode de choix de difficulté de la classe Aventure
-    modeHard.signal_connect('clicked') {
+    modeHard.signal_connect('clicked'){
       @aventure.choixDifficulte(1)
       if(@aventure.unlockDifficulte())
         @aventure.choixDifficulte(2)
@@ -319,7 +319,7 @@ class AffichageAventure
 
     # On associe l'image de la grille avec la méthode de lancement de la Partie
     # + attribution des récompenses en fonction du timer
-    img_centre.signal_connect('clicked') {
+    img_centre.signal_connect('clicked'){
 
       # Pour la création du chronomètre le deuxième paramètre est censé être le sens du timer
       # -> dans Chronometre.rb il n'est pas précisé la valeur attendu pour la création d'un timer ascendant
@@ -355,7 +355,7 @@ class AffichageAventure
     }
 
     # On associe le bouton 1 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton1.signal_connect('clicked') {
+    @bouton1.signal_connect('clicked'){
       @aventure.placerSurGrille(0)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageTemps()
@@ -373,7 +373,7 @@ class AffichageAventure
     }
 
     # On associe le bouton 2 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton2.signal_connect('clicked') {
+    @bouton2.signal_connect('clicked'){
       @aventure.placerSurGrille(1)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageTemps()
@@ -391,7 +391,7 @@ class AffichageAventure
     }
 
     # On associe le bouton 3 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton3.signal_connect('clicked') {
+    @bouton3.signal_connect('clicked'){
       @aventure.placerSurGrille(2)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageTemps()
@@ -409,7 +409,7 @@ class AffichageAventure
     }
 
     # On associe le bouton 4 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton4.signal_connect('clicked') {
+    @bouton4.signal_connect('clicked'){
       @aventure.placerSurGrille(3)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageTemps()
@@ -427,7 +427,7 @@ class AffichageAventure
     }
 
     # On associe le bouton 5 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton5.signal_connect('clicked') {
+    @bouton5.signal_connect('clicked'){
       @aventure.placerSurGrille(4)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageTemps()
@@ -445,7 +445,7 @@ class AffichageAventure
     }
 
     # On associe le bouton 6 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton6.signal_connect('clicked') {
+    @bouton6.signal_connect('clicked'){
       @aventure.placerSurGrille(5)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageTemps()
@@ -463,7 +463,7 @@ class AffichageAventure
     }
 
     # On associe le bouton 7 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton7.signal_connect('clicked') {
+    @bouton7.signal_connect('clicked'){
       @aventure.placerSurGrille(6)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageTemps()
@@ -481,7 +481,7 @@ class AffichageAventure
     }
 
     # On associe le bouton 8 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton8.signal_connect('clicked') {
+    @bouton8.signal_connect('clicked'){
       @aventure.placerSurGrille(7)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageTemps()
@@ -499,7 +499,7 @@ class AffichageAventure
     }
 
     # On associe le bouton 9 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton9.signal_connect('clicked') {
+    @bouton9.signal_connect('clicked'){
       @aventure.placerSurGrille(8)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageTemps()
@@ -517,7 +517,7 @@ class AffichageAventure
     }
 
     # On associe le bouton 10 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton10.signal_connect('clicked') {
+    @bouton10.signal_connect('clicked'){
       @aventure.placerSurGrille(9)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageTemps()
@@ -534,7 +534,7 @@ class AffichageAventure
       @fenetre.setBackground(@bouton10,@couleurVisible)
     }
 
-    @fenetre.show_all
+    @fenetre.show_all()
 
     Gtk.main
 
