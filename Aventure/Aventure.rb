@@ -39,6 +39,8 @@ class Aventure
   @desGrilles
   # tableau contenant le nombre d'étoiles de chaque grille
   @desEtoiles
+  # tableau contenant les temps de chaque grille
+  @desTemps
   # position courante dans le mode Aventure
   @posCourante
   # entier représentant la difficultée actuelle associée à cette Aventure
@@ -53,7 +55,7 @@ class Aventure
 
   # Coding Assistant pour faciliter les accès des différentes variables
   attr_reader :palierNormal, :palierHard, :desGrilles, :difficuleAcquise, :difficulte, :precedenteDiff, :suivanteDiff;
-  attr :posCourante, :nbEtoiles, :desEtoiles true;
+  attr :posCourante, :nbEtoiles, :desEtoiles, :desTemps true;
 
   # On définit notre propre façon de générer une Aventure
   def Aventure.creer(aventurePreced, uneDifficulte, aventureSuiv)
@@ -68,7 +70,9 @@ class Aventure
     @@nbEtoiles = 0
     @desGrilles = Array.new()
     #Tableau qui contiendra les étoiles de chaque grille
-    @desEtoiles = Array.new()
+    @desEtoiles = Array.new(10,0)
+
+    @desTemps = Array.new(10,0.00)
 
     @posCourante = 0
     @difficulte = uneDifficulte
@@ -128,6 +132,18 @@ class Aventure
     if(unNombre > self.getEtoileCourante())
       etoilesEnPlus(unNombre - self.getEtoileCourante())
       @desEtoiles[@posCourante] = unNombre
+    end
+  end
+
+  # Méthode d'accès en lecture du temps de la grille actuelle
+  def getTempsCourant
+    return @desTemps[@posCourante]
+  end
+
+  # Méthode d'accès en écriture du temps de la grille actuelle
+  def setTempsCourant(unTemps)
+    if(unTemps < self.getTempsCourant())
+      @desTemps[@posCourante] = unTemps
     end
   end
 
