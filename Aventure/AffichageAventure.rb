@@ -17,6 +17,8 @@ class AffichageAventure
   SEUIL_2_ETOILES = 2.0
   SEUIL_1_ETOILE = 2.20
 
+  # Variable d'instance qui représente la couleur de la fenêtre
+  @couleurFenetre
   # Variable d'instance qui représente la couleur générale de la fenêtre(thème)
   @couleurBase
   # Variable d'instance qui représente la couleur secondaire qui ressort de la couleur générale(thème)
@@ -51,6 +53,15 @@ class AffichageAventure
   def destruction
     Gtk.main_quit
     return
+  end
+
+  def getCouleurFenetre
+    return @couleurFenetre
+  end
+
+  def setCouleurFenetre(uneCouleur)
+    @couleurFenetre = uneCouleur
+    #gtk_widget_modify_bg(@fenetre, GTK_STATE_NORMAL, @couleurFenetre);
   end
 
   # Méthode d'accès en lecture de la couleur générale de la fenêtre
@@ -95,42 +106,25 @@ class AffichageAventure
   # On prend en paramètre un nombre d'étoiles (correspond au score de la grille)
   # Puis on affiche autant d'étoile que le paramètre puis on complète le reste avec des étoiles noires
   def affichageEtoile(nbEtoiles)
-    case nbEtoiles
-    when 0
-      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-    when 1
+    @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+    @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+    @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+    @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+    @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+
+    if(nbEtoiles >= 1)
       @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-    when 2
-      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+    end
+    if(nbEtoiles >= 2)
       @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-    when 3
-      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+    end
+    if(nbEtoiles >= 3)
       @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-    when 4
-      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+    end
+    if(nbEtoiles >= 4)
       @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-    when 5
-      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+    end
+    if(nbEtoiles == 5)
       @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
     end
   end
@@ -315,13 +309,13 @@ class AffichageAventure
 
       chrono = Chronometre.creer(0,"+")
       # Ajouter méthode de lancement de la partie
-      partie = Partie.creerToi(@aventure.getGrilleCourante)
+      partie = Partie.creerToi(@aventure.getGrilleCourante())
       chrono.demarre()
       # + récupération du timer
       while(!partie.estFinie?());
       # Puis attribution du nombre d'étoiles en fonction du timer (à définir)
-
-      temps = chrono.getTemps();
+      chrono.metEnPause()
+      temps = chrono.getTemps()
 
       case temps
       when temps <= SEUIL_5_ETOILES

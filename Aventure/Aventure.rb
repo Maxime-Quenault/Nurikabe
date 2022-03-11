@@ -37,6 +37,8 @@ class Aventure
   @@difficuleAcquise
   # tableau contenant les grilles du mode aventure
   @desGrilles
+  # tableau contenant le nombre d'étoiles de chaque grille
+  @desEtoiles
   # position courante dans le mode Aventure
   @posCourante
   # entier représentant la difficultée actuelle associée à cette Aventure
@@ -47,6 +49,7 @@ class Aventure
   @precedenteDiff
   # Même cas pour l'aventure suivante
   @suivanteDiff
+
 
   # Coding Assistant pour faciliter les accès des différentes variables
   attr_reader :palierNormal, :palierHard, :desGrilles, :difficuleAcquise, :difficulte, :precedenteDiff, :suivanteDiff;
