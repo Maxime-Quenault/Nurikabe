@@ -1,4 +1,5 @@
 require 'gtk3'
+load 'Partie/Partie.rb'
 
 
 ##
@@ -30,6 +31,7 @@ require 'gtk3'
 class Fenetre
 
     @@window = nil
+    @@partie = nil
 
     #private_method new
 
@@ -150,6 +152,13 @@ class Fenetre
         self.deleteChildren
         self.remove(@header)
         Gtk.main_quit
+    end
+
+    ##
+    # creerPartie :
+    #   Creer et affecte une partie à la variable de classe partie avec la grille passée en paramètre
+    def creerPartie(grille)
+        @@partie = Partie.creeToi(grille)
     end
 
 end
