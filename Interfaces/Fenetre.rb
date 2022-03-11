@@ -31,7 +31,7 @@ class Fenetre
 
     @@window = nil
 
-    private_method new
+    #private_method new
 
     ##
     # changerInterface :
