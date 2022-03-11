@@ -95,7 +95,7 @@ class Aventure
 
   # Pour générer l'aventure(suite de niveaux), on fait appel à la classe Grille pour générer les niveaux
   def generationAventure(nbNiveau)
-    for(int i = 0; i < nbNiveau; i++)
+    for i in 0...nbNiveau do
       @desGrilles[i] = Grille.new()
       @desEtoiles[i] = 0
     end
