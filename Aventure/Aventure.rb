@@ -69,9 +69,9 @@ class Aventure
     @@palierHard = 70
     @@nbEtoiles = 0
     @desGrilles = Array.new()
-    #Tableau qui contiendra les étoiles de chaque grille
+    # Tableau qui contiendra les étoiles de chaque grille
     @desEtoiles = Array.new(10,0)
-
+    # Tableau qui contiendra les temps de chaque grille
     @desTemps = Array.new(10,0.00)
 
     @posCourante = 0
