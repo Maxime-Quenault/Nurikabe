@@ -58,8 +58,8 @@ class Aventure
   attr :posCourante, :nbEtoiles, :desEtoiles, :desTemps true;
 
   # On définit notre propre façon de générer une Aventure
-  def Aventure.creer(aventurePreced, uneDifficulte, aventureSuiv)
-    new(aventurePreced, uneDifficulte, aventureSuiv)
+  def Aventure.creer(uneDifficulte)
+    new(uneDifficulte)
   end
 
   # on redéfinit la méthode initialize() pour générer l'Aventure selon nos critères
