@@ -28,6 +28,25 @@ class AffichageAventure
   # Variable d'instance qui contient l'aventure en cours
   @aventure
 
+  # Variables d'instances liées aux images des étoiles -> afin d'être connu de toutes les méthodes
+  @imgEtoile1
+  @imgEtoile2
+  @imgEtoile3
+  @imgEtoile4
+  @imgEtoile5
+
+  # Variables d'instances liées aux boutons de la barre de déplacement -> afin d'être connu de toutes les méthodes
+  @bouton1
+  @bouton2
+  @bouton3
+  @bouton4
+  @bouton5
+  @bouton6
+  @bouton7
+  @bouton8
+  @bouton9
+  @bouton10
+
   # Méthode qui ferme la fenêtre du mode Aventure
   def destruction
     Gtk.main_quit
@@ -64,7 +83,7 @@ class AffichageAventure
   # => grilleVide que l'on affichera si la grille actuelle n'a pas été terminée
   # => grillePleine que l'on affichera si la grille actuelle a été terminée(peu importe le score)
   # Pas de miniature de la grille -> évite la triche
-  def affichageImage
+  def affichageImageGrille
     if(@aventure.getEtoileCourante() == 0)
       Gtk::Image.gtk_image_set_from_file(@image,"../Image/grilleVide.png")
     else
@@ -78,41 +97,41 @@ class AffichageAventure
   def affichageEtoile(nbEtoiles)
     case nbEtoiles
     when 0
-      imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
     when 1
-      imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
     when 2
-      imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
     when 3
-      imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
     when 4
-      imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
     when 5
-      imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
     end
   end
 
@@ -124,34 +143,34 @@ class AffichageAventure
   def boutonSuivPreced
     case(@aventure.getPosCourante())
     when 0
-      @fenetre.pack_start(bouton1)
+      @fenetre.pack_start(@bouton1)
       break
     when 1
-      @fenetre.pack_start(bouton2)
+      @fenetre.pack_start(@bouton2)
       break
     when 2
-      @fenetre.pack_start(bouton3)
+      @fenetre.pack_start(@bouton3)
       break
     when 3
-      @fenetre.pack_start(bouton4)
+      @fenetre.pack_start(@bouton4)
       break
     when 4
-      @fenetre.pack_start(bouton5)
+      @fenetre.pack_start(@bouton5)
       break
     when 5
-      @fenetre.pack_start(bouton6)
+      @fenetre.pack_start(@bouton6)
       break
     when 6
-      @fenetre.pack_start(bouton7)
+      @fenetre.pack_start(@bouton7)
       break
     when 7
-      @fenetre.pack_start(bouton8)
+      @fenetre.pack_start(@bouton8)
       break
     when 8
-      @fenetre.pack_start(bouton9)
+      @fenetre.pack_start(@bouton9)
       break
     when 9
-      @fenetre.pack_start(bouton10)
+      @fenetre.pack_start(@bouton10)
       break
     end
   end
@@ -198,16 +217,16 @@ class AffichageAventure
     retour = monBuildeur.get_object('btn_retour')
 
     # Déclaration des boutons de déplacement de la barre située en bas de fenêtre
-    bouton1 = monBuildeur.get_object('btn_grille_1')
-    bouton2 = monBuildeur.get_object('btn_grille_2')
-    bouton3 = monBuildeur.get_object('btn_grille_3')
-    bouton4 = monBuildeur.get_object('btn_grille_4')
-    bouton5 = monBuildeur.get_object('btn_grille_5')
-    bouton6 = monBuildeur.get_object('btn_grille_6')
-    bouton7 = monBuildeur.get_object('btn_grille_7')
-    bouton8 = monBuildeur.get_object('btn_grille_8')
-    bouton9 = monBuildeur.get_object('btn_grille_9')
-    bouton10 = monBuildeur.get_object('btn_grille_10')
+    @bouton1 = monBuildeur.get_object('btn_grille_1')
+    @bouton2 = monBuildeur.get_object('btn_grille_2')
+    @bouton3 = monBuildeur.get_object('btn_grille_3')
+    @bouton4 = monBuildeur.get_object('btn_grille_4')
+    @bouton5 = monBuildeur.get_object('btn_grille_5')
+    @bouton6 = monBuildeur.get_object('btn_grille_6')
+    @bouton7 = monBuildeur.get_object('btn_grille_7')
+    @bouton8 = monBuildeur.get_object('btn_grille_8')
+    @bouton9 = monBuildeur.get_object('btn_grille_9')
+    @bouton10 = monBuildeur.get_object('btn_grille_10')
 
     # Déclaration des boutons de changement de difficulté situés en haut de la fenêtre
     modeFacile = monBuildeur.get_object('btn_facile')
@@ -222,11 +241,11 @@ class AffichageAventure
     img_centre = monBuildeur.get_object('img_grille')
 
     # Déclaration des images étoiles qui seront liées au score de la grille actuelle
-    imgEtoile1 = monBuildeur.get_object('etoile_1')
-    imgEtoile2 = monBuildeur.get_object('etoile_2')
-    imgEtoile3 = monBuildeur.get_object('etoile_3')
-    imgEtoile4 = monBuildeur.get_object('etoile_4')
-    imgEtoile5 = monBuildeur.get_object('etoile_5')
+    @imgEtoile1 = monBuildeur.get_object('etoile_1')
+    @imgEtoile2 = monBuildeur.get_object('etoile_2')
+    @imgEtoile3 = monBuildeur.get_object('etoile_3')
+    @imgEtoile4 = monBuildeur.get_object('etoile_4')
+    @imgEtoile5 = monBuildeur.get_object('etoile_5')
 
     # Déclaration de la fenêtre du mode Aventure
     fenetre = monBuilder.get_object('fenetre_aventure')
@@ -257,7 +276,7 @@ class AffichageAventure
       @aventure.choixDifficulte(0)
       @aventure.placerSurGrille(0)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageImage()
+      @fenetre.affichageImageGrille()
       @fenetre.setBackground(modeFacile,@couleurVisible)
       @fenetre.setBackground(modeNormal,@couleurBase)
       @fenetre.setBackground(modeHard,@couleurBase)
@@ -270,7 +289,7 @@ class AffichageAventure
       end
       @aventure.placerSurGrille(0)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageImage()
+      @fenetre.affichageImageGrille()
       @fenetre.setBackground(modeFacile,@couleurBase)
       @fenetre.setBackground(modeNormal,@couleurVisible)
       @fenetre.setBackground(modeHard,@couleurBase)
@@ -284,7 +303,7 @@ class AffichageAventure
       end
       @aventure.placerSurGrille(0)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageImage()
+      @fenetre.affichageImageGrille()
       @fenetre.setBackground(modeFacile,@couleurBase)
       @fenetre.setBackground(modeNormal,@couleurBase)
       @fenetre.setBackground(modeHard,@couleurVisible)
@@ -324,173 +343,173 @@ class AffichageAventure
     }
 
     # On associe le bouton 1 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    bouton1.signal_connect('clicked') {
+    @bouton1.signal_connect('clicked') {
       @aventure.placerSurGrille(0)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageImage()
-      @fenetre.setBackground(bouton1,@couleurVisible)
-      @fenetre.setBackground(bouton2,@couleurBase)
-      @fenetre.setBackground(bouton3,@couleurBase)
-      @fenetre.setBackground(bouton4,@couleurBase)
-      @fenetre.setBackground(bouton5,@couleurBase)
-      @fenetre.setBackground(bouton6,@couleurBase)
-      @fenetre.setBackground(bouton7,@couleurBase)
-      @fenetre.setBackground(bouton8,@couleurBase)
-      @fenetre.setBackground(bouton9,@couleurBase)
-      @fenetre.setBackground(bouton10,@couleurBase)
+      @fenetre.affichageImageGrille()
+      @fenetre.setBackground(@bouton1,@couleurVisible)
+      @fenetre.setBackground(@bouton2,@couleurBase)
+      @fenetre.setBackground(@bouton3,@couleurBase)
+      @fenetre.setBackground(@bouton4,@couleurBase)
+      @fenetre.setBackground(@bouton5,@couleurBase)
+      @fenetre.setBackground(@bouton6,@couleurBase)
+      @fenetre.setBackground(@bouton7,@couleurBase)
+      @fenetre.setBackground(@bouton8,@couleurBase)
+      @fenetre.setBackground(@bouton9,@couleurBase)
+      @fenetre.setBackground(@bouton10,@couleurBase)
     }
 
     # On associe le bouton 2 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    bouton2.signal_connect('clicked') {
+    @bouton2.signal_connect('clicked') {
       @aventure.placerSurGrille(1)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageImage()
-      @fenetre.setBackground(bouton1,@couleurBase)
-      @fenetre.setBackground(bouton2,@couleurVisible)
-      @fenetre.setBackground(bouton3,@couleurBase)
-      @fenetre.setBackground(bouton4,@couleurBase)
-      @fenetre.setBackground(bouton5,@couleurBase)
-      @fenetre.setBackground(bouton6,@couleurBase)
-      @fenetre.setBackground(bouton7,@couleurBase)
-      @fenetre.setBackground(bouton8,@couleurBase)
-      @fenetre.setBackground(bouton9,@couleurBase)
-      @fenetre.setBackground(bouton10,@couleurBase)
+      @fenetre.affichageImageGrille()
+      @fenetre.setBackground(@bouton1,@couleurBase)
+      @fenetre.setBackground(@bouton2,@couleurVisible)
+      @fenetre.setBackground(@bouton3,@couleurBase)
+      @fenetre.setBackground(@bouton4,@couleurBase)
+      @fenetre.setBackground(@bouton5,@couleurBase)
+      @fenetre.setBackground(@bouton6,@couleurBase)
+      @fenetre.setBackground(@bouton7,@couleurBase)
+      @fenetre.setBackground(@bouton8,@couleurBase)
+      @fenetre.setBackground(@bouton9,@couleurBase)
+      @fenetre.setBackground(@bouton10,@couleurBase)
     }
 
     # On associe le bouton 3 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    bouton3.signal_connect('clicked') {
+    @bouton3.signal_connect('clicked') {
       @aventure.placerSurGrille(2)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageImage()
-      @fenetre.setBackground(bouton1,@couleurBase)
-      @fenetre.setBackground(bouton2,@couleurBase)
-      @fenetre.setBackground(bouton3,@couleurVisible)
-      @fenetre.setBackground(bouton4,@couleurBase)
-      @fenetre.setBackground(bouton5,@couleurBase)
-      @fenetre.setBackground(bouton6,@couleurBase)
-      @fenetre.setBackground(bouton7,@couleurBase)
-      @fenetre.setBackground(bouton8,@couleurBase)
-      @fenetre.setBackground(bouton9,@couleurBase)
-      @fenetre.setBackground(bouton10,@couleurBase)
+      @fenetre.affichageImageGrille()
+      @fenetre.setBackground(@bouton1,@couleurBase)
+      @fenetre.setBackground(@bouton2,@couleurBase)
+      @fenetre.setBackground(@bouton3,@couleurVisible)
+      @fenetre.setBackground(@bouton4,@couleurBase)
+      @fenetre.setBackground(@bouton5,@couleurBase)
+      @fenetre.setBackground(@bouton6,@couleurBase)
+      @fenetre.setBackground(@bouton7,@couleurBase)
+      @fenetre.setBackground(@bouton8,@couleurBase)
+      @fenetre.setBackground(@bouton9,@couleurBase)
+      @fenetre.setBackground(@bouton10,@couleurBase)
     }
 
     # On associe le bouton 4 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    bouton4.signal_connect('clicked') {
+    @bouton4.signal_connect('clicked') {
       @aventure.placerSurGrille(3)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageImage()
-      @fenetre.setBackground(bouton1,@couleurBase)
-      @fenetre.setBackground(bouton2,@couleurBase)
-      @fenetre.setBackground(bouton3,@couleurBase)
-      @fenetre.setBackground(bouton4,@couleurVisible)
-      @fenetre.setBackground(bouton5,@couleurBase)
-      @fenetre.setBackground(bouton6,@couleurBase)
-      @fenetre.setBackground(bouton7,@couleurBase)
-      @fenetre.setBackground(bouton8,@couleurBase)
-      @fenetre.setBackground(bouton9,@couleurBase)
-      @fenetre.setBackground(bouton10,@couleurBase)
+      @fenetre.affichageImageGrille()
+      @fenetre.setBackground(@bouton1,@couleurBase)
+      @fenetre.setBackground(@bouton2,@couleurBase)
+      @fenetre.setBackground(@bouton3,@couleurBase)
+      @fenetre.setBackground(@bouton4,@couleurVisible)
+      @fenetre.setBackground(@bouton5,@couleurBase)
+      @fenetre.setBackground(@bouton6,@couleurBase)
+      @fenetre.setBackground(@bouton7,@couleurBase)
+      @fenetre.setBackground(@bouton8,@couleurBase)
+      @fenetre.setBackground(@bouton9,@couleurBase)
+      @fenetre.setBackground(@bouton10,@couleurBase)
     }
 
     # On associe le bouton 5 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    bouton5.signal_connect('clicked') {
+    @bouton5.signal_connect('clicked') {
       @aventure.placerSurGrille(4)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageImage()
-      @fenetre.setBackground(bouton1,@couleurBase)
-      @fenetre.setBackground(bouton2,@couleurBase)
-      @fenetre.setBackground(bouton3,@couleurBase)
-      @fenetre.setBackground(bouton4,@couleurBase)
-      @fenetre.setBackground(bouton5,@couleurVisible)
-      @fenetre.setBackground(bouton6,@couleurBase)
-      @fenetre.setBackground(bouton7,@couleurBase)
-      @fenetre.setBackground(bouton8,@couleurBase)
-      @fenetre.setBackground(bouton9,@couleurBase)
-      @fenetre.setBackground(bouton10,@couleurBase)
+      @fenetre.affichageImageGrille()
+      @fenetre.setBackground(@bouton1,@couleurBase)
+      @fenetre.setBackground(@bouton2,@couleurBase)
+      @fenetre.setBackground(@bouton3,@couleurBase)
+      @fenetre.setBackground(@bouton4,@couleurBase)
+      @fenetre.setBackground(@bouton5,@couleurVisible)
+      @fenetre.setBackground(@bouton6,@couleurBase)
+      @fenetre.setBackground(@bouton7,@couleurBase)
+      @fenetre.setBackground(@bouton8,@couleurBase)
+      @fenetre.setBackground(@bouton9,@couleurBase)
+      @fenetre.setBackground(@bouton10,@couleurBase)
     }
 
     # On associe le bouton 6 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    bouton6.signal_connect('clicked') {
+    @bouton6.signal_connect('clicked') {
       @aventure.placerSurGrille(5)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageImage()
-      @fenetre.setBackground(bouton1,@couleurBase)
-      @fenetre.setBackground(bouton2,@couleurBase)
-      @fenetre.setBackground(bouton3,@couleurBase)
-      @fenetre.setBackground(bouton4,@couleurBase)
-      @fenetre.setBackground(bouton5,@couleurBase)
-      @fenetre.setBackground(bouton6,@couleurVisible)
-      @fenetre.setBackground(bouton7,@couleurBase)
-      @fenetre.setBackground(bouton8,@couleurBase)
-      @fenetre.setBackground(bouton9,@couleurBase)
-      @fenetre.setBackground(bouton10,@couleurBase)
+      @fenetre.affichageImageGrille()
+      @fenetre.setBackground(@bouton1,@couleurBase)
+      @fenetre.setBackground(@bouton2,@couleurBase)
+      @fenetre.setBackground(@bouton3,@couleurBase)
+      @fenetre.setBackground(@bouton4,@couleurBase)
+      @fenetre.setBackground(@bouton5,@couleurBase)
+      @fenetre.setBackground(@bouton6,@couleurVisible)
+      @fenetre.setBackground(@bouton7,@couleurBase)
+      @fenetre.setBackground(@bouton8,@couleurBase)
+      @fenetre.setBackground(@bouton9,@couleurBase)
+      @fenetre.setBackground(@bouton10,@couleurBase)
     }
 
     # On associe le bouton 7 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    bouton7.signal_connect('clicked') {
+    @bouton7.signal_connect('clicked') {
       @aventure.placerSurGrille(6)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageImage()
-      @fenetre.setBackground(bouton1,@couleurBase)
-      @fenetre.setBackground(bouton2,@couleurBase)
-      @fenetre.setBackground(bouton3,@couleurBase)
-      @fenetre.setBackground(bouton4,@couleurBase)
-      @fenetre.setBackground(bouton5,@couleurBase)
-      @fenetre.setBackground(bouton6,@couleurBase)
-      @fenetre.setBackground(bouton7,@couleurVisible)
-      @fenetre.setBackground(bouton8,@couleurBase)
-      @fenetre.setBackground(bouton9,@couleurBase)
-      @fenetre.setBackground(bouton10,@couleurBase)
+      @fenetre.affichageImageGrille()
+      @fenetre.setBackground(@bouton1,@couleurBase)
+      @fenetre.setBackground(@bouton2,@couleurBase)
+      @fenetre.setBackground(@bouton3,@couleurBase)
+      @fenetre.setBackground(@bouton4,@couleurBase)
+      @fenetre.setBackground(@bouton5,@couleurBase)
+      @fenetre.setBackground(@bouton6,@couleurBase)
+      @fenetre.setBackground(@bouton7,@couleurVisible)
+      @fenetre.setBackground(@bouton8,@couleurBase)
+      @fenetre.setBackground(@bouton9,@couleurBase)
+      @fenetre.setBackground(@bouton10,@couleurBase)
     }
 
     # On associe le bouton 8 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    bouton8.signal_connect('clicked') {
+    @bouton8.signal_connect('clicked') {
       @aventure.placerSurGrille(7)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageImage()
-      @fenetre.setBackground(bouton1,@couleurBase)
-      @fenetre.setBackground(bouton2,@couleurBase)
-      @fenetre.setBackground(bouton3,@couleurBase)
-      @fenetre.setBackground(bouton4,@couleurBase)
-      @fenetre.setBackground(bouton5,@couleurBase)
-      @fenetre.setBackground(bouton6,@couleurBase)
-      @fenetre.setBackground(bouton7,@couleurBase)
-      @fenetre.setBackground(bouton8,@couleurVisible)
-      @fenetre.setBackground(bouton9,@couleurBase)
-      @fenetre.setBackground(bouton10,@couleurBase)
+      @fenetre.affichageImageGrille()
+      @fenetre.setBackground(@bouton1,@couleurBase)
+      @fenetre.setBackground(@bouton2,@couleurBase)
+      @fenetre.setBackground(@bouton3,@couleurBase)
+      @fenetre.setBackground(@bouton4,@couleurBase)
+      @fenetre.setBackground(@bouton5,@couleurBase)
+      @fenetre.setBackground(@bouton6,@couleurBase)
+      @fenetre.setBackground(@bouton7,@couleurBase)
+      @fenetre.setBackground(@bouton8,@couleurVisible)
+      @fenetre.setBackground(@bouton9,@couleurBase)
+      @fenetre.setBackground(@bouton10,@couleurBase)
     }
 
     # On associe le bouton 9 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    bouton9.signal_connect('clicked') {
+    @bouton9.signal_connect('clicked') {
       @aventure.placerSurGrille(8)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageImage()
-      @fenetre.setBackground(bouton1,@couleurBase)
-      @fenetre.setBackground(bouton2,@couleurBase)
-      @fenetre.setBackground(bouton3,@couleurBase)
-      @fenetre.setBackground(bouton4,@couleurBase)
-      @fenetre.setBackground(bouton5,@couleurBase)
-      @fenetre.setBackground(bouton6,@couleurBase)
-      @fenetre.setBackground(bouton7,@couleurBase)
-      @fenetre.setBackground(bouton8,@couleurBase)
-      @fenetre.setBackground(bouton9,@couleurVisible)
-      @fenetre.setBackground(bouton10,@couleurBase)
+      @fenetre.affichageImageGrille()
+      @fenetre.setBackground(@bouton1,@couleurBase)
+      @fenetre.setBackground(@bouton2,@couleurBase)
+      @fenetre.setBackground(@bouton3,@couleurBase)
+      @fenetre.setBackground(@bouton4,@couleurBase)
+      @fenetre.setBackground(@bouton5,@couleurBase)
+      @fenetre.setBackground(@bouton6,@couleurBase)
+      @fenetre.setBackground(@bouton7,@couleurBase)
+      @fenetre.setBackground(@bouton8,@couleurBase)
+      @fenetre.setBackground(@bouton9,@couleurVisible)
+      @fenetre.setBackground(@bouton10,@couleurBase)
     }
 
     # On associe le bouton 10 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    bouton10.signal_connect('clicked') {
+    @bouton10.signal_connect('clicked') {
       @aventure.placerSurGrille(9)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageImage()
-      @fenetre.setBackground(bouton1,@couleurBase)
-      @fenetre.setBackground(bouton2,@couleurBase)
-      @fenetre.setBackground(bouton3,@couleurBase)
-      @fenetre.setBackground(bouton4,@couleurBase)
-      @fenetre.setBackground(bouton5,@couleurBase)
-      @fenetre.setBackground(bouton6,@couleurBase)
-      @fenetre.setBackground(bouton7,@couleurBase)
-      @fenetre.setBackground(bouton8,@couleurBase)
-      @fenetre.setBackground(bouton9,@couleurBase)
-      @fenetre.setBackground(bouton10,@couleurVisible)
+      @fenetre.affichageImageGrille()
+      @fenetre.setBackground(@bouton1,@couleurBase)
+      @fenetre.setBackground(@bouton2,@couleurBase)
+      @fenetre.setBackground(@bouton3,@couleurBase)
+      @fenetre.setBackground(@bouton4,@couleurBase)
+      @fenetre.setBackground(@bouton5,@couleurBase)
+      @fenetre.setBackground(@bouton6,@couleurBase)
+      @fenetre.setBackground(@bouton7,@couleurBase)
+      @fenetre.setBackground(@bouton8,@couleurBase)
+      @fenetre.setBackground(@bouton9,@couleurBase)
+      @fenetre.setBackground(@bouton10,@couleurVisible)
     }
 
     @fenetre.show_all
