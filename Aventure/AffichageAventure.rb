@@ -2,10 +2,10 @@
 require "yaml.rb"
 require 'gtk3'
 include Gtk
-load "Aventure.rb"
-load "Partie.rb"
-load "Chronometre.rb"
-load "Grille.rb"
+load "../Aventure/Aventure.rb"
+load "../Partie/Partie.rb"
+load "../Partie/Chronometre.rb"
+load "../Partie/Grille.rb"
 
 # Définition de la classe AffichageAventure qui affichera le mode Aventure
 class AffichageAventure
@@ -186,7 +186,7 @@ class AffichageAventure
 
     # On créer un buildeur qui récupère les éléments de notre fenêtre créée sur Glade
     monBuildeur = Gtk::Builder.new()
-    monBuildeur.add_from_file("../Modele_Image/aventure_normal_img.glade")
+    monBuildeur.add_from_file("../glade/aventure_normal_img.glade")
 
     # On créer 3 objets aventures plus un autre qui manipulera les références des autres
     # Création des 3 aventures : Facile , Normale , Difficile avec générations des niveaux

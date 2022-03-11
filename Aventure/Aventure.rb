@@ -1,7 +1,7 @@
 # Classes à charger :
 # Sûrement d'autres à ajouter
-load "Grille.rb"
-load "Chronometre.rb"
+load "../Partie/Grille.rb"
+
 # Définition de la classe Aventure
 class Aventure
 
