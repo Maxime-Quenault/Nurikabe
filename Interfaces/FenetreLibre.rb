@@ -84,9 +84,7 @@ class FenetreLibre < Fenetre
 			g=Grille.creer()
 			g.chargerGrille(2,0)
 			creerPartie(g)
-			@@partie.clicSurCase(0,0)
 			@interfaceGrille.construction
-			puts @@partie.grilleEnCours
 			self.changerInterface(@interfaceGrille.object, "Partie")
 		}
 		@btn_moyen.signal_connect("clicked"){print "\nTu as cliqué sur le mode Moyen"}
