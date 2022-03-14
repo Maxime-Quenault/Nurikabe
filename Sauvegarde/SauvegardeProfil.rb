@@ -86,17 +86,8 @@ class SauvegardeProfil
         return true
     end
 
+    def sauvegarder(unProfil)
+        
+    end
+
 end
-
-##  TEST UNITAIRE  ##
-
-#uneSave = SauvegardeProfil.new()
-# profil1 = Profil.new("Léo")
-# uneSave.ajoutProfil(profil1)
-# profil2 = Profil.new("Maxime")
-# uneSave.ajoutProfil(profil2)
-
-# profil = uneSave.chargerProfil("Léo")
-
-# uneSave.modifierPseudo("Léo", profil)
-#unProfil = uneSave.afficherSauvegarde

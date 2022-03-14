@@ -32,6 +32,7 @@ class Fenetre
 
     @@window = nil
     @@partie = nil
+    @@profilActuel = nil
 
     #private_method new
 

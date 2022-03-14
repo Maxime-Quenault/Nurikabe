@@ -73,7 +73,7 @@ class FenetreMenu < Fenetre
 
         #On récupere le profil séléctionné par le joueur.
         @interfaceProfil.afficheToi
-        @profil = @interfaceProfil.profil
+        @@profilActuel = @interfaceProfil.profil
 
         #Recuperation des variables bouton
         @btn_libre = @builder.get_object("btn_libre")
