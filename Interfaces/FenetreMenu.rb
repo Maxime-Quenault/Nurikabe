@@ -122,7 +122,7 @@ class FenetreMenu < Fenetre
         @btn_propos.signal_connect('clicked') {print "tu as clique sur a propos\n"}
 
         @btn_parametre.signal_connect('clicked') {
-            self.changerInterface(@interfaceParametre.object, "Parametre")
+            self.changerInterface(@interfaceParametre.object, "Paramètres")
         }
     end
 end
