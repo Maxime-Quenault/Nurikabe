@@ -2,10 +2,10 @@
 require "yaml.rb"
 require 'gtk3'
 include Gtk
-load "../Aventure/Aventure.rb"
-load "../Partie/Partie.rb"
-load "../Partie/Chronometre.rb"
-load "../Partie/Grille.rb"
+load "Aventure/Aventure.rb"
+load "Partie/Partie.rb"
+load "Partie/Chronometre.rb"
+load "Partie/Grille.rb"
 
 # Définition de la classe AffichageAventure qui affichera le mode Aventure
 class AffichageAventure
@@ -53,6 +53,86 @@ class AffichageAventure
   @bouton8
   @bouton9
   @bouton10
+
+  def initialize(unObjet)
+
+    @fenetre = unObjet
+
+    @couleurBase = "white"
+    @couleurVisible = "grey"
+
+    # On créer 3 objets aventures plus un autre qui manipulera les références des autres
+    # Création des 3 aventures : Facile , Normale , Difficile avec générations des niveaux
+    aventureFacile = Aventure.creer(0)
+    aventureFacile.generationAventure(10)
+
+    aventureNormale = Aventure.creer(1)
+    aventureNormale.generationAventure(10)
+
+    aventureDifficile = Aventure.creer(2)
+    aventureDifficile.generationAventure(10)
+
+    # On édite les liens entre les 3 aventures
+    aventureFacile.setPrecedent(nil)
+    aventureFacile.setSuivant(aventureNormale)
+
+    aventureNormale.setPrecedent(aventureFacile)
+    aventureNormale.setSuivant(aventureDifficile)
+
+    aventureDifficile.setPrecedent(aventureNormale)
+    aventureDifficile.setSuivant(nil)
+
+    @aventure = aventureFacile
+
+    # On attribue une image par défaut
+    @image = Gtk::Image.new("Image/grilleVide.png")
+
+    # On créer un buildeur qui récupère les éléments de notre fenêtre créée sur Glade
+    monBuildeur = Gtk::Builder.new()
+    monBuildeur.add_from_file("glade/aventure_normal_img.glade")
+
+    # On déclare des objets que l'on associe aux éléments de la fenêt1,8,6re Glade
+
+    # Déclaration du bouton de retour situé dans le coin supérieur gauche de la fenetre
+    @retour = monBuildeur.get_object('btn_retour')
+
+    # Déclaration des boutons de déplacement de la barre située en bas de fenêtre
+    @bouton1 = monBuildeur.get_object('btn_grille_1')
+    @bouton2 = monBuildeur.get_object('btn_grille_2')
+    @bouton3 = monBuildeur.get_object('btn_grille_3')
+    @bouton4 = monBuildeur.get_object('btn_grille_4')
+    @bouton5 = monBuildeur.get_object('btn_grille_5')
+    @bouton6 = monBuildeur.get_object('btn_grille_6')
+    @bouton7 = monBuildeur.get_object('btn_grille_7')
+    @bouton8 = monBuildeur.get_object('btn_grille_8')
+    @bouton9 = monBuildeur.get_object('btn_grille_9')
+    @bouton10 = monBuildeur.get_object('btn_grille_10')
+
+    # Déclaration des boutons de changement de difficulté situés en haut de la fenêtre
+    @modeFacile = monBuildeur.get_object('btn_facile')
+    @modeNormal = monBuildeur.get_object('btn_normal')
+    @modeHard = monBuildeur.get_object('btn_difficile')
+
+    # Déclaration des boutons de déplacement Suivant et Précédent situés sur les côtés de la fenêtre
+    @btnPreced = monBuildeur.get_object('btn_grille_preced')
+    @btnSuivant = monBuildeur.get_object('btn_grille_suiv')
+
+    # Déclaration de l'image centrale de la fenêtre
+    @img_centre = monBuildeur.get_object('img_grille')
+
+    # Déclaration de l'affichage du temps
+    @tempsGrille = monBuildeur.get_object('temps_score')
+
+    # Déclaration des images étoiles qui seront liées au score de la grille actuelle
+    @imgEtoile1 = monBuildeur.get_object('etoile_1')
+    @imgEtoile2 = monBuildeur.get_object('etoile_2')
+    @imgEtoile3 = monBuildeur.get_object('etoile_3')
+    @imgEtoile4 = monBuildeur.get_object('etoile_4')
+    @imgEtoile5 = monBuildeur.get_object('etoile_5')
+
+    # Déclaration de la fenêtre du mode Aventure
+    #fenetre = monBuilder.get_object('fenetre_aventure')
+  end
 
   ################### Méthodes d'accès en lecture/éciture  ###################
 
@@ -112,9 +192,9 @@ class AffichageAventure
   # Pas de miniature de la grille -> évite la triche
   def affichageImageGrille
     if(@aventure.getEtoileCourante() == 0)
-      Gtk::Image.gtk_image_set_from_file(@image,"../Image/grilleVide.png")
+      Gtk::Image.set_from_file(@image,"Image/grilleVide.png")
     else
-      Gtk::Image.gtk_image_set_from_file(@image,"../Image/grillePleine.png")
+      Gtk::Image.set_from_file(@image,"Image/grillePleine.png")
     end
   end
 
@@ -125,41 +205,41 @@ class AffichageAventure
 
     case nbEtoiles
     when 0
-      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile1,"Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile2,"Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile3,"Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile4,"Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile5,"Image/etoile_sombre.png")
     when 1
-      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile1,"Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile2,"Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile3,"Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile4,"Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile5,"Image/etoile_sombre.png")
     when 2
-      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile1,"Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile2,"Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile3,"Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile4,"Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile5,"Image/etoile_sombre.png")
     when 3
-      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile1,"Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile2,"Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile3,"Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile4,"Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile5,"Image/etoile_sombre.png")
     when 4
-      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      Gtk::Image.set_from_file(@imgEtoile1,"Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile2,"Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile3,"Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile4,"Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile5,"Image/etoile_sombre.png")
     when 5
-      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile1,"Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile2,"Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile3,"Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile4,"Image/etoile2.png")
+      Gtk::Image.set_from_file(@imgEtoile5,"Image/etoile2.png")
     end
 
   end
@@ -199,83 +279,8 @@ class AffichageAventure
   # Méthode d'affichage principale du mode Aventure qui sera appelé par les autres Classes
   def afficheToi
 
-    @couleurBase = "white"
-    @couleurVisible = "grey"
-
-    # On attribue une image par défaut
-    @image = Gtk::Image.new("../Image/grilleVide.png")
-
-    # On créer un buildeur qui récupère les éléments de notre fenêtre créée sur Glade
-    monBuildeur = Gtk::Builder.new()
-    monBuildeur.add_from_file("../glade/aventure_normal_img.glade")
-
-    # On créer 3 objets aventures plus un autre qui manipulera les références des autres
-    # Création des 3 aventures : Facile , Normale , Difficile avec générations des niveaux
-    aventureFacile = Aventure.creer(0)
-    aventureFacile.generationAventure(10)
-
-    aventureNormale = Aventure.creer(1)
-    aventureNormale.generationAventure(10)
-
-    aventureDifficile = Aventure.creer(2)
-    aventureDifficile.generationAventure(10)
-
-    # On édite les liens entre les 3 aventures
-    aventureFacile.setPrecedent(nil)
-    aventureFacile.setSuivant(aventureNormale)
-
-    aventureNormale.setPrecedent(aventureFacile)
-    aventureNormale.setSuivant(aventureDifficile)
-
-    aventureDifficile.setPrecedent(aventureNormale)
-    aventureDifficile.setSuivant(nil)
-
-    @aventure = aventureFacile
-
-    # On déclare des objets que l'on associe aux éléments de la fenêtre Glade
-
-    # Déclaration du bouton de retour situé dans le coin supérieur gauche de la fenetre
-    retour = monBuildeur.get_object('btn_retour')
-
-    # Déclaration des boutons de déplacement de la barre située en bas de fenêtre
-    @bouton1 = monBuildeur.get_object('btn_grille_1')
-    @bouton2 = monBuildeur.get_object('btn_grille_2')
-    @bouton3 = monBuildeur.get_object('btn_grille_3')
-    @bouton4 = monBuildeur.get_object('btn_grille_4')
-    @bouton5 = monBuildeur.get_object('btn_grille_5')
-    @bouton6 = monBuildeur.get_object('btn_grille_6')
-    @bouton7 = monBuildeur.get_object('btn_grille_7')
-    @bouton8 = monBuildeur.get_object('btn_grille_8')
-    @bouton9 = monBuildeur.get_object('btn_grille_9')
-    @bouton10 = monBuildeur.get_object('btn_grille_10')
-
-    # Déclaration des boutons de changement de difficulté situés en haut de la fenêtre
-    modeFacile = monBuildeur.get_object('btn_facile')
-    modeNormal = monBuildeur.get_object('btn_normal')
-    modeHard = monBuildeur.get_object('btn_difficile')
-
-    # Déclaration des boutons de déplacement Suivant et Précédent situés sur les côtés de la fenêtre
-    btnPreced = monBuildeur.get_object('btn_grille_preced')
-    btnSuivant = monBuildeur.get_object('btn_grille_suiv')
-
-    # Déclaration de l'image centrale de la fenêtre
-    img_centre = monBuildeur.get_object('img_grille')
-
-    # Déclaration de l'affichage du temps
-    @tempsGrille = monBuildeur.get_object('temps_score')
-
-    # Déclaration des images étoiles qui seront liées au score de la grille actuelle
-    @imgEtoile1 = monBuildeur.get_object('etoile_1')
-    @imgEtoile2 = monBuildeur.get_object('etoile_2')
-    @imgEtoile3 = monBuildeur.get_object('etoile_3')
-    @imgEtoile4 = monBuildeur.get_object('etoile_4')
-    @imgEtoile5 = monBuildeur.get_object('etoile_5')
-
-    # Déclaration de la fenêtre du mode Aventure
-    fenetre = monBuilder.get_object('fenetre_aventure')
-
     # On associe le bouton Retour avec la méthode de fermeture du mode Aventure
-    retour.signal_connect('clicked'){
+    @retour.signal_connect('clicked'){
       @fenetre.destruction()
     }
 
@@ -284,31 +289,31 @@ class AffichageAventure
     }
 
     # On associe le bouton Précédent avec la méthode grillePrecedente de la classe Aventure
-    btnPreced.signal_connect('clicked'){
+    @btnPreced.signal_connect('clicked'){
       @aventure.grillePrecedente()
       @fenetre.boutonSuivPreced()
     }
 
     # On associe le bouton Suivant avec la méthode prochaineGrille de la classe Aventure
-    btnSuivant.signal_connect('clicked'){
+    @btnSuivant.signal_connect('clicked'){
       @aventure.prochaineGrille()
       @fenetre.boutonSuivPreced()
     }
 
     # On associe le bouton facile avec la méthode de choix de difficulté de la classe Aventure
-    modeFacile.signal_connect('clicked'){
+    @modeFacile.signal_connect('clicked'){
       @aventure.choixDifficulte(0)
       @aventure.placerSurGrille(0)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
-      @fenetre.setBackground(modeFacile,@couleurVisible)
-      @fenetre.setBackground(modeNormal,@couleurBase)
-      @fenetre.setBackground(modeHard,@couleurBase)
+      @fenetre.setBackground(@modeFacile,@couleurVisible)
+      @fenetre.setBackground(@modeNormal,@couleurBase)
+      @fenetre.setBackground(@modeHard,@couleurBase)
     }
 
     # On associe le bouton normal avec la méthode de choix de difficulté de la classe Aventure
-    modeNormal.signal_connect('clicked'){
+    @modeNormal.signal_connect('clicked'){
       if(@aventure.unlockDifficulte())
         @aventure.choixDifficulte(1)
       end
@@ -316,13 +321,13 @@ class AffichageAventure
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
-      @fenetre.setBackground(modeFacile,@couleurBase)
-      @fenetre.setBackground(modeNormal,@couleurVisible)
-      @fenetre.setBackground(modeHard,@couleurBase)
+      @fenetre.setBackground(@modeFacile,@couleurBase)
+      @fenetre.setBackground(@modeNormal,@couleurVisible)
+      @fenetre.setBackground(@modeHard,@couleurBase)
     }
 
     # On associe le bouton difficile avec la méthode de choix de difficulté de la classe Aventure
-    modeHard.signal_connect('clicked'){
+    @modeHard.signal_connect('clicked'){
       @aventure.choixDifficulte(1)
       if(@aventure.unlockDifficulte())
         @aventure.choixDifficulte(2)
@@ -331,14 +336,14 @@ class AffichageAventure
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
       @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
-      @fenetre.setBackground(modeFacile,@couleurBase)
-      @fenetre.setBackground(modeNormal,@couleurBase)
-      @fenetre.setBackground(modeHard,@couleurVisible)
+      @fenetre.setBackground(@modeFacile,@couleurBase)
+      @fenetre.setBackground(@modeNormal,@couleurBase)
+      @fenetre.setBackground(@modeHard,@couleurVisible)
     }
 
     # On associe l'image de la grille avec la méthode de lancement de la Partie
     # + attribution des récompenses en fonction du timer
-    img_centre.signal_connect('clicked'){
+    @img_centre.signal_connect('clicked'){
 
       # Pour la création du chronomètre le deuxième paramètre est censé être le sens du timer
       # -> dans Chronometre.rb il n'est pas précisé la valeur attendu pour la création d'un timer ascendant

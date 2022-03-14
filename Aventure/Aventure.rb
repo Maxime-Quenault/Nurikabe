@@ -1,6 +1,6 @@
 # Classes à charger :
 # Sûrement d'autres à ajouter
-load "../Partie/Grille.rb"
+load "Partie/Grille.rb"
 
 # Définition de la classe Aventure
 class Aventure
@@ -98,8 +98,8 @@ class Aventure
 
   # Pour générer l'aventure(suite de niveaux), on fait appel à la classe Grille pour générer les niveaux
   def generationAventure(nbNiveau)
-    for i in 0...nbNiveau do
-      @desGrilles[i] = Grille.new()
+    for i in 0...nbNiveau
+      @desGrilles[i] = Grille.creer()
       @desEtoiles[i] = 0
     end
   end
