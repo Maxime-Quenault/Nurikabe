@@ -86,6 +86,7 @@ class SauvegardeProfil
         return true
     end
 
+<<<<<<< HEAD
 end
 
 ##  TEST UNITAIRE  ##
@@ -97,6 +98,19 @@ end
 # uneSave.ajoutProfil(profil2)
 
 # profil = uneSave.chargerProfil("Léo")
+=======
+    def sauvegarder(unProfil, unePartie)
+        if unePartie != nil
+            unProfil.ajouterPartie(unePartie)
+        end
+        @listeProfil.each do |key, value|
+            if(key.pseudo == unProfil.pseudo)
+                key = unProfil
+            end
+        end
+        File.open("Sauvegarde/SauvegardeProfil/listeProfil.dump", "wb") { |file| file.write(Marshal.dump(@listeProfil)) }
+    end
+>>>>>>> parent of 80dc055 (ne bug pas mais ne fonctionne pas)
 
 # uneSave.modifierPseudo("Léo", profil)
 #unProfil = uneSave.afficherSauvegarde

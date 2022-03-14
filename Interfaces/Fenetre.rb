@@ -83,6 +83,11 @@ class Fenetre
         @css.load(path: "Interfaces/style.css")
         Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @css, Gtk::StyleProvider::PRIORITY_APPLICATION)
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> parent of 80dc055 (ne bug pas mais ne fonctionne pas)
     end
 
 
@@ -152,6 +157,10 @@ class Fenetre
     # quitter :
     #   Supprime tous les élements de la fenetre avant de quitter le programme.
     def quitter
+<<<<<<< HEAD
+=======
+        
+>>>>>>> parent of 80dc055 (ne bug pas mais ne fonctionne pas)
         self.deleteChildren
         self.remove(@header)
         Gtk.main_quit
