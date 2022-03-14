@@ -19,6 +19,8 @@ class FenetreParametre < Fenetre
 
     attr_accessor :object
 
+    ##
+    # Méthode d'initialisation de la classe FenetreParametre
     def initialize(menuParent, interfaceProfil)
         self.initialiseToi
         @builder = Gtk::Builder.new(:file => 'glade/settingsNurikabe.glade')
@@ -42,6 +44,8 @@ class FenetreParametre < Fenetre
         @menuParent = menuParent
     end
 
+    ##
+    # Méthode qui gère les évènements liés aux signaux attribués aux différents composants du fichier glade
     def gestionSignaux
 
         @btnProfils.signal_connect( "clicked" ) { 
@@ -62,10 +66,14 @@ class FenetreParametre < Fenetre
         onChange_switchAudio()
     end
 
+    ##
+    # Méthode qui va changer la valeur du booleen themeSombre
     def onSwitchTheme_activated()
         @paramProfil.themeSombre = @switchTheme.active? ? true : false
     end
 
+    ##
+    # Change la valeur du switch Theme dans l'interface
     def onChange_switchTheme()
         if (@paramProfil.themeSombre == false)
             @switchTheme.set_active(false)
@@ -74,10 +82,14 @@ class FenetreParametre < Fenetre
         end
     end
 
+    ##
+    # Méthode qui va changer la valeur du booleen effetSonore
     def onSwitchAudio_activated()
         @paramProfil.effetSonore = @switchAudio.active? ? true : false
     end
 
+    ##
+    # Change la valeur du switch Audio dans l'interface
     def onChange_switchAudio()
         if (@paramProfil.effetSonore == false)
             @switchAudio.set_active(false)
@@ -85,6 +97,7 @@ class FenetreParametre < Fenetre
             @switchAudio.set_active(true)
         end
     end
+
 
     def onChange_parametre()
 

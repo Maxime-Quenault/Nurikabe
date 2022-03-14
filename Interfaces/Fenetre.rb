@@ -1,4 +1,3 @@
-#!/usr/bin/ruby
 require 'gtk3'
 
 
@@ -25,7 +24,9 @@ require 'gtk3'
 #
 #   Voici ses VC :
 #   
-#   @@window : elle represente notre fenetre, elle est initialisé qu'une seule fois.
+#   @@window        : elle represente notre fenetre, elle est initialisé qu'une seule fois.
+#   @@partie        : représente la partie en cours
+#   @@profilActuel  : représente le profile actuel sélectionné par l'utilisateur 
 
 
 class Fenetre
@@ -119,7 +120,7 @@ class Fenetre
     #   met à jour le nouveau sous-titre.
     #
     # @param unObjet represente la nouvelle interface.
-    # @unSousTitre represente le nouveau sous-titre.
+    # @param unSousTitre represente le nouveau sous-titre.
     def affichage(unObjet, unSousTitre)
         @@window.add(unObjet)
         self.set_sousTitre(unSousTitre)
