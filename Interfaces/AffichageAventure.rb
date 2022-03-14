@@ -54,11 +54,7 @@ class AffichageAventure
   @bouton9
   @bouton10
 
-  # Méthode qui ferme la fenêtre du mode Aventure
-  def destruction
-    Gtk.main_quit
-    return
-  end
+  ################### Méthodes d'accès en lecture/éciture  ###################
 
   # Méthode d'accès en lecture de la couleur de la fenêtre
   def getCouleurFenetre
@@ -68,7 +64,7 @@ class AffichageAventure
   # Méthode d'accès en écriture de la couleur de la fenêtre
   def setCouleurFenetre(uneCouleur)
     @couleurFenetre = uneCouleur
-    #gtk_widget_modify_bg(@fenetre, GTK_STATE_NORMAL, @couleurFenetre);
+    Gtk.gtk_widget_modify_bg(@fenetre, GTK_STATE_NORMAL, @couleurFenetre);
   end
 
   # Méthode d'accès en lecture de la couleur générale de la fenêtre
@@ -96,9 +92,17 @@ class AffichageAventure
     bouton.bg = couleur
   end
 
+  ################### Méthodes liées aux affichages et évènements  ###################
+
+  # Méthode qui ferme la fenêtre du mode Aventure
+  def destruction
+    Gtk.main_quit
+    return
+  end
+
   # Méthode qui modifie l'affichage du temps de la grille
   def affichageTemps
-    @tempsGrille = @aventure.getTempsCourant()
+    Gtk.gtk_label_set(@tempsGrille,@aventure.getTempsCourant())
   end
 
   # Méthode qui modifie l'image centrale à afficher
@@ -118,27 +122,46 @@ class AffichageAventure
   # On prend en paramètre un nombre d'étoiles (correspond au score de la grille)
   # Puis on affiche autant d'étoile que le paramètre puis on complète le reste avec des étoiles noires
   def affichageEtoile(nbEtoiles)
-    @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-    @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-    @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-    @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
-    @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
 
-    if(nbEtoiles >= 1)
+    case nbEtoiles
+    when 0
+      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+    when 1
       @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-    end
-    if(nbEtoiles >= 2)
+      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+    when 2
+      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
       @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-    end
-    if(nbEtoiles >= 3)
+      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+    when 3
+      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
       @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-    end
-    if(nbEtoiles >= 4)
+      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+    when 4
+      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
       @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
-    end
-    if(nbEtoiles == 5)
+      @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
+    when 5
+      @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile2 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile3 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
+      @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
       @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
     end
+
   end
 
   # Méthode qui gère la "surbrillance" des boutons Suivant et Précédent
@@ -150,37 +173,28 @@ class AffichageAventure
     case(@aventure.getPosCourante())
     when 0
       @fenetre.pack_start(@bouton1)
-      break
     when 1
       @fenetre.pack_start(@bouton2)
-      break
     when 2
       @fenetre.pack_start(@bouton3)
-      break
     when 3
       @fenetre.pack_start(@bouton4)
-      break
     when 4
       @fenetre.pack_start(@bouton5)
-      break
     when 5
       @fenetre.pack_start(@bouton6)
-      break
     when 6
       @fenetre.pack_start(@bouton7)
-      break
     when 7
       @fenetre.pack_start(@bouton8)
-      break
     when 8
       @fenetre.pack_start(@bouton9)
-      break
     when 9
       @fenetre.pack_start(@bouton10)
-      break
     end
   end
 
+  ################### Méthode principale - afficheToi  ###################
 
   # Méthode d'affichage principale du mode Aventure qui sera appelé par les autres Classes
   def afficheToi
@@ -334,7 +348,8 @@ class AffichageAventure
       partie = Partie.creerToi(@aventure.getGrilleCourante())
       chrono.demarre()
       # + récupération du timer
-      while(!partie.estFinie?());
+      while(!partie.estFinie?())
+      end
       # Puis attribution du nombre d'étoiles en fonction du timer (à définir)
       chrono.metEnPause()
       temps = chrono.getTemps()
@@ -541,7 +556,7 @@ class AffichageAventure
 
     @fenetre.show_all()
 
-    Gtk.main
+    Gtk.main()
 
   end
 

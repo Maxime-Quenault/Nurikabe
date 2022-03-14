@@ -1,9 +1,8 @@
-
-# https://prod.liveshare.vsengsaas.visualstudio.com/join?13F7D10A27BAEEA470A4FBFA2AB41657A004require 'gtk3'
-
-#load 'Sauvegarde/Profil.rb'
+load 'Sauvegarde/Profil.rb'
 load "Interfaces/Fenetre.rb"
 load "Interfaces/FenetreProfil.rb"
+load "Sauvegarde/SauvegardeProfil.rb"
+load "Parametre/Parametre.rb"
 
 =begin
         La classe AffichageParamètre :::
@@ -20,12 +19,14 @@ class FenetreParametre < Fenetre
 
     attr_accessor :object
 
-    def initialize(menuParent)
+    def initialize(menuParent, interfaceProfil)
         self.initialiseToi
         @builder = Gtk::Builder.new(:file => 'glade/settingsNurikabe.glade')
         @object = @builder.get_object("menuParam")
 
-        @interfaceProfil = FenetreProfil.new
+        @interfaceProfil = interfaceProfil
+
+        @paramProfil = @interfaceProfil.profil.parametre
 
         @langue = @builder.get_object("cbt_langue")
 
@@ -41,16 +42,51 @@ class FenetreParametre < Fenetre
         @menuParent = menuParent
     end
 
-
     def gestionSignaux
+
         @btnProfils.signal_connect( "clicked" ) { 
-            print "\nTu as clique sur profil"
             @interfaceProfil.afficheToi
         }
 
         @btnRetour.signal_connect( "clicked" ) {
             self.changerInterface(@menuParent, "Menu")
         }
+
+        @switchTheme.signal_connect('notify::active') {onSwitchTheme_activated()}
+        @switchTheme.set_active [false, true].sample
+
+        @switchAudio.signal_connect('notify::active') {onSwitchAudio_activated()}
+        @switchAudio.set_active [false, true].sample
+
+        onChange_switchTheme()
+        onChange_switchAudio()
     end
 
+    def onSwitchTheme_activated()
+        @paramProfil.themeSombre = @switchTheme.active? ? true : false
+    end
+
+    def onChange_switchTheme()
+        if (@paramProfil.themeSombre == false)
+            @switchTheme.set_active(false)
+        else 
+            @switchTheme.set_active(true)
+        end
+    end
+
+    def onSwitchAudio_activated()
+        @paramProfil.effetSonore = @switchAudio.active? ? true : false
+    end
+
+    def onChange_switchAudio()
+        if (@paramProfil.effetSonore == false)
+            @switchAudio.set_active(false)
+        else 
+            @switchAudio.set_active(true)
+        end
+    end
+
+    def onChange_parametre()
+
+    end
 end
