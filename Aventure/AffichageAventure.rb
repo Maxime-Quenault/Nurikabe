@@ -56,7 +56,7 @@ class AffichageAventure
 
   def initialize(unObjet)
 
-    @fenetre = unObjet
+    #@fenetre = unObjet
 
     @couleurBase = "white"
     @couleurVisible = "grey"
@@ -88,8 +88,9 @@ class AffichageAventure
     @image = Gtk::Image.new("Image/grilleVide.png")
 
     # On créer un buildeur qui récupère les éléments de notre fenêtre créée sur Glade
-    monBuildeur = Gtk::Builder.new()
-    monBuildeur.add_from_file("glade/aventure_normal_img.glade")
+    #monBuildeur = Gtk::Builder.new()
+    #monBuildeur.add_from_file("glade/aventure_normal_img.glade")
+    monBuildeur = Gtk::Builder.new(:file => 'glade/aventure_normal_img.glade')
 
     # On déclare des objets que l'on associe aux éléments de la fenêt1,8,6re Glade
 
@@ -131,7 +132,8 @@ class AffichageAventure
     @imgEtoile5 = monBuildeur.get_object('etoile_5')
 
     # Déclaration de la fenêtre du mode Aventure
-    #fenetre = monBuilder.get_object('fenetre_aventure')
+    @fenetre = monBuildeur.get_object('fenetre_aventure')
+
   end
 
   ################### Méthodes d'accès en lecture/éciture  ###################
