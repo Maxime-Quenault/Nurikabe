@@ -10,7 +10,7 @@ class FenetreAPropos < Fenetre
     def initialize(menuParent)
         self.initialiseToi
 
-        @builder = Gtk::Builder.new(:file => 'glade/aPropos.glade')
+        @builder = Gtk::Builder.new(:file => 'glade/apropos.glade')
         @object = @builder.get_object("menuAPropos")
 
         @btnRetour = @builder.get_object("btnRetour")
