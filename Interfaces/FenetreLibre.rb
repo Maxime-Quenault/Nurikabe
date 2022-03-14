@@ -4,6 +4,8 @@ load "Sauvegarde/SauvegardeProfil.rb"
 load "Sauvegarde/Profil.rb"
 load "Libre/Libre.rb"
 load "Interfaces/Fenetre.rb"
+load "Interfaces/FenetreGrille.rb"
+
 
 ##
 # 	@author Quenault Maxime / ... (mettez vos nom ce qu'on travailler sur l'interface du mode libre)
@@ -54,6 +56,8 @@ class FenetreLibre < Fenetre
 		@btn_moyen = @builder.get_object("lvl_moyen")
 		@btn_difficile = @builder.get_object("lvl_difficile") 
 		@btn_retour = @builder.get_object("btn_retour")
+
+		@interfaceGrille = FenetreGrille.new(@object)
 		
 		self.gestionSignaux
 
@@ -80,7 +84,8 @@ class FenetreLibre < Fenetre
 			g=Grille.creer()
 			g.chargerGrille(2,0)
 			creerPartie(g)
-			puts @@partie.grilleEnCours
+			@interfaceGrille.construction
+			self.changerInterface(@interfaceGrille.object, "Partie")
 		}
 		@btn_moyen.signal_connect("clicked"){print "\nTu as cliqué sur le mode Moyen"}
 		@btn_difficile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Difficile"}
