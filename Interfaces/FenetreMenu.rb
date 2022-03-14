@@ -75,7 +75,7 @@ class FenetreMenu < Fenetre
         #@interfaceAventure = AffichageAventure.new(@object)
         #@interfaceSurvie = FenetreSurvie.new(@object)
         #@interfaceContreMontre = FenetreContreMontre.new(@object)
-        @interfaceParametre = FenetreParametre.new(@object)
+        @interfaceParametre = FenetreParametre.new(@object, @interfaceProfil)
 
         
 

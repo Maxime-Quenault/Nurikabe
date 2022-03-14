@@ -81,10 +81,12 @@ class Fenetre
         @header.subtitle = "-"
         @@window.titlebar = @header
 
-         # CSS
-         @css = Gtk::CssProvider.new
-         @css.load(path: "Interfaces/style.css")
-         Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @css, Gtk::StyleProvider::PRIORITY_APPLICATION)
+        #CSS
+        @css = Gtk::CssProvider.new
+        @css.load(path: "Interfaces/style.css")
+        Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @css, Gtk::StyleProvider::PRIORITY_APPLICATION)
+
+
 
     end
 
@@ -155,6 +157,7 @@ class Fenetre
     # quitter :
     #   Supprime tous les élements de la fenetre avant de quitter le programme.
     def quitter
+        
         self.deleteChildren
         self.remove(@header)
         Gtk.main_quit

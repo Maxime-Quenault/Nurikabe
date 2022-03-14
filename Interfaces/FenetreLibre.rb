@@ -81,9 +81,13 @@ class FenetreLibre < Fenetre
 
 		@btn_facile.signal_connect("clicked"){
 			print "\nTu as cliqué sur le mode Facile"
-			g=Grille.creer()
-			g.chargerGrille(2,0)
-			creerPartie(g)
+			if (unePartie = @@profilActuel.chercherPartie(2)) == nil
+				g=Grille.creer()
+				g.chargerGrille(2,0)
+				creerPartie(g)
+			else
+				creerPartie(unePartie.grilleEnCours)
+			end
 			@interfaceGrille.construction
 			self.changerInterface(@interfaceGrille.object, "Partie")
 		}
