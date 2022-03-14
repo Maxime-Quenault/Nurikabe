@@ -54,11 +54,7 @@ class AffichageAventure
   @bouton9
   @bouton10
 
-  # Méthode qui ferme la fenêtre du mode Aventure
-  def destruction
-    Gtk.main_quit
-    return
-  end
+  ################### Méthodes d'accès en lecture/éciture  ###################
 
   # Méthode d'accès en lecture de la couleur de la fenêtre
   def getCouleurFenetre
@@ -68,7 +64,7 @@ class AffichageAventure
   # Méthode d'accès en écriture de la couleur de la fenêtre
   def setCouleurFenetre(uneCouleur)
     @couleurFenetre = uneCouleur
-    #gtk_widget_modify_bg(@fenetre, GTK_STATE_NORMAL, @couleurFenetre);
+    Gtk.gtk_widget_modify_bg(@fenetre, GTK_STATE_NORMAL, @couleurFenetre);
   end
 
   # Méthode d'accès en lecture de la couleur générale de la fenêtre
@@ -96,9 +92,17 @@ class AffichageAventure
     bouton.bg = couleur
   end
 
+  ################### Méthodes liées aux affichages et évènements  ###################
+
+  # Méthode qui ferme la fenêtre du mode Aventure
+  def destruction
+    Gtk.main_quit
+    return
+  end
+
   # Méthode qui modifie l'affichage du temps de la grille
   def affichageTemps
-    @tempsGrille = @aventure.getTempsCourant()
+    Gtk.gtk_label_set(@tempsGrille,@aventure.getTempsCourant())
   end
 
   # Méthode qui modifie l'image centrale à afficher
@@ -181,6 +185,7 @@ class AffichageAventure
     end
   end
 
+  ################### Méthode principale - afficheToi  ###################
 
   # Méthode d'affichage principale du mode Aventure qui sera appelé par les autres Classes
   def afficheToi
@@ -541,7 +546,7 @@ class AffichageAventure
 
     @fenetre.show_all()
 
-    Gtk.main
+    Gtk.main()
 
   end
 
