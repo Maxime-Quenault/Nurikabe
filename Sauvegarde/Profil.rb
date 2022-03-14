@@ -15,13 +15,13 @@ class Profil
     end
 
     def ajouterPartie(unePartie)
-        @listePartieCommence.push(uneGrille)
+        @listePartieCommence.push(unePartie)
         File.open("Sauvegarde/SauvegardeGrille/listeGrille#{@pseudo}.dump", "wb") { |file| file.write(Marshal.dump(@listePartieCommence)) }
     end
 
     def chercherPartie(numero)
         @listePartieCommence.each do |key, value|
-            if key.numero == numero
+            if key.grilleEnCours.numero == numero
                 return key
             end
         end

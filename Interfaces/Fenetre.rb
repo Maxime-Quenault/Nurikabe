@@ -1,5 +1,6 @@
 #!/usr/bin/ruby
 require 'gtk3'
+load 'Partie/Partie.rb'
 
 
 ##
@@ -25,7 +26,7 @@ require 'gtk3'
 #
 #   Voici ses VC :
 #   
-#   @@window : elle represente notre fenetre, elle est initialisé qu'une seule fois.
+#   @@window : elle represente notre fenetre, elle est initialisé qu'une seul fois.
 
 
 $LARGEUR_FENETRE = 745
@@ -37,7 +38,7 @@ class Fenetre
     @@partie = nil
     @@profilActuel = nil
 
-    # private_method new
+    #private_method new
 
     ##
     # changerInterface :
@@ -84,10 +85,13 @@ class Fenetre
         @header.subtitle = "-"
         @@window.titlebar = @header
 
-         # CSS
-         @css = Gtk::CssProvider.new
-         @css.load(path: "Interfaces/style.css")
-         Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @css, Gtk::StyleProvider::PRIORITY_APPLICATION)
+        #CSS
+        @css = Gtk::CssProvider.new
+        @css.load(path: "Interfaces/style.css")
+        Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @css, Gtk::StyleProvider::PRIORITY_APPLICATION)
+
+        #sauvegarde
+        @save = SauvegardeProfil.new
 
     end
 
@@ -169,7 +173,7 @@ class Fenetre
 
     ##
     # creerPartie :
-    # Créer et affectes une partie avec la grille passée en paramètres à la variable de classe partie
+    #   Creer et affecte une partie à la variable de classe partie avec la grille passée en paramètre
     def creerPartie(grille)
         @@partie = Partie.creeToi(grille)
     end

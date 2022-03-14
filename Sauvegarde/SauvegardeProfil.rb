@@ -86,10 +86,7 @@ class SauvegardeProfil
         return true
     end
 
-    def sauvegarder(unProfil, unePartie)
-        if unePartie != nil
-            uneProfil.ajouterPartie(unePartie)
-        end
+    def sauvegarder(unProfil)
         @listeProfil.each do |key, value|
             if(key.pseudo == unProfil.pseudo)
                 key = unProfil

@@ -80,14 +80,24 @@ class FenetreLibre < Fenetre
 	def gestionSignaux
 
 		@btn_facile.signal_connect("clicked"){
-			print "\nTu as cliqué sur le mode Facile"
 			@interfaceChoixGrille.difficulte=0
 			self.changerInterface(@interfaceChoixGrille.object, "Facile")
 		}
 		@btn_moyen.signal_connect("clicked"){print "\nTu as cliqué sur le mode Moyen"
 			@interfaceChoixGrille.difficulte=1
-			self.changerInterface(@interfaceChoixGrille.object, "Moyen")
+			self.changerInterface(@interfaceGrille.object, "Partie")
 		}
+=begin travail réalisé par Maxime, il le modifiera.
+			self.changerInterface(@interfaceChoixGrille.object, "Moyen")
+			if (unePartie = @@profilActuel.chercherPartie(2)) == nil
+				g=Grille.creer()
+				g.chargerGrille(2,0)
+				creerPartie(g)
+			else
+				creerPartie(unePartie.grilleEnCours)
+			end
+			@interfaceGrille.construction
+=end
 		@btn_difficile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Difficile"}
 		@btn_retour.signal_connect("clicked"){
 			self.changerInterface(@menuParent, "Menu")
