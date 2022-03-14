@@ -32,9 +32,6 @@ class FenetreGrille < Fenetre
         btn_aide = @builder.get_object('btn_aide')
 
         #Gestion des signaux
-        btn_retour.signal_connect('clicked'){#quitter
-            self.changerInterface(@menuParent, "Libre")
-        }
         btn_redo.signal_connect('clicked'){#retour
             @@partie.redo
             maj_boutons
@@ -82,6 +79,12 @@ class FenetreGrille < Fenetre
         maj_boutons
         signaux_boutons
         @object.add(table)
+        # supprime les boutons
+        @builder.get_object('btn_retour').signal_connect('clicked'){#quitter
+            @object.remove(table)
+            @@partie=nil
+            self.changerInterface(@menuParent, "Libre")
+        }
     end
 
     # Changes la couleur des boutons lorsqu'on clique dessus
@@ -107,6 +110,7 @@ class FenetreGrille < Fenetre
             end
         end
     end
+
     #Change la couleur d'un bouton aux coordonnées passées en paramètres en fonction de l'état de la case correspondante
     def maj_bouton(i,j)
         lab = if(@@partie.grilleEnCours.matriceCases[i][j].etat==0)
