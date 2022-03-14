@@ -85,7 +85,7 @@ class FenetreLibre < Fenetre
 		}
 		@btn_moyen.signal_connect("clicked"){print "\nTu as cliqué sur le mode Moyen"
 			@interfaceChoixGrille.difficulte=1
-			self.changerInterface(@interfaceGrille.object, "Partie")
+			self.changerInterface(@interfaceChoixGrille.object, "Partie")
 		}
 =begin travail réalisé par Maxime, il le modifiera.
 			self.changerInterface(@interfaceChoixGrille.object, "Moyen")

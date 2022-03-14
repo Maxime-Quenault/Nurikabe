@@ -134,7 +134,8 @@ class FenetreGrille < Fenetre
 
     #Change la couleur d'un bouton aux coordonnées passées en paramètres en fonction de l'état de la case correspondante
     def maj_bouton(i,j)
-        lab = if(@@partie.grilleEnCours.matriceCases[i][j].etat==0)
+        if(@@partie.grilleEnCours.matriceCases[i][j].etat==0)
+            @boutons[[i,j]].name = "case_vide"
             @boutons[[i,j]].set_label(" ")
         elsif (@@partie.grilleEnCours.matriceCases[i][j].etat==1)
             @boutons[[i,j]].name = "case_noir"
