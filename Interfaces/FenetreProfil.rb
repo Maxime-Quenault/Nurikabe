@@ -75,7 +75,7 @@ class FenetreProfil
         zoneText = Entry.new
         haut.add(setmargin(zoneText, 0, 15, 0, 0))
 
-        imageValider = Gtk::Image.new("Image/valider.png")
+        imageValider = Gtk::Image.new :file => "Image/valider.png"
         boutonValider = Button.new()
         boutonValider.image = imageValider
         boutonValider.set_width_request(60)
@@ -84,15 +84,15 @@ class FenetreProfil
         if @save.nbProfil != 0
             @save.listeProfil.each do |key, value|
                 ligneProfil=Gtk::Box.new(:horizontal, 3) # Box pour l'image du profil, son nom et le bouton supprimer
-
-                imageProfil = Gtk::Image.new(key.imageJoueur)
-                ligneProfil.add(imageProfil)     
+  
+                imageProfil = Gtk::Image.new :file => key.imageJoueur
+                ligneProfil.add(setmargin(imageProfil, 0, 0, 0, 5))
 
                 boutonProfil = Button.new(:label => key.pseudo)
                 boutonProfil.set_width_request(140)
                 ligneProfil.add(boutonProfil)
 
-                imageSupprimer = Gtk::Image.new("Image/trash.png")
+                imageSupprimer = Gtk::Image.new :file => "Image/trash.png"
                 boutonSupprimer = Button.new()
                 boutonSupprimer.image = imageSupprimer
                 boutonSupprimer.set_width_request(60)
@@ -133,6 +133,7 @@ class FenetreProfil
                 @profil = Profil.new(pseudo)
                 if @save.ajoutProfil(profil) != -1
                     @profil = @save.chargerProfil(pseudo)
+                    event(@popUpProfil)
                 else
                     d = Gtk::MessageDialog.new(@popUpProfil,
                     Gtk::Dialog::DESTROY_WITH_PARENT,

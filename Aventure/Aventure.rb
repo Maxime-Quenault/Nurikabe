@@ -27,16 +27,26 @@ class Aventure
   # aventure, la difficulté Facile sera considérée comme étant toujours débloquée)                                            #
   #############################################################################################################################
 
+  # Défionition des Constantes
+
+  # Consernant les valeurs des deux VI palier ci-dessous elles sont provisoires(test) -> se mettre d'accord plus tard
+  # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée normale
+  PALIER_NORMAL = 30
+  # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée hard
+  PALIER_HARD = 70
+
+  # Définition des VI
+
   # entier qui représente le score du joueur en nombre d'étoiles
   @@nbEtoiles
-  # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée normale
-  @@palierNormal
-  # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée hard
-  @@palierHard
   # tableau de 3 booléens indiquant pour chaque difficultée, si elles sont débloquée ou non
   @@difficuleAcquise
   # tableau contenant les grilles du mode aventure
   @desGrilles
+  # tableau contenant le nombre d'étoiles de chaque grille
+  @desEtoiles
+  # tableau contenant les temps de chaque grille
+  @desTemps
   # position courante dans le mode Aventure
   @posCourante
   # entier représentant la difficultée actuelle associée à cette Aventure
@@ -48,24 +58,24 @@ class Aventure
   # Même cas pour l'aventure suivante
   @suivanteDiff
 
+
   # Coding Assistant pour faciliter les accès des différentes variables
   attr_reader :palierNormal, :palierHard, :desGrilles, :difficuleAcquise, :difficulte, :precedenteDiff, :suivanteDiff;
-  attr :posCourante, :nbEtoiles, :desEtoiles true;
+  attr :posCourante, :nbEtoiles, :desEtoiles, :desTemps true;
 
   # On définit notre propre façon de générer une Aventure
-  def Aventure.creer(aventurePreced, uneDifficulte, aventureSuiv)
-    new(aventurePreced, uneDifficulte, aventureSuiv)
+  def Aventure.creer(uneDifficulte)
+    new(uneDifficulte)
   end
 
   # on redéfinit la méthode initialize() pour générer l'Aventure selon nos critères
   def initialize(uneDifficulte)
-    # Consernant les valeurs des deux VI palier ci-dessous elles sont provisoires(test) -> se mettre d'accord plus tard
-    @@palierNormal = 30
-    @@palierHard = 70
     @@nbEtoiles = 0
     @desGrilles = Array.new()
-    #Tableau qui contiendra les étoiles de chaque grille
-    @desEtoiles = Array.new()
+    # Tableau qui contiendra les étoiles de chaque grille
+    @desEtoiles = Array.new(10,0)
+    # Tableau qui contiendra les temps de chaque grille
+    @desTemps = Array.new(10,0.00)
 
     @posCourante = 0
     @difficulte = uneDifficulte
@@ -78,7 +88,7 @@ class Aventure
   # Lien entre les différentes aventures
   # Méthode d'accès en ecriture qui édite le lien de cette aventure avec la précédente(si il y en a)
   def setPrecedent(aventurePreced)
-    @precedenteDiff = aventurePreced
+      @precedenteDiff = aventurePreced
   end
 
   # Méthode d'accès en ecriture qui édite le lien de cette aventure avec la suivante(si il y en a)
@@ -88,7 +98,7 @@ class Aventure
 
   # Pour générer l'aventure(suite de niveaux), on fait appel à la classe Grille pour générer les niveaux
   def generationAventure(nbNiveau)
-    for(int i; i < nbNiveau; i++)
+    for i in 0...nbNiveau do
       @desGrilles[i] = Grille.new()
       @desEtoiles[i] = 0
     end
@@ -128,6 +138,18 @@ class Aventure
     end
   end
 
+  # Méthode d'accès en lecture du temps de la grille actuelle
+  def getTempsCourant
+    return @desTemps[@posCourante]
+  end
+
+  # Méthode d'accès en écriture du temps de la grille actuelle
+  def setTempsCourant(unTemps)
+    if(unTemps < self.getTempsCourant())
+      @desTemps[@posCourante] = unTemps
+    end
+  end
+
   # Méthode d'accès en lecture de la position courante sur le plateau
   def getPosCourante
     return @posCourante
@@ -140,12 +162,16 @@ class Aventure
 
   # On se déplace sur l'aventure de difficulté inférieure
   def difficultePrecedente
-    return @precedenteDiff
+    if (@precedenteDiff != nil)
+      return @precedenteDiff
+    end
   end
 
   # On se déplace sur l'aventure de difficulté supérieure
   def difficulteSuivante
-    return @suivanteDiff
+    if (@suivanteDiff != nil)
+      return @suivanteDiff
+    end
   end
 
   # Le joueur a terminé sa grille et obtient des étoiles :
@@ -180,7 +206,7 @@ class Aventure
   def unlockDifficulte
     # Dans le cas où seule la difficulté Facile est débloquée
     if((@difficulte == 0) && (@@difficulteAcquise[1] == false))
-      if(self.assezEtoiles?(@@palierNormal))
+      if(self.assezEtoiles?(PALIER_NORMAL))
         @@difficulteAcquise[1] = true;
         print("\nBravo tu viens de débloquer la difficulté Normal !")
       else
@@ -188,7 +214,7 @@ class Aventure
       end
     elsif((@difficulte == 1) && (@@difficulteAcquise[2] == false))
       # Dans le cas où la difficulté Normal est débloquée
-        if(self.assezEtoiles?(@@palierHard))
+        if(self.assezEtoiles?(PALIER_HARD))
           @@difficulteAcquise[2] = true
           print("\nBravo tu viens de débloquer la difficulté Hard !")
         else

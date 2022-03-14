@@ -1,8 +1,10 @@
-@define-color main_color #AFA2FF;
-@define-color main_alt_color #CFBBFF;
-@define-color main_active_color #CFBBFF;
+@define-color main_color #7b2cbf;
+@define-color main_alt_color #9d4edd;
+@define-color main_active_color #c77dff;
 
-@define-color bg_color #e3d7ff;
+@define-color bg_color #240046;
+
+@define-color mode_dark_bg_color #343434;
 
 @define-color dark_color #242038;
 
@@ -11,15 +13,16 @@
 /****************/
 
 window {
-    background-color: white;
-    color: black;
+    background-color: @mode_dark_bg_color;
+    color: white;
+    
 }
 
 button {
     background: @main_color;
     border: 0px;
     border-radius: 5px;
-    color: black;
+    color: white;
     transition: 0.1s ease-in-out;
 }
 
@@ -35,7 +38,7 @@ button:active {
 
 entry {
     background: @bg_color;
-    color: black;
+    color: white;
 }
 
 switch:checked {
@@ -44,10 +47,6 @@ switch:checked {
 
 switch {
     background-color: @dark_color;
-}
-
-entry {
-    background-color: @bg_color;
 }
 
 entry selection {
@@ -68,7 +67,7 @@ headerbar {
 }
 
 #bg_buttons_param {
-    background: @bg_color;
+    background: #212529;
 }
 
 #btn_menu_grille {
@@ -77,6 +76,11 @@ headerbar {
     transition: 0.1s ease-in-out;
 }
 
+#btn_menu_grille:last-child {
+    border-radius: 0px;
+    border: 0;
+    transition: 0.1s ease-in-out;
+}
 
 /******************/
 /** Cases Grille **/
@@ -90,7 +94,7 @@ headerbar {
 #case_chiffre, #case_vide {
     border-radius: 0;
     color: black;
-    background: rgb(245, 245, 245);
+    background: #636363;
     border: 2px black solid;
     font-size: 50px;
     transition: 0.08s ease;
@@ -112,7 +116,7 @@ headerbar {
 #case_point {
     border-radius: 0;
     color: black;
-    background: rgb(245, 245, 245);
+    background: #636363;
     border: 2px black solid;
     font-size: 50px;
     transition: 0.08s ease;

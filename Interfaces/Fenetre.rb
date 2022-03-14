@@ -1,5 +1,5 @@
+#!/usr/bin/ruby
 require 'gtk3'
-load 'Partie/Partie.rb'
 
 
 ##
@@ -25,8 +25,11 @@ load 'Partie/Partie.rb'
 #
 #   Voici ses VC :
 #   
-#   @@window : elle represente notre fenetre, elle est initialisé qu'une seul fois.
+#   @@window : elle represente notre fenetre, elle est initialisé qu'une seule fois.
 
+
+$LARGEUR_FENETRE = 745
+$HAUTEUR_FENETRE = 850
 
 class Fenetre
 
@@ -34,7 +37,7 @@ class Fenetre
     @@partie = nil
     @@profilActuel = nil
 
-    #private_method new
+    # private_method new
 
     ##
     # changerInterface :
@@ -66,9 +69,9 @@ class Fenetre
         @@window = Gtk::Window.new()
 
         #Option de la fenetre
-        @@window.set_default_size(745,850)
-        @@window.set_width_request(745)
-        @@window.set_height_request(850)
+        @@window.set_default_size($LARGEUR_FENETRE , $HAUTEUR_FENETRE)
+        @@window.set_width_request($LARGEUR_FENETRE)
+        @@window.set_height_request($HAUTEUR_FENETRE)
         @@window.set_resizable(false)
         @@window.signal_connect("destroy") { quitter }
         @@window.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
@@ -166,7 +169,7 @@ class Fenetre
 
     ##
     # creerPartie :
-    #   Creer et affecte une partie à la variable de classe partie avec la grille passée en paramètre
+    # Créer et affectes une partie avec la grille passée en paramètres à la variable de classe partie
     def creerPartie(grille)
         @@partie = Partie.creeToi(grille)
     end

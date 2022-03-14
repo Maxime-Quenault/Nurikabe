@@ -25,6 +25,8 @@
         <property name="height_request">430</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="margin_left">50</property>
+        <property name="margin_right">50</property>
         <property name="margin_top">4</property>
         <property name="orientation">vertical</property>
         <property name="spacing">25</property>
@@ -59,7 +61,7 @@
         </child>
         <child>
           <object class="GtkButton" id="btn_contre_montre">
-            <property name="label" translatable="yes">Contre la Montre</property>
+            <property name="label" translatable="yes">Contre-la-montre</property>
             <property name="name">boutonMontre</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -98,13 +100,15 @@
         <property name="height_request">-1</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="margin_left">50</property>
+        <property name="margin_right">50</property>
         <property name="margin_top">50</property>
         <property name="margin_bottom">50</property>
         <property name="spacing">50</property>
         <property name="homogeneous">True</property>
         <child>
           <object class="GtkButton" id="btn_tuto">
-            <property name="label" translatable="yes">Tuto</property>
+            <property name="label" translatable="yes">Tutoriel</property>
             <property name="name">boutonTuto</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -118,7 +122,7 @@
         </child>
         <child>
           <object class="GtkButton" id="btn_propos">
-            <property name="label" translatable="yes">A Propos</property>
+            <property name="label" translatable="yes">À propos</property>
             <property name="name">boutonPropos</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -132,7 +136,7 @@
         </child>
         <child>
           <object class="GtkButton" id="btn_parametre">
-            <property name="label" translatable="yes">Paramètre</property>
+            <property name="label" translatable="yes">Paramètres</property>
             <property name="name">boutonParam</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>

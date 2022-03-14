@@ -34,7 +34,6 @@ load "Sauvegarde/Profil.rb"
 #   @interfaceParametre : represente l'interface des parametres
 #
 #   @quit : permet de savoir si oui ou non l'utilisateur a choisi un profil ou non
-#   @profil : represente le profil selectionné
 #
 #   @btn_libre : represente l'objet bouton mode libre
 #   @btn_survie : represente l'objet bouton mode survie
@@ -78,6 +77,8 @@ class FenetreMenu < Fenetre
         @interfaceParametre = FenetreParametre.new(@object)
 
         
+
+        #@interfaceParametre = FenetreParametre.new(@object, @interfaceProfil)
 
         #Recuperation des variables bouton
         @btn_libre = @builder.get_object("btn_libre")
@@ -123,10 +124,12 @@ class FenetreMenu < Fenetre
 
         @btn_tuto.signal_connect('clicked') {print "tu as clique sur le mode tuto\n"}
 
-        @btn_propos.signal_connect('clicked') {print "tu as clique sur a propos\n"}
+        @btn_propos.signal_connect('clicked') {
+            self.changerInterface(@interfaceAPropos.object, "A Propos")
+        }
 
         @btn_parametre.signal_connect('clicked') {
-            self.changerInterface(@interfaceParametre.object, "Parametre")
+            #self.changerInterface(@interfaceParametre.object, "Paramètres")
         }
     end
 end

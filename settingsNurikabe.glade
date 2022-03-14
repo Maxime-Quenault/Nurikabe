@@ -7,14 +7,12 @@
     <property name="can_focus">True</property>
     <child>
       <object class="GtkBox">
-        <property name="name">bg_buttons_param</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkButton" id="button_jeu">
             <property name="label" translatable="yes">Jeu</property>
-            <property name="name">button_jeu</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -30,9 +28,8 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button_profils">
-            <property name="label" translatable="yes">Profils</property>
-            <property name="name">button_profils</property>
+          <object class="GtkButton" id="btn_gestion_profil">
+            <property name="label" translatable="yes">Profil</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -49,7 +46,6 @@
         <child>
           <object class="GtkButton" id="button_retour">
             <property name="label" translatable="yes">Retour</property>
-            <property name="name">button_retour</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -116,10 +112,16 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="active">0</property>
+                        <property name="has_entry">True</property>
                         <items>
                           <item id="fr" translatable="yes">Français</item>
                           <item id="en" translatable="yes">Anglais</item>
                         </items>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="can_focus">False</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>

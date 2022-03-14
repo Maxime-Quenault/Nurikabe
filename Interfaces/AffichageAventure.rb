@@ -17,16 +17,23 @@ class AffichageAventure
   SEUIL_2_ETOILES = 2.0
   SEUIL_1_ETOILE = 2.20
 
+  # Déclaration des VI liées aux couleurs de l'interface
+  # Variable d'instance qui représente la couleur de la fenêtre
+  @couleurFenetre
   # Variable d'instance qui représente la couleur générale de la fenêtre(thème)
   @couleurBase
   # Variable d'instance qui représente la couleur secondaire qui ressort de la couleur générale(thème)
   @couleurVisible
+
   # Variable d'instance qui contient une image png qui variera selon les grilles
   @image
   # Variable d'instance qui contiendra la fenêtre de l'interface glade
   @fenetre
   # Variable d'instance qui contient l'aventure en cours
   @aventure
+
+  # Variable d'instance liée au temps de complétion de la grille
+  @tempsGrille
 
   # Variables d'instances liées aux images des étoiles -> afin d'être connu de toutes les méthodes
   @imgEtoile1
@@ -47,10 +54,17 @@ class AffichageAventure
   @bouton9
   @bouton10
 
-  # Méthode qui ferme la fenêtre du mode Aventure
-  def destruction
-    Gtk.main_quit
-    return
+  ################### Méthodes d'accès en lecture/éciture  ###################
+
+  # Méthode d'accès en lecture de la couleur de la fenêtre
+  def getCouleurFenetre
+    return @couleurFenetre
+  end
+
+  # Méthode d'accès en écriture de la couleur de la fenêtre
+  def setCouleurFenetre(uneCouleur)
+    @couleurFenetre = uneCouleur
+    Gtk.gtk_widget_modify_bg(@fenetre, GTK_STATE_NORMAL, @couleurFenetre);
   end
 
   # Méthode d'accès en lecture de la couleur générale de la fenêtre
@@ -78,6 +92,19 @@ class AffichageAventure
     bouton.bg = couleur
   end
 
+  ################### Méthodes liées aux affichages et évènements  ###################
+
+  # Méthode qui ferme la fenêtre du mode Aventure
+  def destruction
+    Gtk.main_quit
+    return
+  end
+
+  # Méthode qui modifie l'affichage du temps de la grille
+  def affichageTemps
+    Gtk.gtk_label_set(@tempsGrille,@aventure.getTempsCourant())
+  end
+
   # Méthode qui modifie l'image centrale à afficher
   # Dans notre cas on possède 2 images png :
   # => grilleVide que l'on affichera si la grille actuelle n'a pas été terminée
@@ -95,6 +122,7 @@ class AffichageAventure
   # On prend en paramètre un nombre d'étoiles (correspond au score de la grille)
   # Puis on affiche autant d'étoile que le paramètre puis on complète le reste avec des étoiles noires
   def affichageEtoile(nbEtoiles)
+
     case nbEtoiles
     when 0
       @imgEtoile1 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile_sombre.png")
@@ -133,6 +161,7 @@ class AffichageAventure
       @imgEtoile4 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
       @imgEtoile5 = Gtk::Image.gtk_image_new_from_file ("../Image/etoile2.png")
     end
+
   end
 
   # Méthode qui gère la "surbrillance" des boutons Suivant et Précédent
@@ -144,40 +173,32 @@ class AffichageAventure
     case(@aventure.getPosCourante())
     when 0
       @fenetre.pack_start(@bouton1)
-      break
     when 1
       @fenetre.pack_start(@bouton2)
-      break
     when 2
       @fenetre.pack_start(@bouton3)
-      break
     when 3
       @fenetre.pack_start(@bouton4)
-      break
     when 4
       @fenetre.pack_start(@bouton5)
-      break
     when 5
       @fenetre.pack_start(@bouton6)
-      break
     when 6
       @fenetre.pack_start(@bouton7)
-      break
     when 7
       @fenetre.pack_start(@bouton8)
-      break
     when 8
       @fenetre.pack_start(@bouton9)
-      break
     when 9
       @fenetre.pack_start(@bouton10)
-      break
     end
   end
 
+  ################### Méthode principale - afficheToi  ###################
 
   # Méthode d'affichage principale du mode Aventure qui sera appelé par les autres Classes
   def afficheToi
+
     @couleurBase = "white"
     @couleurVisible = "grey"
 
@@ -240,6 +261,9 @@ class AffichageAventure
     # Déclaration de l'image centrale de la fenêtre
     img_centre = monBuildeur.get_object('img_grille')
 
+    # Déclaration de l'affichage du temps
+    @tempsGrille = monBuildeur.get_object('temps_score')
+
     # Déclaration des images étoiles qui seront liées au score de la grille actuelle
     @imgEtoile1 = monBuildeur.get_object('etoile_1')
     @imgEtoile2 = monBuildeur.get_object('etoile_2')
@@ -251,31 +275,32 @@ class AffichageAventure
     fenetre = monBuilder.get_object('fenetre_aventure')
 
     # On associe le bouton Retour avec la méthode de fermeture du mode Aventure
-    retour.signal_connect('clicked') {
+    retour.signal_connect('clicked'){
       @fenetre.destruction()
     }
 
-    @fenetre.signal_connect('destroy') {
+    @fenetre.signal_connect('destroy'){
       @fenetre.destruction()
     }
 
     # On associe le bouton Précédent avec la méthode grillePrecedente de la classe Aventure
-    btnPreced.signal_connect('clicked') {
+    btnPreced.signal_connect('clicked'){
       @aventure.grillePrecedente()
       @fenetre.boutonSuivPreced()
     }
 
     # On associe le bouton Suivant avec la méthode prochaineGrille de la classe Aventure
-    btnSuivant.signal_connect('clicked') {
+    btnSuivant.signal_connect('clicked'){
       @aventure.prochaineGrille()
       @fenetre.boutonSuivPreced()
     }
 
     # On associe le bouton facile avec la méthode de choix de difficulté de la classe Aventure
-    modeFacile.signal_connect('clicked') {
+    modeFacile.signal_connect('clicked'){
       @aventure.choixDifficulte(0)
       @aventure.placerSurGrille(0)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
+      @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
       @fenetre.setBackground(modeFacile,@couleurVisible)
       @fenetre.setBackground(modeNormal,@couleurBase)
@@ -283,12 +308,13 @@ class AffichageAventure
     }
 
     # On associe le bouton normal avec la méthode de choix de difficulté de la classe Aventure
-    modeNormal.signal_connect('clicked') {
+    modeNormal.signal_connect('clicked'){
       if(@aventure.unlockDifficulte())
         @aventure.choixDifficulte(1)
       end
       @aventure.placerSurGrille(0)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
+      @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
       @fenetre.setBackground(modeFacile,@couleurBase)
       @fenetre.setBackground(modeNormal,@couleurVisible)
@@ -296,13 +322,14 @@ class AffichageAventure
     }
 
     # On associe le bouton difficile avec la méthode de choix de difficulté de la classe Aventure
-    modeHard.signal_connect('clicked') {
+    modeHard.signal_connect('clicked'){
       @aventure.choixDifficulte(1)
       if(@aventure.unlockDifficulte())
         @aventure.choixDifficulte(2)
       end
       @aventure.placerSurGrille(0)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
+      @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
       @fenetre.setBackground(modeFacile,@couleurBase)
       @fenetre.setBackground(modeNormal,@couleurBase)
@@ -311,17 +338,21 @@ class AffichageAventure
 
     # On associe l'image de la grille avec la méthode de lancement de la Partie
     # + attribution des récompenses en fonction du timer
-    img_centre.signal_connect('clicked') {
+    img_centre.signal_connect('clicked'){
 
-      chrono = Chronometre.creer(0,"+")
+      # Pour la création du chronomètre le deuxième paramètre est censé être le sens du timer
+      # -> dans Chronometre.rb il n'est pas précisé la valeur attendu pour la création d'un timer ascendant
+      # Par défaut j'ai mis "1" si ce n'est pas le cas alors il faudra moidifier
+      chrono = Chronometre.creer(0,1)
       # Ajouter méthode de lancement de la partie
-      partie = Partie.creerToi(@aventure.getGrilleCourante)
+      partie = Partie.creerToi(@aventure.getGrilleCourante())
       chrono.demarre()
       # + récupération du timer
-      while(!partie.estFinie?());
+      while(!partie.estFinie?())
+      end
       # Puis attribution du nombre d'étoiles en fonction du timer (à définir)
-
-      temps = chrono.getTemps();
+      chrono.metEnPause()
+      temps = chrono.getTemps()
 
       case temps
       when temps <= SEUIL_5_ETOILES
@@ -332,7 +363,7 @@ class AffichageAventure
         recompense = 3
       when temps <= SEUIL_2_ETOILES
         recompense = 2
-      when temps <= SEUIL_1_ETOILES
+      when temps <= SEUIL_1_ETOILE
         recompense = 1
       else
         recompense = 0
@@ -340,12 +371,14 @@ class AffichageAventure
 
       @aventure.setEtoileCourante(recompense)
       @aventure.etoilesEnPlus(recompense)
+      @aventure.setTempsCourant(temps)
     }
 
     # On associe le bouton 1 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton1.signal_connect('clicked') {
+    @bouton1.signal_connect('clicked'){
       @aventure.placerSurGrille(0)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
+      @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
       @fenetre.setBackground(@bouton1,@couleurVisible)
       @fenetre.setBackground(@bouton2,@couleurBase)
@@ -360,9 +393,10 @@ class AffichageAventure
     }
 
     # On associe le bouton 2 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton2.signal_connect('clicked') {
+    @bouton2.signal_connect('clicked'){
       @aventure.placerSurGrille(1)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
+      @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
       @fenetre.setBackground(@bouton1,@couleurBase)
       @fenetre.setBackground(@bouton2,@couleurVisible)
@@ -377,9 +411,10 @@ class AffichageAventure
     }
 
     # On associe le bouton 3 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton3.signal_connect('clicked') {
+    @bouton3.signal_connect('clicked'){
       @aventure.placerSurGrille(2)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
+      @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
       @fenetre.setBackground(@bouton1,@couleurBase)
       @fenetre.setBackground(@bouton2,@couleurBase)
@@ -394,9 +429,10 @@ class AffichageAventure
     }
 
     # On associe le bouton 4 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton4.signal_connect('clicked') {
+    @bouton4.signal_connect('clicked'){
       @aventure.placerSurGrille(3)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
+      @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
       @fenetre.setBackground(@bouton1,@couleurBase)
       @fenetre.setBackground(@bouton2,@couleurBase)
@@ -411,9 +447,10 @@ class AffichageAventure
     }
 
     # On associe le bouton 5 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton5.signal_connect('clicked') {
+    @bouton5.signal_connect('clicked'){
       @aventure.placerSurGrille(4)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
+      @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
       @fenetre.setBackground(@bouton1,@couleurBase)
       @fenetre.setBackground(@bouton2,@couleurBase)
@@ -428,9 +465,10 @@ class AffichageAventure
     }
 
     # On associe le bouton 6 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton6.signal_connect('clicked') {
+    @bouton6.signal_connect('clicked'){
       @aventure.placerSurGrille(5)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
+      @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
       @fenetre.setBackground(@bouton1,@couleurBase)
       @fenetre.setBackground(@bouton2,@couleurBase)
@@ -445,9 +483,10 @@ class AffichageAventure
     }
 
     # On associe le bouton 7 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton7.signal_connect('clicked') {
+    @bouton7.signal_connect('clicked'){
       @aventure.placerSurGrille(6)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
+      @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
       @fenetre.setBackground(@bouton1,@couleurBase)
       @fenetre.setBackground(@bouton2,@couleurBase)
@@ -462,9 +501,10 @@ class AffichageAventure
     }
 
     # On associe le bouton 8 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton8.signal_connect('clicked') {
+    @bouton8.signal_connect('clicked'){
       @aventure.placerSurGrille(7)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
+      @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
       @fenetre.setBackground(@bouton1,@couleurBase)
       @fenetre.setBackground(@bouton2,@couleurBase)
@@ -479,9 +519,10 @@ class AffichageAventure
     }
 
     # On associe le bouton 9 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton9.signal_connect('clicked') {
+    @bouton9.signal_connect('clicked'){
       @aventure.placerSurGrille(8)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
+      @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
       @fenetre.setBackground(@bouton1,@couleurBase)
       @fenetre.setBackground(@bouton2,@couleurBase)
@@ -496,9 +537,10 @@ class AffichageAventure
     }
 
     # On associe le bouton 10 de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    @bouton10.signal_connect('clicked') {
+    @bouton10.signal_connect('clicked'){
       @aventure.placerSurGrille(9)
       @fenetre.affichageEtoile(@aventure.getEtoileCourante())
+      @fenetre.affichageTemps()
       @fenetre.affichageImageGrille()
       @fenetre.setBackground(@bouton1,@couleurBase)
       @fenetre.setBackground(@bouton2,@couleurBase)
@@ -512,9 +554,9 @@ class AffichageAventure
       @fenetre.setBackground(@bouton10,@couleurVisible)
     }
 
-    @fenetre.show_all
+    @fenetre.show_all()
 
-    Gtk.main
+    Gtk.main()
 
   end
 
