@@ -1,3 +1,4 @@
+#!/usr/bin/ruby
 require 'gtk3'
 
 
@@ -24,7 +25,7 @@ require 'gtk3'
 #
 #   Voici ses VC :
 #   
-#   @@window : elle represente notre fenetre, elle est initialisé qu'une seul fois.
+#   @@window : elle represente notre fenetre, elle est initialisé qu'une seule fois.
 
 
 class Fenetre
