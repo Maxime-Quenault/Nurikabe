@@ -1,8 +1,9 @@
-load 'Sauvegarde/Profil.rb'
+
+# https://prod.liveshare.vsengsaas.visualstudio.com/join?13F7D10A27BAEEA470A4FBFA2AB41657A004require 'gtk3'
+
+#load 'Sauvegarde/Profil.rb'
 load "Interfaces/Fenetre.rb"
 load "Interfaces/FenetreProfil.rb"
-load "Sauvegarde/SauvegardeProfil.rb"
-load "Parametre/Parametre.rb"
 
 =begin
         La classe AffichageParamètre :::
@@ -19,16 +20,12 @@ class FenetreParametre < Fenetre
 
     attr_accessor :object
 
-    ##
-    # Méthode d'initialisation de la classe FenetreParametre
-    def initialize(menuParent, interfaceProfil)
+    def initialize(menuParent)
         self.initialiseToi
         @builder = Gtk::Builder.new(:file => 'glade/settingsNurikabe.glade')
         @object = @builder.get_object("menuParam")
 
-        @interfaceProfil = interfaceProfil
-
-        @paramProfil = @interfaceProfil.profil.parametre
+        @interfaceProfil = FenetreProfil.new
 
         @langue = @builder.get_object("cbt_langue")
 
@@ -44,62 +41,16 @@ class FenetreParametre < Fenetre
         @menuParent = menuParent
     end
 
-    ##
-    # Méthode qui gère les évènements liés aux signaux attribués aux différents composants du fichier glade
-    def gestionSignaux
 
+    def gestionSignaux
         @btnProfils.signal_connect( "clicked" ) { 
+            print "\nTu as clique sur profil"
             @interfaceProfil.afficheToi
         }
 
         @btnRetour.signal_connect( "clicked" ) {
             self.changerInterface(@menuParent, "Menu")
         }
-
-        @switchTheme.signal_connect('notify::active') {onSwitchTheme_activated()}
-        @switchTheme.set_active [false, true].sample
-
-        @switchAudio.signal_connect('notify::active') {onSwitchAudio_activated()}
-        @switchAudio.set_active [false, true].sample
-
-        onChange_switchTheme()
-        onChange_switchAudio()
     end
 
-    ##
-    # Méthode qui va changer la valeur du booleen themeSombre
-    def onSwitchTheme_activated()
-        @paramProfil.themeSombre = @switchTheme.active? ? true : false
-    end
-
-    ##
-    # Change la valeur du switch Theme dans l'interface
-    def onChange_switchTheme()
-        if (@paramProfil.themeSombre == false)
-            @switchTheme.set_active(false)
-        else 
-            @switchTheme.set_active(true)
-        end
-    end
-
-    ##
-    # Méthode qui va changer la valeur du booleen effetSonore
-    def onSwitchAudio_activated()
-        @paramProfil.effetSonore = @switchAudio.active? ? true : false
-    end
-
-    ##
-    # Change la valeur du switch Audio dans l'interface
-    def onChange_switchAudio()
-        if (@paramProfil.effetSonore == false)
-            @switchAudio.set_active(false)
-        else 
-            @switchAudio.set_active(true)
-        end
-    end
-
-
-    def onChange_parametre()
-
-    end
 end

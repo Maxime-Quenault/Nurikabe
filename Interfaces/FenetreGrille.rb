@@ -14,11 +14,6 @@ class FenetreGrille < Fenetre
         @builder = Gtk::Builder.new
         @builder.add_from_file("glade/grille.glade")
         @object = @builder.get_object("menu")
-
-        @grid = @builder.get_object("grille")
-
-        @interfaceRetour = #modifier
-        @profil = #modifier
         @boutons
         @menuParent = menuParent
 
@@ -36,7 +31,19 @@ class FenetreGrille < Fenetre
         btn_clear = @builder.get_object('btn_clear')
         btn_aide = @builder.get_object('btn_aide')
 
+        #Gestion Graphique CSS
+        btn_retour.name = "btn_menu_grille"
+        btn_undo.name = "btn_menu_grille"
+        btn_redo.name = "btn_menu_grille"
+        btn_pause.name = "btn_menu_grille"
+        btn_rembobiner.name = "btn_menu_grille"
+        btn_clear.name = "btn_menu_grille"
+        btn_aide.name = "btn_menu_grille"
+
         #Gestion des signaux
+        btn_retour.signal_connect('clicked'){#quitter
+            self.changerInterface(@menuParent, "Libre")
+        }
         btn_redo.signal_connect('clicked'){#retour
             @@partie.redo
             maj_boutons
@@ -69,27 +76,30 @@ class FenetreGrille < Fenetre
         taille_hauteur = @@partie.grilleEnCours.hauteur
         taille_largeur = @@partie.grilleEnCours.largeur
         @boutons = {}
+        tableFrame = Frame.new();
+        tableFrame.name = "grille"
         table = Table.new(taille_hauteur,taille_largeur,false)
+        table.set_halign(3);
+        table.set_valign(3);
+        tableFrame.set_halign(3);
+        tableFrame.set_valign(3);
+        tableFrame.add(table)
         for i in 0..taille_largeur-1
             for j in 0..taille_hauteur-1
                 if @@partie.grilleEnCours.matriceCases[i][j].is_a?(CaseNombre)
                     @boutons[[i,j]] = Button.new(:label=> @@partie.grilleEnCours.matriceCases[i][j].to_s)
+                    @boutons[[i,j]].name = "case_chiffre"
                     table.attach(@boutons[[i,j]], i, i+1, j, j+1)
                 else
                     @boutons[[i,j]] = Button.new()
+                    @boutons[[i,j]].name = "case_vide"
                     table.attach(@boutons[[i,j]], i, i+1, j, j+1)
                 end
             end
         end
         maj_boutons
         signaux_boutons
-        @object.add(table)
-        # supprime les boutons
-        @builder.get_object('btn_retour').signal_connect('clicked'){#quitter
-            @object.remove(table)
-            @@partie=nil
-            self.changerInterface(@menuParent, "Libre")
-        }
+        @object.add(tableFrame)
     end
 
     # Changes la couleur des boutons lorsqu'on clique dessus
@@ -115,17 +125,17 @@ class FenetreGrille < Fenetre
             end
         end
     end
-
     #Change la couleur d'un bouton aux coordonnées passées en paramètres en fonction de l'état de la case correspondante
     def maj_bouton(i,j)
         lab = if(@@partie.grilleEnCours.matriceCases[i][j].etat==0)
-            ""
+            @boutons[[i,j]].set_label(" ")
         elsif (@@partie.grilleEnCours.matriceCases[i][j].etat==1)
-            "Noir"
+            @boutons[[i,j]].name = "case_noir"
+            @boutons[[i,j]].set_label(" ")
         else
-            "Point"
+            @boutons[[i,j]].name = "case_point"  
+            @boutons[[i,j]].set_label("•")
         end
-        @boutons[[i,j]].set_label(lab)
     end
 
 end

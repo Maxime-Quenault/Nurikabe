@@ -1,5 +1,5 @@
+#!/usr/bin/ruby
 require 'gtk3'
-load "Sauvegarde/SauvegardeProfil.rb"
 
 
 ##
@@ -25,10 +25,11 @@ load "Sauvegarde/SauvegardeProfil.rb"
 #
 #   Voici ses VC :
 #   
-#   @@window        : elle represente notre fenetre, elle est initialisé qu'une seule fois.
-#   @@partie        : représente la partie en cours
-#   @@profilActuel  : représente le profile actuel sélectionné par l'utilisateur 
+#   @@window : elle represente notre fenetre, elle est initialisé qu'une seule fois.
 
+
+$LARGEUR_FENETRE = 745
+$HAUTEUR_FENETRE = 850
 
 class Fenetre
 
@@ -68,9 +69,9 @@ class Fenetre
         @@window = Gtk::Window.new()
 
         #Option de la fenetre
-        @@window.set_default_size(745,850)
-        @@window.set_width_request(745)
-        @@window.set_height_request(850)
+        @@window.set_default_size($LARGEUR_FENETRE , $HAUTEUR_FENETRE)
+        @@window.set_width_request($LARGEUR_FENETRE)
+        @@window.set_height_request($HAUTEUR_FENETRE)
         @@window.set_resizable(false)
         @@window.signal_connect("destroy") { quitter }
         @@window.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
@@ -83,13 +84,10 @@ class Fenetre
         @header.subtitle = "-"
         @@window.titlebar = @header
 
-        #CSS
+        # CSS
         @css = Gtk::CssProvider.new
-        @css.load(path: "Interfaces/style.css")
+        @css.load(path: "Interfaces/style_dark.css")
         Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @css, Gtk::StyleProvider::PRIORITY_APPLICATION)
-
-        #Sauvegarde des profils
-        @save = SauvegardeProfil.new
 
     end
 
@@ -124,7 +122,7 @@ class Fenetre
     #   met à jour le nouveau sous-titre.
     #
     # @param unObjet represente la nouvelle interface.
-    # @param unSousTitre represente le nouveau sous-titre.
+    # @unSousTitre represente le nouveau sous-titre.
     def affichage(unObjet, unSousTitre)
         @@window.add(unObjet)
         self.set_sousTitre(unSousTitre)
@@ -160,7 +158,6 @@ class Fenetre
     # quitter :
     #   Supprime tous les élements de la fenetre avant de quitter le programme.
     def quitter
-        @save.sauvegarder(@@profilActuel)
         self.deleteChildren
         self.remove(@header)
         Gtk.main_quit
