@@ -158,4 +158,11 @@ class Fenetre
         Gtk.main_quit
     end
 
+    ##
+    # creerPartie :
+    # Créer et affectes une partie avec la grille passée en paramètres à la variable de classe partie
+    def creerPartie(grille)
+        @@partie = Partie.creeToi(grille)
+    end
+
 end
