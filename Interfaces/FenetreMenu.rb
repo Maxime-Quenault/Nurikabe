@@ -62,18 +62,22 @@ class FenetreMenu < Fenetre
         @builder = Gtk::Builder.new(:file => 'glade/menu.glade')
         @object = @builder.get_object("menu")      
 
+
+        #On récupere le profil séléctionné par le joueur.
+        @interfaceProfil = FenetreProfil.new
+        @interfaceProfil.afficheToi
+        @@profilActuel = @interfaceProfil.profil
+
+
         #On initialise toutes les interfaces connue par le menu (interfaces filles).
         @interfaceAPropos = FenetreAPropos.new(@object)
         @interfaceLibre = FenetreLibre.new(@object)
         #@interfaceAventure = AffichageAventure.new(@object)
         #@interfaceSurvie = FenetreSurvie.new(@object)
         #@interfaceContreMontre = FenetreContreMontre.new(@object)
-        @interfaceProfil = FenetreProfil.new
         @interfaceParametre = FenetreParametre.new(@object)
 
-        #On récupere le profil séléctionné par le joueur.
-        @interfaceProfil.afficheToi
-        @@profilActuel = @interfaceProfil.profil
+        
 
         #Recuperation des variables bouton
         @btn_libre = @builder.get_object("btn_libre")

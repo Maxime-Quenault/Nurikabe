@@ -1,0 +1,61 @@
+@define-color main_color #AFA2FF;
+@define-color main_alt_color #CFBBFF;
+@define-color main_active_color #CFBBFF;
+
+@define-color dark_main_color #171238;
+
+window {
+    background-color: white;
+    color: black;
+}
+
+button {
+    background: @main_color;
+    border: 0px;
+    border-radius: 5px;
+    color: black;
+    transition: 0.1s ease-in-out;
+}
+
+button:hover {
+    transition: 0.1s ease-in-out;
+    background: @main_alt_color;
+}
+
+button:active {
+    background: @main_active_color;
+}
+
+entry {
+    background: @dark_main_color;
+    color: white;
+}
+
+switch:checked {
+    background-color: @main_color;
+}
+
+switch {
+    background-color: @dark_main_color;
+}
+
+entry {
+    background-color: @dark_main_color;
+}
+
+entry selection {
+    background-color: purple;
+}
+
+combobox > window.popup * {
+    background: @dark_main_color;
+    color: white;
+}
+
+combobox > window.popup *:hover {
+    background: red;
+}
+
+headerbar {
+    color: white;
+}
