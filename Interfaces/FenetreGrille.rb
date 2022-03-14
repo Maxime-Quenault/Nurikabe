@@ -22,8 +22,6 @@ class FenetreGrille < Fenetre
         @interfaceRetour = #modifier
         @profil = #modifier
 
-        
-
         self.gestionSignaux
     end
 
