@@ -101,7 +101,7 @@ class FenetreProfil
                 laFenetrePrincipale.add(ligneProfil)
                 
                 boutonProfil.signal_connect('clicked'){
-                    @profil = @save.chargerProfil(key.pseudo)
+                    @profil = @save.chargerProfil(key)
                     event(@popUpProfil)
                 }
 
@@ -133,7 +133,6 @@ class FenetreProfil
                 @profil = Profil.new(pseudo)
                 if @save.ajoutProfil(profil) != -1
                     @profil = @save.chargerProfil(pseudo)
-                    event(@popUpProfil)
                 else
                     d = Gtk::MessageDialog.new(@popUpProfil,
                     Gtk::Dialog::DESTROY_WITH_PARENT,

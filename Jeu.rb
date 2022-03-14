@@ -1,5 +1,3 @@
-#!/usr/bin/ruby
-require 'gtk3'
 load "Sauvegarde/SauvegardeProfil.rb"
 load "Sauvegarde/Profil.rb"
 load "Parametre/Parametre.rb"

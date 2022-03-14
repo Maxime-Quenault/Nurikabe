@@ -1,5 +1,4 @@
 require 'gtk3'
-load 'Partie/Partie.rb'
 
 
 ##
@@ -31,10 +30,8 @@ load 'Partie/Partie.rb'
 class Fenetre
 
     @@window = nil
-    @@partie = nil
-    @@profilActuel = nil
 
-    #private_method new
+    # private_method new
 
     ##
     # changerInterface :
@@ -81,13 +78,10 @@ class Fenetre
         @header.subtitle = "-"
         @@window.titlebar = @header
 
-        #CSS
+        # CSS
         @css = Gtk::CssProvider.new
         @css.load(path: "Interfaces/style.css")
         Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @css, Gtk::StyleProvider::PRIORITY_APPLICATION)
-
-        #sauvegarde
-        @save = SauvegardeProfil.new
 
     end
 
@@ -158,17 +152,9 @@ class Fenetre
     # quitter :
     #   Supprime tous les élements de la fenetre avant de quitter le programme.
     def quitter
-        @save.sauvegarder(@@profilActuel)
         self.deleteChildren
         self.remove(@header)
         Gtk.main_quit
-    end
-
-    ##
-    # creerPartie :
-    #   Creer et affecte une partie à la variable de classe partie avec la grille passée en paramètre
-    def creerPartie(grille)
-        @@partie = Partie.creeToi(grille)
     end
 
 end
