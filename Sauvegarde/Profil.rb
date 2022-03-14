@@ -14,6 +14,7 @@ class Profil
         end
     end
 
+<<<<<<< HEAD
     def ajouterGrille(uneGrille)
         @listeGrilleCommence.push(uneGrille)
         File.open("Sauvegarde/SauvegardeGrille/listeGrille#{@pseudo}.dump", "wb") { |file| file.write(Marshal.dump(@listeGrilleCommence)) }
@@ -21,6 +22,15 @@ class Profil
 
     def chercherGrille(numero)
         @listeGrilleCommence.each do |key, value|
+=======
+    def ajouterPartie(unePartie)
+        @listePartieCommence.push(uneGrille)
+        File.open("Sauvegarde/SauvegardeGrille/listeGrille#{@pseudo}.dump", "wb") { |file| file.write(Marshal.dump(@listePartieCommence)) }
+    end
+
+    def chercherPartie(numero)
+        @listePartieCommence.each do |key, value|
+>>>>>>> parent of a859fb0 (sauvegarde partie (en jeu))
             if key.numero == numero
                 return key
             end

@@ -77,7 +77,18 @@ class FenetreLibre < Fenetre
 	#	Cette methode permet d'assigner des actions à chaques boutons récupérés dans le fichier galde.
 	def gestionSignaux
 
+<<<<<<< HEAD
 		@btn_facile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Facile"}
+=======
+		@btn_facile.signal_connect("clicked"){
+			print "\nTu as cliqué sur le mode Facile"
+			g=Grille.creer()
+			g.chargerGrille(2,0)
+			creerPartie(g)
+			@interfaceGrille.construction
+			self.changerInterface(@interfaceGrille.object, "Partie")
+		}
+>>>>>>> parent of a859fb0 (sauvegarde partie (en jeu))
 		@btn_moyen.signal_connect("clicked"){print "\nTu as cliqué sur le mode Moyen"}
 		@btn_difficile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Difficile"}
 		@btn_retour.signal_connect("clicked"){

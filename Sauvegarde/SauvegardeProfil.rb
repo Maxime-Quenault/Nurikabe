@@ -101,7 +101,7 @@ end
 =======
     def sauvegarder(unProfil, unePartie)
         if unePartie != nil
-            unProfil.ajouterPartie(unePartie)
+            uneProfil.ajouterPartie(unePartie)
         end
         @listeProfil.each do |key, value|
             if(key.pseudo == unProfil.pseudo)

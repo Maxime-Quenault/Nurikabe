@@ -68,7 +68,10 @@ class FenetreMenu < Fenetre
         #@interfaceAventure = AffichageAventure.new(@object)
         #@interfaceSurvie = FenetreSurvie.new(@object)
         #@interfaceContreMontre = FenetreContreMontre.new(@object)
+<<<<<<< HEAD
         @interfaceProfil = FenetreProfil.new
+=======
+>>>>>>> parent of a859fb0 (sauvegarde partie (en jeu))
         @interfaceParametre = FenetreParametre.new(@object)
 
         #On récupere le profil séléctionné par le joueur.

@@ -78,6 +78,7 @@ class Fenetre
         @header.subtitle = "-"
         @@window.titlebar = @header
 
+<<<<<<< HEAD
         # CSS
         @css = Gtk::CssProvider.new
         @css.load(path: "Interfaces/style.css")
@@ -86,6 +87,12 @@ class Fenetre
 <<<<<<< HEAD
 =======
 
+=======
+         # CSS
+         @css = Gtk::CssProvider.new
+         @css.load(path: "Interfaces/style.css")
+         Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @css, Gtk::StyleProvider::PRIORITY_APPLICATION)
+>>>>>>> parent of a859fb0 (sauvegarde partie (en jeu))
 
 >>>>>>> parent of 80dc055 (ne bug pas mais ne fonctionne pas)
     end
@@ -158,9 +165,12 @@ class Fenetre
     #   Supprime tous les élements de la fenetre avant de quitter le programme.
     def quitter
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         
 >>>>>>> parent of 80dc055 (ne bug pas mais ne fonctionne pas)
+=======
+>>>>>>> parent of a859fb0 (sauvegarde partie (en jeu))
         self.deleteChildren
         self.remove(@header)
         Gtk.main_quit
