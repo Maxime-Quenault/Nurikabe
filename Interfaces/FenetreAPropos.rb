@@ -5,19 +5,24 @@ load "Interfaces/Fenetre.rb"
 
 class FenetreAPropos < Fenetre
 
+    attr_accessor :object
+
     def initialize(menuParent)
         self.initialiseToi
 
-<<<<<<< HEAD
-        @builder = Gtk::Builder.new
-        @builder.add_from_file("glade/apropos.glade")
-=======
-        @builder = Gtk::Builder.new(:file => 'glade/aPropos.glade')
+        @builder = Gtk::Builder.new(:file => 'glade/apropos.glade')
         @object = @builder.get_object("menuAPropos")
 
         @btnRetour = @builder.get_object("btnRetour")
->>>>>>> parent of a859fb0 (sauvegarde partie (en jeu))
 
         @menuParent = menuParent
+
+        self.gestionSignaux
+    end
+
+    def gestionSignaux()
+        @btnRetour.signal_connect( "clicked" ) {
+            self.changerInterface(@menuParent, "Menu")
+        }
     end
 end

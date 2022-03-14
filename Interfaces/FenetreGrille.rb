@@ -82,6 +82,7 @@ class FenetreGrille < Fenetre
         # supprime les boutons
         @builder.get_object('btn_retour').signal_connect('clicked'){#quitter
             @object.remove(table)
+            @@profilActuel.ajouterPartie(@@partie)
             @@partie=nil
             self.changerInterface(@menuParent, "Libre")
         }

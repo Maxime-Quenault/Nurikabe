@@ -1,37 +1,27 @@
 load "Partie/Grille.rb"
 class Profil
-    attr_accessor :pseudo, :parametre, :listeGrilleCommence, :imageJoueur
+    attr_accessor :pseudo, :parametre, :listePartieCommence, :imageJoueur
 
     def initialize(unPseudo)
         @imageJoueur = "Image/user.png"
         @pseudo = unPseudo
         @parametre = Parametre.new()
-        @listeGrilleCommence = []
+        @listePartieCommence = []
         if(!File.exist?("Sauvegarde/SauvegardeGrille/listeGrille#{@pseudo}.dump"))
-            @listeGrilleCommence = Array.new
+            @listePartieCommence = Array.new
         else  
-            @listeGrilleCommence = Marshal.load(File.binread("Sauvegarde/SauvegardeGrille/listeGrille#{@pseudo}.dump"))
+            @listePartieCommence = Marshal.load(File.binread("Sauvegarde/SauvegardeGrille/listeGrille#{@pseudo}.dump"))
         end
     end
 
-<<<<<<< HEAD
-    def ajouterGrille(uneGrille)
-        @listeGrilleCommence.push(uneGrille)
-        File.open("Sauvegarde/SauvegardeGrille/listeGrille#{@pseudo}.dump", "wb") { |file| file.write(Marshal.dump(@listeGrilleCommence)) }
-    end
-
-    def chercherGrille(numero)
-        @listeGrilleCommence.each do |key, value|
-=======
     def ajouterPartie(unePartie)
-        @listePartieCommence.push(uneGrille)
+        @listePartieCommence.push(unePartie)
         File.open("Sauvegarde/SauvegardeGrille/listeGrille#{@pseudo}.dump", "wb") { |file| file.write(Marshal.dump(@listePartieCommence)) }
     end
 
     def chercherPartie(numero)
         @listePartieCommence.each do |key, value|
->>>>>>> parent of a859fb0 (sauvegarde partie (en jeu))
-            if key.numero == numero
+            if key.grilleEnCours.numero == numero
                 return key
             end
         end

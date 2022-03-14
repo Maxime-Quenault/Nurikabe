@@ -1,8 +1,8 @@
-#load 'Sauvegarde/Profil.rb'
-load "Interfaces/FenetreProfil.rb"
+load 'Sauvegarde/Profil.rb'
 load "Interfaces/Fenetre.rb"
-load "Interfaces/FenetreParametreProfil.rb"
-#load "Interfaces/FenetreGestionProfil.rb"
+load "Interfaces/FenetreProfil.rb"
+load "Sauvegarde/SauvegardeProfil.rb"
+load "Parametre/Parametre.rb"
 
 =begin
         La classe AffichageParamètre :::
@@ -19,81 +19,74 @@ class FenetreParametre < Fenetre
 
     attr_accessor :object
 
-    def initialize(menuParent)
-
+    def initialize(menuParent, interfaceProfil)
         self.initialiseToi
+        @builder = Gtk::Builder.new(:file => 'glade/settingsNurikabe.glade')
+        @object = @builder.get_object("menuParam")
 
-        @builderJeu = Gtk::Builder.new(:file => 'glade/settingsNurikabe.glade')
+        @interfaceProfil = interfaceProfil
 
-        @object = @builderJeu.get_object("menuParam")
+        @paramProfil = @interfaceProfil.profil.parametre
 
-        @interfaceProfil = FenetreProfil.new
-        @interfaceParametreProfil = FenetreParametreProfil.new(menuParent)
+        @langue = @builder.get_object("cbt_langue")
 
-        @langue = @builderJeu.get_object("cbt_langue")
+        @btnJeu = @builder.get_object("button_jeu")
+        @btnRetour = @builder.get_object("button_retour")
+        @btnProfils = @builder.get_object("button_profils")
 
-        @btnJeu = @builderJeu.get_object("button_jeu")
-        @btnRetour = @builderJeu.get_object("button_retour")
-        @btnProfils = @builderJeu.get_object("btn_gestion_profil")
-
-        @switchTheme = @builderJeu.get_object("switch_theme")
-        @switchAudio = @builderJeu.get_object("switch_audio")
+        @switchTheme = @builder.get_object("switch_theme")
+        @switchAudio = @builder.get_object("switch_audio")
 
         self.gestionSignaux
 
         @menuParent = menuParent
     end
 
-
     def gestionSignaux
+
         @btnProfils.signal_connect( "clicked" ) { 
-            print "\nTu as clique sur profil"
-            self.changerInterface(@interfaceParametreProfil.object, "Paramètres")
+            @interfaceProfil.afficheToi
         }
 
         @btnRetour.signal_connect( "clicked" ) {
             self.changerInterface(@menuParent, "Menu")
         }
 
+        @switchTheme.signal_connect('notify::active') {onSwitchTheme_activated()}
+        @switchTheme.set_active [false, true].sample
+
+        @switchAudio.signal_connect('notify::active') {onSwitchAudio_activated()}
+        @switchAudio.set_active [false, true].sample
+
+        onChange_switchTheme()
+        onChange_switchAudio()
     end
 
+    def onSwitchTheme_activated()
+        @paramProfil.themeSombre = @switchTheme.active? ? true : false
+    end
+
+    def onChange_switchTheme()
+        if (@paramProfil.themeSombre == false)
+            @switchTheme.set_active(false)
+        else 
+            @switchTheme.set_active(true)
+        end
+    end
+
+    def onSwitchAudio_activated()
+        @paramProfil.effetSonore = @switchAudio.active? ? true : false
+    end
+
+    def onChange_switchAudio()
+        if (@paramProfil.effetSonore == false)
+            @switchAudio.set_active(false)
+        else 
+            @switchAudio.set_active(true)
+        end
+    end
+
+    def onChange_parametre()
+
+    end
 end
-
-# class FenetreParametre < Fenetre
-
-#     attr_accessor :object
-
-#     def initialize(menuParent)
-#         self.initialiseToi
-#         @builder = Gtk::Builder.new(:file => 'glade/settingsNurikabe.glade')
-#         @object = @builder.get_object("menuParam")
-
-#         @interfaceGestionProfil = FenetreGestionProfil.new(@object)
-
-#         @langue = @builder.get_object("cbt_langue")
-
-#         @btnJeu = @builder.get_object("button_jeu")
-#         @btnRetour = @builder.get_object("button_retour")
-#         @btnGestionProfil = @builder.get_object("btn_gestion_profil")
-
-#         @switchTheme = @builder.get_object("switch_theme")
-#         @switchAudio = @builder.get_object("switch_audio")
-
-#         self.gestionSignaux
-
-#         @menuParent = menuParent
-#     end
-
-
-#     def gestionSignaux
-#         @btnGestionProfil.signal_connect( "clicked" ) { 
-#             print "\nTu as clique sur profil"
-#             self.changerInterface(@interfaceGestionProfil, "gestion")
-#         }
-
-#         @btnRetour.signal_connect( "clicked" ) {
-#             self.changerInterface(@menuParent, "Menu")
-#         }
-#     end
-
-# end

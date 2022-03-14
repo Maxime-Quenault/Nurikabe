@@ -2,45 +2,88 @@
 <!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkBox" id="test">
+  <object class="GtkPaned" id="menuAPropos">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="orientation">vertical</property>
+    <property name="can_focus">True</property>
     <child>
-      <object class="GtkEntry">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton">
-        <property name="label" translatable="yes">retour</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="label" translatable="yes">tu es dans a propos</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkLabel" id="label">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">
+
+Le Nurikabe est un puzzle japonais dans le style du sudoku.
+            
+Ce jeu, quelquefois appelé « ilot dans le courant », est un puzzle à résolution binaire.
+            
+On peut décider, pour chaque cellule, si elle est blanche ou noir en fonction de règles bien précises.
+            
+Le puzzle se résout sur une grille rectangulaire de cellules, dont certaines contiennent des nombres.
+            
+Deux cellules sont connectées si elles sont adjacentes verticalement ou horizontalement, mais pas en diagonale.
+            
+Les cellules blanches constituent les îlots alors que les cellules noires connectées constituent le fleuve.
+            
+Le joueur marque d'un point les cellules sans numéro dont il est sûr qu'elles appartiennent à un îlot.
+            
+Cette application a été dévelopée dans le cadre d'un projet universitaire par :
+                
+
+
+
+
+
+
+LEBOUC Julian
+LOCHAIN Alexandre
+MORICEAU Bastien
+NOLIÈRE Alexis
+QUENAULT Maxime
+SANNA Florian
+SCHERRER Arthur
+TROTTIER Léo
+VANNIER Allan
+
+
+
+
+
+
+</property>
+            <property name="justify">center</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btnRetour">
+            <property name="label" translatable="yes">Retour</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
       </object>
       <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">2</property>
+        <property name="resize">False</property>
+        <property name="shrink">True</property>
       </packing>
+    </child>
+    <child>
+      <placeholder/>
     </child>
   </object>
 </interface>

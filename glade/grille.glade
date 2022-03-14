@@ -7,35 +7,18 @@
     <property name="can_focus">False</property>
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkImage" id="logo1">
-        <property name="name">logoNurikabe</property>
+      <object class="GtkBox" id="bouton_zone">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="pixbuf">LogoNurikabe.png</property>
-      </object>
-      <packing>
-        <property name="expand">True</property>
-        <property name="fill">True</property>
-        <property name="position">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkBox">
-        <property name="width_request">400</property>
-        <property name="height_request">430</property>
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">4</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">25</property>
         <property name="homogeneous">True</property>
         <child>
-          <object class="GtkButton" id="btn_libre">
-            <property name="label" translatable="yes">Libre</property>
-            <property name="name">boutonLibre</property>
+          <object class="GtkButton" id="btn_retour">
+            <property name="label">gtk-quit</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -44,12 +27,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="btn_aventure">
-            <property name="label" translatable="yes">Aventure</property>
-            <property name="name">boutonAventure</property>
+          <object class="GtkButton" id="btn_clear">
+            <property name="label">gtk-delete</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -58,12 +42,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="btn_contre_montre">
-            <property name="label" translatable="yes">Contre la Montre</property>
-            <property name="name">boutonMontre</property>
+          <object class="GtkButton" id="btn_rembobiner">
+            <property name="label">gtk-media-rewind</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -72,12 +57,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="btn_survie">
-            <property name="label" translatable="yes">Survie</property>
-            <property name="name">boutonSurvie</property>
+          <object class="GtkButton" id="btn_undo">
+            <property name="label">gtk-go-back</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -85,71 +71,60 @@
             <property name="position">3</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkButton" id="btn_redo">
+            <property name="label">gtk-go-forward</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btn_pause">
+            <property name="label">gtk-media-pause</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btn_aide">
+            <property name="label">gtk-help</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">6</property>
+          </packing>
+        </child>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">1</property>
+        <property name="position">0</property>
       </packing>
     </child>
     <child>
-      <object class="GtkBox">
-        <property name="width_request">0</property>
-        <property name="height_request">-1</property>
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">50</property>
-        <property name="margin_bottom">50</property>
-        <property name="spacing">50</property>
-        <property name="homogeneous">True</property>
-        <child>
-          <object class="GtkButton" id="btn_tuto">
-            <property name="label" translatable="yes">Tuto</property>
-            <property name="name">boutonTuto</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="btn_propos">
-            <property name="label" translatable="yes">A Propos</property>
-            <property name="name">boutonPropos</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="btn_parametre">
-            <property name="label" translatable="yes">Paramètre</property>
-            <property name="name">boutonParam</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">2</property>
-      </packing>
+      <placeholder/>
     </child>
   </object>
 </interface>
