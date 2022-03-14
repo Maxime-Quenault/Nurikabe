@@ -73,7 +73,7 @@ class FenetreMenu < Fenetre
         @interfaceProfil.afficheToi
         @@profilActuel = @interfaceProfil.profil
 
-        @interfaceParametre = FenetreParametre.new(@object, @interfaceProfil)
+        #@interfaceParametre = FenetreParametre.new(@object, @interfaceProfil)
 
         #Recuperation des variables bouton
         @btn_libre = @builder.get_object("btn_libre")
@@ -124,7 +124,7 @@ class FenetreMenu < Fenetre
         }
 
         @btn_parametre.signal_connect('clicked') {
-            self.changerInterface(@interfaceParametre.object, "Paramètres")
+            #self.changerInterface(@interfaceParametre.object, "Paramètres")
         }
     end
 end
