@@ -14,6 +14,8 @@ class Partie
   @indiceCoup
   @enPause
 
+  attr_accessor :grilleEnCours
+
   def Partie.creeToi(uneGrille)
     new(uneGrille)
   end

@@ -34,7 +34,6 @@ load "Sauvegarde/Profil.rb"
 #   @interfaceParametre : represente l'interface des parametres
 #
 #   @quit : permet de savoir si oui ou non l'utilisateur a choisi un profil ou non
-#   @profil : represente le profil selectionné
 #
 #   @btn_libre : represente l'objet bouton mode libre
 #   @btn_survie : represente l'objet bouton mode survie
@@ -72,7 +71,7 @@ class FenetreMenu < Fenetre
 
         #On récupere le profil séléctionné par le joueur.
         @interfaceProfil.afficheToi
-        @profil = @interfaceProfil.profil
+        @@profilActuel = @interfaceProfil.profil
 
         @interfaceParametre = FenetreParametre.new(@object, @interfaceProfil)
 
@@ -125,7 +124,7 @@ class FenetreMenu < Fenetre
         }
 
         @btn_parametre.signal_connect('clicked') {
-            self.changerInterface(@interfaceParametre.object, "Parametre")
+            self.changerInterface(@interfaceParametre.object, "Paramètres")
         }
     end
 end

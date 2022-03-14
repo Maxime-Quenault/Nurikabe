@@ -29,7 +29,7 @@ class Aventure
 
   # Défionition des Constantes
 
-      # Consernant les valeurs des deux VI palier ci-dessous elles sont provisoires(test) -> se mettre d'accord plus tard
+  # Consernant les valeurs des deux VI palier ci-dessous elles sont provisoires(test) -> se mettre d'accord plus tard
   # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée normale
   PALIER_NORMAL = 30
   # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée hard
@@ -88,7 +88,7 @@ class Aventure
   # Lien entre les différentes aventures
   # Méthode d'accès en ecriture qui édite le lien de cette aventure avec la précédente(si il y en a)
   def setPrecedent(aventurePreced)
-    @precedenteDiff = aventurePreced
+      @precedenteDiff = aventurePreced
   end
 
   # Méthode d'accès en ecriture qui édite le lien de cette aventure avec la suivante(si il y en a)
@@ -162,12 +162,16 @@ class Aventure
 
   # On se déplace sur l'aventure de difficulté inférieure
   def difficultePrecedente
-    return @precedenteDiff
+    if (@precedenteDiff != nil)
+      return @precedenteDiff
+    end
   end
 
   # On se déplace sur l'aventure de difficulté supérieure
   def difficulteSuivante
-    return @suivanteDiff
+    if (@suivanteDiff != nil)
+      return @suivanteDiff
+    end
   end
 
   # Le joueur a terminé sa grille et obtient des étoiles :
