@@ -160,6 +160,18 @@ class Grille
                 return chaine if (compteur == unIndex + 1)
 
             end
+        elsif (uneDifficulte == MOYEN)
+            File.foreach('./Partie/grillesMoyen.txt') do |line|
+
+                if line.eql?("\n")
+                    compteur += 1
+				elsif compteur == unIndex
+                    chaine << line
+                end
+
+                return chaine if (compteur == unIndex + 1)
+
+            end
         end
 
     end

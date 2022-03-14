@@ -4,7 +4,7 @@ load "Sauvegarde/SauvegardeProfil.rb"
 load "Sauvegarde/Profil.rb"
 load "Libre/Libre.rb"
 load "Interfaces/Fenetre.rb"
-load "Interfaces/FenetreGrille.rb"
+load "Interfaces/FenetreChoixGrille.rb"
 
 
 ##
@@ -57,7 +57,7 @@ class FenetreLibre < Fenetre
 		@btn_difficile = @builder.get_object("lvl_difficile") 
 		@btn_retour = @builder.get_object("btn_retour")
 
-		@interfaceGrille = FenetreGrille.new(@object)
+		@interfaceChoixGrille = FenetreChoixGrille.new(@object)
 		
 		self.gestionSignaux
 
@@ -81,13 +81,13 @@ class FenetreLibre < Fenetre
 
 		@btn_facile.signal_connect("clicked"){
 			print "\nTu as cliqué sur le mode Facile"
-			g=Grille.creer()
-			g.chargerGrille(2,0)
-			creerPartie(g)
-			@interfaceGrille.construction
-			self.changerInterface(@interfaceGrille.object, "Partie")
+			@interfaceChoixGrille.difficulte=0
+			self.changerInterface(@interfaceChoixGrille.object, "Facile")
 		}
-		@btn_moyen.signal_connect("clicked"){print "\nTu as cliqué sur le mode Moyen"}
+		@btn_moyen.signal_connect("clicked"){print "\nTu as cliqué sur le mode Moyen"
+			@interfaceChoixGrille.difficulte=1
+			self.changerInterface(@interfaceChoixGrille.object, "Moyen")
+		}
 		@btn_difficile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Difficile"}
 		@btn_retour.signal_connect("clicked"){
 			self.changerInterface(@menuParent, "Menu")

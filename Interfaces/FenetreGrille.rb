@@ -96,6 +96,7 @@ class FenetreGrille < Fenetre
                     maj_bouton(cle[0],cle[1])
                     if @@partie.partieFinie?
                         puts "Bien joué, la partie est finie !"
+                        @@partie=nil
                         self.changerInterface(@menuParent, "Libre")
                     end
                 }

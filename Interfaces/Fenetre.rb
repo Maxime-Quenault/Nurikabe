@@ -112,6 +112,10 @@ class Fenetre
         @@window.titlebar.subtitle  = subtitle
     end
 
+    def get_sousTitre()
+        return @@window.titlebar.subtitle
+    end
+
 
     ##
     # affichage :
