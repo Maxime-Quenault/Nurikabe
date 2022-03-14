@@ -86,8 +86,16 @@ class SauvegardeProfil
         return true
     end
 
-    def sauvegarder(unProfil)
-        
+    def sauvegarder(unProfil, unePartie)
+        if unePartie != nil
+            uneProfil.ajouterPartie(unePartie)
+        end
+        @listeProfil.each do |key, value|
+            if(key.pseudo == unProfil.pseudo)
+                key = unProfil
+            end
+        end
+        File.open("Sauvegarde/SauvegardeProfil/listeProfil.dump", "wb") { |file| file.write(Marshal.dump(@listeProfil)) }
     end
 
 end
