@@ -13,10 +13,18 @@
         <property name="baseline_position">bottom</property>
         <child>
           <object class="GtkButton" id="btn_retour">
-            <property name="label" translatable="yes">Retour</property>
+            <property name="name">button_retour</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="always_show_image">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="stock">gtk-undo</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
