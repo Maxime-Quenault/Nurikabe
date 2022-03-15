@@ -174,10 +174,10 @@ class AffichageAventure
 
   def setEffetBouton(indice)
     @aventure.placerSurGrille(indice)
-    @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-    @fenetre.affichageTemps()
-    @fenetre.affichageImageGrille()
-    @fenetre.setBackgroundBoutons(indice, @couleurVisible, @couleurBase)
+    @aventure.affichageEtoile(@aventure.getEtoileCourante())
+    self.affichageTemps()
+    self.affichageImageGrille()
+    self.setBackgroundBoutons(indice, @couleurVisible, @couleurBase)
   end
 
   ################### Méthodes liées aux affichages et évènements  ###################
@@ -258,7 +258,7 @@ class AffichageAventure
   # Ainsi suivant la position du joueur(après le click sur suivant ou précédent)
   # On appel la méthode de "surbrillance" du bouton associé à notre position
   def boutonSuivPreced
-      @fenetre.pack_start(@bouton[@aventure.getPosCourante()])
+      self.pack_start(@bouton[@aventure.getPosCourante()])
   end
 
   ################### Méthode principale - afficheToi  ###################
@@ -268,35 +268,35 @@ class AffichageAventure
 
     # On associe le bouton Retour avec la méthode de fermeture du mode Aventure
     @retour.signal_connect('clicked'){
-      @fenetre.destruction()
+      self.destruction()
     }
 
     @fenetre.signal_connect('destroy'){
-      @fenetre.destruction()
+      self.destruction()
     }
 
     # On associe le bouton Précédent avec la méthode grillePrecedente de la classe Aventure
     @btnPreced.signal_connect('clicked'){
       @aventure.grillePrecedente()
-      @fenetre.boutonSuivPreced()
+      self.boutonSuivPreced()
     }
 
     # On associe le bouton Suivant avec la méthode prochaineGrille de la classe Aventure
     @btnSuivant.signal_connect('clicked'){
       @aventure.prochaineGrille()
-      @fenetre.boutonSuivPreced()
+      self.boutonSuivPreced()
     }
 
     # On associe le bouton facile avec la méthode de choix de difficulté de la classe Aventure
     @modeFacile.signal_connect('clicked'){
       @aventure.choixDifficulte(0)
       @aventure.placerSurGrille(0)
-      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageTemps()
-      @fenetre.affichageImageGrille()
-      @fenetre.setBackground(@modeFacile,@couleurVisible)
-      @fenetre.setBackground(@modeNormal,@couleurBase)
-      @fenetre.setBackground(@modeHard,@couleurBase)
+      self.affichageEtoile(@aventure.getEtoileCourante())
+      self.affichageTemps()
+      self.affichageImageGrille()
+      self.setBackground(@modeFacile,@couleurVisible)
+      self.setBackground(@modeNormal,@couleurBase)
+      self.setBackground(@modeHard,@couleurBase)
     }
 
     # On associe le bouton normal avec la méthode de choix de difficulté de la classe Aventure
@@ -305,12 +305,12 @@ class AffichageAventure
         @aventure.choixDifficulte(1)
       end
       @aventure.placerSurGrille(0)
-      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageTemps()
-      @fenetre.affichageImageGrille()
-      @fenetre.setBackground(@modeFacile,@couleurBase)
-      @fenetre.setBackground(@modeNormal,@couleurVisible)
-      @fenetre.setBackground(@modeHard,@couleurBase)
+      self.affichageEtoile(@aventure.getEtoileCourante())
+      self.affichageTemps()
+      self.affichageImageGrille()
+      self.setBackground(@modeFacile,@couleurBase)
+      self.setBackground(@modeNormal,@couleurVisible)
+      self.setBackground(@modeHard,@couleurBase)
     }
 
     # On associe le bouton difficile avec la méthode de choix de difficulté de la classe Aventure
@@ -320,12 +320,12 @@ class AffichageAventure
         @aventure.choixDifficulte(2)
       end
       @aventure.placerSurGrille(0)
-      @fenetre.affichageEtoile(@aventure.getEtoileCourante())
-      @fenetre.affichageTemps()
-      @fenetre.affichageImageGrille()
-      @fenetre.setBackground(@modeFacile,@couleurBase)
-      @fenetre.setBackground(@modeNormal,@couleurBase)
-      @fenetre.setBackground(@modeHard,@couleurVisible)
+      self.affichageEtoile(@aventure.getEtoileCourante())
+      self.affichageTemps()
+      self.affichageImageGrille()
+      self.setBackground(@modeFacile,@couleurBase)
+      self.setBackground(@modeNormal,@couleurBase)
+      self.setBackground(@modeHard,@couleurVisible)
     }
 
     # On associe l'image de la grille avec la méthode de lancement de la Partie
