@@ -59,11 +59,16 @@ class FenetreChoixGrille < Fenetre
     end
 
 
-    # Créer une table de boutons correspondants aux cases de la grille
+    #Créer une table de boutons correspondants aux cases de la grille
     def construction(num_grille)
-        g=Grille.creer()
-        g.chargerGrille(num_grille,@difficulte)
-        creerPartie(g)
+        if (unePartie = @@profilActuel.chercherPartie(num_grille)) == nil
+            g=Grille.creer()
+            g.chargerGrille(num_grille,@difficulte)
+            creerPartie(g)
+        else
+            print "\ntu as une partie de save"
+            creerPartie(unePartie.grilleEnCours)
+        end
         @interfaceGrille.construction
     end
 
