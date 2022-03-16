@@ -8,7 +8,7 @@ load "Partie/Chronometre.rb"
 load "Partie/Grille.rb"
 
 # Définition de la classe AffichageAventure qui affichera le mode Aventure
-class AffichageAventure
+class AffichageAventure < Fenetre
 
   # Définition des constantes
   SEUIL_5_ETOILES = 1.0
