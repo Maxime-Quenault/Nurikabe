@@ -12,7 +12,17 @@ load "Parametre/Parametre.rb"
             - peut afficher l'intterface qui va gérer les profils
 
         Les VI de cette classe sont :::
-            - @profil ==> Le profil associé aux paramètres lorsque l'application est lancée
+            - @profil           ==> Le profil associé aux paramètres lorsque l'application est lancée
+            - @bulder           ==> fenêtre principale qui va générer le fichier glade
+            - @object           ==> contient l'identifiant de la fenêtre courante
+            - @save             ==> une sauvegarde
+            - @interfaceProfil  ==> pop-up des profils
+            - @paramProfil      ==> paramètres courants du profil
+            - @langue           ==> id de la langue
+            - @btnJeu           ==> id du bouton jeu de l'interface paramètre
+            - @btnRetour        ==> id du bouton retour de l'interface paramètre 
+            - @btnProfils       ==> id du bouton profils dans l'interface paramètre
+            - @switchTheme
 =end
 
 class FenetreParametre < Fenetre
@@ -26,6 +36,8 @@ class FenetreParametre < Fenetre
         @builder = Gtk::Builder.new(:file => 'glade/settingsNurikabe.glade')
         @object = @builder.get_object("menuParam")
 
+        @save = SauvegardeProfil.new
+
         @interfaceProfil = interfaceProfil
 
         @paramProfil = @interfaceProfil.profil.parametre
@@ -38,6 +50,7 @@ class FenetreParametre < Fenetre
 
         @switchTheme = @builder.get_object("switch_theme")
         @switchAudio = @builder.get_object("switch_audio")
+        @color = @builder.get_object("color_chooser")
 
         self.gestionSignaux
 
@@ -45,7 +58,7 @@ class FenetreParametre < Fenetre
     end
 
     ##
-    # Méthode qui gère les évènements liés aux signaux attribués aux différents composants du fichier glade
+    # Méthode qui g ère les évènements liés aux signaux attribués aux différents composants du fichier glade
     def gestionSignaux
 
         @btnProfils.signal_connect( "clicked" ) { 
@@ -55,12 +68,10 @@ class FenetreParametre < Fenetre
         @btnRetour.signal_connect( "clicked" ) {
             self.changerInterface(@menuParent, "Menu")
         }
+        
 
         @switchTheme.signal_connect('notify::active') {onSwitchTheme_activated()}
-        @switchTheme.set_active [false, true].sample
-
         @switchAudio.signal_connect('notify::active') {onSwitchAudio_activated()}
-        @switchAudio.set_active [false, true].sample
 
         onChange_switchTheme()
         onChange_switchAudio()
@@ -70,6 +81,7 @@ class FenetreParametre < Fenetre
     # Méthode qui va changer la valeur du booleen themeSombre
     def onSwitchTheme_activated()
         @paramProfil.themeSombre = @switchTheme.active? ? true : false
+        onChange_parametre()
     end
 
     ##
@@ -86,6 +98,7 @@ class FenetreParametre < Fenetre
     # Méthode qui va changer la valeur du booleen effetSonore
     def onSwitchAudio_activated()
         @paramProfil.effetSonore = @switchAudio.active? ? true : false
+        onChange_parametre()
     end
 
     ##
@@ -98,8 +111,10 @@ class FenetreParametre < Fenetre
         end
     end
 
-
+    ##
+    # Méthode qui va mettre à jour les paramaètres en écrasant les anciennes données par les nouvelles
     def onChange_parametre()
-
+        @save.supprimerProfil(@@profilActuel)
+        @save.ajoutProfil(@@profilActuel)
     end
 end

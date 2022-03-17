@@ -75,7 +75,7 @@ class FenetreMenu < Fenetre
         #@interfaceAventure = AffichageAventure.new(@object)
         #@interfaceSurvie = FenetreSurvie.new(@object)
         #@interfaceContreMontre = FenetreContreMontre.new(@object)
-        @interfaceParametre = FenetreParametre.new(@object)
+        @interfaceParametre = FenetreParametre.new(@object, @interfaceProfil)
 
         
 
@@ -126,7 +126,7 @@ class FenetreMenu < Fenetre
         @btn_propos.signal_connect('clicked') {print "tu as clique sur a propos\n"}
 
         @btn_parametre.signal_connect('clicked') {
-            self.changerInterface(@interfaceParametre.object, "Parametre")
+            self.changerInterface(@interfaceParametre.object, "Settings Window")
         }
     end
 end

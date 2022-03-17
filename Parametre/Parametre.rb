@@ -28,7 +28,7 @@ class Parametre
     # Méthode d'initialisation de la classe Paramètre
     # Les valeurs sont initialisées par défaut
     def initialize()
-        @themeSombre = true
+        @themeSombre = false
         @couleur = '\#000000'
         @effetSonore = false
         @langue = 'fr'
@@ -37,7 +37,7 @@ class Parametre
     ##
     # Méthode de réinitialisation des paramètres
     def resetParametre()
-        @themeSombre = true
+        @themeSombre = false
         @couleur = '\#000000'
         @effetSonore = false
         @langue = 'fr'
