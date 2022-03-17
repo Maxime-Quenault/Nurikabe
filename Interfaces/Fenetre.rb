@@ -166,6 +166,9 @@ class Fenetre
     # quitter :
     #   Supprime tous les élements de la fenetre avant de quitter le programme.
     def quitter
+        if @@partie!=nil
+            @@profilActuel.ajouterPartie(@@partie)
+        end
         self.deleteChildren
         self.remove(@header)
         Gtk.main_quit

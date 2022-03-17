@@ -7,6 +7,7 @@ load "Partie/Indice.rb"
 # un tableau de coups, sert pour les undo et redo
 # un indice du coup auquel on est
 # un booléen en pause
+# le dernier indice délivré
 class Partie
   @grilleEnCours
   @chronometre

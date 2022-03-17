@@ -20,6 +20,13 @@ class FenetreGrille < Fenetre
         self.gestionSignaux
     end
 
+    def quitter
+        @@profilActuel.ajouterPartie(@@partie)
+        self.deleteChildren
+        self.remove(@header)
+        Gtk.main_quit
+    end
+
     def gestionSignaux
         
         #Recuperation de la fenetre
@@ -33,10 +40,10 @@ class FenetreGrille < Fenetre
 
         #Gestion Graphique CSS
         btn_retour.name = "btn_menu_grille"
-        btn_undo.name = "btn_menu_grille"
-        btn_redo.name = "btn_menu_grille"
+        btn_undo.name = "btn_menu_grille_grise"
+        btn_redo.name = "btn_menu_grille_grise"
         btn_pause.name = "btn_menu_grille"
-        btn_rembobiner.name = "btn_menu_grille"
+        btn_rembobiner.name = "btn_menu_grille_grise"
         btn_clear.name = "btn_menu_grille"
         btn_aide.name = "btn_menu_grille"
 
@@ -44,16 +51,19 @@ class FenetreGrille < Fenetre
         btn_redo.signal_connect('clicked'){#redo
             @@partie.redo
             maj_boutons
+            griserBoutons
             puts @@partie.grilleEnCours
         }
         btn_undo.signal_connect('clicked'){#undo
             @@partie.undo
             maj_boutons
+            griserBoutons
             puts @@partie.grilleEnCours
         }
         btn_rembobiner.signal_connect('clicked'){#retour tant qu'il y a des erreurs
             @@partie.reviensALaBonnePosition()
             maj_boutons
+            griserBoutons
             puts @@partie.grilleEnCours
         }
         btn_aide.signal_connect('clicked'){#affiche un indice
@@ -66,6 +76,7 @@ class FenetreGrille < Fenetre
         }
         btn_clear.signal_connect('clicked'){#remet la partie a zero
             @@partie.raz
+            griserBoutons
             maj_boutons
             puts @@partie.grilleEnCours
         }
@@ -118,6 +129,7 @@ class FenetreGrille < Fenetre
                 val.signal_connect('clicked'){
                     @@partie.clicSurCase(cle[0],cle[1])
                     maj_bouton(cle[0],cle[1])
+                    griserBoutons
                     if @@partie.dernierIndice!=nil && @@partie.grilleEnCours.matriceCases[@@partie.dernierIndice.coordonneesCase[0]][@@partie.dernierIndice.coordonneesCase[1]].is_a?(CaseNombre)
                         @boutons[[@@partie.dernierIndice.coordonneesCase[0],@@partie.dernierIndice.coordonneesCase[1]]].name = "case_chiffre"
                     end
@@ -129,6 +141,24 @@ class FenetreGrille < Fenetre
                     end
                 }
             end
+        end
+    end
+
+    def griserBoutons
+        btn_undo = @builder.get_object('btn_undo')
+        btn_redo = @builder.get_object('btn_redo')
+        btn_rembobiner = @builder.get_object('btn_rembobiner')
+        if @@partie.undoPossible?
+            btn_undo.name = "btn_menu_grille"
+            btn_rembobiner.name = "btn_menu_grille"
+        else 
+            btn_undo.name = "btn_menu_grille_grise"
+            btn_rembobiner.name = "btn_menu_grille_grise"
+        end
+        if @@partie.redoPossible?
+            btn_redo.name = "btn_menu_grille"
+        else 
+            btn_redo.name = "btn_menu_grille_grise"
         end
     end
 

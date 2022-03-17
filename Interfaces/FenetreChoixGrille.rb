@@ -67,7 +67,7 @@ class FenetreChoixGrille < Fenetre
             creerPartie(g)
         else
             print "\ntu as une partie de save"
-            creerPartie(unePartie.grilleEnCours)
+            @@partie = unePartie
         end
         @interfaceGrille.construction
     end
