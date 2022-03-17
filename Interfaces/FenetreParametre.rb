@@ -9,7 +9,11 @@ load "Parametre/Parametre.rb"
             - peut afficher l'interface qui va gérer la langue
             - peut afficher l'interface qui va gérer les couleurs
             - peut afficher l'interface qui va gérer les effets sonores
-            - peut afficher l'intterface qui va gérer les profils
+            - peut afficher l'interface qui va gérer les profils
+            - peut changer la couleur du thème
+            - peut activer/désactiver les effets sonores
+            - permet à l'utilisateur de gérer les profils
+                    --> il pourra changer de profil quand il le souhaitera, ou même créer un nouveau profil
 
         Les VI de cette classe sont :::
             - @profil           ==> Le profil associé aux paramètres lorsque l'application est lancée
@@ -22,7 +26,8 @@ load "Parametre/Parametre.rb"
             - @btnJeu           ==> id du bouton jeu de l'interface paramètre
             - @btnRetour        ==> id du bouton retour de l'interface paramètre 
             - @btnProfils       ==> id du bouton profils dans l'interface paramètre
-            - @switchTheme
+            - @switchTheme      ==> id du bouton switchTheme dans l'interface paramètre
+            - @switchAudio      ==> id du bouton switchAudio dans l'interface paramètre
 =end
 
 class FenetreParametre < Fenetre
@@ -50,7 +55,6 @@ class FenetreParametre < Fenetre
 
         @switchTheme = @builder.get_object("switch_theme")
         @switchAudio = @builder.get_object("switch_audio")
-        @color = @builder.get_object("color_chooser")
 
         self.gestionSignaux
 
