@@ -98,6 +98,17 @@ headerbar {
     min-height: 90px;
 }
 
+#case_indice {
+    border-radius: 0;
+    color: black;
+    background: rgb(245, 245, 245);
+    border: 2px red solid;
+    font-size: 50px;
+    transition: 0.08s ease;
+    min-width: 90px;
+    min-height: 90px;
+}
+
 #case_noir {
     border-radius: 0;
     color: black;

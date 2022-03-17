@@ -57,7 +57,12 @@ class FenetreGrille < Fenetre
             puts @@partie.grilleEnCours
         }
         btn_aide.signal_connect('clicked'){#affiche un indice
-            puts @@partie.clicSurIndice
+            indice=@@partie.clicSurIndice
+            puts indice
+            if indice==@@partie.dernierIndice
+                @boutons[[indice.coordonneesCase[0],indice.coordonneesCase[1]]].name = "case_indice"
+            end
+            @@partie.dernierIndice=indice
         }
         btn_clear.signal_connect('clicked'){#remet la partie a zero
             @@partie.raz
@@ -113,6 +118,9 @@ class FenetreGrille < Fenetre
                 val.signal_connect('clicked'){
                     @@partie.clicSurCase(cle[0],cle[1])
                     maj_bouton(cle[0],cle[1])
+                    if @@partie.dernierIndice!=nil && @@partie.grilleEnCours.matriceCases[@@partie.dernierIndice.coordonneesCase[0]][@@partie.dernierIndice.coordonneesCase[1]].is_a?(CaseNombre)
+                        @boutons[[@@partie.dernierIndice.coordonneesCase[0],@@partie.dernierIndice.coordonneesCase[1]]].name = "case_chiffre"
+                    end
                     if @@partie.partieFinie?
                         puts "Bien joué, la partie est finie !"
                         @object.remove(tableFrame)

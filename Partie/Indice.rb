@@ -54,4 +54,11 @@ class Indice
         return res
     end
 
+    def ==(indice)
+        if indice!=nil && indice.type!=nil
+            return @type == indice.type && @coordonneesCase[0] == indice.coordonneesCase[0] && @coordonneesCase[1] == indice.coordonneesCase[1]
+        else
+            return false
+        end
+    end
 end

@@ -13,6 +13,7 @@ class Partie
   @tabCoup
   @indiceCoup
   @enPause
+  @dernierIndice
 
   attr_accessor :grilleEnCours
 
@@ -26,6 +27,7 @@ class Partie
   attr :tabCoup, false
   attr :indiceCoup, false
   attr :enPause, false
+  attr :dernierIndice, true
   def initialize(uneGrille)
     @grilleEnCours=uneGrille
     @tabCoup=Array.new()
