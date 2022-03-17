@@ -20,13 +20,6 @@ class FenetreGrille < Fenetre
         self.gestionSignaux
     end
 
-    def quitter
-        @@profilActuel.ajouterPartie(@@partie)
-        self.deleteChildren
-        self.remove(@header)
-        Gtk.main_quit
-    end
-
     def gestionSignaux
         
         #Recuperation de la fenetre
@@ -72,7 +65,9 @@ class FenetreGrille < Fenetre
             if indice==@@partie.dernierIndice
                 @boutons[[indice.coordonneesCase[0],indice.coordonneesCase[1]]].name = "case_indice"
             end
+            affiche_indice(indice)
             @@partie.dernierIndice=indice
+            
         }
         btn_clear.signal_connect('clicked'){#remet la partie a zero
             @@partie.raz
@@ -83,6 +78,48 @@ class FenetreGrille < Fenetre
         
 
     end
+
+    # Affiche une popup avec l'indice
+    def affiche_indice(indice)
+        dialog = Gtk::Dialog.new
+        dialog.title = "Indice"
+        dialog.set_default_size(300, 100)
+        dialog.child.add(Gtk::Label.new(indice.to_s))
+        dialog.add_button(Gtk::Stock::CLOSE, Gtk::ResponseType::CLOSE)
+        dialog.set_default_response(Gtk::ResponseType::CANCEL)
+
+        dialog.signal_connect("response") do |widget, response|
+            case response
+            when Gtk::ResponseType::CANCEL
+            p "Cancel"
+            when Gtk::ResponseType::CLOSE
+            p "Close"
+            dialog.destroy
+            end
+        end
+        dialog.show_all
+    end
+
+   # Affiche une popup de victoire
+   def affiche_victoire
+    dialog = Gtk::Dialog.new
+    dialog.title = "Victoire"
+    dialog.set_default_size(300, 100)
+    dialog.child.add(Gtk::Label.new("Bravo, vous avez résolu le puzzle !"))
+    dialog.add_button(Gtk::Stock::CLOSE, Gtk::ResponseType::CLOSE)
+    dialog.set_default_response(Gtk::ResponseType::CANCEL)
+
+    dialog.signal_connect("response") do |widget, response|
+        case response
+        when Gtk::ResponseType::CANCEL
+        p "Cancel"
+        when Gtk::ResponseType::CLOSE
+        p "Close"
+        dialog.destroy
+        end
+    end
+    dialog.show_all
+end
 
     # Créer une table de boutons correspondants aux cases de la grille
     def construction
@@ -134,6 +171,7 @@ class FenetreGrille < Fenetre
                         @boutons[[@@partie.dernierIndice.coordonneesCase[0],@@partie.dernierIndice.coordonneesCase[1]]].name = "case_chiffre"
                     end
                     if @@partie.partieFinie?
+                        affiche_victoire
                         puts "Bien joué, la partie est finie !"
                         @object.remove(tableFrame)
                         @@profilActuel.ajouterPartie(@@partie)

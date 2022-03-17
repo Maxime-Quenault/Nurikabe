@@ -42,14 +42,14 @@ class Indice
         when :caseJouableIsolee
             res=res+"Il y a une case Jouable qui est isolée"
         when :expansionMur
-            res=res+"On peut étendre le mur avec une case Océan"
+            res=res+"On peut étendre un mur avec une case Océan"
         when :expansionIle
-            res=res+"On peut étendre l'île avec une case île"
+            res=res+"On peut étendre une île avec une case île"
         else
             res=res+"Pas d'indice trouvé"
         end
         if @coordonneesCase!=nil
-            res=res+" aux coordonnées x = #{@coordonneesCase[0]} y = #{@coordonneesCase[1]}" 
+            #res=res+" aux coordonnées x = #{@coordonneesCase[0]} y = #{@coordonneesCase[1]}" 
         end
         return res
     end
