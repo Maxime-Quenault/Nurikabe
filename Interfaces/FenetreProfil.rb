@@ -102,6 +102,11 @@ class FenetreProfil
                 
                 boutonProfil.signal_connect('clicked'){
                     @profil = @save.chargerProfil(key.pseudo)
+                    if(!File.exist?("Sauvegarde/SauvegardeGrille/listeGrille#{@profil.pseudo}.dump"))
+                        @profil.listePartieCommence = Array.new
+                    else  
+                        @profil.listePartieCommence = Marshal.load(File.binread("Sauvegarde/SauvegardeGrille/listeGrille#{@profil.pseudo}.dump"))
+                    end
                     event(@popUpProfil)
                 }
 
