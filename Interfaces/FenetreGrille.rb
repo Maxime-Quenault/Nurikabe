@@ -95,7 +95,7 @@ class FenetreGrille < Fenetre
             end
         end
         maj_boutons
-        signaux_boutons
+        signaux_boutons(tableFrame)
         @object.add(table)
         # supprime les boutons
         @builder.get_object('btn_retour').signal_connect('clicked'){#quitter
@@ -107,7 +107,7 @@ class FenetreGrille < Fenetre
     end
 
     # Changes la couleur des boutons lorsqu'on clique dessus
-    def signaux_boutons
+    def signaux_boutons(tableFrame)
         @boutons.each do |cle, val|
             if @@partie.grilleEnCours.matriceCases[cle[0]][cle[1]].is_a?(CaseJouable)
                 val.signal_connect('clicked'){
@@ -115,7 +115,8 @@ class FenetreGrille < Fenetre
                     maj_bouton(cle[0],cle[1])
                     if @@partie.partieFinie?
                         puts "Bien joué, la partie est finie !"
-                        @@partie=nil
+                        @object.remove(tableFrame)
+                        @@profilActuel.ajouterPartie(@@partie)
                         self.changerInterface(@menuParent, "Libre")
                     end
                 }
