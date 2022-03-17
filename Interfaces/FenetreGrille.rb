@@ -41,12 +41,12 @@ class FenetreGrille < Fenetre
         btn_aide.name = "btn_menu_grille"
 
         #Gestion des signaux
-        btn_redo.signal_connect('clicked'){#retour
+        btn_redo.signal_connect('clicked'){#redo
             @@partie.redo
             maj_boutons
             puts @@partie.grilleEnCours
         }
-        btn_undo.signal_connect('clicked'){#refaire
+        btn_undo.signal_connect('clicked'){#undo
             @@partie.undo
             maj_boutons
             puts @@partie.grilleEnCours
@@ -99,9 +99,8 @@ class FenetreGrille < Fenetre
         @object.add(table)
         # supprime les boutons
         @builder.get_object('btn_retour').signal_connect('clicked'){#quitter
-            @object.remove(table)
+            @object.remove(tableFrame)
             @@profilActuel.ajouterPartie(@@partie)
-            @@partie=nil
             self.changerInterface(@menuParent, "Libre")
         }
         @object.add(tableFrame)
