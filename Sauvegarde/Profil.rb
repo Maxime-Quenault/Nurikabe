@@ -19,9 +19,14 @@ class Profil
         File.open("Sauvegarde/SauvegardeGrille/listeGrille#{@pseudo}.dump", "wb") { |file| file.write(Marshal.dump(@listePartieCommence)) }
     end
 
-    def chercherPartie(numero)
+    def chercherPartie(numero, difficulte)
+        if difficulte == 0
+            hauteur = 8
+        elsif difficulte ==1
+            hauteur = 10
+        end
         @listePartieCommence.each do |key, value|
-            if key.grilleEnCours.numero == numero
+            if key.grilleEnCours.numero == numero && key.grilleEnCours.hauteur == hauteur
                 return key
             end
         end

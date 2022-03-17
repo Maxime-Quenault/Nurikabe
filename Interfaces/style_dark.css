@@ -107,8 +107,8 @@ headerbar {
     border: 2px black solid;
     font-size: 50px;
     transition: 0.08s ease;
-    min-width: 90px;
-    min-height: 90px;
+    min-width: 70px;
+    min-height: 70px;
 }
 
 #case_indice{
@@ -118,8 +118,8 @@ headerbar {
     border: 2px red solid;
     font-size: 50px;
     transition: 0.08s ease;
-    min-width: 90px;
-    min-height: 90px;
+    min-width: 70px;
+    min-height: 70px;
 }
 
 #case_noir {
@@ -129,8 +129,8 @@ headerbar {
     border: 2px black solid;
     font-size: 50px;
     transition: 0.08s ease;
-    min-width: 90px;
-    min-height: 90px;
+    min-width: 70px;
+    min-height: 70px;
 }
 
 #case_point {
@@ -140,6 +140,6 @@ headerbar {
     border: 2px black solid;
     font-size: 50px;
     transition: 0.08s ease;
-    min-width: 90px;
-    min-height: 90px;
+    min-width: 70px;
+    min-height: 70px;
 }

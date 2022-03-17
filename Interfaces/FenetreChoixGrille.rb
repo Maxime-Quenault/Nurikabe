@@ -61,7 +61,7 @@ class FenetreChoixGrille < Fenetre
 
     #Créer une table de boutons correspondants aux cases de la grille
     def construction(num_grille)
-        if (unePartie = @@profilActuel.chercherPartie(num_grille)) == nil
+        if (unePartie = @@profilActuel.chercherPartie(num_grille, @difficulte)) == nil
             g=Grille.creer()
             g.chargerGrille(num_grille,@difficulte)
             creerPartie(g)
