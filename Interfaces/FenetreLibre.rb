@@ -87,18 +87,11 @@ class FenetreLibre < Fenetre
 			@interfaceChoixGrille.difficulte=1
 			self.changerInterface(@interfaceChoixGrille.object, "Partie")
 		}
-=begin travail réalisé par Maxime, il le modifiera.
-			self.changerInterface(@interfaceChoixGrille.object, "Moyen")
-			if (unePartie = @@profilActuel.chercherPartie(2)) == nil
-				g=Grille.creer()
-				g.chargerGrille(2,0)
-				creerPartie(g)
-			else
-				creerPartie(unePartie.grilleEnCours)
-			end
-			@interfaceGrille.construction
-=end
-		@btn_difficile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Difficile"}
+
+		@btn_difficile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Difficile"
+			@interfaceChoixGrille.difficulte=2
+			self.changerInterface(@interfaceChoixGrille.object, "Partie")
+		}
 		@btn_retour.signal_connect("clicked"){
 			self.changerInterface(@menuParent, "Menu")
 			@@partie=nil

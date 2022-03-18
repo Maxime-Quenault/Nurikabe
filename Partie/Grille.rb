@@ -14,6 +14,7 @@ class Grille
 	@matriceCases
 	@correction
 	@etoiles
+	@difficulte
 
 	FACILE = 0
 	MOYEN = 1
@@ -34,6 +35,7 @@ class Grille
 	attr :etoiles, true
 	attr :hauteur, false
 	attr :largeur, false
+	attr :difficulte, true
 
 	def initialize(num,h,l)
 		@numero=num
@@ -160,7 +162,7 @@ class Grille
 
             end
         elsif (uneDifficulte == MOYEN)
-            File.foreach('./Partie/grillesMoyen.txt') do |line|
+            File.foreach('./Partie/grillesMedium.txt') do |line|
                 if line.eql?("\n")
                     compteur += 1
 				elsif compteur == unIndex
@@ -170,8 +172,8 @@ class Grille
                 return chaine if (compteur == unIndex + 1)
 
             end
-        elsif (uneDifficulte == MOYEN)
-            File.foreach('./Partie/grillesMoyen.txt') do |line|
+        elsif (uneDifficulte == DIFFICILE)
+            File.foreach('./Partie/grillesHard.txt') do |line|
 
                 if line.eql?("\n")
                     compteur += 1

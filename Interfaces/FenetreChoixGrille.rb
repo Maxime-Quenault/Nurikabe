@@ -30,6 +30,11 @@ class FenetreChoixGrille < Fenetre
         btn3 = @builder.get_object('btn3')
         btn4 = @builder.get_object('btn4')
         btn5 = @builder.get_object('btn5')
+        btn6 = @builder.get_object('btn6')
+        btn7 = @builder.get_object('btn7')
+        btn8 = @builder.get_object('btn8')
+        btn9 = @builder.get_object('btn9')
+        btn10 = @builder.get_object('btn10')
 
 
         #Gestion des signaux
@@ -56,6 +61,26 @@ class FenetreChoixGrille < Fenetre
             construction(4)
             self.changerInterface(@interfaceGrille.object, "Partie")
         }
+        btn6.signal_connect('clicked'){#quitter
+            construction(5)
+            self.changerInterface(@interfaceGrille.object, "Partie")
+        }
+        btn7.signal_connect('clicked'){#quitter
+            construction(6)
+            self.changerInterface(@interfaceGrille.object, "Partie")
+        }
+        btn8.signal_connect('clicked'){#quitter
+            construction(7)
+            self.changerInterface(@interfaceGrille.object, "Partie")
+        }
+        btn9.signal_connect('clicked'){#quitter
+            construction(8)
+            self.changerInterface(@interfaceGrille.object, "Partie")
+        }
+        btn10.signal_connect('clicked'){#quitter
+            construction(9)
+            self.changerInterface(@interfaceGrille.object, "Partie")
+        }
     end
 
 
@@ -63,6 +88,7 @@ class FenetreChoixGrille < Fenetre
     def construction(num_grille)
         if (unePartie = @@profilActuel.chercherPartie(num_grille, @difficulte)) == nil
             g=Grille.creer()
+            g.difficulte=difficulte
             g.chargerGrille(num_grille,@difficulte)
             creerPartie(g)
         else

@@ -20,13 +20,8 @@ class Profil
     end
 
     def chercherPartie(numero, difficulte)
-        if difficulte == 0
-            hauteur = 8
-        elsif difficulte ==1
-            hauteur = 10
-        end
         @listePartieCommence.each do |key, value|
-            if key.grilleEnCours.numero == numero && key.grilleEnCours.hauteur == hauteur
+            if key.grilleEnCours.numero == numero && key.grilleEnCours.difficulte==difficulte
                 return key
             end
         end
