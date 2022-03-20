@@ -1,6 +1,14 @@
-# Représentes une case contenant un nombre
+=begin
+	
+	La classe CaseNombre :::
+		- représente une case contenant un nombre 
+
+	La VI de cette classe est :::
+		- @valeur	==> valeur entière présente dans la case
+
+=end
+
 class CaseNombre
-	#cette case a une valeur
 	@valeur
 
 	def CaseNombre.creer(val)

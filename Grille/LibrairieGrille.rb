@@ -3,6 +3,24 @@
 require 'gtk3'
 require './Grille/LectureGrille.rb'
 
+
+=begin
+
+    La classe LibrairieGrille :::
+        - gère l'affichage des grilles
+        - gère l'initialisation des grilles
+
+    Les VI de la classe sont :::
+
+        - @builder      ==> builder de la fenêtre 
+        - @css          ==> mise en page de l'interface
+        - @grid_grilles ==> contient le builder de la grille courante
+        - @pos_h        ==> position horizontale
+        - @pos_v        ==> position verticale
+
+=end
+
+
 class LibrairieGrille
 
     def not_yet_implemented(object)

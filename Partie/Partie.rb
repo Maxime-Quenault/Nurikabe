@@ -1,14 +1,25 @@
 load "Partie/Grille.rb"
 load "Partie/Coup.rb"
 load "Partie/Indice.rb"
-# Représentes une partie, contient :
-# une grille en cours, sur laquelle on va jouer
-# un chronomètre
-# un tableau de coups, sert pour les undo et redo
-# un indice du coup auquel on est
-# un booléen en pause
+
+=begin
+  La classe Partie permet de :::
+    - représenter une partie
+    - jouer sur une grille
+    - connaître le temps grâce à un chronomêtre
+    - faire des undo redo grâce à un système d'undo/redo
+
+    Les VI de la classe sont :::
+
+      - @grilleEnCours  ==> grille sur laquelle le joueur évolue
+      - @chronometre    ==> temps de jeu sur la grille
+      - @tabCoup        ==> tableau contenant les coups joués
+      - @indiceCoup     ==> indice représentant le coup joué par le joueur
+      - @enPause        ==> booleen indiquant vrai si la partie est en pause
+=end
+
 class Partie
-  @grilleEnCours
+	@grilleEnCours
   @chronometre
   @tabCoup
   @indiceCoup

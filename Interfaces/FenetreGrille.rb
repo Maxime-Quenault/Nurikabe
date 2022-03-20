@@ -4,6 +4,28 @@ include Gtk
 load "./Partie/Partie.rb"
 load "./Interfaces/Fenetre.rb"
 
+=begin
+
+    La classe FenetreGrille :::
+        - génère l'interface d'une partie
+        - peut gérer les différents boutons et leur "cliquabilité" (s'ils sont cliquables ou non, en fonction du contexte de la partie)
+
+    Les VI de la classe sont :::
+        - @builder          ==> builder de la fenêtre courante
+        - @object           ==> contient l'identifiant glade de l'interface courante
+        - @grid             ==> contient l'identifiant glade de la grille
+        - @interfaceRetour  ==> 
+        - @profil           ==> contient le profil courant
+        - @menuParent       ==> contient l'interface parente de l'interface courante
+        - @boutons          ==> table contenant une liste de boutons
+    
+    Les VC de la classe sont :::
+        - @@partie  ==> partie en cours
+
+
+=end
+
+
 class FenetreGrille < Fenetre
 
     attr_accessor :object

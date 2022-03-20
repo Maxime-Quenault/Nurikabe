@@ -21,11 +21,14 @@ load 'Partie/Partie.rb'
 #   Voici ses VI : 
 #
 #   @header : elle represente la haute bar de notre fenetre.
+#   @css    : gère la mise en page et la présentation de l'interface
 #
 #
 #   Voici ses VC :
 #   
-#   @@window : elle represente notre fenetre, elle est initialisé qu'une seul fois.
+#   @@window        : elle represente notre fenetre, elle est initialisé qu'une seul fois.
+#   @@partie        : représentre la partie courante
+#   @@profilActuel  : contient le profil actuel sélectionné par le joueur
 
 
 class Fenetre
