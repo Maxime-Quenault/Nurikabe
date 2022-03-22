@@ -20,14 +20,14 @@ class Chronometre
         @temps = 0
         @pause = false
 
-        @debut = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+        @debut = Time.new
     end 
 
     # méthode incrémentant le temps total du chronometre
     def top()
         if(!self.estEnPause?())
-            fin = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-            @temps = @temps + (@debut - fin)
+            fin = Time.now
+            @temps = @temps + (fin - @debut)
             @debut = fin 
         end
 
@@ -51,14 +51,15 @@ class Chronometre
     # actionne le chronometre
     def demarre()
         self.enlevePause()
-        @debut = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+        @debut = Time.now
         top()
     end
 
     # met en pause le jeu
     def metEnPause()
-        top()
         @pause = true 
+        top()
+        
     end
 
     # enleve la pause
@@ -76,11 +77,4 @@ class Chronometre
     def ajouteTemps(unMalus)
         @temps += unMalus 
     end 
-
-    # retourne le temps arrondi au dessous sous la forme de String
-=begin    def getTempsString()
-        top()
-        return format("%01d",(@temps.floor/60).to_s) + ":" + format("%02d",(@temps.floor%60).to_s)
-    end
-=end
 end

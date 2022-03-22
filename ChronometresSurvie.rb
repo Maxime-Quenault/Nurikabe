@@ -35,12 +35,4 @@ class ChronometreSurvie < Chronometre
     def retireTemps(unMalus)
         @temps -= unMalus
     end
-    
-    # retourne le temps arrondi au dessus sous la forme de String
-=begin    def getTempsString()
-        top()
-        return format("%01d",(@temps.ceil/60).to_s) + ":" + format("%02d",(@temps.ceil%60).to_s)
-    end
-=end
-
 end
