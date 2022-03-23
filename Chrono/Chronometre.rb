@@ -57,7 +57,6 @@ class Chronometre
     def metEnPause()
         @pause = true 
         top()
-        
     end
 
     # enleve la pause

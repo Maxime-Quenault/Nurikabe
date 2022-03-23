@@ -1,6 +1,7 @@
 load "Partie/Grille.rb"
 load "Partie/Coup.rb"
 load "Partie/Indice.rb"
+load "Chrono/Chronometre.rb"
 # Représentes une partie, contient :
 # une grille en cours, sur laquelle on va jouer
 # un chronomètre
@@ -24,7 +25,7 @@ class Partie
   private_class_method :new
 
   attr :grilleEnCours, false
-  attr :chronometre, false
+  attr :chronometre, true
   attr :tabCoup, false
   attr :indiceCoup, false
   attr :enPause, false
@@ -34,7 +35,7 @@ class Partie
     @tabCoup=Array.new()
     @indiceCoup=0
     @enPause=false
-    #@chronometre=Chronometre.creer()
+    @chronometre=Chronometre.creer()
   end
 
   # ajoutes le coup passé en paramètre au tableau de coups et incrémente l'indiceCoup
@@ -93,6 +94,7 @@ class Partie
     @tabCoup=Array.new()
     @indiceCoup=0
     @enPause=false
+    @chronometre=Chronometre.creer()
   end
 
   #vrai si la partie est finie faux sinon

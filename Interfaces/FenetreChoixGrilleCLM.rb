@@ -2,7 +2,7 @@ require 'gtk3'
 include Gtk
 
 load "./Interfaces/Fenetre.rb"
-load "./Interfaces/FenetreGrille.rb"
+load "./Interfaces/FenetreGrilleCLM.rb"
 load "Sauvegarde/SauvegardeClassementContreLaMontre.rb"
 load "Interfaces/FenetreClassementCLM.rb"
 
@@ -47,7 +47,7 @@ class FenetreChoixGrilleCLM < Fenetre
             self.changerInterface(@menuParent, "Libre")
         }
         btn1.signal_connect('clicked'){#quitter
-            #construction(0)
+            construction(0)
             self.changerInterface(@interfaceClassement.object, "Partie")
         }
         btn2.signal_connect('clicked'){#quitter
@@ -93,14 +93,14 @@ class FenetreChoixGrilleCLM < Fenetre
     def construction(num_grille)
         if (unePartie = @@profilActuel.chercherPartie(num_grille, @difficulte)) == nil
             g=Grille.creer()
-            g.difficulte=difficulte
+            g.difficulte=@difficulte
             g.chargerGrille(num_grille,@difficulte)
             creerPartie(g)
         else
             print "\ntu as une partie de save"
             @@partie = unePartie
         end
-        @interfaceClassement.construction
+        #@interfaceClassement.construction
     end
 
 end

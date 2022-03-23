@@ -51,6 +51,9 @@ class FenetreClassementCLM < Fenetre
         @boutonRetour = @builder.get_object("btn_retour")
         @titre = @builder.get_object("titre")
 		
+        # Création d'une interface grille
+        @interfaceGrille = FenetreGrilleCLM.new(@object)
+
         #creation d'instance utile
         uneSave = SauvegardeClassementContreLaMontre.new
         @tabScore = uneSave.tabScore
@@ -82,11 +85,17 @@ class FenetreClassementCLM < Fenetre
         }
 
         @boutonPartie.signal_connect("clicked"){
-            self.changerInterface(@menuParent, "Contre La Montre") #à modifier ensuite
+            construction
+            self.changerInterface(@interfaceGrille.object, "Contre La Montre") #à modifier ensuite
         }
 
 	end
 
+end
+
+#génère la grille
+def construction
+    @interfaceGrille.construction
 end
 
 def affichageScore()

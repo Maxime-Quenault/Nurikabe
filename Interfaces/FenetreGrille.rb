@@ -123,6 +123,8 @@ end
 
     # Créer une table de boutons correspondants aux cases de la grille
     def construction
+        @affChrono = Gtk::Label.new()
+        @object.add(@affChrono)
         taille_hauteur = @@partie.grilleEnCours.hauteur
         taille_largeur = @@partie.grilleEnCours.largeur
         @boutons = {}
@@ -153,6 +155,8 @@ end
         # supprime les boutons
         @builder.get_object('btn_retour').signal_connect('clicked'){#quitter
             @object.remove(tableFrame)
+            @object.remove(@affChrono)
+            @@partie.chronometre.metEnPause
             @@profilActuel.ajouterPartie(@@partie)
             self.changerInterface(@menuParent, "Libre")
         }
@@ -174,6 +178,7 @@ end
                         affiche_victoire
                         puts "Bien joué, la partie est finie !"
                         @object.remove(tableFrame)
+                        @object.remove(@affChrono)
                         @@profilActuel.ajouterPartie(@@partie)
                         self.changerInterface(@menuParent, "Libre")
                     end
