@@ -4,6 +4,7 @@ load "Interfaces/FenetreProfil.rb"
 load "Interfaces/FenetreLibre.rb"
 load "Interfaces/FenetreParametre.rb"
 load "Interfaces/FenetreAPropos.rb"
+load "Interfaces/FenetreContreMontre.rb"
 load "Interfaces/Fenetre.rb"
 load "Sauvegarde/Profil.rb"
 #load "Aventure/AffichageAventure.rb"
@@ -74,7 +75,7 @@ class FenetreMenu < Fenetre
         @interfaceLibre = FenetreLibre.new(@object)
         #@interfaceAventure = AffichageAventure.new(@object)
         #@interfaceSurvie = FenetreSurvie.new(@object)
-        #@interfaceContreMontre = FenetreContreMontre.new(@object)
+        @interfaceContreMontre = FenetreContreMontre.new(@object)
         @interfaceParametre = FenetreParametre.new(@object, @interfaceProfil)
 
         
@@ -117,7 +118,9 @@ class FenetreMenu < Fenetre
 
         @btn_survie.signal_connect('clicked') {print "tu as clique sur le mode survie\n"}
 
-        @btn_contre_montre.signal_connect('clicked') {print "tu as clique sur le mode contre la montre\n"}
+        @btn_contre_montre.signal_connect('clicked') {
+            self.changerInterface(@interfaceContreMontre.object, "Contre la montre")
+        }
 
         @btn_aventure.signal_connect('clicked') {print "tu as clique sur le mode Aventure\n"}
 

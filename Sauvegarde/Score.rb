@@ -1,4 +1,3 @@
-
 class Score
     attr_accessor :heures, :minutes, :secondes, :profil
 
@@ -34,10 +33,3 @@ class Score
         "#{self.getTempsEnSecondes}"
     end
 end
-
-## TEST UNITAIRE ##
-
-#unScore = Score.new(458)
-#print unScore
-#print "\n"
-#p unScore.getTempsEnSecondes

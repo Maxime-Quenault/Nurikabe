@@ -19,16 +19,14 @@ class ChronometreSurvie < Chronometre
     # méthode décrémentant le temps total du chrono
     def top()
         if(!self.estEnPause?())
-            fin = Process.clock_gettime(CLOCK_MONOTONIC)
-            @temps = @temps - (@debut - fin)
-            @debut = fin
+            fin = Time.now
+            @temps = @temps - (fin - @debut)
+            @debut = fin 
         end
 
         if(@temps < 0)
             @temps = 0
         end
-
-        #return estNul?()
     end
 
     # diminue le temps par un malus 

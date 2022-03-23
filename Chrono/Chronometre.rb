@@ -34,8 +34,6 @@ class Chronometre
         if(@temps < 0)
             @temps = 0
         end
-
-        #return estNul?()
     end
 
     # renvoie si le temps est nul 
