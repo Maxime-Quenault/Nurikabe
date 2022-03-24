@@ -79,6 +79,8 @@ class FenetreClassementCLM < Fenetre
     def ajoutScore
         unScore = Score.new(@interfaceGrille.getTempsPartie, @@profilActuel)
         @uneSave.ajoutScore(unScore)
+        @tabScore = @uneSave.tabScore
+        self.affichageScore
     end
 
 	##
