@@ -37,6 +37,7 @@ class Fenetre
     @@window = nil
     @@partie = nil
     @@profilActuel = nil
+    @@numGrille = nil
 
     #private_method new
 
@@ -179,6 +180,14 @@ class Fenetre
     #   Creer et affecte une partie à la variable de classe partie avec la grille passée en paramètre
     def creerPartie(grille)
         @@partie = Partie.creeToi(grille)
+    end
+
+    def getNumGrille
+        @@numGrille
+    end
+
+    def setNumGrille(unNum)
+        @@numGrille = unNum
     end
 
 end

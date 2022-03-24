@@ -2,6 +2,7 @@ require 'gtk3'
 
 load "Interfaces/Fenetre.rb"
 load "Sauvegarde/SauvegardeClassementContreLaMontre.rb"	
+load "Sauvegarde/Score.rb"
 
 class FenetreClassementCLM < Fenetre
 
@@ -53,14 +54,9 @@ class FenetreClassementCLM < Fenetre
 		
         # Création d'une interface grille
         @interfaceGrille = FenetreGrilleCLM.new(@object)
-
-        #creation d'instance utile
-        uneSave = SauvegardeClassementContreLaMontre.new
-        @tabScore = uneSave.tabScore
         
         #gestion et affiche par default
 		self.gestionSignaux
-        self.affichageScore
 
     end
 
@@ -74,6 +70,16 @@ class FenetreClassementCLM < Fenetre
 		return @object
 	end
 
+    def recupeTab
+        @uneSave = SauvegardeClassementContreLaMontre.new(self.getNumGrille)
+        @tabScore = @uneSave.tabScore
+        self.affichageScore
+    end
+
+    def ajoutScore
+        unScore = Score.new(@interfaceGrille.getTempsPartie, @@profilActuel)
+        @uneSave.ajoutScore(unScore)
+    end
 
 	##
 	# gestionSignaux :
@@ -91,92 +97,94 @@ class FenetreClassementCLM < Fenetre
 
 	end
 
+
+    #génère la grille
+    def construction
+        @interfaceGrille.construction
+    end
+
+    def affichageScore()
+
+        if @tabScore[0] != nil
+            @pseudo1.set_text(@tabScore[0].profil.pseudo)
+            @temps1.set_text("#{@tabScore[0].getHeures}h#{@tabScore[0].getMinutes}m#{@tabScore[0].getSecondes}s")
+        else
+            @pseudo1.set_text("-")
+            @temps1.set_text("-:-:-")
+        end
+
+        if @tabScore[1] != nil
+            @pseudo2.set_text(@tabScore[1].profil.pseudo)
+            @temps2.set_text("#{@tabScore[1].getHeures}h#{@tabScore[1].getMinutes}m#{@tabScore[1].getSecondes}s")
+        else
+            @pseudo2.set_text("-")
+            @temps2.set_text("-:-:-")
+        end
+
+        if @tabScore[2] != nil
+            @pseudo3.set_text(@tabScore[2].profil.pseudo)
+            @temps3.set_text("#{@tabScore[2].getHeures}h#{@tabScore[2].getMinutes}m#{@tabScore[2].getSecondes}s")
+        else
+            @pseudo3.set_text("-")
+            @temps3.set_text("-:-:-")
+        end
+
+        if @tabScore[3] != nil
+            @pseudo4.set_text(@tabScore[3].profil.pseudo)
+            @temps4.set_text("#{@tabScore[3].getHeures}h#{@tabScore[3].getMinutes}m#{@tabScore[3].getSecondes}s")
+        else
+            @pseudo4.set_text("-")
+            @temps4.set_text("-:-:-")
+        end
+
+        if @tabScore[4] != nil
+            @pseudo5.set_text(@tabScore[4].profil.pseudo)
+            @temps5.set_text("#{@tabScore[4].getHeures}h#{@tabScore[4].getMinutes}m#{@tabScore[4].getSecondes}s")
+        else
+            @pseudo5.set_text("-")
+            @temps5.set_text("-:-:-")
+        end
+
+        if @tabScore[5] != nil
+            @pseudo6.set_text(@tabScore[5].profil.pseudo)
+            @temps6.set_text("#{@tabScore[5].getHeures}h#{@tabScore[5].getMinutes}m#{@tabScore[5].getSecondes}s")
+        else
+            @pseudo6.set_text("-")
+            @temps6.set_text("-:-:-")
+        end
+
+        if @tabScore[6] != nil
+            @pseudo7.set_text(@tabScore[6].profil.pseudo)
+            @temps7.set_text("#{@tabScore[6].getHeures}h#{@tabScore[6].getMinutes}m#{@tabScore[6].getSecondes}s")
+        else
+            @pseudo7.set_text("-")
+            @temps7.set_text("-:-:-")
+        end
+
+        if @tabScore[7] != nil
+            @pseudo8.set_text(@tabScore[7].profil.pseudo)
+            @temps8.set_text("#{@tabScore[7].getHeures}h#{@tabScore[7].getMinutes}m#{@tabScore[7].getSecondes}s")
+        else
+            @pseudo8.set_text("-")
+            @temps8.set_text("-:-:-")
+        end
+
+        if @tabScore[8] != nil
+            @pseudo9.set_text(@tabScore[8].profil.pseudo)
+            @temps9.set_text("#{@tabScore[8].getHeures}h#{@tabScore[8].getMinutes}m#{@tabScore[8].getSecondes}s")
+        else
+            @pseudo9.set_text("-")
+            @temps9.set_text("-:-:-")
+        end
+
+        if @tabScore[9] != nil
+            @pseudo10.set_text(@tabScore[9].profil.pseudo)
+            @temps10.set_text("#{@tabScore[9].getHeures}h#{@tabScore[9].getMinutes}m#{@tabScore[9].getSecondes}s")
+        else
+            @pseudo10.set_text("-")
+            @temps10.set_text("-:-:-")
+        end
+    end
+
 end
 
-#génère la grille
-def construction
-    @interfaceGrille.construction
-end
-
-def affichageScore()
-
-    if @tabScore[0] != nil
-        @pseudo1.set_text(@tabScore[0].profil.pseudo)
-        @temps1.set_text("#{@tabScore[0].getHeures}h#{@tabScore[0].getMinutes}m#{@tabScore[0].getSecondes}s")
-    else
-        @pseudo1.set_text("-")
-        @temps1.set_text("-:-:-")
-    end
-
-    if @tabScore[1] != nil
-        @pseudo2.set_text(@tabScore[1].profil.pseudo)
-        @temps2.set_text("#{@tabScore[1].getHeures}h#{@tabScore[1].getMinutes}m#{@tabScore[1].getSecondes}s")
-    else
-        @pseudo2.set_text("-")
-        @temps2.set_text("-:-:-")
-    end
-
-    if @tabScore[2] != nil
-        @pseudo3.set_text(@tabScore[2].profil.pseudo)
-        @temps3.set_text("#{@tabScore[2].getHeures}h#{@tabScore[2].getMinutes}m#{@tabScore[2].getSecondes}s")
-    else
-        @pseudo3.set_text("-")
-        @temps3.set_text("-:-:-")
-    end
-
-    if @tabScore[3] != nil
-        @pseudo4.set_text(@tabScore[3].profil.pseudo)
-        @temps4.set_text("#{@tabScore[3].getHeures}h#{@tabScore[3].getMinutes}m#{@tabScore[3].getSecondes}s")
-    else
-        @pseudo4.set_text("-")
-        @temps4.set_text("-:-:-")
-    end
-
-    if @tabScore[4] != nil
-        @pseudo5.set_text(@tabScore[4].profil.pseudo)
-        @temps5.set_text("#{@tabScore[4].getHeures}h#{@tabScore[4].getMinutes}m#{@tabScore[4].getSecondes}s")
-    else
-        @pseudo5.set_text("-")
-        @temps5.set_text("-:-:-")
-    end
-
-    if @tabScore[5] != nil
-        @pseudo6.set_text(@tabScore[5].profil.pseudo)
-        @temps6.set_text("#{@tabScore[5].getHeures}h#{@tabScore[5].getMinutes}m#{@tabScore[5].getSecondes}s")
-    else
-        @pseudo6.set_text("-")
-        @temps6.set_text("-:-:-")
-    end
-
-    if @tabScore[6] != nil
-        @pseudo7.set_text(@tabScore[6].profil.pseudo)
-        @temps7.set_text("#{@tabScore[6].getHeures}h#{@tabScore[6].getMinutes}m#{@tabScore[6].getSecondes}s")
-    else
-        @pseudo7.set_text("-")
-        @temps7.set_text("-:-:-")
-    end
-
-    if @tabScore[7] != nil
-        @pseudo8.set_text(@tabScore[7].profil.pseudo)
-        @temps8.set_text("#{@tabScore[7].getHeures}h#{@tabScore[7].getMinutes}m#{@tabScore[7].getSecondes}s")
-    else
-        @pseudo8.set_text("-")
-        @temps8.set_text("-:-:-")
-    end
-
-    if @tabScore[8] != nil
-        @pseudo9.set_text(@tabScore[8].profil.pseudo)
-        @temps9.set_text("#{@tabScore[8].getHeures}h#{@tabScore[8].getMinutes}m#{@tabScore[8].getSecondes}s")
-    else
-        @pseudo9.set_text("-")
-        @temps9.set_text("-:-:-")
-    end
-
-    if @tabScore[9] != nil
-        @pseudo10.set_text(@tabScore[9].profil.pseudo)
-        @temps10.set_text("#{@tabScore[9].getHeures}h#{@tabScore[9].getMinutes}m#{@tabScore[9].getSecondes}s")
-    else
-        @pseudo10.set_text("-")
-        @temps10.set_text("-:-:-")
-    end
-end

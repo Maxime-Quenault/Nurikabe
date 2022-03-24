@@ -8,13 +8,19 @@ class SauvegardeClassementContreLaMontre
 
     attr_accessor :tabScore, :nbScoreOccupe
 
-    def initialize()
-        if(!File.exist?("Sauvegarde/SauvegardeScore/scoreContreLaMontre.dump"))
+    def initialize(numGrille)
+        @numeroGrille = numGrille
+
+        print "\n"
+        print @numeroGrille
+        print "\n"
+
+        if(!File.exist?("Sauvegarde/SauvegardeScore/scoreContreLaMontre#{@numeroGrille}.dump"))
             @tabScore = Array.new(10)
             @nbScoreOccupe = 0; 
-            File.open("Sauvegarde/SauvegardeScore/scoreContreLaMontre.dump", "wb") { |file| file.write(Marshal.dump(@tabScore)) }
+            File.open("Sauvegarde/SauvegardeScore/scoreContreLaMontre#{@numeroGrille}.dump", "wb") { |file| file.write(Marshal.dump(@tabScore)) }
         else
-            @tabScore = Marshal.load(File.binread("Sauvegarde/SauvegardeScore/scoreContreLaMontre.dump"))
+            @tabScore = Marshal.load(File.binread("Sauvegarde/SauvegardeScore/scoreContreLaMontre#{@numeroGrille}.dump"))
             @nbScoreOccupe = self.getNbScoreOccupe
         end
     end
@@ -45,6 +51,8 @@ class SauvegardeClassementContreLaMontre
         if flagAjoute == 0 && i < 10
             @tabScore.insert(i, unScore)
         end
+
+        File.open("Sauvegarde/SauvegardeScore/scoreContreLaMontre#{@numeroGrille}.dump", "wb") { |file| file.write(Marshal.dump(@tabScore)) }
     end
 
     def getNbScoreOccupe

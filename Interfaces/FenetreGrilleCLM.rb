@@ -10,7 +10,6 @@ class FenetreGrilleCLM < FenetreGrille
 
     def initialize(menuParent)
         super(menuParent)
-        
     end
 
     def gestionSignaux
@@ -56,6 +55,7 @@ class FenetreGrilleCLM < FenetreGrille
                             @object.remove(tableFrame)
                             @object.remove(@affChrono)
                             @@profilActuel.ajouterPartie(@@partie)
+                            @temps = @@partie.chronometre.getTemps.round(1)
                             self.changerInterface(@menuParent, "Libre")
                         end
                     end
@@ -71,6 +71,12 @@ class FenetreGrilleCLM < FenetreGrille
                 @affChrono.set_label(@@partie.chronometre.getTemps.round(1).to_s)
             end
         } 
+    end
+
+    def getTempsPartie
+        if @@partie.partieFinie?
+            return @temps
+        end
     end
 
 end

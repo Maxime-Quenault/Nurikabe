@@ -45,43 +45,63 @@ class FenetreChoixGrilleCLM < Fenetre
             self.changerInterface(@menuParent, "Libre")
         }
         btn1.signal_connect('clicked'){#quitter
+            self.setNumGrille(0)
             construction(0)
+            @interfaceClassement.recupeTab
             self.changerInterface(@interfaceClassement.object, "Partie")
         }
         btn2.signal_connect('clicked'){#quitter
+            self.setNumGrille(1)
             construction(1)
+            @interfaceClassement.recupeTab
             self.changerInterface(@interfaceClassement.object, "Partie")
         }
         btn3.signal_connect('clicked'){#quitter
+            self.setNumGrille(2)
             construction(2)
+            @interfaceClassement.recupeTab
             self.changerInterface(@interfaceClassement.object, "Partie")
         }
         btn4.signal_connect('clicked'){#quitter
+            self.setNumGrille(3)
             construction(3)
+            @interfaceClassement.recupeTab
             self.changerInterface(@interfaceClassement.object, "Partie")
         }
         btn5.signal_connect('clicked'){#quitter
+            self.setNumGrille(4)
             construction(4)
+            @interfaceClassement.recupeTab
             self.changerInterface(@interfaceClassement.object, "Partie")
         }
         btn6.signal_connect('clicked'){#quitter
+            self.setNumGrille(5)
             construction(5)
+            @interfaceClassement.recupeTab
             self.changerInterface(@interfaceClassement.object, "Partie")
         }
         btn7.signal_connect('clicked'){#quitter
+            self.setNumGrille(6)
             construction(6)
+            @interfaceClassement.recupeTab
             self.changerInterface(@interfaceClassement.object, "Partie")
         }
         btn8.signal_connect('clicked'){#quitter
+            self.setNumGrille(7)
             construction(7)
+            @interfaceClassement.recupeTab
             self.changerInterface(@interfaceClassement.object, "Partie")
         }
         btn9.signal_connect('clicked'){#quitter
+            self.setNumGrille(8)
             construction(8)
+            @interfaceClassement.recupeTab
             self.changerInterface(@interfaceClassement.object, "Partie")
         }
         btn10.signal_connect('clicked'){#quitter
+            self.setNumGrille(9)
             construction(9)
+            @interfaceClassement.recupeTab
             self.changerInterface(@interfaceClassement.object, "Partie")
         }
     end
