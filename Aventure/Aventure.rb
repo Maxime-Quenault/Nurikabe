@@ -31,32 +31,33 @@ class Aventure
 
   # Consernant les valeurs des deux VI palier ci-dessous elles sont provisoires(test) -> se mettre d'accord plus tard
   # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée normale
-  PALIER_NORMAL = 30
+  $PALIER_NORMAL = 30
   # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée hard
-  PALIER_HARD = 70
+  $PALIER_HARD = 70
 
-  # Définition des VI
-
-  # entier qui représente le score du joueur en nombre d'étoiles
-  @@nbEtoiles
-  # tableau de 3 booléens indiquant pour chaque difficultée, si elles sont débloquée ou non
-  @@difficuleAcquise
-  # tableau contenant les grilles du mode aventure
-  @desGrilles
-  # tableau contenant le nombre d'étoiles de chaque grille
-  @desEtoiles
-  # tableau contenant les temps de chaque grille
-  @desTemps
-  # position courante dans le mode Aventure
-  @posCourante
-  # entier représentant la difficultée actuelle associée à cette Aventure
-  # 0 -> Facile   1 -> Normal   2 -> Hard
-  @difficulte
-  # Aventure précédente (dans l'ordre chronologique)
+  #################### Déclaration des VI
+  #
+  # @@nbEtoiles : entier qui représente le score du joueur en nombre d'étoiles
+  #
+  # @@difficuleAcquise : tableau de 3 booléens indiquant pour chaque difficultée, si elles sont débloquée ou non
+  #
+  # @desGrilles : tableau contenant les grilles du mode aventure
+  #
+  # @desEtoiles : tableau contenant le nombre d'étoiles de chaque grille
+  #
+  # @desTemps : tableau contenant les temps de chaque grille
+  #
+  # @posCourante : position courante dans le mode Aventure
+  #
+  # @difficulte : entier représentant la difficultée actuelle associée à cette Aventure
+  #  0 -> Facile   1 -> Normal   2 -> Hard
+  #
+  # @precedenteDiff : Aventure précédente (dans l'ordre chronologique)
   # Par exemple : pour l'aventure "Normale" precedente sera "Facile"
-  @precedenteDiff
-  # Même cas pour l'aventure suivante
-  @suivanteDiff
+  #
+  # @suivanteDiff : Même cas pour l'aventure suivante
+  #
+  ####################
 
 
   # Coding Assistant pour faciliter les accès des différentes variables
@@ -206,7 +207,7 @@ class Aventure
   def unlockDifficulte
     # Dans le cas où seule la difficulté Facile est débloquée
     if((@difficulte == 0) && (@@difficulteAcquise[1] == false))
-      if(self.assezEtoiles?(PALIER_NORMAL))
+      if(self.assezEtoiles?($PALIER_NORMAL))
         @@difficulteAcquise[1] = true;
         print("\nBravo tu viens de débloquer la difficulté Normal !")
       else
@@ -214,7 +215,7 @@ class Aventure
       end
     elsif((@difficulte == 1) && (@@difficulteAcquise[2] == false))
       # Dans le cas où la difficulté Normal est débloquée
-        if(self.assezEtoiles?(PALIER_HARD))
+        if(self.assezEtoiles?($PALIER_HARD))
           @@difficulteAcquise[2] = true
           print("\nBravo tu viens de débloquer la difficulté Hard !")
         else

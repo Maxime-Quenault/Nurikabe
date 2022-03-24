@@ -2,46 +2,56 @@
 require "yaml.rb"
 require 'gtk3'
 include Gtk
+
 load "Aventure/Aventure.rb"
 load "Partie/Partie.rb"
 load "Partie/Chronometre.rb"
 load "Partie/Grille.rb"
 
+load "Sauvegarde/SauvegardeProfil.rb"
+load "Sauvegarde/Profil.rb"
+load "Interfaces/Fenetre.rb"
+load "Interfaces/FenetreGrille.rb"
+
 # Définition de la classe AffichageAventure qui affichera le mode Aventure
 class AffichageAventure < Fenetre
 
   # Définition des constantes
-  SEUIL_5_ETOILES = 1.0
-  SEUIL_4_ETOILES = 1.20
-  SEUIL_3_ETOILES = 1.40
-  SEUIL_2_ETOILES = 2.0
-  SEUIL_1_ETOILE = 2.20
+  $SEUIL_5_ETOILES = 1.0
+  $SEUIL_4_ETOILES = 1.20
+  $SEUIL_3_ETOILES = 1.40
+  $SEUIL_2_ETOILES = 2.0
+  $SEUIL_1_ETOILE = 2.20
 
-  # Déclaration des VI liées aux couleurs de l'interface
-  # Variable d'instance qui représente la couleur de la fenêtre
-  @couleurFenetre
-  # Variable d'instance qui représente la couleur générale de la fenêtre(thème)
-  @couleurBase
-  # Variable d'instance qui représente la couleur secondaire qui ressort de la couleur générale(thème)
-  @couleurVisible
+  #################### Déclaration des VI
+  #
+  # @couleurFenetre : Variable d'instance qui représente la couleur de la fenêtre
+  #
+  # @couleurBase : Variable d'instance qui représente la couleur générale de la fenêtre(thème)
+  #
+  # @couleurVisible : Variable d'instance qui représente la couleur secondaire qui ressort de la couleur générale(thème)
+  #
+  # @image : Variable d'instance qui contient une image png qui variera selon les grilles
+  #
+  # @fenetre : Variable d'instance qui contiendra la fenêtre de l'interface glade
+  #
+  # @aventure : Variable d'instance qui contient l'aventure en cours
+  #
+  # @tempsGrille : Variable d'instance liée au temps de complétion de la grille
+  #
+  # @imgEtoile : Variable d'instance liée aux images des étoiles -> afin d'être connu de toutes les méthodes
+  #
+  # @bouton : Variable d'instance liée aux boutons de la barre de déplacement -> afin d'être connu de toutes les méthodes
+  #
+  # @menuParent : Variable d'instance qui contient l'interface parent transmise lors la création de celle-ci
+  #
+  # @interfaceGrille : Variable d'instance qui contient le lien vers une fenêtre de grille avec laquelle l'utilisateur pourra intéragir
+  #
+  ####################
 
-  # Variable d'instance qui contient une image png qui variera selon les grilles
-  @image
-  # Variable d'instance qui contiendra la fenêtre de l'interface glade
-  @fenetre
-  # Variable d'instance qui contient l'aventure en cours
-  @aventure
+  attr_accessor :object, :menuParent, :interfaceGrille
 
-  # Variable d'instance liée au temps de complétion de la grille
-  @tempsGrille
-
-  # Variable d'instance liée aux images des étoiles -> afin d'être connu de toutes les méthodes
-  @imgEtoile
-
-  # Variable d'instance liée aux boutons de la barre de déplacement -> afin d'être connu de toutes les méthodes
-  @bouton
-
-  def initialize(unObjet)
+  def initialize(menuParent)
 
     @couleurBase = "white"
     @couleurVisible = "grey"
@@ -73,8 +83,6 @@ class AffichageAventure < Fenetre
     @image = Gtk::Image.new("Image/grilleVide.png")
 
     # On créer un buildeur qui récupère les éléments de notre fenêtre créée sur Glade
-    #monBuildeur = Gtk::Builder.new()
-    #monBuildeur.add_from_file("glade/aventure_normal_img.glade")
     monBuildeur = Gtk::Builder.new(:file => 'glade/aventure_normal_img.glade')
 
     # On déclare des objets que l'on associe aux éléments de la fenêt1,8,6re Glade
@@ -118,8 +126,11 @@ class AffichageAventure < Fenetre
     @imgEtoile[3] = monBuildeur.get_object('etoile_4')
     @imgEtoile[4] = monBuildeur.get_object('etoile_5')
 
+    # on sauvegarde le menu parent via une variable d'instance
+    @menuParent = menuParent
     # Déclaration de la fenêtre du mode Aventure
     @fenetre = monBuildeur.get_object('fenetre_aventure')
+    # on prépare une interface FenetreGrille que l'on appellera quand on en aura besoin
     @interfaceGrille = FenetreGrille.new(@fenetre)
 
   end
@@ -170,6 +181,7 @@ class AffichageAventure < Fenetre
       else
         @bouton[i].bg = couleurStandard
       end
+    end
   end
 
   def setEffetBouton(indice)
@@ -268,7 +280,7 @@ class AffichageAventure < Fenetre
 
     # On associe le bouton Retour avec la méthode de fermeture du mode Aventure
     @retour.signal_connect('clicked'){
-      self.destruction()
+      self.changerInterface(@menuParent, "Menu")
     }
 
     @fenetre.signal_connect('destroy'){
@@ -344,20 +356,21 @@ class AffichageAventure < Fenetre
       #end
       @interfaceGrille.construction
       self.changerInterface(@interfaceGrille.object, "Partie")
+
       # Puis attribution du nombre d'étoiles en fonction du timer (à définir)
       chrono.metEnPause()
       temps = chrono.getTemps()
 
       case temps
-      when temps <= SEUIL_5_ETOILES
+      when temps <= $SEUIL_5_ETOILES
         recompense = 5
-      when temps <= SEUIL_4_ETOILES
+      when temps <= $SEUIL_4_ETOILES
         recompense = 4
-      when temps <= SEUIL_3_ETOILES
+      when temps <= $SEUIL_3_ETOILES
         recompense = 3
-      when temps <= SEUIL_2_ETOILES
+      when temps <= $SEUIL_2_ETOILES
         recompense = 2
-      when temps <= SEUIL_1_ETOILE
+      when temps <= $SEUIL_1_ETOILE
         recompense = 1
       else
         recompense = 0
@@ -375,6 +388,7 @@ class AffichageAventure < Fenetre
       }
     end
 
+    # On affiche le tout
     @fenetre.show_all()
 
     Gtk.main()
