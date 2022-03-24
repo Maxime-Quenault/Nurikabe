@@ -49,7 +49,7 @@ class AffichageAventure < Fenetre
   #
   ####################
 
-  attr_accessor :object, :menuParent, :interfaceGrille
+  attr_accessor :fenetre, :menuParent, :interfaceGrille
 
   def initialize(menuParent)
 
@@ -136,6 +136,15 @@ class AffichageAventure < Fenetre
   end
 
   ################### Méthodes d'accès en lecture/éciture  ###################
+
+  ##
+	# getObjet :
+	# 	Cette methode permet d'envoyer sont objet (interface) a l'objet qui le demande.
+	#
+	# @return object qui represente l'interface de la fenetre du mode libre.
+	def getObjet
+		return @fenetre
+	end
 
   # Méthode d'accès en lecture de la couleur de la fenêtre
   def getCouleurFenetre
