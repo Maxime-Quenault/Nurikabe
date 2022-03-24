@@ -21,8 +21,6 @@ class FenetreChoixGrilleCLM < Fenetre
         @menuParent = menuParent
         @interfaceClassement = FenetreClassementCLM.new(@object)
 
-        @saveScore = SauvegardeClassementContreLaMontre.new
-
         self.gestionSignaux
     end
 
