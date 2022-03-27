@@ -5,11 +5,12 @@ load "./Partie/Partie.rb"
 load "./Interfaces/Fenetre.rb"
 
 class FenetreGrilleCLM < FenetreGrille
-
+    @fenetreClassement
     attr_accessor :object
 
-    def initialize(menuParent)
+    def initialize(menuParent, fenetreClassement)
         super(menuParent)
+        @fenetreClassement=fenetreClassement
     end
 
     def gestionSignaux
@@ -32,7 +33,12 @@ class FenetreGrilleCLM < FenetreGrille
 
     # Créer une table de boutons correspondants aux cases de la grille
     def construction
+        @affChrono = Gtk::Label.new()
+        @object.add(@affChrono)
         super
+        @builder.get_object('btn_retour').signal_connect('clicked'){#quitter
+            @object.remove(@affChrono)
+        }
         @@partie.chronometre.demarre
         actualiseChrono
     end
@@ -50,12 +56,13 @@ class FenetreGrilleCLM < FenetreGrille
                             @boutons[[@@partie.dernierIndice.coordonneesCase[0],@@partie.dernierIndice.coordonneesCase[1]]].name = "case_chiffre"
                         end
                         if @@partie.partieFinie?
+                            @temps = @@partie.chronometre.getTemps.round()
+                            @fenetreClassement.ajoutScore
                             affiche_victoire
                             puts "Bien joué, la partie est finie !"
                             @object.remove(tableFrame)
                             @object.remove(@affChrono)
                             @@profilActuel.ajouterPartie(@@partie)
-                            @temps = @@partie.chronometre.getTemps.round(1)
                             self.changerInterface(@menuParent, "Libre")
                         end
                     end

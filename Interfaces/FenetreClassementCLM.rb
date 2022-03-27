@@ -53,7 +53,7 @@ class FenetreClassementCLM < Fenetre
         @titre = @builder.get_object("titre")
 		
         # Création d'une interface grille
-        @interfaceGrille = FenetreGrilleCLM.new(@object)
+        @interfaceGrille = FenetreGrilleCLM.new(@object, self)
         
         #gestion et affiche par default
 		self.gestionSignaux
@@ -106,7 +106,7 @@ class FenetreClassementCLM < Fenetre
     end
 
     def affichageScore()
-
+    
         if @tabScore[0] != nil
             @pseudo1.set_text(@tabScore[0].profil.pseudo)
             @temps1.set_text("#{@tabScore[0].getHeures}h#{@tabScore[0].getMinutes}m#{@tabScore[0].getSecondes}s")
