@@ -159,6 +159,40 @@ end
         @object.add(tableFrame)
     end
 
+	# Créer un affichage de la grille pour la librarie de grille
+    def afficheGrille(hauteur, largeur)
+        taille_hauteur = hauteur
+        taille_largeur = largeur
+        @boutons = {}
+        tableFrame = Frame.new();
+        tableFrame.name = "grille_preview"
+        table = Table.new(taille_hauteur,taille_largeur,false)
+        table.set_halign(3);
+        table.set_valign(3);
+        tableFrame.set_halign(3);
+        tableFrame.set_valign(3);
+        tableFrame.add(table)
+        for i in 0..taille_largeur-1
+            for j in 0..taille_hauteur-1
+				@boutons[[i,j]] = Button.new()
+				@boutons[[i,j]].name = "case_vide_preview"
+				table.attach(@boutons[[i,j]], i, i+1, j, j+1)
+            end
+        end
+        # maj_boutons
+        # signaux_boutons(tableFrame)
+        # @object.add(table)
+		
+        # # supprime les boutons
+        # @builder.get_object('btn_retour').signal_connect('clicked'){#quitter
+        #     @object.remove(tableFrame)
+        #     @@profilActuel.ajouterPartie(@@partie)
+        #     self.changerInterface(@menuParent, "Libre")
+        # }
+
+        return tableFrame
+    end
+
     # Changes la couleur des boutons lorsqu'on clique dessus
     def signaux_boutons(tableFrame)
         @boutons.each do |cle, val|

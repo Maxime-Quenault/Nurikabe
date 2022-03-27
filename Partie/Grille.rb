@@ -37,6 +37,8 @@ class Grille
 	attr :largeur, false
 	attr :difficulte, true
 
+	attr_reader :hauteur, :largeur
+
 	def initialize(num,h,l)
 		@numero=num
 		@hauteur=h
@@ -152,7 +154,10 @@ class Grille
 
         if (uneDifficulte == FACILE)
             File.foreach('./Partie/grillesEasy.txt') do |line|
-                if line.eql?("\n")
+                # Si on arrive au mot "END" dans le fichier, on arrête la recherche en envoyant le mot-clé "END"
+				if line.eql?("END") 
+					return "END"
+				elsif line.eql?("\n")
                     compteur += 1
 				elsif compteur == unIndex
                     chaine << line
@@ -163,7 +168,10 @@ class Grille
             end
         elsif (uneDifficulte == MOYEN)
             File.foreach('./Partie/grillesMedium.txt') do |line|
-                if line.eql?("\n")
+                # Si on arrive au mot "END" dans le fichier, on arrête la recherche en envoyant le mot-clé "END"
+				if line.eql?("END") 
+					return "END"
+				elsif line.eql?("\n")
                     compteur += 1
 				elsif compteur == unIndex
                     chaine << line
@@ -174,8 +182,10 @@ class Grille
             end
         elsif (uneDifficulte == DIFFICILE)
             File.foreach('./Partie/grillesHard.txt') do |line|
-
-                if line.eql?("\n")
+                # Si on arrive au mot "END" dans le fichier, on arrête la recherche en envoyant le mot-clé "END"
+				if line.eql?("END") 
+					return "END"
+				elsif line.eql?("\n")
                     compteur += 1
 				elsif compteur == unIndex
                     chaine << line

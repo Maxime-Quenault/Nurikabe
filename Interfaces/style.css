@@ -96,6 +96,20 @@ headerbar {
     margin: 15px;
 }
 
+#grille_preview {
+    border: 2px black solid;
+}
+
+#case_chiffre_preview, #case_vide_preview {
+    border-radius: 0;
+    color: black;
+    background: rgb(245, 245, 245);
+    border: 1px black solid;
+    font-size: 15px;
+    min-width: 10px;
+    min-height: 18px;
+}
+
 #case_chiffre, #case_vide {
     border-radius: 0;
     color: black;
