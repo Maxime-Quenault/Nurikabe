@@ -95,6 +95,7 @@ class Partie
     @indiceCoup=0
     @enPause=false
     @chronometre=Chronometre.creer()
+    @chronometre.metEnPause
   end
 
   #vrai si la partie est finie faux sinon

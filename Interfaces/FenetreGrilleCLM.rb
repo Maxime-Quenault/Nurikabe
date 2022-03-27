@@ -62,7 +62,8 @@ class FenetreGrilleCLM < FenetreGrille
                             puts "Bien joué, la partie est finie !"
                             @object.remove(tableFrame)
                             @object.remove(@affChrono)
-                            @@profilActuel.ajouterPartie(@@partie)
+                            @@partie.raz
+                            #@@profilActuel.ajouterPartie(@@partie)
                             self.changerInterface(@menuParent, "Libre")
                         end
                     end
