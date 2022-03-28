@@ -61,9 +61,9 @@ class SauvegardeProfil
         nombre
     end
 
-    def chargerProfil(unProfil)
+    def chargerProfil(unPseudo)
         @listeProfil.each do |key, value|
-            if(key.pseudo == unProfil.pseudo)
+            if(key.pseudo == unPseudo)
                 return key
             end
         end
@@ -86,17 +86,34 @@ class SauvegardeProfil
         return true
     end
 
+    def changerParametre(unProfil)
+        @listeProfil.each do |key, value|
+            if(key.pseudo == unProfil.pseudo)
+                key = unProfil
+            end
+        end
+        File.open("Sauvegarde/SauvegardeProfil/listeProfil.dump", "wb") { |file| file.write(Marshal.dump(@listeProfil)) }
+    end
+
+    def modifierAvatar(uneImage, profilActuel)
+        @listeProfil.each do |key, value|
+            if key.pseudo == profilActuel.pseudo
+                key.imageJoueur = uneImage                
+            end
+            File.open("Sauvegarde/SauvegardeProfil/listeProfil.dump", "wb") { |file| file.write(Marshal.dump(@listeProfil)) }
+        end
+    end
+
+    def sauvegarder(unProfil, unePartie)
+        if unePartie != nil
+            uneProfil.ajouterPartie(unePartie)
+        end
+        @listeProfil.each do |key, value|
+            if(key.pseudo == unProfil.pseudo)
+                key = unProfil
+            end
+        end
+        File.open("Sauvegarde/SauvegardeProfil/listeProfil.dump", "wb") { |file| file.write(Marshal.dump(@listeProfil)) }
+    end
+
 end
-
-##  TEST UNITAIRE  ##
-
-#uneSave = SauvegardeProfil.new()
-# profil1 = Profil.new("Léo")
-# uneSave.ajoutProfil(profil1)
-# profil2 = Profil.new("Maxime")
-# uneSave.ajoutProfil(profil2)
-
-# profil = uneSave.chargerProfil("Léo")
-
-# uneSave.modifierPseudo("Léo", profil)
-#unProfil = uneSave.afficherSauvegarde

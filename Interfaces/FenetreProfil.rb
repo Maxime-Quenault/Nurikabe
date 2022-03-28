@@ -62,7 +62,8 @@ class FenetreProfil
     #   autant de bouton qu'il y a de profils, ce qui permet une extension dynamique de la fenêtre.
     #   Elle permet aussi de gerer la suppresion des profils ou la création.
     def afficheToi
-
+        @popUpProfil = Window.new()
+        @save = SauvegardeProfil.new
         @popUpProfil.set_title("Choix profil")
         @popUpProfil.border_width=10
         @popUpProfil.set_resizable(false)
@@ -85,7 +86,10 @@ class FenetreProfil
             @save.listeProfil.each do |key, value|
                 ligneProfil=Gtk::Box.new(:horizontal, 3) # Box pour l'image du profil, son nom et le bouton supprimer
   
-                imageProfil = Gtk::Image.new :file => key.imageJoueur
+                pixbuf = GdkPixbuf::Pixbuf.new(:file => key.imageJoueur)
+                pixbuf = pixbuf.scale_simple(20, 20, Gdk::Pixbuf::INTERP_BILINEAR)
+                imageProfil = Gtk::Image.new
+                imageProfil.set_from_pixbuf(pixbuf)
                 ligneProfil.add(setmargin(imageProfil, 0, 0, 0, 5))
 
                 boutonProfil = Button.new(:label => key.pseudo)
@@ -101,7 +105,7 @@ class FenetreProfil
                 laFenetrePrincipale.add(ligneProfil)
                 
                 boutonProfil.signal_connect('clicked'){
-                    @profil = @save.chargerProfil(key)
+                    @profil = @save.chargerProfil(key.pseudo)
                     event(@popUpProfil)
                 }
 
@@ -133,6 +137,7 @@ class FenetreProfil
                 @profil = Profil.new(pseudo)
                 if @save.ajoutProfil(profil) != -1
                     @profil = @save.chargerProfil(pseudo)
+                    event(@popUpProfil)
                 else
                     d = Gtk::MessageDialog.new(@popUpProfil,
                     Gtk::Dialog::DESTROY_WITH_PARENT,

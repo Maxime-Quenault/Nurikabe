@@ -1,4 +1,5 @@
 require 'gtk3'
+load 'Partie/Partie.rb'
 
 
 ##
@@ -30,8 +31,10 @@ require 'gtk3'
 class Fenetre
 
     @@window = nil
+    @@partie = nil
+    @@profilActuel = nil
 
-    # private_method new
+    #private_method new
 
     ##
     # changerInterface :
@@ -95,7 +98,7 @@ class Fenetre
         if @@window == nil
             Fenetre.new()
         else
-            puts "fenetre deja initialise"
+            puts "Fenêtre déjà initialisée"
         end
     end
 
@@ -155,6 +158,13 @@ class Fenetre
         self.deleteChildren
         self.remove(@header)
         Gtk.main_quit
+    end
+
+    ##
+    # creerPartie :
+    #   Creer et affecte une partie à la variable de classe partie avec la grille passée en paramètre
+    def creerPartie(grille)
+        @@partie = Partie.creeToi(grille)
     end
 
 end

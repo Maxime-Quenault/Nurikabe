@@ -62,19 +62,23 @@ class FenetreMenu < Fenetre
         @builder = Gtk::Builder.new(:file => 'glade/menu.glade')
         @object = @builder.get_object("menu")      
 
+
+        #On récupere le profil séléctionné par le joueur.
+        @interfaceProfil = FenetreProfil.new
+        @interfaceProfil.afficheToi
+        @@profilActuel = @interfaceProfil.profil
+
+
         #On initialise toutes les interfaces connue par le menu (interfaces filles).
         @interfaceAPropos = FenetreAPropos.new(@object)
         @interfaceLibre = FenetreLibre.new(@object)
         #@interfaceAventure = AffichageAventure.new(@object)
         #@interfaceSurvie = FenetreSurvie.new(@object)
         #@interfaceContreMontre = FenetreContreMontre.new(@object)
-        @interfaceProfil = FenetreProfil.new
-        @interfaceParametre = FenetreParametre.new(@object)
+        @interfaceParametre = FenetreParametre.new(@object, @interfaceProfil)
 
-        #On récupere le profil séléctionné par le joueur.
-        @interfaceProfil.afficheToi
-        @profil = @interfaceProfil.profil
         
+
         #Recuperation des variables bouton
         @btn_libre = @builder.get_object("btn_libre")
         @btn_survie = @builder.get_object("btn_survie")
@@ -108,7 +112,7 @@ class FenetreMenu < Fenetre
 	#	Cette methode permet d'assigner des actions à chaques boutons récupérés dans le fichier galde.
     def gestionSignaux
         @btn_libre.signal_connect('clicked') {
-            self.changerInterface(@interfaceLibre.getObjet, "Mode libre")
+            self.changerInterface(@interfaceLibre.getObjet, "Mode Libre")
         }
 
         @btn_survie.signal_connect('clicked') {print "tu as clique sur le mode survie\n"}
@@ -122,7 +126,7 @@ class FenetreMenu < Fenetre
         @btn_propos.signal_connect('clicked') {print "tu as clique sur a propos\n"}
 
         @btn_parametre.signal_connect('clicked') {
-            self.changerInterface(@interfaceParametre.object, "Paramètres")
+            self.changerInterface(@interfaceParametre.object, "Settings Window")
         }
     end
 end
