@@ -19,6 +19,8 @@ class Partie
 
   attr_accessor :grilleEnCours
 
+  attr_accessor :grilleEnCours
+
   def Partie.creeToi(uneGrille)
     new(uneGrille)
   end

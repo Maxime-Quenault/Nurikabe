@@ -92,11 +92,13 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="margin_bottom">15</property>
-                        <property name="label" translatable="yes">Langue</property>
+                        <property name="label" translatable="yes">Avatar</property>
                         <attributes>
                           <attribute name="weight" value="heavy"/>
-                          <attribute name="size" value="15000"/>
+                          <attribute name="size" value="30000"/>
                         </attributes>
                       </object>
                       <packing>
@@ -106,21 +108,41 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBoxText" id="cbt_langue">
+                      <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="active">0</property>
-                        <property name="has_entry">True</property>
-                        <items>
-                          <item id="fr" translatable="yes">Français</item>
-                          <item id="en" translatable="yes">Anglais</item>
-                        </items>
-                        <child internal-child="entry">
-                          <object class="GtkEntry">
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkImage" id="image_profil">
+                            <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="stock">gtk-missing-image</property>
                           </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="pseudo_profil">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <attributes>
+                              <attribute name="weight" value="ultrabold"/>
+                              <attribute name="size" value="15000"/>
+                            </attributes>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="padding">5</property>
+                            <property name="position">1</property>
+                          </packing>
                         </child>
                       </object>
                       <packing>
@@ -144,11 +166,15 @@
                     <property name="valign">center</property>
                     <property name="margin_top">30</property>
                     <property name="margin_bottom">20</property>
+                    <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkSwitch" id="switch_audio">
+                      <object class="GtkButton" id="change_avatar">
+                        <property name="label" translatable="yes">  Modifier l'avatar   </property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="active">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -157,15 +183,19 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkButton" id="btn_changer_profil">
+                        <property name="label" translatable="yes">  Changer de profil  </property>
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">  Effets sonores</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="padding">20</property>
+                        <property name="position">2</property>
                       </packing>
                     </child>
                   </object>
@@ -176,87 +206,13 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">center</property>
-                    <property name="valign">center</property>
-                    <property name="margin_top">30</property>
-                    <property name="margin_bottom">20</property>
-                    <child>
-                      <object class="GtkSwitch" id="switch_theme">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">  Mode Sombre</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">3</property>
-                  </packing>
+                  <placeholder/>
                 </child>
                 <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="margin_top">20</property>
-                    <property name="margin_bottom">20</property>
-                    <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="margin_bottom">15</property>
-                        <property name="label" translatable="yes">Couleur interface</property>
-                        <attributes>
-                          <attribute name="weight" value="heavy"/>
-                          <attribute name="size" value="15000"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkColorChooserWidget">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="rgba">rgb(0,0,0)</property>
-                        <property name="use_alpha">False</property>
-                        <property name="show_editor">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">4</property>
-                  </packing>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
               </object>
             </child>

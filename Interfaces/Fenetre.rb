@@ -106,7 +106,7 @@ class Fenetre
         if @@window == nil
             Fenetre.new()
         else
-            puts "fenetre deja initialise"
+            puts "Fenêtre déjà initialisée"
         end
     end
 

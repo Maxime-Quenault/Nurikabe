@@ -3,7 +3,7 @@ class Profil
     attr_accessor :pseudo, :parametre, :listePartieCommence, :imageJoueur
 
     def initialize(unPseudo)
-        @imageJoueur = "Image/user.png"
+        @imageJoueur = "Image/utilisateur.png"
         @pseudo = unPseudo
         @parametre = Parametre.new()
         @listePartieCommence = []

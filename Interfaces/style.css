@@ -35,8 +35,8 @@ button:active {
 }
 
 entry {
-    background: @bg_color;
-    color: black;
+    background: @dark_main_color;
+    color: white;
 }
 
 switch:checked {
