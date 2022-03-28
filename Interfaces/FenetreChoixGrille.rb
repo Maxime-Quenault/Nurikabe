@@ -3,6 +3,7 @@ include Gtk
 
 load "./Interfaces/Fenetre.rb"
 load "./Interfaces/FenetreGrille.rb"
+load "./Grille/LectureGrille.rb"
 
 class FenetreChoixGrille < Fenetre
 
@@ -23,66 +24,76 @@ class FenetreChoixGrille < Fenetre
 
     def gestionSignaux
         
-        #Recuperation de la fenetre
+        # Recuperation de la fenetre
         btn_retour = @builder.get_object('btn_retour')
-        btn1 = @builder.get_object('btn1')
-        btn2 = @builder.get_object('btn2')
-        btn3 = @builder.get_object('btn3')
-        btn4 = @builder.get_object('btn4')
-        btn5 = @builder.get_object('btn5')
-        btn6 = @builder.get_object('btn6')
-        btn7 = @builder.get_object('btn7')
-        btn8 = @builder.get_object('btn8')
-        btn9 = @builder.get_object('btn9')
-        btn10 = @builder.get_object('btn10')
 
+		initGrilles(0)
 
         #Gestion des signaux
         btn_retour.signal_connect('clicked'){#quitter
             self.changerInterface(@menuParent, "Libre")
         }
-        btn1.signal_connect('clicked'){#quitter
-            construction(0)
-            self.changerInterface(@interfaceGrille.object, "Partie")
-        }
-        btn2.signal_connect('clicked'){#quitter
-            construction(1)
-            self.changerInterface(@interfaceGrille.object, "Partie")
-        }
-        btn3.signal_connect('clicked'){#quitter
-            construction(2)
-            self.changerInterface(@interfaceGrille.object, "Partie")
-        }
-        btn4.signal_connect('clicked'){#quitter
-            construction(3)
-            self.changerInterface(@interfaceGrille.object, "Partie")
-        }
-        btn5.signal_connect('clicked'){#quitter
-            construction(4)
-            self.changerInterface(@interfaceGrille.object, "Partie")
-        }
-        btn6.signal_connect('clicked'){#quitter
-            construction(5)
-            self.changerInterface(@interfaceGrille.object, "Partie")
-        }
-        btn7.signal_connect('clicked'){#quitter
-            construction(6)
-            self.changerInterface(@interfaceGrille.object, "Partie")
-        }
-        btn8.signal_connect('clicked'){#quitter
-            construction(7)
-            self.changerInterface(@interfaceGrille.object, "Partie")
-        }
-        btn9.signal_connect('clicked'){#quitter
-            construction(8)
-            self.changerInterface(@interfaceGrille.object, "Partie")
-        }
-        btn10.signal_connect('clicked'){#quitter
-            construction(9)
-            self.changerInterface(@interfaceGrille.object, "Partie")
-        }
+
     end
 
+	def afficheGrille(id)
+
+        @grid_grilles = @builder.get_object('grid_grilles')
+        
+        boutonGrille = Gtk::Button.new()
+        contenuBoutonG = Gtk::Box.new(:vertical)
+
+        titreBoutonG = Gtk::Label.new('Grille #' + (id + 1).to_s)
+        titreBoutonG.set_margin_top(5)
+        titreBoutonG.set_margin_bottom(5)
+        contenuBoutonG.add(titreBoutonG, :expand => false, :fill => true)
+
+		# On ajoute l'affichage de la grille dans son bouton
+		g = Grille.creer()
+		g.difficulte = 0
+		g.chargerGrille(id, 0)
+
+        contenuBoutonG.add( @interfaceGrille.afficheGrille(g.hauteur, g.largeur, g) )
+
+        boutonGrille.add_child(contenuBoutonG)
+
+        # <!!> Classe à ajouter si la grille est finie - à voir avec les sauvegardes donc.
+        # boutonGrille.set_name('grilleFinie')
+
+		boutonGrille.signal_connect('clicked'){#quitter
+            construction(id)
+            self.changerInterface(@interfaceGrille.object, "Partie")
+        }
+
+        @grid_grilles.attach(boutonGrille, @pos_h, @pos_v, 1, 1)
+
+        if @pos_h < 2
+            @pos_h += 1
+        else
+            @pos_h = 0
+            @pos_v += 1
+        end
+
+    end
+
+	# Initialise la liste de grilles à afficher dans la librairie
+    def initGrilles(uneDifficulte)
+
+        @pos_v = 0
+        @pos_h = 0
+
+        p = LectureGrille.new()
+        i = 0
+        while p.lireGrille(i, uneDifficulte) != "END" do
+            afficheGrille(i)
+            i += 1
+        end
+
+		puts "rien"
+
+        # @grid_grilles.show_all
+
+    end
 
     #Créer une table de boutons correspondants aux cases de la grille
     def construction(num_grille)
