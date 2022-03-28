@@ -1,5 +1,6 @@
 #!/usr/bin/ruby
 require 'gtk3'
+load 'Partie/Partie.rb'
 
 
 ##
@@ -25,7 +26,7 @@ require 'gtk3'
 #
 #   Voici ses VC :
 #   
-#   @@window : elle represente notre fenetre, elle est initialisé qu'une seule fois.
+#   @@window : elle represente notre fenetre, elle est initialisé qu'une seul fois.
 
 
 $LARGEUR_FENETRE = 745
@@ -36,8 +37,9 @@ class Fenetre
     @@window = nil
     @@partie = nil
     @@profilActuel = nil
+    @@numGrille = nil
 
-    # private_method new
+    #private_method new
 
     ##
     # changerInterface :
@@ -84,10 +86,13 @@ class Fenetre
         @header.subtitle = "-"
         @@window.titlebar = @header
 
-        # CSS
+        #CSS
         @css = Gtk::CssProvider.new
-        @css.load(path: "Interfaces/style_dark.css")
+        @css.load(path: "Interfaces/style.css")
         Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @css, Gtk::StyleProvider::PRIORITY_APPLICATION)
+
+        #sauvegarde
+        @save = SauvegardeProfil.new
 
     end
 
@@ -101,7 +106,7 @@ class Fenetre
         if @@window == nil
             Fenetre.new()
         else
-            puts "fenetre deja initialise"
+            puts "Fenêtre déjà initialisée"
         end
     end
 
@@ -113,6 +118,10 @@ class Fenetre
     # @param subtitle represente le nouveau sous-titre de la fenetre.
     def set_sousTitre(subtitle)
         @@window.titlebar.subtitle  = subtitle
+    end
+
+    def get_sousTitre()
+        return @@window.titlebar.subtitle
     end
 
 
@@ -158,6 +167,9 @@ class Fenetre
     # quitter :
     #   Supprime tous les élements de la fenetre avant de quitter le programme.
     def quitter
+        if @@partie!=nil
+            @@profilActuel.ajouterPartie(@@partie)
+        end
         self.deleteChildren
         self.remove(@header)
         Gtk.main_quit
@@ -165,9 +177,17 @@ class Fenetre
 
     ##
     # creerPartie :
-    # Créer et affectes une partie avec la grille passée en paramètres à la variable de classe partie
+    #   Creer et affecte une partie à la variable de classe partie avec la grille passée en paramètre
     def creerPartie(grille)
         @@partie = Partie.creeToi(grille)
+    end
+
+    def getNumGrille
+        @@numGrille
+    end
+
+    def setNumGrille(unNum)
+        @@numGrille = unNum
     end
 
 end

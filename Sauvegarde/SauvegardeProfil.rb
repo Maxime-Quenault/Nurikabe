@@ -86,6 +86,24 @@ class SauvegardeProfil
         return true
     end
 
+    def changerParametre(unProfil)
+        @listeProfil.each do |key, value|
+            if(key.pseudo == unProfil.pseudo)
+                key = unProfil
+            end
+        end
+        File.open("Sauvegarde/SauvegardeProfil/listeProfil.dump", "wb") { |file| file.write(Marshal.dump(@listeProfil)) }
+    end
+
+    def modifierAvatar(uneImage, profilActuel)
+        @listeProfil.each do |key, value|
+            if key.pseudo == profilActuel.pseudo
+                key.imageJoueur = uneImage                
+            end
+            File.open("Sauvegarde/SauvegardeProfil/listeProfil.dump", "wb") { |file| file.write(Marshal.dump(@listeProfil)) }
+        end
+    end
+
     def sauvegarder(unProfil, unePartie)
         if unePartie != nil
             uneProfil.ajouterPartie(unePartie)

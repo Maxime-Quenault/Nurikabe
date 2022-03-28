@@ -1,6 +1,6 @@
 # Classes à charger :
 # Sûrement d'autres à ajouter
-load "Partie/Grille.rb"
+load "../Partie/Grille.rb"
 
 # Définition de la classe Aventure
 class Aventure
@@ -60,8 +60,8 @@ class Aventure
 
 
   # Coding Assistant pour faciliter les accès des différentes variables
-  attr_reader :desGrilles, :difficuleAcquise, :difficulte, :precedenteDiff, :suivanteDiff;
-  attr_accessor :posCourante, :nbEtoiles, :desEtoiles, :desTemps;
+  attr_reader :palierNormal, :palierHard, :desGrilles, :difficuleAcquise, :difficulte, :precedenteDiff, :suivanteDiff;
+  attr :posCourante, :nbEtoiles, :desEtoiles, :desTemps true;
 
   # On définit notre propre façon de générer une Aventure
   def Aventure.creer(uneDifficulte)
@@ -98,8 +98,8 @@ class Aventure
 
   # Pour générer l'aventure(suite de niveaux), on fait appel à la classe Grille pour générer les niveaux
   def generationAventure(nbNiveau)
-    for i in 0...nbNiveau
-      @desGrilles[i] = Grille.creer()
+    for i in 0...nbNiveau do
+      @desGrilles[i] = Grille.new()
       @desEtoiles[i] = 0
     end
   end

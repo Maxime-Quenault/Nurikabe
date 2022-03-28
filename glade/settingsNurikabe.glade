@@ -31,8 +31,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button_profils">
-            <property name="label" translatable="yes">Profils</property>
-            <property name="name">button_profils</property>
+            <property name="label" translatable="yes">Profil</property>
             <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -236,7 +235,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkColorChooserWidget">
+                      <object class="GtkColorChooserWidget" id="color_chooser">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="rgba">rgb(0,0,0)</property>
