@@ -2,9 +2,9 @@ require 'gtk3'
 include Gtk
 
 load "./Interfaces/Fenetre.rb"
-load "./Interfaces/FenetreGrilleCLM.rb"
+load "./Interfaces/ContreLaMontre/FenetreGrilleCLM.rb"
 load "Sauvegarde/SauvegardeClassementContreLaMontre.rb"
-load "Interfaces/FenetreClassementCLM.rb"
+load "Interfaces/ContreLaMontre/FenetreClassementCLM.rb"
 
 class FenetreChoixGrilleCLM < Fenetre
 

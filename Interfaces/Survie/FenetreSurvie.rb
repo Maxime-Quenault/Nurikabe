@@ -1,14 +1,14 @@
 require 'gtk3'
 load "Interfaces/Fenetre.rb"
-load "Interfaces/FenetreChoixGrilleCLM.rb"
+load "Interfaces/Survie/FenetreChoixGrilleSurvie.rb"
 
-class FenetreContreMontre < Fenetre
+class FenetreSurvie < Fenetre
 
     attr_accessor :object
 
 	##
 	# initialize :
-	# 	Cette methode est le constructeur de la classe FenetreLibre, il permet de recuperer
+	# 	Cette methode est le constructeur de la classe FenetreSurvie, il permet de recuperer
 	#	le fichier glade et tout les objets qui le compose. Ensuite nous attribuons les bonnes 
 	#	actions a chaque objets récupérés.
 	#
@@ -29,7 +29,7 @@ class FenetreContreMontre < Fenetre
 		@btn_difficile = @builder.get_object("lvl_difficile") 
 		@btn_retour = @builder.get_object("btn_retour")
 
-		@interfaceChoixGrille = FenetreChoixGrilleCLM.new(@object)
+		@interfaceChoixGrille = FenetreChoixGrilleSurvie.new(@object)
 		
 		self.gestionSignaux
 
@@ -54,12 +54,12 @@ class FenetreContreMontre < Fenetre
 			@interfaceChoixGrille.difficulte=0
 			self.changerInterface(@interfaceChoixGrille.object, "Facile")
 		}
-		@btn_moyen.signal_connect("clicked"){print "\nTu as cliqué sur le mode Moyen"
+		@btn_moyen.signal_connect("clicked"){
 			@interfaceChoixGrille.difficulte=1
 			self.changerInterface(@interfaceChoixGrille.object, "Moyen")
 		}
 
-		@btn_difficile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Difficile"
+		@btn_difficile.signal_connect("clicked"){
 			@interfaceChoixGrille.difficulte=2
 			self.changerInterface(@interfaceChoixGrille.object, "Difficile")
 		}

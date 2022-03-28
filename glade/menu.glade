@@ -132,7 +132,7 @@
         </child>
         <child>
           <object class="GtkButton" id="btn_parametre">
-            <property name="label" translatable="yes">Paramètre</property>
+            <property name="label" translatable="yes">Paramètres</property>
             <property name="name">boutonParam</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>

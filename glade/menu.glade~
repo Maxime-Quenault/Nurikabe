@@ -11,7 +11,7 @@
         <property name="name">logoNurikabe</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="pixbuf">LogoNurikabe.png</property>
+        <property name="pixbuf">../Image/LogoNurikabe.png</property>
       </object>
       <packing>
         <property name="expand">True</property>

@@ -3,6 +3,7 @@ include Gtk
 
 load "./Partie/Partie.rb"
 load "./Interfaces/Fenetre.rb"
+load "Interfaces/FenetreGrille.rb"
 
 class FenetreGrilleCLM < FenetreGrille
     @fenetreClassement

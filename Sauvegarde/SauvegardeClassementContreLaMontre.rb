@@ -11,10 +11,6 @@ class SauvegardeClassementContreLaMontre
     def initialize(numGrille)
         @numeroGrille = numGrille
 
-        print "\n"
-        print @numeroGrille
-        print "\n"
-
         if(!File.exist?("Sauvegarde/SauvegardeScore/scoreContreLaMontre#{@numeroGrille}.dump"))
             @tabScore = Array.new(10)
             @nbScoreOccupe = 0; 
