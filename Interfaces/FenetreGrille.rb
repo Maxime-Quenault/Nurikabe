@@ -160,7 +160,7 @@ end
     end
 
 	# Créer un affichage de la grille pour la librarie de grille
-    def afficheGrille(hauteur, largeur)
+    def afficheGrille(hauteur, largeur, grille)
         taille_hauteur = hauteur
         taille_largeur = largeur
         @boutons = {}
@@ -174,9 +174,15 @@ end
         tableFrame.add(table)
         for i in 0..taille_largeur-1
             for j in 0..taille_hauteur-1
-				@boutons[[i,j]] = Button.new()
-				@boutons[[i,j]].name = "case_vide_preview"
-				table.attach(@boutons[[i,j]], i, i+1, j, j+1)
+                if grille.matriceCases[i][j].is_a?(CaseNombre)
+                    @boutons[[i,j]] = Button.new(:label=> grille.matriceCases[i][j].to_s)
+                    @boutons[[i,j]].name = "case_chiffre_preview"
+                    table.attach(@boutons[[i,j]], i, i+1, j, j+1)
+                else
+                    @boutons[[i,j]] = Button.new()
+                    @boutons[[i,j]].name = "case_vide_preview"
+                    table.attach(@boutons[[i,j]], i, i+1, j, j+1)
+                end
             end
         end
         # maj_boutons

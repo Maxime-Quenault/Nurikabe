@@ -97,7 +97,7 @@ headerbar {
 }
 
 #grille_preview {
-    border: 2px black solid;
+    border: .5px black solid;
 }
 
 #case_chiffre_preview, #case_vide_preview {
@@ -105,9 +105,10 @@ headerbar {
     color: black;
     background: rgb(245, 245, 245);
     border: 1px black solid;
-    font-size: 15px;
-    min-width: 10px;
-    min-height: 18px;
+    font-size: 13px;
+    min-width: 16px;
+    min-height: 16px;
+    padding: 1px;
 }
 
 #case_chiffre, #case_vide {
@@ -117,8 +118,9 @@ headerbar {
     border: 2px black solid;
     font-size: 50px;
     transition: 0.08s ease;
-    min-width: 50px;
+    min-width: 60px;
     min-height: 50px;
+    padding: 5px;
 }
 
 #case_indice {
@@ -128,8 +130,9 @@ headerbar {
     border: 2px red solid;
     font-size: 50px;
     transition: 0.08s ease;
-    min-width: 50px;
+    min-width: 60px;
     min-height: 50px;
+    padding: 5px;
 }
 
 #case_noir {
@@ -139,8 +142,9 @@ headerbar {
     border: 2px black solid;
     font-size: 50px;
     transition: 0.08s ease;
-    min-width: 50px;
+    min-width: 60px;
     min-height: 50px;
+    padding: 5px;
 }
 
 #case_point {
@@ -150,6 +154,7 @@ headerbar {
     border: 2px black solid;
     font-size: 50px;
     transition: 0.08s ease;
-    min-width: 50px;
+    min-width: 60px;
     min-height: 50px;
+    padding: 5px;
 }

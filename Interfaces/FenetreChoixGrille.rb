@@ -29,6 +29,11 @@ class FenetreChoixGrille < Fenetre
 
 		initGrilles(0)
 
+        #Gestion des signaux
+        btn_retour.signal_connect('clicked'){#quitter
+            self.changerInterface(@menuParent, "Libre")
+        }
+
     end
 
 	def afficheGrille(id)
@@ -48,7 +53,7 @@ class FenetreChoixGrille < Fenetre
 		g.difficulte = 0
 		g.chargerGrille(id, 0)
 
-        contenuBoutonG.add( @interfaceGrille.afficheGrille(g.hauteur, g.largeur) )
+        contenuBoutonG.add( @interfaceGrille.afficheGrille(g.hauteur, g.largeur, g) )
 
         boutonGrille.add_child(contenuBoutonG)
 
