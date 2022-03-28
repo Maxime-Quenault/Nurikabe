@@ -157,6 +157,7 @@ end
             self.changerInterface(@menuParent, "Libre")
         }
         @object.add(tableFrame)
+        tableFrame.show_all
     end
 
     # Changes la couleur des boutons lorsqu'on clique dessus

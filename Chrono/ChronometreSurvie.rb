@@ -1,4 +1,4 @@
-load "Chronometre.rb"
+load "Chrono/Chronometre.rb"
 
 # Chrono qui decompte son temps pour les modes de jeu Survie
 class ChronometreSurvie < Chronometre
