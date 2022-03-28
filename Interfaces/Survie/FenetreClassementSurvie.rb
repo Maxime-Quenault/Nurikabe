@@ -90,12 +90,12 @@ class FenetreClassementSurvie < Fenetre
 	def gestionSignaux
 
         @boutonRetour.signal_connect("clicked"){
-            self.changerInterface(@menuParent, "Contre La Montre")
+            self.changerInterface(@menuParent, "Survie")
         }
 
         @boutonPartie.signal_connect("clicked"){
             construction
-            self.changerInterface(@interfaceGrille.object, "Contre La Montre") #à modifier ensuite
+            self.changerInterface(@interfaceGrille.object, "Survie") #à modifier ensuite
         }
 
 	end
