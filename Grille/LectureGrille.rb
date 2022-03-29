@@ -1,3 +1,14 @@
+
+=begin 
+
+    La classe LectureGrille :::
+        - permet de lire une grille depuis un fichier texte
+        - permet de convertir cette grille du fichier texte en une grille jouable
+        - permet de générer la grille contenant la bonne réponse
+
+=end
+
+
 class LectureGrille
 
     # Constantes de difficulté

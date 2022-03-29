@@ -1,12 +1,22 @@
+=begin
+
+    La classe Chronomètre :::
+        - permet de gérer le chronomètre de la partie
+    
+    Les VI de la classe sont :::
+
+        - @temps    ==> temps restant ou temps en cours
+        - @pause    ==> boolean indiquant si le jeu est en pause ou non
+        - @sens     ==> le sens du temps (augmente ou diminue en fonction du mode de jeu)
+
+=end
+
 class Chronometre
 
     private_class_method :new
 
-    # temps restant ou temps en cours
     @temps
-    # indiquant si le jeu est en pause
     @pause
-    # le sens du temps, s'il augmente ou diminue suivant le mode de jeu
     @sens
 
     attr_reader :temps, :pause, :sens

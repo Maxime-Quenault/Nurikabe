@@ -1,13 +1,30 @@
 load "Partie/CaseNombre.rb"
 load "Partie/Case.rb"
 load "Partie/CaseJouable.rb"
+
+=begin
+
+	La classe Grille :::
+		- représente la grille de la partie
+		- possède un identifiant
+		- une largeur et une hauteur
+		- une matrice de cases sur laquelle on jouera
+		- une matrice de cases corrigée
+		- un nombre d'étoiles
+
+	Les VI de la classe sont :::
+
+		- @numero			==> identifiant de la grille
+		- @hauteur			==> hauteur de la grille
+		- @largeur			==> largeur de la grille
+		- @matriceCases		==> matrice de cases sur laquelle le joueur jouera
+		- @correction		==> matrice contenant la solution
+		- @etoiles			==> nombre d'étoiles 
+
+=end
+
 class Grille
-	#Représntes une grille, contient : 
-	#un numéro (identifiant de la grille)
-	#une hauteur et une largeur
-	#une matrice de cases sur laquelle on jouera
-	#une matrice de cases corrigée
-	#un nombre d'étoiles
+
 	@numero
 	@hauteur
 	@largeur

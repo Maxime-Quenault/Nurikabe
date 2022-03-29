@@ -5,6 +5,18 @@ load "Sauvegarde/Profil.rb"
 load "Parametre/Parametre.rb"
 load "Interfaces/FenetreMenu.rb"
 
+
+=begin
+
+    La classe jeu :::
+        - permet de lancer le jeu avec toutes les fonctionnalités
+    
+    Les VI de la classe sont :::
+        - @interface    ==> interface courante
+        - @quit         ==> booleen indiquant si la fenêtre est fermée ou pas
+
+=end
+
 class Jeu
 
     attr_accessor :quit

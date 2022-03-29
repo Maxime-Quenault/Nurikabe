@@ -1,4 +1,17 @@
-# Un indice est défini par un type d'indice (en fonction des différents patternes) et par les coordonnées de la case concernée
+=begin
+
+    La classe Indice :::
+        - représente un indice, lui même représenté par
+            - un type (différent selon les différents patrons)
+            - les coordonnées de la case concernée
+    
+    Les VI de la classe sont :::
+
+        - @type             ==> type de l'indice
+        - @coordonneesCase  ==> coordonnées de la case
+
+=end
+
 class Indice
     @type
     @coordonneesCase

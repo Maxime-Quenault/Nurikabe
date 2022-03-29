@@ -3,6 +3,19 @@ include Gtk
 
 load "Interfaces/Fenetre.rb"
 
+=begin
+
+    La classe FenetreAPropos :::
+        - permet de générer l'interface "À propos" du jeu
+
+    Les VI de la classe sont :::
+        - @builder      ==> builder contenant la fenêtre courante (ici la fenêtre "à propos")
+        - @object       ==> contient l'identifiant de l'interface
+        - @btnRetour    ==> contient l'identifiant du bouton retour
+        - @menuParent   ==> contient le fenêtre parente de la fenêtre courante
+
+=end
+
 class FenetreAPropos < Fenetre
 
     attr_accessor :object
