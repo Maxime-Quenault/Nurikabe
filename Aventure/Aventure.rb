@@ -1,6 +1,6 @@
 # Classes à charger :
 # Sûrement d'autres à ajouter
-load "../Partie/Grille.rb"
+load "Partie/Grille.rb"
 
 # Définition de la classe Aventure
 class Aventure
@@ -31,37 +31,42 @@ class Aventure
 
   # Consernant les valeurs des deux VI palier ci-dessous elles sont provisoires(test) -> se mettre d'accord plus tard
   # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée normale
-  PALIER_NORMAL = 30
+  $PALIER_NORMAL = 30
   # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée hard
-  PALIER_HARD = 70
+  $PALIER_HARD = 70
 
-  # Définition des VI
+  FACILE = 0
+	MOYEN = 1
+	DIFFICILE = 2
 
-  # entier qui représente le score du joueur en nombre d'étoiles
-  @@nbEtoiles
-  # tableau de 3 booléens indiquant pour chaque difficultée, si elles sont débloquée ou non
-  @@difficuleAcquise
-  # tableau contenant les grilles du mode aventure
-  @desGrilles
-  # tableau contenant le nombre d'étoiles de chaque grille
-  @desEtoiles
-  # tableau contenant les temps de chaque grille
-  @desTemps
-  # position courante dans le mode Aventure
-  @posCourante
-  # entier représentant la difficultée actuelle associée à cette Aventure
-  # 0 -> Facile   1 -> Normal   2 -> Hard
-  @difficulte
-  # Aventure précédente (dans l'ordre chronologique)
+  #################### Déclaration des VI
+  #
+  # @@nbEtoiles : entier qui représente le score du joueur en nombre d'étoiles
+  #
+  # @@difficuleAcquise : tableau de 3 booléens indiquant pour chaque difficultée, si elles sont débloquée ou non
+  #
+  # @desGrilles : tableau contenant les grilles du mode aventure
+  #
+  # @desEtoiles : tableau contenant le nombre d'étoiles de chaque grille
+  #
+  # @desTemps : tableau contenant les temps de chaque grille
+  #
+  # @posCourante : position courante dans le mode Aventure
+  #
+  # @difficulte : entier représentant la difficultée actuelle associée à cette Aventure
+  #  0 -> Facile   1 -> Normal   2 -> Hard
+  #
+  # @precedenteDiff : Aventure précédente (dans l'ordre chronologique)
   # Par exemple : pour l'aventure "Normale" precedente sera "Facile"
-  @precedenteDiff
-  # Même cas pour l'aventure suivante
-  @suivanteDiff
+  #
+  # @suivanteDiff : Même cas pour l'aventure suivante
+  #
+  ####################
 
 
   # Coding Assistant pour faciliter les accès des différentes variables
-  attr_reader :palierNormal, :palierHard, :desGrilles, :difficuleAcquise, :difficulte, :precedenteDiff, :suivanteDiff;
-  attr :posCourante, :nbEtoiles, :desEtoiles, :desTemps true;
+  attr_reader :desGrilles, :difficuleAcquise, :difficulte, :precedenteDiff, :suivanteDiff;
+  attr_accessor :posCourante, :nbEtoiles, :desEtoiles, :desTemps;
 
   # On définit notre propre façon de générer une Aventure
   def Aventure.creer(uneDifficulte)
@@ -98,9 +103,9 @@ class Aventure
 
   # Pour générer l'aventure(suite de niveaux), on fait appel à la classe Grille pour générer les niveaux
   def generationAventure(nbNiveau)
-    for i in 0...nbNiveau do
-      @desGrilles[i] = Grille.new()
-      @desEtoiles[i] = 0
+    for i in 0...nbNiveau
+      @desGrilles[i] = Grille.creer()
+      @desGrilles[i].lireGrille(i,FACILE)
     end
   end
 
@@ -113,8 +118,9 @@ class Aventure
 
   # On se déplace sur le plateau du mode Aventure : ici on avance et on va au niveau suivant
   def prochaineGrille
-    if(@posCourante < @desGrilles.length())
+    if(@posCourante < 10)
       @posCourante += 1
+      #print "\n #{@posCourante}"
     end
   end
 
@@ -206,19 +212,23 @@ class Aventure
   def unlockDifficulte
     # Dans le cas où seule la difficulté Facile est débloquée
     if((@difficulte == 0) && (@@difficulteAcquise[1] == false))
-      if(self.assezEtoiles?(PALIER_NORMAL))
+      if(self.assezEtoiles?($PALIER_NORMAL))
         @@difficulteAcquise[1] = true;
         print("\nBravo tu viens de débloquer la difficulté Normal !")
+        return 1
       else
         print("\nTu ne possèdes pas assez d'étoiles pour débloquer cette difficulté...\nRefais d'autres niveaux.")
+        return 0
       end
     elsif((@difficulte == 1) && (@@difficulteAcquise[2] == false))
       # Dans le cas où la difficulté Normal est débloquée
-        if(self.assezEtoiles?(PALIER_HARD))
+        if(self.assezEtoiles?($PALIER_HARD))
           @@difficulteAcquise[2] = true
           print("\nBravo tu viens de débloquer la difficulté Hard !")
+          return 2
         else
           print("\nTu ne possèdes pas assez d'étoiles pour débloquer cette difficulté...\nRefais d'autres niveaux.")
+          return 0
         end
     end
   end
