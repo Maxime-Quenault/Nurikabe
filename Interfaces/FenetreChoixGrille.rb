@@ -86,6 +86,7 @@ class FenetreChoixGrille < Fenetre
 
         p = LectureGrille.new()
         i = 0
+		
         while p.lireGrille(i, uneDifficulte) != "END" do
             afficheGrille(i)
             i += 1

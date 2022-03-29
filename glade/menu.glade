@@ -11,8 +11,10 @@
         <property name="name">logoNurikabe</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin_top">20</property>
-        <property name="margin_bottom">20</property>
+        <property name="margin_left">50</property>
+        <property name="margin_right">50</property>
+        <property name="margin_top">50</property>
+        <property name="margin_bottom">30</property>
         <property name="pixbuf">../Image/LogoNurikabe.png</property>
       </object>
       <packing>
@@ -253,14 +255,27 @@
         <property name="margin_right">50</property>
         <property name="margin_top">30</property>
         <property name="margin_bottom">30</property>
+        <property name="spacing">20</property>
         <property name="homogeneous">True</property>
         <child>
           <object class="GtkButton" id="btn_tuto">
-            <property name="label" translatable="yes">Tutoriel</property>
             <property name="name">boutonTuto</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Tutoriel</property>
+            <property name="halign">center</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="margin_top">5</property>
+                <property name="margin_bottom">5</property>
+                <property name="pixbuf">../Image/iconeMenu/book.png</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -270,11 +285,22 @@
         </child>
         <child>
           <object class="GtkButton" id="btn_propos">
-            <property name="label" translatable="yes">À Propos</property>
             <property name="name">boutonPropos</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">À propos</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="margin_top">5</property>
+                <property name="margin_bottom">5</property>
+                <property name="pixbuf">../Image/iconeMenu/info.png</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -284,11 +310,22 @@
         </child>
         <child>
           <object class="GtkButton" id="btn_parametre">
-            <property name="label" translatable="yes">Paramètres</property>
             <property name="name">boutonParam</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Paramètres</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="margin_top">5</property>
+                <property name="margin_bottom">5</property>
+                <property name="pixbuf">../Image/iconeMenu/gear.png</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
