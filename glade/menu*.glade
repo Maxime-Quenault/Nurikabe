@@ -11,12 +11,10 @@
         <property name="name">logoNurikabe</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin_top">20</property>
-        <property name="margin_bottom">20</property>
-        <property name="pixbuf">../Image/LogoNurikabe.png</property>
+        <property name="pixbuf">../../../../Image/LogoNurikabe.png</property>
       </object>
       <packing>
-        <property name="expand">False</property>
+        <property name="expand">True</property>
         <property name="fill">True</property>
         <property name="position">0</property>
       </packing>
@@ -25,13 +23,13 @@
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="valign">center</property>
         <property name="margin_left">50</property>
         <property name="margin_right">50</property>
         <property name="margin_top">20</property>
         <property name="margin_bottom">20</property>
-        <property name="vexpand">True</property>
-        <property name="row_spacing">30</property>
-        <property name="column_spacing">30</property>
+        <property name="row_spacing">20</property>
+        <property name="column_spacing">20</property>
         <property name="row_homogeneous">True</property>
         <property name="column_homogeneous">True</property>
         <child>
@@ -44,7 +42,6 @@
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="valign">center</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkImage">
@@ -52,8 +49,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="margin_bottom">5</property>
-                    <property name="pixbuf">../Image/iconeMenu/grid.png</property>
+                    <property name="pixbuf">../../../Téléchargements/grid-3x3.svg</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -66,9 +62,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Libre</property>
-                    <attributes>
-                      <attribute name="size" value="17500"/>
-                    </attributes>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -94,7 +87,6 @@
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="valign">center</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkImage">
@@ -102,8 +94,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="margin_bottom">5</property>
-                    <property name="pixbuf">../Image/iconeMenu/stopwatch.png</property>
+                    <property name="pixbuf">../../../Téléchargements/stopwatch-fill.svg</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -116,9 +107,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Contre-la-montre</property>
-                    <attributes>
-                      <attribute name="size" value="17500"/>
-                    </attributes>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -144,7 +132,6 @@
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="valign">center</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkImage">
@@ -152,8 +139,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="margin_bottom">5</property>
-                    <property name="pixbuf">../Image/iconeMenu/hourglass.png</property>
+                    <property name="pixbuf">../../../Téléchargements/hourglass-split.svg</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -166,9 +152,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Survie</property>
-                    <attributes>
-                      <attribute name="size" value="17500"/>
-                    </attributes>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -194,7 +177,6 @@
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="valign">center</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkImage">
@@ -202,8 +184,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="margin_bottom">5</property>
-                    <property name="pixbuf">../Image/iconeMenu/signpost.png</property>
+                    <property name="pixbuf">../../../Téléchargements/signpost-2-fill.svg</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -216,9 +197,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">Aventure</property>
-                    <attributes>
-                      <attribute name="size" value="17500"/>
-                    </attributes>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -247,8 +225,6 @@
         <property name="height_request">-1</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="halign">center</property>
-        <property name="valign">center</property>
         <property name="margin_left">50</property>
         <property name="margin_right">50</property>
         <property name="margin_top">30</property>

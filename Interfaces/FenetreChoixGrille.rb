@@ -18,7 +18,9 @@ class FenetreChoixGrille < Fenetre
         @object = @builder.get_object("menu")
         @boutons
         @menuParent = menuParent
+
         @interfaceGrille = FenetreGrille.new(@object)
+        
         self.gestionSignaux
     end
 
@@ -88,10 +90,6 @@ class FenetreChoixGrille < Fenetre
             afficheGrille(i)
             i += 1
         end
-
-		puts "rien"
-
-        # @grid_grilles.show_all
 
     end
 
