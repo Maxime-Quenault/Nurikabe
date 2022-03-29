@@ -3,7 +3,6 @@ include Gtk
 
 load "./Interfaces/Fenetre.rb"
 load "Interfaces/Survie/FenetreClassementSurvie.rb"
-load "Chrono/ChronometreSurvie.rb"
 
 class FenetreChoixGrilleSurvie < Fenetre
 
@@ -113,7 +112,6 @@ class FenetreChoixGrilleSurvie < Fenetre
             g.difficulte=@difficulte
             g.chargerGrille(num_grille,@difficulte)
             creerPartie(g)
-            @@partie.chronometre=ChronometreSurvie.creer()
         else
             @@partie = unePartie
         end

@@ -157,7 +157,6 @@ end
             self.changerInterface(@menuParent, "Libre")
         }
         @object.add(tableFrame)
-        tableFrame.show_all
     end
 
 	# Créer un affichage de la grille pour la librarie de grille
