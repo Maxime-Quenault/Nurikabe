@@ -1,9 +1,17 @@
-# Représentes une case sur laquelle on peut cliquer
+=begin
+	La classe CaseJouable :::
+		-  représente une case sur laquelle on peut cliquer
+
+	Les VI de la classe sont :::
+		
+		- @etat	==> indique si la case est une case ile, océan ou non jouée
+			0	= case non jouée
+			1	= océan
+			2	= île
+=end
+
 class CaseJouable
-	# l'état indique si la case est une case île, océan ou non jouée
-	# 0 = case non jouée
-	# 1 = océan
-	# 2 = ile
+
 	@etat
 
 	def CaseJouable.creer()

@@ -1,11 +1,21 @@
 load "Partie/Case.rb"
 # Représentes un coup effectué lors d'une partie
+
+=begin
+
+	La classe Coup :::
+		- représente un coup effectué lors d'une partie
+
+	Les VI de la classe sont :::
+		- @case 		==> contient la case sur laquelle le coup a été joué 
+		- @ancienEtat	==> ancien état de la case 
+		- @etat			==> état courant de la case
+
+=end
+
 class Coup
-	# contient la case sur laquelle le coup a été joué
 	@case
-	# l'ancien état de la case
 	@ancienEtat
-	#l'état courant de la case
 	@etat
 
 	def Coup.creer(c, ancienEtat, etat)

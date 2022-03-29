@@ -78,10 +78,7 @@ class FenetreParametre < Fenetre
         
 
         @switchTheme.signal_connect('notify::active') {onSwitchTheme_activated()}
-        @switchTheme.set_active [false, true].sample
-
         @switchAudio.signal_connect('notify::active') {onSwitchAudio_activated()}
-        @switchAudio.set_active [false, true].sample
 
         onChange_switchTheme()
         onChange_switchAudio()
