@@ -70,22 +70,6 @@ class SauvegardeProfil
         return -1
     end
 
-    def modifierPseudo(unPseudo, profilActuel)
-        @listeProfil.each do |key, value|
-            if(key.pseudo == unPseudo)
-                return false
-            end
-        end
-        @listeProfil.each do |key, value|
-            if key.pseudo == profilActuel.pseudo 
-                key.pseudo = unPseudo                   
-            end
-            File.open("Sauvegarde/SauvegardeProfil/listeProfil.dump", "wb") { |file| file.write(Marshal.dump(@listeProfil)) }
-            @listeProfil = Marshal.load(File.binread("Sauvegarde/SauvegardeProfil/listeProfil.dump"))
-        end
-        return true
-    end
-
     def changerParametre(unProfil)
         @listeProfil.each do |key, value|
             if(key.pseudo == unProfil.pseudo)
