@@ -35,6 +35,10 @@ class Aventure
   # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée hard
   $PALIER_HARD = 70
 
+  FACILE = 0
+	MOYEN = 1
+	DIFFICILE = 2
+
   #################### Déclaration des VI
   #
   # @@nbEtoiles : entier qui représente le score du joueur en nombre d'étoiles
@@ -101,7 +105,7 @@ class Aventure
   def generationAventure(nbNiveau)
     for i in 0...nbNiveau
       @desGrilles[i] = Grille.creer()
-      @desEtoiles[i] = 0
+      @desGrilles[i].lireGrille(i,FACILE)
     end
   end
 
@@ -114,8 +118,9 @@ class Aventure
 
   # On se déplace sur le plateau du mode Aventure : ici on avance et on va au niveau suivant
   def prochaineGrille
-    if(@posCourante < @desGrilles.length())
+    if(@posCourante < 10)
       @posCourante += 1
+      #print "\n #{@posCourante}"
     end
   end
 
@@ -210,16 +215,20 @@ class Aventure
       if(self.assezEtoiles?($PALIER_NORMAL))
         @@difficulteAcquise[1] = true;
         print("\nBravo tu viens de débloquer la difficulté Normal !")
+        return 1
       else
         print("\nTu ne possèdes pas assez d'étoiles pour débloquer cette difficulté...\nRefais d'autres niveaux.")
+        return 0
       end
     elsif((@difficulte == 1) && (@@difficulteAcquise[2] == false))
       # Dans le cas où la difficulté Normal est débloquée
         if(self.assezEtoiles?($PALIER_HARD))
           @@difficulteAcquise[2] = true
           print("\nBravo tu viens de débloquer la difficulté Hard !")
+          return 2
         else
           print("\nTu ne possèdes pas assez d'étoiles pour débloquer cette difficulté...\nRefais d'autres niveaux.")
+          return 0
         end
     end
   end

@@ -114,7 +114,7 @@ class AffichageAventure < Fenetre
 
     # Déclaration de l'image centrale de la fenêtre
     @img_centre = monBuildeur.get_object('img_grille')
-
+    @btn_img = monBuildeur.get_object('btn_img')
     # Déclaration de l'affichage du temps
     @tempsGrille = monBuildeur.get_object('temps_score')
 
@@ -133,6 +133,8 @@ class AffichageAventure < Fenetre
     # on prépare une interface FenetreGrille que l'on appellera quand on en aura besoin
     @interfaceGrille = FenetreGrille.new(@fenetre)
 
+    self.gestionSignaux
+
   end
 
   ################### Méthodes d'accès en lecture/éciture  ###################
@@ -142,7 +144,7 @@ class AffichageAventure < Fenetre
 	# 	Cette methode permet d'envoyer sont objet (interface) a l'objet qui le demande.
 	#
 	# @return object qui represente l'interface de la fenetre du mode libre.
-	def getObjet
+	def getObject
 		return @fenetre
 	end
 
@@ -195,10 +197,9 @@ class AffichageAventure < Fenetre
 
   def setEffetBouton(indice)
     @aventure.placerSurGrille(indice)
-    @aventure.affichageEtoile(@aventure.getEtoileCourante())
+    self.affichageEtoile(@aventure.getEtoileCourante())
     self.affichageTemps()
     self.affichageImageGrille()
-    self.setBackgroundBoutons(indice, @couleurVisible, @couleurBase)
   end
 
   ################### Méthodes liées aux affichages et évènements  ###################
@@ -209,9 +210,36 @@ class AffichageAventure < Fenetre
     return
   end
 
+  def affichageNewDiff(unNumero)
+   dialog = Gtk::Dialog.new()
+   dialog.title = "Nouvelle Difficulté"
+   dialog.set_default_size(300, 100)
+   case unNumero
+   when 0
+     dialog.child.add(Gtk::Label.new("\nTu ne possèdes pas assez d'étoiles pour débloquer cette difficulté...\nRefais d'autres niveaux."))
+   when 1
+     dialog.child.add(Gtk::Label.new("\nBravo tu viens de débloquer la difficulté Normal !"))
+   when 2
+     dialog.child.add(Gtk::Label.new("\nBravo tu viens de débloquer la difficulté Hard !"))
+   end
+   dialog.add_button(Gtk::Stock::CLOSE, Gtk::ResponseType::CLOSE)
+   dialog.set_default_response(Gtk::ResponseType::CANCEL)
+
+   dialog.signal_connect("response") do |widget, response|
+       case response
+       when Gtk::ResponseType::CANCEL
+       p "Cancel"
+       when Gtk::ResponseType::CLOSE
+       p "Close"
+       dialog.destroy
+       end
+   end
+   dialog.show_all
+  end
+
   # Méthode qui modifie l'affichage du temps de la grille
   def affichageTemps
-    Gtk.gtk_label_set(@tempsGrille,@aventure.getTempsCourant())
+    @tempsGrille.set_text("#{@aventure.getTempsCourant()}")
   end
 
   # Méthode qui modifie l'image centrale à afficher
@@ -221,9 +249,9 @@ class AffichageAventure < Fenetre
   # Pas de miniature de la grille -> évite la triche
   def affichageImageGrille
     if(@aventure.getEtoileCourante() == 0)
-      Gtk::Image.set_from_file(@image,"Image/grilleVide.png")
+      @img_centre.set_from_file("Image/grilleVide.png")
     else
-      Gtk::Image.set_from_file(@image,"Image/grillePleine.png")
+      @img_centre.set_from_file("Image/grillePleine.png")
     end
   end
 
@@ -234,41 +262,41 @@ class AffichageAventure < Fenetre
 
     case nbEtoiles
     when 0
-      Gtk::Image.set_from_file(@imgEtoile[0],"Image/etoile_sombre.png")
-      Gtk::Image.set_from_file(@imgEtoile[1],"Image/etoile_sombre.png")
-      Gtk::Image.set_from_file(@imgEtoile[2],"Image/etoile_sombre.png")
-      Gtk::Image.set_from_file(@imgEtoile[3],"Image/etoile_sombre.png")
-      Gtk::Image.set_from_file(@imgEtoile[4],"Image/etoile_sombre.png")
+      @imgEtoile[0].set_from_file("Image/etoile_sombre.png")
+      @imgEtoile[1].set_from_file("Image/etoile_sombre.png")
+      @imgEtoile[2].set_from_file("Image/etoile_sombre.png")
+      @imgEtoile[3].set_from_file("Image/etoile_sombre.png")
+      @imgEtoile[4].set_from_file("Image/etoile_sombre.png")
     when 1
-      Gtk::Image.set_from_file(@imgEtoile[0],"Image/etoile2.png")
-      Gtk::Image.set_from_file(@imgEtoile[1],"Image/etoile_sombre.png")
-      Gtk::Image.set_from_file(@imgEtoile[2],"Image/etoile_sombre.png")
-      Gtk::Image.set_from_file(@imgEtoile[3],"Image/etoile_sombre.png")
-      Gtk::Image.set_from_file(@imgEtoile[4],"Image/etoile_sombre.png")
+      @imgEtoile[0].set_from_file("Image/etoile2.png")
+      @imgEtoile[1].set_from_file("Image/etoile_sombre.png")
+      @imgEtoile[2].set_from_file("Image/etoile_sombre.png")
+      @imgEtoile[3].set_from_file("Image/etoile_sombre.png")
+      @imgEtoile[4].set_from_file("Image/etoile_sombre.png")
     when 2
-      Gtk::Image.set_from_file(@imgEtoile[0],"Image/etoile2.png")
-      Gtk::Image.set_from_file(@imgEtoile[1],"Image/etoile2.png")
-      Gtk::Image.set_from_file(@imgEtoile[2],"Image/etoile_sombre.png")
-      Gtk::Image.set_from_file(@imgEtoile[3],"Image/etoile_sombre.png")
-      Gtk::Image.set_from_file(@imgEtoile[4],"Image/etoile_sombre.png")
+      @imgEtoile[0].set_from_file("Image/etoile2.png")
+      @imgEtoile[1].set_from_file("Image/etoile2.png")
+      @imgEtoile[2].set_from_file("Image/etoile_sombre.png")
+      @imgEtoile[3].set_from_file("Image/etoile_sombre.png")
+      @imgEtoile[4].set_from_file("Image/etoile_sombre.png")
     when 3
-      Gtk::Image.set_from_file(@imgEtoile[0],"Image/etoile2.png")
-      Gtk::Image.set_from_file(@imgEtoile[1],"Image/etoile2.png")
-      Gtk::Image.set_from_file(@imgEtoile[2],"Image/etoile2.png")
-      Gtk::Image.set_from_file(@imgEtoile[3],"Image/etoile_sombre.png")
-      Gtk::Image.set_from_file(@imgEtoile[4],"Image/etoile_sombre.png")
+      @imgEtoile[0].set_from_file("Image/etoile2.png")
+      @imgEtoile[1].set_from_file("Image/etoile2.png")
+      @imgEtoile[2].set_from_file("Image/etoile2.png")
+      @imgEtoile[3].set_from_file("Image/etoile_sombre.png")
+      @imgEtoile[4].set_from_file("Image/etoile_sombre.png")
     when 4
-      Gtk::Image.set_from_file(@imgEtoile[0],"Image/etoile2.png")
-      Gtk::Image.set_from_file(@imgEtoile[1],"Image/etoile2.png")
-      Gtk::Image.set_from_file(@imgEtoile[2],"Image/etoile2.png")
-      Gtk::Image.set_from_file(@imgEtoile[3],"Image/etoile2.png")
-      Gtk::Image.set_from_file(@imgEtoile[4],"Image/etoile_sombre.png")
+      @imgEtoile[0].set_from_file("Image/etoile2.png")
+      @imgEtoile[1].set_from_file("Image/etoile2.png")
+      @imgEtoile[2].set_from_file("Image/etoile2.png")
+      @imgEtoile[3].set_from_file("Image/etoile2.png")
+      @imgEtoile[4].set_from_file("Image/etoile_sombre.png")
     when 5
-      Gtk::Image.set_from_file(@imgEtoile[0],"Image/etoile2.png")
-      Gtk::Image.set_from_file(@imgEtoile[1],"Image/etoile2.png")
-      Gtk::Image.set_from_file(@imgEtoile[2],"Image/etoile2.png")
-      Gtk::Image.set_from_file(@imgEtoile[3],"Image/etoile2.png")
-      Gtk::Image.set_from_file(@imgEtoile[4],"Image/etoile2.png")
+      @imgEtoile[0].set_from_file("Image/etoile2.png")
+      @imgEtoile[1].set_from_file("Image/etoile2.png")
+      @imgEtoile[2].set_from_file("Image/etoile2.png")
+      @imgEtoile[3].set_from_file("Image/etoile2.png")
+      @imgEtoile[4].set_from_file("Image/etoile2.png")
     end
 
   end
@@ -278,14 +306,25 @@ class AffichageAventure < Fenetre
   # le bouton change de couleur pour indiquer que l'on se situe sur tel niveau.
   # Ainsi suivant la position du joueur(après le click sur suivant ou précédent)
   # On appel la méthode de "surbrillance" du bouton associé à notre position
-  def boutonSuivPreced
-      self.pack_start(@bouton[@aventure.getPosCourante()])
+  def boutonSuiv
+      @aventure.placerSurGrille(@aventure.prochaineGrille())
+      self.affichageEtoile(@aventure.getEtoileCourante())
+      self.affichageTemps()
+      self.affichageImageGrille()
   end
 
-  ################### Méthode principale - afficheToi  ###################
+  def boutonPreced
+      #self.pack_start(@fenetre,@bouton[@aventure.getPosCourante()],false,false,nil)
+      @aventure.placerSurGrille(@aventure.grillePrecedente())
+      self.affichageEtoile(@aventure.getEtoileCourante())
+      self.affichageTemps()
+      self.affichageImageGrille()
+  end
+
+  ################### Méthode principale - gestionSignaux  ###################
 
   # Méthode d'affichage principale du mode Aventure qui sera appelé par les autres Classes
-  def afficheToi
+  def gestionSignaux
 
     # On associe le bouton Retour avec la méthode de fermeture du mode Aventure
     @retour.signal_connect('clicked'){
@@ -298,14 +337,14 @@ class AffichageAventure < Fenetre
 
     # On associe le bouton Précédent avec la méthode grillePrecedente de la classe Aventure
     @btnPreced.signal_connect('clicked'){
-      @aventure.grillePrecedente()
-      self.boutonSuivPreced()
+      self.boutonPreced()
+      print "\n #{@aventure.getPosCourante}"
     }
 
     # On associe le bouton Suivant avec la méthode prochaineGrille de la classe Aventure
     @btnSuivant.signal_connect('clicked'){
-      @aventure.prochaineGrille()
-      self.boutonSuivPreced()
+      self.boutonSuiv()
+      print "\n #{@aventure.getPosCourante}"
     }
 
     # On associe le bouton facile avec la méthode de choix de difficulté de la classe Aventure
@@ -315,9 +354,7 @@ class AffichageAventure < Fenetre
       self.affichageEtoile(@aventure.getEtoileCourante())
       self.affichageTemps()
       self.affichageImageGrille()
-      self.setBackground(@modeFacile,@couleurVisible)
-      self.setBackground(@modeNormal,@couleurBase)
-      self.setBackground(@modeHard,@couleurBase)
+      print "\n #{@aventure.difficulte}"
     }
 
     # On associe le bouton normal avec la méthode de choix de difficulté de la classe Aventure
@@ -329,9 +366,7 @@ class AffichageAventure < Fenetre
       self.affichageEtoile(@aventure.getEtoileCourante())
       self.affichageTemps()
       self.affichageImageGrille()
-      self.setBackground(@modeFacile,@couleurBase)
-      self.setBackground(@modeNormal,@couleurVisible)
-      self.setBackground(@modeHard,@couleurBase)
+      print "\n #{@aventure.difficulte}"
     }
 
     # On associe le bouton difficile avec la méthode de choix de difficulté de la classe Aventure
@@ -344,25 +379,21 @@ class AffichageAventure < Fenetre
       self.affichageEtoile(@aventure.getEtoileCourante())
       self.affichageTemps()
       self.affichageImageGrille()
-      self.setBackground(@modeFacile,@couleurBase)
-      self.setBackground(@modeNormal,@couleurBase)
-      self.setBackground(@modeHard,@couleurVisible)
+      print "\n #{@aventure.difficulte}"
     }
 
     # On associe l'image de la grille avec la méthode de lancement de la Partie
     # + attribution des récompenses en fonction du timer
-    @img_centre.signal_connect('clicked'){
+    @btn_img.signal_connect('clicked'){
 
       # Pour la création du chronomètre le deuxième paramètre est censé être le sens du timer
       # -> dans Chronometre.rb il n'est pas précisé la valeur attendu pour la création d'un timer ascendant
       # Par défaut j'ai mis "1" si ce n'est pas le cas alors il faudra moidifier
-      chrono = Chronometre.creer(0,1)
+      chrono = Chronometre.creer()
       # Ajouter méthode de lancement de la partie
-      partie = Partie.creerToi(@aventure.getGrilleCourante())
+      @@partie = Partie.creeToi(@aventure.getGrilleCourante())
       chrono.demarre()
-      # + récupération du timer
-      #while(!partie.estFinie?())
-      #end
+
       @interfaceGrille.construction
       self.changerInterface(@interfaceGrille.object, "Partie")
 
@@ -391,16 +422,41 @@ class AffichageAventure < Fenetre
     }
 
     # On associe chaque boutons de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    for i in 0...@bouton.length()
-      @bouton[i].signal_connect('clicked'){
-        self.setEffetBouton(i)
-      }
-    end
-
-    # On affiche le tout
-    @fenetre.show_all()
-
-    Gtk.main()
+    #for i in 0...@bouton.length()
+      #@bouton[i].signal_connect('clicked'){
+      #  self.setEffetBouton(i)
+      #}
+    #end
+    @bouton[0].signal_connect('clicked'){
+      self.setEffetBouton(0)
+    }
+    @bouton[1].signal_connect('clicked'){
+      self.setEffetBouton(1)
+    }
+    @bouton[2].signal_connect('clicked'){
+      self.setEffetBouton(2)
+    }
+    @bouton[3].signal_connect('clicked'){
+      self.setEffetBouton(3)
+    }
+    @bouton[4].signal_connect('clicked'){
+      self.setEffetBouton(4)
+    }
+    @bouton[5].signal_connect('clicked'){
+      self.setEffetBouton(5)
+    }
+    @bouton[6].signal_connect('clicked'){
+      self.setEffetBouton(6)
+    }
+    @bouton[7].signal_connect('clicked'){
+      self.setEffetBouton(7)
+    }
+    @bouton[8].signal_connect('clicked'){
+      self.setEffetBouton(8)
+    }
+    @bouton[9].signal_connect('clicked'){
+      self.setEffetBouton(9)
+    }
 
   end
 
