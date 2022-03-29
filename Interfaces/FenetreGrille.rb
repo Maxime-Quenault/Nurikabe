@@ -84,17 +84,15 @@ class FenetreGrille < Fenetre
             puts @@partie.grilleEnCours
         }
         btn_aide.signal_connect('clicked'){#affiche un indice
-            @popover.destroy
-            @popover = Gtk::Popover.new
             indice=@@partie.clicSurIndice
-            puts indice
             if indice==@@partie.dernierIndice
                 @boutons[[indice.coordonneesCase[0],indice.coordonneesCase[1]]].name = "case_indice"
             end
-            temp = p indice
-            labelIndice = Gtk::Label.new(temp.to_s)
+            @popover.destroy
+            @popover = Gtk::Popover.new
+            labelIndice = Gtk::Label.new(indice.to_s)
             @popover.add(labelIndice)
-            btn_aide.set_popover(@popover)
+            @builder.get_object('btn_aide').set_popover(@popover)
             @popover.show_all
             @@partie.dernierIndice=indice
             
