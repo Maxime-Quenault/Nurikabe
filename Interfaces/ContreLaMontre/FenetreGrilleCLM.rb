@@ -39,6 +39,7 @@ class FenetreGrilleCLM < FenetreGrille
         super
         @builder.get_object('btn_retour').signal_connect('clicked'){#quitter
             @object.remove(@affChrono)
+            @@partie.chronometre.metEnPause
         }
         @@partie.chronometre.demarre
         actualiseChrono
@@ -65,7 +66,7 @@ class FenetreGrilleCLM < FenetreGrille
                             @object.remove(@affChrono)
                             @@partie.raz
                             #@@profilActuel.ajouterPartie(@@partie)
-                            self.changerInterface(@menuParent, "Libre")
+                            self.changerInterface(@menuParent, "Contre la Montre")
                         end
                     end
                 }

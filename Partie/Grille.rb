@@ -185,10 +185,7 @@ class Grille
             end
         elsif (uneDifficulte == MOYEN)
             File.foreach('./Partie/grillesMedium.txt') do |line|
-                # Si on arrive au mot "END" dans le fichier, on arrête la recherche en envoyant le mot-clé "END"
-				if line.eql?("END") 
-					return "END"
-				elsif line.eql?("\n")
+                if line.eql?("\n")
                     compteur += 1
 				elsif compteur == unIndex
                     chaine << line
@@ -199,10 +196,8 @@ class Grille
             end
         elsif (uneDifficulte == DIFFICILE)
             File.foreach('./Partie/grillesHard.txt') do |line|
-                # Si on arrive au mot "END" dans le fichier, on arrête la recherche en envoyant le mot-clé "END"
-				if line.eql?("END") 
-					return "END"
-				elsif line.eql?("\n")
+
+                if line.eql?("\n")
                     compteur += 1
 				elsif compteur == unIndex
                     chaine << line

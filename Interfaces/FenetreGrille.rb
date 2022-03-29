@@ -109,13 +109,6 @@ class FenetreGrille < Fenetre
 
     end
 
-    # Affiche une popup avec l'indice
-    def affiche_indice(indice, btn_aide)
-        #child.margin = 6
-        
-        #@popover1 = create_popover(cell, Gtk::Label.new(@@lg.gt("MSG_REGLE_ILE")), :top)
-    end
-
    # Affiche une popup de victoire
    def affiche_victoire
     dialog = Gtk::Dialog.new
@@ -173,6 +166,7 @@ end
             self.changerInterface(@menuParent, "Libre")
         }
         @object.add(tableFrame)
+        tableFrame.show_all
     end
 
 	# Créer un affichage de la grille pour la librarie de grille

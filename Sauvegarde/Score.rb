@@ -29,6 +29,7 @@ class Score
         unTemps = @secondes + (@minutes * 60) + (@heures * 3600)
     end
 
+
     def to_s
         "#{self.getTempsEnSecondes}"
     end
