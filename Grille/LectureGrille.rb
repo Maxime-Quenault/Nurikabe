@@ -21,9 +21,12 @@ class LectureGrille
         chaine = ""
 
         if (uneDifficulte == FACILE)
-            File.foreach('./Fichiers/grillesEasy.txt') do |line|
+            File.foreach('./Grille/Fichiers/grillesEasy.txt') do |line|
 
-                if line.eql?("\n")
+				# Si on arrive au mot "END" dans le fichier, on arrête la recherche en envoyant le mot-clé "END"
+				if line.eql?("END") 
+					return "END"
+				elsif line.eql?("\n")
                     compteur += 1
 				elsif compteur == unIndex
                     chaine << line

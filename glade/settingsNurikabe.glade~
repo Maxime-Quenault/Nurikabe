@@ -232,7 +232,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkColorChooserWidget">
+                      <object class="GtkColorChooserWidget" id="color_chooser">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="rgba">rgb(0,0,0)</property>

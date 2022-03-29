@@ -2,6 +2,7 @@ load 'Sauvegarde/Profil.rb'
 load "Interfaces/Fenetre.rb"
 load "Interfaces/FenetreProfil.rb"
 load "Sauvegarde/SauvegardeProfil.rb"
+load "Interfaces/FenetreParametreProfil.rb"
 load "Parametre/Parametre.rb"
 
 =begin
@@ -32,7 +33,7 @@ load "Parametre/Parametre.rb"
 
 class FenetreParametre < Fenetre
 
-    attr_accessor :object
+    attr_accessor :object, :save
 
     ##
     # Méthode d'initialisation de la classe FenetreParametre
@@ -42,6 +43,8 @@ class FenetreParametre < Fenetre
         @object = @builder.get_object("menuParam")
 
         @save = SauvegardeProfil.new
+
+        @interfaceParametreProfil = FenetreParametreProfil.new(menuParent, @object, @save)
 
         @interfaceProfil = interfaceProfil
 
@@ -66,7 +69,7 @@ class FenetreParametre < Fenetre
     def gestionSignaux
 
         @btnProfils.signal_connect( "clicked" ) { 
-            @interfaceProfil.afficheToi
+            self.changerInterface(@interfaceParametreProfil.object, "Paramètres")
         }
 
         @btnRetour.signal_connect( "clicked" ) {

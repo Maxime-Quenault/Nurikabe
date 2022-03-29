@@ -60,8 +60,8 @@ class Aventure
 
 
   # Coding Assistant pour faciliter les accès des différentes variables
-  attr_reader :desGrilles, :difficuleAcquise, :difficulte, :precedenteDiff, :suivanteDiff;
-  attr_accessor :posCourante, :nbEtoiles, :desEtoiles, :desTemps;
+  attr_reader :palierNormal, :palierHard, :desGrilles, :difficuleAcquise, :difficulte, :precedenteDiff, :suivanteDiff;
+  attr :posCourante, :nbEtoiles, :desEtoiles, :desTemps true;
 
   # On définit notre propre façon de générer une Aventure
   def Aventure.creer(uneDifficulte)

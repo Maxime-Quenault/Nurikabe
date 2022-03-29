@@ -1,3 +1,4 @@
+#!/usr/bin/ruby
 require 'gtk3'
 load 'Partie/Partie.rb'
 
@@ -31,11 +32,15 @@ load 'Partie/Partie.rb'
 #   @@profilActuel  : contient le profil actuel sélectionné par le joueur
 
 
+$LARGEUR_FENETRE = 745
+$HAUTEUR_FENETRE = 850
+
 class Fenetre
 
     @@window = nil
     @@partie = nil
     @@profilActuel = nil
+    @@numGrille = nil
 
     #private_method new
 
@@ -69,9 +74,9 @@ class Fenetre
         @@window = Gtk::Window.new()
 
         #Option de la fenetre
-        @@window.set_default_size(745,850)
-        @@window.set_width_request(745)
-        @@window.set_height_request(850)
+        @@window.set_default_size($LARGEUR_FENETRE , $HAUTEUR_FENETRE)
+        @@window.set_width_request($LARGEUR_FENETRE)
+        @@window.set_height_request($HAUTEUR_FENETRE)
         @@window.set_resizable(false)
         @@window.signal_connect("destroy") { quitter }
         @@window.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
@@ -88,6 +93,9 @@ class Fenetre
         @css = Gtk::CssProvider.new
         @css.load(path: "Interfaces/style.css")
         Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @css, Gtk::StyleProvider::PRIORITY_APPLICATION)
+
+        #sauvegarde
+        @save = SauvegardeProfil.new
 
     end
 
@@ -113,6 +121,10 @@ class Fenetre
     # @param subtitle represente le nouveau sous-titre de la fenetre.
     def set_sousTitre(subtitle)
         @@window.titlebar.subtitle  = subtitle
+    end
+
+    def get_sousTitre()
+        return @@window.titlebar.subtitle
     end
 
 
@@ -158,6 +170,9 @@ class Fenetre
     # quitter :
     #   Supprime tous les élements de la fenetre avant de quitter le programme.
     def quitter
+        if @@partie!=nil
+            @@profilActuel.ajouterPartie(@@partie)
+        end
         self.deleteChildren
         self.remove(@header)
         Gtk.main_quit
@@ -168,6 +183,14 @@ class Fenetre
     #   Creer et affecte une partie à la variable de classe partie avec la grille passée en paramètre
     def creerPartie(grille)
         @@partie = Partie.creeToi(grille)
+    end
+
+    def getNumGrille
+        @@numGrille
+    end
+
+    def setNumGrille(unNum)
+        @@numGrille = unNum
     end
 
 end

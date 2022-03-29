@@ -24,6 +24,9 @@ class Partie
   @tabCoup
   @indiceCoup
   @enPause
+  @dernierIndice
+
+  attr_accessor :grilleEnCours
 
   attr_accessor :grilleEnCours
 
@@ -33,16 +36,17 @@ class Partie
   private_class_method :new
 
   attr :grilleEnCours, false
-  attr :chronometre, false
+  attr :chronometre, true
   attr :tabCoup, false
   attr :indiceCoup, false
   attr :enPause, false
+  attr :dernierIndice, true
   def initialize(uneGrille)
     @grilleEnCours=uneGrille
     @tabCoup=Array.new()
     @indiceCoup=0
     @enPause=false
-    #@chronometre=Chronometre.creer()
+    @chronometre=Chronometre.creer()
   end
 
   # ajoutes le coup passé en paramètre au tableau de coups et incrémente l'indiceCoup
@@ -101,6 +105,8 @@ class Partie
     @tabCoup=Array.new()
     @indiceCoup=0
     @enPause=false
+    @chronometre=Chronometre.creer()
+    @chronometre.metEnPause
   end
 
   #vrai si la partie est finie faux sinon

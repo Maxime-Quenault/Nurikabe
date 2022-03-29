@@ -1,8 +1,15 @@
 @define-color main_color #AFA2FF;
+@define-color main_color_grey #d1d1d1;
 @define-color main_alt_color #CFBBFF;
 @define-color main_active_color #CFBBFF;
 
-@define-color dark_main_color #171238;
+@define-color bg_color #e3d7ff;
+
+@define-color dark_color #242038;
+
+/****************/
+/** Interfaces **/
+/****************/
 
 window {
     background-color: white;
@@ -23,6 +30,7 @@ button:hover {
 }
 
 button:active {
+    transition: 0.1s ease-in-out;
     background: @main_active_color;
 }
 
@@ -36,11 +44,11 @@ switch:checked {
 }
 
 switch {
-    background-color: @dark_main_color;
+    background-color: @dark_color;
 }
 
 entry {
-    background-color: @dark_main_color;
+    background-color: @bg_color;
 }
 
 entry selection {
@@ -48,14 +56,105 @@ entry selection {
 }
 
 combobox > window.popup * {
-    background: @dark_main_color;
+    background: @dark_color;
     color: white;
-}
-
-combobox > window.popup *:hover {
-    background: red;
 }
 
 headerbar {
     color: white;
+}
+
+#button_jeu, #button_profils, #button_retour {
+    border-radius: 0px;
+}
+
+#bg_buttons_param {
+    background: @bg_color;
+}
+
+#btn_menu_grille {
+    background: @main_color;
+    border-radius: 0px;
+    border-right: 1px black solid;
+    transition: 0.1s ease-in-out;
+}
+
+#btn_menu_grille_grise {
+    background: @main_color_grey;
+    border-radius: 0px;
+    border-right: 1px black solid;
+    transition: 0.1s ease-in-out;
+}
+
+
+/******************/
+/** Cases Grille **/
+/******************/
+
+#grille {
+    border: 1px black solid;
+    margin: 15px;
+}
+
+#grille_preview {
+    border: .5px black solid;
+}
+
+#case_chiffre_preview, #case_vide_preview {
+    border-radius: 0;
+    color: black;
+    background: rgb(245, 245, 245);
+    border: 1px black solid;
+    font-size: 13px;
+    min-width: 16px;
+    min-height: 16px;
+    padding: 1px;
+}
+
+#case_chiffre, #case_vide {
+    border-radius: 0;
+    color: black;
+    background: rgb(245, 245, 245);
+    border: 2px black solid;
+    font-size: 50px;
+    transition: 0.08s ease;
+    min-width: 60px;
+    min-height: 50px;
+    padding: 5px;
+}
+
+#case_indice {
+    border-radius: 0;
+    color: black;
+    background: rgb(245, 245, 245);
+    border: 2px red solid;
+    font-size: 50px;
+    transition: 0.08s ease;
+    min-width: 60px;
+    min-height: 50px;
+    padding: 5px;
+}
+
+#case_noir {
+    border-radius: 0;
+    color: black;
+    background: black;
+    border: 2px black solid;
+    font-size: 50px;
+    transition: 0.08s ease;
+    min-width: 60px;
+    min-height: 50px;
+    padding: 5px;
+}
+
+#case_point {
+    border-radius: 0;
+    color: black;
+    background: rgb(245, 245, 245);
+    border: 2px black solid;
+    font-size: 50px;
+    transition: 0.08s ease;
+    min-width: 60px;
+    min-height: 50px;
+    padding: 5px;
 }

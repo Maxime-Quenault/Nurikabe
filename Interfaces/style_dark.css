@@ -1,0 +1,145 @@
+@define-color main_color #7b2cbf;
+@define-color main_color_grey #d1d1d1;
+@define-color main_alt_color #9d4edd;
+@define-color main_active_color #c77dff;
+
+@define-color bg_color #240046;
+
+@define-color mode_dark_bg_color #343434;
+
+@define-color dark_color #242038;
+
+/****************/
+/** Interfaces **/
+/****************/
+
+window {
+    background-color: @mode_dark_bg_color;
+    color: white;
+    
+}
+
+button {
+    background: @main_color;
+    border: 0px;
+    border-radius: 5px;
+    color: white;
+    transition: 0.1s ease-in-out;
+}
+
+button:hover {
+    transition: 0.1s ease-in-out;
+    background: @main_alt_color;
+}
+
+button:active {
+    transition: 0.1s ease-in-out;
+    background: @main_active_color;
+}
+
+entry {
+    background: @bg_color;
+    color: white;
+}
+
+switch:checked {
+    background-color: @main_color;
+}
+
+switch {
+    background-color: @dark_color;
+}
+
+entry selection {
+    background-color: purple;
+}
+
+combobox > window.popup * {
+    background: @dark_color;
+    color: white;
+}
+
+headerbar {
+    color: white;
+}
+
+#button_jeu, #button_profils, #button_retour {
+    border-radius: 0px;
+}
+
+#bg_buttons_param {
+    background: #212529;
+}
+
+#btn_menu_grille {
+    background: @main_color;
+    border-radius: 0px;
+    border-right: 1px black solid;
+    transition: 0.1s ease-in-out;
+}
+
+#btn_menu_grille_grise {
+    background: @main_color_grey;
+    border-radius: 0px;
+    border-right: 1px black solid;
+    transition: 0.1s ease-in-out;
+}
+
+#btn_menu_grille:last-child {
+    border-radius: 0px;
+    border: 0;
+    transition: 0.1s ease-in-out;
+}
+
+/******************/
+/** Cases Grille **/
+/******************/
+
+#grille {
+    border: 1px black solid;
+    margin: 15px;
+}
+
+#case_chiffre, #case_vide {
+    border-radius: 0;
+    color: black;
+    background: #636363;
+    border: 2px black solid;
+    font-size: 50px;
+    transition: 0.08s ease;
+    min-width: 70px;
+    min-height: 70px;
+}
+
+#case_indice{
+    border-radius: 0;
+    color: black;
+    background: #636363;
+    border: 2px red solid;
+    font-size: 50px;
+    transition: 0.08s ease;
+    min-width: 70px;
+    min-height: 70px;
+}
+
+#case_noir {
+    border-radius: 0;
+    color: black;
+    background: black;
+    border: 2px black solid;
+    font-size: 50px;
+    transition: 0.08s ease;
+    min-width: 70px;
+    min-height: 70px;
+}
+
+#case_point {
+    border-radius: 0;
+    color: black;
+    background: #636363;
+    border: 2px black solid;
+    font-size: 50px;
+    transition: 0.08s ease;
+    min-width: 70px;
+    min-height: 70px;
+}
