@@ -6,7 +6,7 @@ load "Interfaces/Survie/FenetreGrilleSurvie.rb"
 load "Sauvegarde/Score.rb"
 
 class FenetreClassementSurvie < Fenetre
-
+    attr :difficulte, true
     attr_accessor :object
 
 	##
@@ -78,7 +78,7 @@ class FenetreClassementSurvie < Fenetre
     end
 
     def ajoutScore
-        unScore = Score.new(@interfaceGrille.getTempsPartie, @@profilActuel)
+        unScore = Score.new(@interfaceGrille.getNbGrilles, @@profilActuel)
         @uneSave.ajoutScore(unScore)
         @tabScore = @uneSave.tabScore
         self.affichageScore

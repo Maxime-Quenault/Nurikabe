@@ -9,11 +9,13 @@ load "Chrono/ChronometreSurvie.rb"
 class FenetreGrilleSurvie < FenetreGrille
     @fenetreClassement
     @threadChrono
+    @grillesDejaFaites
     attr_accessor :object
 
     def initialize(menuParent, fenetreClassement)
         super(menuParent)
         @fenetreClassement=fenetreClassement
+        @grillesDejaFaites = Array.new
     end
 
     def gestionSignaux
@@ -32,6 +34,7 @@ class FenetreGrilleSurvie < FenetreGrille
 
      # Changes la couleur des boutons lorsqu'on clique dessus
      def signaux_boutons(tableFrame)
+        @tableFrame=tableFrame
         @boutons.each do |cle, val|
             if @@partie.grilleEnCours.matriceCases[cle[0]][cle[1]].is_a?(CaseJouable)
                 val.signal_connect('clicked'){
@@ -45,8 +48,12 @@ class FenetreGrilleSurvie < FenetreGrille
                         if @@partie.partieFinie? # si la grille est finie, on passe à une autre au hasard
                             temp = @@partie.chronometre
                             g=Grille.creer()
-                            g.difficulte=rand(3)
-                            g.chargerGrille(rand(10),g.difficulte)
+                            g.difficulte=@@partie.grilleEnCours.difficulte
+                            numGrille = rand(10)
+                            while (@grillesDejaFaites.include?([numGrille,g.difficulte]))
+                                numGrille = rand(10)
+                            end
+                            g.chargerGrille(numGrille,g.difficulte)
                             creerPartie(g)
                             @@partie.chronometre=temp
                             @object.remove(tableFrame)
@@ -83,7 +90,13 @@ end
 
      # Créer un label pour le chronometre
      def construction
+        if !@grillesDejaFaites.include?([@@partie.grilleEnCours.numero,@@partie.grilleEnCours.difficulte])
+            @grillesDejaFaites << [@@partie.grilleEnCours.numero, @@partie.grilleEnCours.difficulte]
+        end
         @affChrono = Gtk::Label.new()
+        if @@partie.chronometre.temps<=0
+            @@partie.chronometre=ChronometreSurvie.creer
+        end
         @object.add(@affChrono)
         @object.show_all
         super
@@ -101,17 +114,20 @@ end
                 while @@partie.chronometre.getTemps.round(1)>0
                     sleep(0.1)
                     @affChrono.set_label(@@partie.chronometre.getTemps.round(1).to_s)
-                    puts(@@partie.chronometre.getTemps.round(1).to_s)
                 end
                 affiche_fin
-                @temps = @@partie.chronometre.getTemps.round()
                 @fenetreClassement.ajoutScore
-                @object.remove(tableFrame)
+                @object.remove(@tableFrame)
                 @object.remove(@affChrono)
                 @@partie.raz
                 #@@profilActuel.ajouterPartie(@@partie)
                 self.changerInterface(@menuParent, "Libre")
+                Thread.exit
             } 
         end
+    end
+
+    def getNbGrilles
+        @grillesDejaFaites.length-1
     end
 end
