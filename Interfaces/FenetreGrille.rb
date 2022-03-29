@@ -6,11 +6,11 @@ load "./Interfaces/Fenetre.rb"
 
 class FenetreGrille < Fenetre
 
-    attr_accessor :object
+    attr_accessor :object, :popover
 
     def initialize(menuParent)
         self.initialiseToi
-
+        @popover = Gtk::Popover.new
         @builder = Gtk::Builder.new
         @builder.add_from_file("glade/grille.glade")
         @object = @builder.get_object("menu")
@@ -39,6 +39,8 @@ class FenetreGrille < Fenetre
         btn_rembobiner.name = "btn_menu_grille_grise"
         btn_clear.name = "btn_menu_grille"
         btn_aide.name = "btn_menu_grille"
+        
+        btn_aide.set_popover(@popover)
 
         #Gestion des signaux
         btn_redo.signal_connect('clicked'){#redo
@@ -60,12 +62,18 @@ class FenetreGrille < Fenetre
             puts @@partie.grilleEnCours
         }
         btn_aide.signal_connect('clicked'){#affiche un indice
+            @popover.destroy
+            @popover = Gtk::Popover.new
             indice=@@partie.clicSurIndice
             puts indice
             if indice==@@partie.dernierIndice
                 @boutons[[indice.coordonneesCase[0],indice.coordonneesCase[1]]].name = "case_indice"
             end
-            affiche_indice(indice)
+            temp = p indice
+            labelIndice = Gtk::Label.new(temp.to_s)
+            @popover.add(labelIndice)
+            btn_aide.set_popover(@popover)
+            @popover.show_all
             @@partie.dernierIndice=indice
             
         }
@@ -80,24 +88,10 @@ class FenetreGrille < Fenetre
     end
 
     # Affiche une popup avec l'indice
-    def affiche_indice(indice)
-        dialog = Gtk::Dialog.new
-        dialog.title = "Indice"
-        dialog.set_default_size(300, 100)
-        dialog.child.add(Gtk::Label.new(indice.to_s))
-        dialog.add_button(Gtk::Stock::CLOSE, Gtk::ResponseType::CLOSE)
-        dialog.set_default_response(Gtk::ResponseType::CANCEL)
-
-        dialog.signal_connect("response") do |widget, response|
-            case response
-            when Gtk::ResponseType::CANCEL
-            p "Cancel"
-            when Gtk::ResponseType::CLOSE
-            p "Close"
-            dialog.destroy
-            end
-        end
-        dialog.show_all
+    def affiche_indice(indice, btn_aide)
+        #child.margin = 6
+        
+        #@popover1 = create_popover(cell, Gtk::Label.new(@@lg.gt("MSG_REGLE_ILE")), :top)
     end
 
    # Affiche une popup de victoire

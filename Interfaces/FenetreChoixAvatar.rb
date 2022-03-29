@@ -32,7 +32,33 @@ class FenetreChoixAvatar
         @popUpAvatar.signal_connect('destroy') {destruction}
         @popUpAvatar.add(laFenetrePrincipale=Gtk::Box.new(:vertical, 2))
 
-        laFenetrePrincipale.add(haut=Gtk::Box.new(:horizontal, 3))
+        laFenetrePrincipale.add(ligneCat=Gtk::Box.new(:horizontal, 3))
+
+        pixbuf = GdkPixbuf::Pixbuf.new(:file => "Image/cat-angry.png")
+        pixbuf = pixbuf.scale_simple(70, 70, Gdk::Pixbuf::INTERP_BILINEAR)
+        imageCatAngry = Gtk::Image.new
+        imageCatAngry.set_from_pixbuf(pixbuf)
+        boutonCatAngry = Button.new()
+        boutonCatAngry.image = imageCatAngry
+        ligneCat.add(setmargin(boutonCatAngry, 0, 0, 0, 0))
+
+        pixbuf = GdkPixbuf::Pixbuf.new(:file => "Image/cat-cool.png")
+        pixbuf = pixbuf.scale_simple(70, 70, Gdk::Pixbuf::INTERP_BILINEAR)
+        imageCatCool = Gtk::Image.new
+        imageCatCool.set_from_pixbuf(pixbuf)
+        boutonCatCool = Button.new()
+        boutonCatCool.image = imageCatCool
+        ligneCat.add(setmargin(boutonCatCool, 0, 0, 0, 0))
+
+        pixbuf = GdkPixbuf::Pixbuf.new(:file => "Image/cat-nervous.png")
+        pixbuf = pixbuf.scale_simple(70, 70, Gdk::Pixbuf::INTERP_BILINEAR)
+        imageCatNervous = Gtk::Image.new
+        imageCatNervous.set_from_pixbuf(pixbuf)
+        boutonCatNervous = Button.new()
+        boutonCatNervous.image = imageCatNervous
+        ligneCat.add(setmargin(boutonCatNervous, 0, 0, 0, 0))
+
+        laFenetrePrincipale.add(ligneDog1=Gtk::Box.new(:horizontal, 3))
 
         pixbuf = GdkPixbuf::Pixbuf.new(:file => "Image/dog.png")
         pixbuf = pixbuf.scale_simple(70, 70, Gdk::Pixbuf::INTERP_BILINEAR)
@@ -40,8 +66,7 @@ class FenetreChoixAvatar
         imageDog.set_from_pixbuf(pixbuf)
         boutonDog = Button.new()
         boutonDog.image = imageDog
-
-        haut.add(setmargin(boutonDog, 0, 0, 0, 0))
+        ligneDog1.add(setmargin(boutonDog, 0, 0, 0, 0))
 
         pixbuf = GdkPixbuf::Pixbuf.new(:file => "Image/dog-angry.png")
         pixbuf = pixbuf.scale_simple(70, 70, Gdk::Pixbuf::INTERP_BILINEAR)
@@ -49,8 +74,7 @@ class FenetreChoixAvatar
         imageDogAngry.set_from_pixbuf(pixbuf)
         boutonDogAngry = Button.new()
         boutonDogAngry.image = imageDogAngry
-
-        haut.add(setmargin(boutonDogAngry, 0, 0, 0, 0))
+        ligneDog1.add(setmargin(boutonDogAngry, 0, 0, 0, 0))
 
         pixbuf = GdkPixbuf::Pixbuf.new(:file => "Image/dog-cool.png")
         pixbuf = pixbuf.scale_simple(70, 70, Gdk::Pixbuf::INTERP_BILINEAR)
@@ -58,10 +82,9 @@ class FenetreChoixAvatar
         imageDogCool.set_from_pixbuf(pixbuf)
         boutonDogCool = Button.new()
         boutonDogCool.image = imageDogCool
+        ligneDog1.add(setmargin(boutonDogCool, 0, 0, 0, 0))
 
-        haut.add(setmargin(boutonDogCool, 0, 0, 0, 0))
-
-        laFenetrePrincipale.add(bas=Gtk::Box.new(:horizontal, 3))
+        laFenetrePrincipale.add(ligneDog2=Gtk::Box.new(:horizontal, 3))
 
         pixbuf = GdkPixbuf::Pixbuf.new(:file => "Image/dog-cry.png")
         pixbuf = pixbuf.scale_simple(70, 70, Gdk::Pixbuf::INTERP_BILINEAR)
@@ -70,16 +93,14 @@ class FenetreChoixAvatar
         boutonDogCry = Button.new()
         boutonDogCry.image = imageDogCry
 
-        bas.add(setmargin(boutonDogCry, 0, 0, 0, 0))
-
+        ligneDog2.add(setmargin(boutonDogCry, 0, 0, 0, 0))
         pixbuf = GdkPixbuf::Pixbuf.new(:file => "Image/dog-love.png")
         pixbuf = pixbuf.scale_simple(70, 70, Gdk::Pixbuf::INTERP_BILINEAR)
         imageDogLove = Gtk::Image.new
         imageDogLove.set_from_pixbuf(pixbuf)
         boutonDogLove = Button.new()
         boutonDogLove.image = imageDogLove
-
-        bas.add(setmargin(boutonDogLove, 0, 0, 0, 0))
+        ligneDog2.add(setmargin(boutonDogLove, 0, 0, 0, 0))
 
         pixbuf = GdkPixbuf::Pixbuf.new(:file => "Image/dog-kiss.png")
         pixbuf = pixbuf.scale_simple(70, 70, Gdk::Pixbuf::INTERP_BILINEAR)
@@ -87,8 +108,50 @@ class FenetreChoixAvatar
         imageDogKiss.set_from_pixbuf(pixbuf)
         boutonDogKiss = Button.new()
         boutonDogKiss.image = imageDogKiss
+        ligneDog2.add(setmargin(boutonDogKiss, 0, 0, 0, 0))
 
-        bas.add(setmargin(boutonDogKiss, 0, 0, 0, 0))
+        laFenetrePrincipale.add(ligneKoala=Gtk::Box.new(:horizontal, 3))
+
+        pixbuf = GdkPixbuf::Pixbuf.new(:file => "Image/koala-cry.png")
+        pixbuf = pixbuf.scale_simple(70, 70, Gdk::Pixbuf::INTERP_BILINEAR)
+        imageKoalaCry = Gtk::Image.new
+        imageKoalaCry.set_from_pixbuf(pixbuf)
+        boutonKoalaCry = Button.new()
+        boutonKoalaCry.image = imageKoalaCry
+        ligneKoala.add(setmargin(boutonKoalaCry, 0, 0, 0, 0))
+
+        pixbuf = GdkPixbuf::Pixbuf.new(:file => "Image/koala-happy.png")
+        pixbuf = pixbuf.scale_simple(70, 70, Gdk::Pixbuf::INTERP_BILINEAR)
+        imageKoalaHappy = Gtk::Image.new
+        imageKoalaHappy.set_from_pixbuf(pixbuf)
+        boutonKoalaHappy = Button.new()
+        boutonKoalaHappy.image = imageKoalaHappy
+        ligneKoala.add(setmargin(boutonKoalaHappy, 0, 0, 0, 0))
+
+        pixbuf = GdkPixbuf::Pixbuf.new(:file => "Image/koala-shocked.png")
+        pixbuf = pixbuf.scale_simple(70, 70, Gdk::Pixbuf::INTERP_BILINEAR)
+        imageKoalaShocked = Gtk::Image.new
+        imageKoalaShocked.set_from_pixbuf(pixbuf)
+        boutonKoalaShocked = Button.new()
+        boutonKoalaShocked.image = imageKoalaShocked
+        ligneKoala.add(setmargin(boutonKoalaShocked, 0, 0, 0, 0))
+
+        boutonCatAngry.signal_connect('clicked'){
+            @choixAvatar = "Image/cat-angry.png"
+            event(@popUpAvatar)
+        }
+
+        boutonCatCool.signal_connect('clicked'){
+            @choixAvatar = "Image/cat-cool.png"
+            event(@popUpAvatar)
+        }
+
+
+        boutonCatNervous.signal_connect('clicked'){
+            @choixAvatar = "Image/cat-nervous.png"
+            event(@popUpAvatar)
+        }
+
 
         boutonDog.signal_connect('clicked'){
             @choixAvatar = "Image/dog.png"
@@ -117,6 +180,21 @@ class FenetreChoixAvatar
 
         boutonDogKiss.signal_connect('clicked'){
             @choixAvatar = "Image/dog-kiss.png"
+            event(@popUpAvatar)
+        }
+
+        boutonKoalaCry.signal_connect('clicked'){
+            @choixAvatar = "Image/koala-cry.png"
+            event(@popUpAvatar)
+        }
+
+        boutonKoalaHappy.signal_connect('clicked'){
+            @choixAvatar = "Image/koala-happy.png"
+            event(@popUpAvatar)
+        }
+
+        boutonKoalaShocked.signal_connect('clicked'){
+            @choixAvatar = "Image/koala-shocked.png"
             event(@popUpAvatar)
         }
 
