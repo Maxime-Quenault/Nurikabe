@@ -323,6 +323,20 @@ class AffichageAventure < Fenetre
       self.affichageImageGrille()
   end
 
+  def deplacementAventure(uneDiff)
+    if(@aventure.getDifficulte < uneDiff)
+      while(@aventure.getDifficulte < uneDiff)
+        @aventure.difficultePrecedente
+      end
+    else
+      if(@aventure.getDifficulte < uneDiff)
+        while(@aventure.getDifficulte < uneDiff)
+          @aventure.difficulteSuivante
+        end
+      end
+    end
+  end
+
   ################### Méthode principale - gestionSignaux  ###################
 
   # Méthode d'affichage principale du mode Aventure qui sera appelé par les autres Classes
@@ -362,11 +376,15 @@ class AffichageAventure < Fenetre
     # On associe le bouton normal avec la méthode de choix de difficulté de la classe Aventure
     @modeNormal.signal_connect('clicked'){
       if(!@aventure.estDebloquee(1))
-        @aventure.unlockDifficulte()
+        self.affichageNewDiff(@aventure.unlockDifficulte())
       end
 
       if(@aventure.estDebloquee(1))
-        @aventure.choixDifficulte(1)
+
+        if(@aventure.choixDifficulte(1))
+          self.deplacementAventure(1)
+        end
+
         @aventure.placerSurGrille(0)
         self.affichageEtoile(@aventure.getEtoileCourante())
         self.affichageTemps()
@@ -379,10 +397,15 @@ class AffichageAventure < Fenetre
     # On associe le bouton difficile avec la méthode de choix de difficulté de la classe Aventure
     @modeHard.signal_connect('clicked'){
       if(!@aventure.estDebloquee(2))
-        @aventure.unlockDifficulte()
+        self.affichageNewDiff(@aventure.unlockDifficulte())
       end
 
       if(@aventure.estDebloquee(2))
+
+        if(@aventure.choixDifficulte(2))
+          self.deplacementAventure(2)
+        end
+
         @aventure.choixDifficulte(2)
         @aventure.placerSurGrille(0)
         self.affichageEtoile(@aventure.getEtoileCourante())
@@ -403,34 +426,38 @@ class AffichageAventure < Fenetre
       @interfaceGrille.construction
       self.changerInterface(@interfaceGrille.object, "Partie")
 
-      temps2 = (Time.now.to_f * 1000) - temps1
-      # Puis attribution du nombre d'étoiles en fonction du timer (à définir)
+      print("\n #{@aventure.getGrilleCourante().pourcentageCompletion()}")
 
+      temps2 = (Time.now.to_f * 1000) - temps1
       temps = temps2.round(2)
 
-
-      if(temps < SEUIL_5_ETOILES)
-        recompense = 5
+      if(@aventure.getGrilleCourante().pourcentageCompletion() < 100)
+        temps = 1000.0
+        recompense = 0
       else
-        if (temps < SEUIL_4_ETOILES)
-          recompense = 4
+        # Puis attribution du nombre d'étoiles en fonction du timer (à définir)
+        if(temps < SEUIL_5_ETOILES)
+          recompense = 5
         else
-          if (temps < SEUIL_3_ETOILES)
-            recompense = 3
+          if (temps < SEUIL_4_ETOILES)
+            recompense = 4
           else
-            if (temps < SEUIL_2_ETOILES)
-              recompense = 2
+            if (temps < SEUIL_3_ETOILES)
+              recompense = 3
             else
-              if (temps < SEUIL_1_ETOILE)
-                recompense = 1
+              if (temps < SEUIL_2_ETOILES)
+                recompense = 2
               else
-                recompense = 0
+                if (temps < SEUIL_1_ETOILE)
+                  recompense = 1
+                else
+                  recompense = 0
+                end
               end
             end
           end
         end
       end
-
 
       @aventure.setEtoileCourante(recompense)
       @aventure.etoilesEnPlus(recompense)
