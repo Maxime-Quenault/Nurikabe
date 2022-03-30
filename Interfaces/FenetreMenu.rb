@@ -8,7 +8,7 @@ load "Interfaces/ContreLaMontre/FenetreContreMontre.rb"
 load "Interfaces/Survie/FenetreSurvie.rb"
 load "Interfaces/Fenetre.rb"
 load "Sauvegarde/Profil.rb"
-#load "Aventure/AffichageAventure.rb"
+load "Interfaces/AffichageAventure.rb"
 
 ##
 # 	@author Quenault Maxime
@@ -74,7 +74,7 @@ class FenetreMenu < Fenetre
         #On initialise toutes les interfaces connue par le menu (interfaces filles).
         @interfaceAPropos = FenetreAPropos.new(@object)
         @interfaceLibre = FenetreLibre.new(@object)
-        #@interfaceAventure = AffichageAventure.new(@object)
+        @interfaceAventure = AffichageAventure.new(@object)
         @interfaceSurvie = FenetreSurvie.new(@object)
         @interfaceContreMontre = FenetreContreMontre.new(@object)
         @interfaceParametre = FenetreParametre.new(@object)
@@ -127,7 +127,9 @@ class FenetreMenu < Fenetre
             self.changerInterface(@interfaceContreMontre.object, "Contre la montre")
         }
 
-        @btn_aventure.signal_connect('clicked') {print "tu as clique sur le mode Aventure\n"}
+        @btn_aventure.signal_connect('clicked') {
+            self.changerInterface(@interfaceAventure.getObject, "Aventure")
+        }
 
         @btn_tuto.signal_connect('clicked') {print "tu as clique sur le mode tuto\n"}
 

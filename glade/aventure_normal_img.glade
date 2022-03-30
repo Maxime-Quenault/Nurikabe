@@ -2,11 +2,11 @@
 <!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkWindow" id="fenetre_aventure">
+  <object class="GtkBox" id="fenetre_aventure">
+    <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="default_width">750</property>
-    <property name="default_height">900</property>
-    <child type="titlebar">
+    <property name="orientation">vertical</property>
+    <child>
       <object class="GtkLabel">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
@@ -15,6 +15,11 @@
           <attribute name="size" value="22000"/>
         </attributes>
       </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
     </child>
     <child>
       <object class="GtkBox">
@@ -334,13 +339,20 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkImage" id="img_grille">
+                              <object class="GtkButton" id="btn_img">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="pixbuf">../Image/grillePleine.png</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <child>
+                                  <object class="GtkImage" id="img_grille">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="pixbuf">../Image/grilleVide.png</property>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
-                                <property name="expand">True</property>
+                                <property name="expand">False</property>
                                 <property name="fill">True</property>
                                 <property name="position">1</property>
                               </packing>
@@ -567,7 +579,7 @@
                       <object class="GtkImage" id="etoile_1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="pixbuf">../../../Images/etoile2.png</property>
+                        <property name="pixbuf">../Image/etoile_sombre.png</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -579,7 +591,7 @@
                       <object class="GtkImage" id="etoile_2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="pixbuf">../../../Images/etoile2.png</property>
+                        <property name="pixbuf">../Image/etoile_sombre.png</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -591,7 +603,7 @@
                       <object class="GtkImage" id="etoile_3">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="pixbuf">../../../Images/etoile2.png</property>
+                        <property name="pixbuf">../Image/etoile_sombre.png</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -603,7 +615,7 @@
                       <object class="GtkImage" id="etoile_4">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="pixbuf">../../../Images/etoile2.png</property>
+                        <property name="pixbuf">../Image/etoile_sombre.png</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -615,7 +627,7 @@
                       <object class="GtkImage" id="etoile_5">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="pixbuf">../../../Images/etoile2.png</property>
+                        <property name="pixbuf">../Image/etoile_sombre.png</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -683,7 +695,7 @@
                       <object class="GtkLabel" id="temps_score">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">1:12</property>
+                        <property name="label" translatable="yes">0.00</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -921,6 +933,11 @@
           </packing>
         </child>
       </object>
+      <packing>
+        <property name="expand">True</property>
+        <property name="fill">True</property>
+        <property name="position">1</property>
+      </packing>
     </child>
   </object>
 </interface>

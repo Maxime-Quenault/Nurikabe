@@ -1,6 +1,6 @@
 # Classes à charger :
-# Sûrement d'autres à ajouter
 load "Partie/Grille.rb"
+load "Partie/Partie.rb"
 
 # Définition de la classe Aventure
 class Aventure
@@ -31,9 +31,9 @@ class Aventure
 
   # Consernant les valeurs des deux VI palier ci-dessous elles sont provisoires(test) -> se mettre d'accord plus tard
   # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée normale
-  $PALIER_NORMAL = 30
+  PALIER_NORMAL = 30
   # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée hard
-  $PALIER_HARD = 70
+  PALIER_HARD = 70
 
   FACILE = 0
 	MOYEN = 1
@@ -80,7 +80,7 @@ class Aventure
     # Tableau qui contiendra les étoiles de chaque grille
     @desEtoiles = Array.new(10,0)
     # Tableau qui contiendra les temps de chaque grille
-    @desTemps = Array.new(10,0.00)
+    @desTemps = Array.new(10,1000.00)
 
     @posCourante = 0
     @difficulte = uneDifficulte
@@ -102,10 +102,10 @@ class Aventure
   end
 
   # Pour générer l'aventure(suite de niveaux), on fait appel à la classe Grille pour générer les niveaux
-  def generationAventure(nbNiveau)
+  def generationAventure(nbNiveau,uneDiff)
     for i in 0...nbNiveau
       @desGrilles[i] = Grille.creer()
-      @desGrilles[i].lireGrille(i,FACILE)
+      @desGrilles[i].chargerGrille(i,uneDiff)
     end
   end
 
@@ -118,17 +118,17 @@ class Aventure
 
   # On se déplace sur le plateau du mode Aventure : ici on avance et on va au niveau suivant
   def prochaineGrille
-    if(@posCourante < 10)
+    if(@posCourante < 9)
       @posCourante += 1
-      #print "\n #{@posCourante}"
     end
   end
 
   # On se déplace sur le plateau du mode Aventure : ici on se place sur un niveau précis
   def placerSurGrille(numero)
-    if((@posCourante > 0) && (@posCourante < @desGrilles.length()))
+    if((numero >= 0) && (numero < @desGrilles.length()))
       @posCourante = numero
     end
+    print("\n position courante : #{@posCourante}")
   end
 
   # Méthode d'accès en lecture de la position courante
@@ -186,6 +186,11 @@ class Aventure
     @@nbEtoiles += desEtoiles
   end
 
+  # Méthode qui renvoie un booléen permettant de savoir si la difficulte est débloquée ou non
+  def estDebloquee(uneDiff)
+    return @@difficulteAcquise[uneDiff]
+  end
+
   # On veut savoir si le joueur a assez d'étoiles comparé à un certain montant :
   # Retourne true si le joueur en a assez, false sinon
   def assezEtoiles?(unNombre)
@@ -212,7 +217,7 @@ class Aventure
   def unlockDifficulte
     # Dans le cas où seule la difficulté Facile est débloquée
     if((@difficulte == 0) && (@@difficulteAcquise[1] == false))
-      if(self.assezEtoiles?($PALIER_NORMAL))
+      if(self.assezEtoiles?(PALIER_NORMAL))
         @@difficulteAcquise[1] = true;
         print("\nBravo tu viens de débloquer la difficulté Normal !")
         return 1
@@ -222,7 +227,7 @@ class Aventure
       end
     elsif((@difficulte == 1) && (@@difficulteAcquise[2] == false))
       # Dans le cas où la difficulté Normal est débloquée
-        if(self.assezEtoiles?($PALIER_HARD))
+        if(self.assezEtoiles?(PALIER_HARD))
           @@difficulteAcquise[2] = true
           print("\nBravo tu viens de débloquer la difficulté Hard !")
           return 2
