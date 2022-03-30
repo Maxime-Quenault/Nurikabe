@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.2 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkBox" id="menu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Règles</property>
+        <attributes>
+          <attribute name="weight" value="bold"/>
+          <attribute name="scale" value="2"/>
+        </attributes>
+      </object>
+      <packing>
+        <property name="expand">True</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Le puzzle se résout sur une grille rectangulaire de cellules, 
+dont certaines contiennent des nombres.
+
+Deux cellules sont connectées si elles sont adjacentes verticalement ou horizontalement, 
+mais pas en diagonale. Les cellules blanches constituent les îlots alors que les cellules noires 
+connectées constituent l'océan.
+
+L'objectif est de déterminer quelles cellules doivent être blanches
+ou noires en respectant les règles suivantes :
+
+	- Chaque cellule numérotée est une cellule d'îlots (blanche)
+et le chiffre qu'elle contient est le nombre de cellules blanches 
+que comporte l'îlot auquel elle appartient.
+    
+	- Chaque îlot ne doit comporter qu'une cellule numérotée.
+
+	- Il ne doit y avoir qu'un océan (cellules noires connectées) 
+qui ne doit pas contenir de lacs, c'est-à-dire de blocs de cellules noires de 2x2.</property>
+        <property name="justify">center</property>
+      </object>
+      <packing>
+        <property name="expand">True</property>
+        <property name="fill">True</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkImage">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="pixbuf">../Image/grilleTuto.png</property>
+      </object>
+      <packing>
+        <property name="expand">True</property>
+        <property name="fill">True</property>
+        <property name="position">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="btn_retour">
+        <property name="label" translatable="yes">Retour</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">5</property>
+      </packing>
+    </child>
+  </object>
+</interface>

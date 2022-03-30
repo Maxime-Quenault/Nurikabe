@@ -273,7 +273,7 @@
                 <property name="valign">center</property>
                 <property name="margin_top">5</property>
                 <property name="margin_bottom">5</property>
-                <property name="pixbuf">../Image/iconeMenu/question.png</property>
+                <property name="pixbuf">../Image/iconeMenu/book.png</property>
               </object>
             </child>
           </object>

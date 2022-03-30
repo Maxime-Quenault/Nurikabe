@@ -9,6 +9,8 @@ load "Interfaces/Survie/FenetreSurvie.rb"
 load "Interfaces/Fenetre.rb"
 load "Sauvegarde/Profil.rb"
 load "Interfaces/AffichageAventure.rb"
+load "Interfaces/FenetreRegle.rb"
+load "Interfaces/FenetreTechnique.rb"
 
 ##
 # 	@author Quenault Maxime
@@ -42,7 +44,7 @@ load "Interfaces/AffichageAventure.rb"
 #   @btn_survie : represente l'objet bouton mode survie
 #   @btn_contre_montre : represente l'objet bouton mode contre la montre
 #   @btn_aventure : represente l'objet bouton mode aventure
-#   @btn_tuto : represente l'objet bouton tuto
+#   @btn_regle : represente l'objet bouton tuto
 #   @btn_propos : represente l'objet bouton a propos
 #   @btn_parametre : represente l'objet bouton parametre
 #	
@@ -78,6 +80,8 @@ class FenetreMenu < Fenetre
         @interfaceSurvie = FenetreSurvie.new(@object)
         @interfaceContreMontre = FenetreContreMontre.new(@object)
         @interfaceParametre = FenetreParametre.new(@object)
+        @interfaceRegle = FenetreRegle.new(@object)
+        @interfaceTechnique = FenetreTechnique.new(@object)
 
         
 
@@ -86,7 +90,8 @@ class FenetreMenu < Fenetre
         @btn_survie = @builder.get_object("btn_survie")
         @btn_contre_montre = @builder.get_object("btn_contre_montre")
         @btn_aventure = @builder.get_object("btn_aventure")
-        @btn_tuto = @builder.get_object("btn_tuto")
+        @btn_regle = @builder.get_object("btn_regle")
+        @btn_technique = @builder.get_object("btn_technique")
         @btn_propos = @builder.get_object("btn_propos")
         @btn_parametre = @builder.get_object("btn_parametre")
 
@@ -131,7 +136,12 @@ class FenetreMenu < Fenetre
             self.changerInterface(@interfaceAventure.getObject, "Aventure")
         }
 
-        @btn_tuto.signal_connect('clicked') {print "tu as clique sur le mode tuto\n"}
+        @btn_regle.signal_connect('clicked') {
+            self.changerInterface(@interfaceRegle.object, "Règles")
+        }
+        @btn_technique.signal_connect('clicked') {
+            self.changerInterface(@interfaceTechnique.object, "Techniques de résolution")
+        }
 
         @btn_propos.signal_connect('clicked') {
             self.changerInterface(@interfaceAPropos.object, "A propos")
