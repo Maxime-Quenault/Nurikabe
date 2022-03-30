@@ -1,6 +1,7 @@
 # On importe les librairies nécessaires au fonctionnement du programme
 require "yaml.rb"
 require 'gtk3'
+require 'date'
 include Gtk
 
 load "Aventure/Aventure.rb"
@@ -17,11 +18,11 @@ load "Interfaces/FenetreGrille.rb"
 class AffichageAventure < Fenetre
 
   # Définition des constantes
-  $SEUIL_5_ETOILES = 1.0
-  $SEUIL_4_ETOILES = 1.20
-  $SEUIL_3_ETOILES = 1.40
-  $SEUIL_2_ETOILES = 2.0
-  $SEUIL_1_ETOILE = 2.20
+  SEUIL_5_ETOILES = 60.00
+  SEUIL_4_ETOILES = 80.00
+  SEUIL_3_ETOILES = 100.00
+  SEUIL_2_ETOILES = 120.00
+  SEUIL_1_ETOILE = 140.00
 
   FACILE = 0
 	MOYEN = 1
@@ -82,10 +83,6 @@ class AffichageAventure < Fenetre
     aventureDifficile.setSuivant(nil)
 
     @aventure = aventureFacile
-
-    # On attribue une image par défaut
-    #@img_centre = Image.new()
-    #@img_centre.set_from_file("Image/grilleVide.png")
 
     # On créer un buildeur qui récupère les éléments de notre fenêtre créée sur Glade
     monBuildeur = Gtk::Builder.new(:file => 'glade/aventure_normal_img.glade')
@@ -364,26 +361,35 @@ class AffichageAventure < Fenetre
 
     # On associe le bouton normal avec la méthode de choix de difficulté de la classe Aventure
     @modeNormal.signal_connect('clicked'){
-      if(@aventure.unlockDifficulte())
-        @aventure.choixDifficulte(1)
+      if(!@aventure.estDebloquee(1))
+        @aventure.unlockDifficulte()
       end
-      @aventure.placerSurGrille(0)
-      self.affichageEtoile(@aventure.getEtoileCourante())
-      self.affichageTemps()
-      self.affichageImageGrille()
+
+      if(@aventure.estDebloquee(1))
+        @aventure.choixDifficulte(1)
+        @aventure.placerSurGrille(0)
+        self.affichageEtoile(@aventure.getEtoileCourante())
+        self.affichageTemps()
+        self.affichageImageGrille()
+      end
+
       print "\n #{@aventure.difficulte}"
     }
 
     # On associe le bouton difficile avec la méthode de choix de difficulté de la classe Aventure
     @modeHard.signal_connect('clicked'){
-      @aventure.choixDifficulte(1)
-      if(@aventure.unlockDifficulte())
-        @aventure.choixDifficulte(2)
+      if(!@aventure.estDebloquee(2))
+        @aventure.unlockDifficulte()
       end
-      @aventure.placerSurGrille(0)
-      self.affichageEtoile(@aventure.getEtoileCourante())
-      self.affichageTemps()
-      self.affichageImageGrille()
+
+      if(@aventure.estDebloquee(2))
+        @aventure.choixDifficulte(2)
+        @aventure.placerSurGrille(0)
+        self.affichageEtoile(@aventure.getEtoileCourante())
+        self.affichageTemps()
+        self.affichageImageGrille()
+      end
+
       print "\n #{@aventure.difficulte}"
     }
 
@@ -391,47 +397,50 @@ class AffichageAventure < Fenetre
     # + attribution des récompenses en fonction du timer
     @btn_img.signal_connect('clicked'){
 
-      # Pour la création du chronomètre le deuxième paramètre est censé être le sens du timer
-      # -> dans Chronometre.rb il n'est pas précisé la valeur attendu pour la création d'un timer ascendant
-      # Par défaut j'ai mis "1" si ce n'est pas le cas alors il faudra moidifier
-      chrono = Chronometre.creer()
-      # Ajouter méthode de lancement de la partie
+      temps1 = (Time.now.to_f * 1000)
       @@partie = Partie.creeToi(@aventure.getGrilleCourante())
-      chrono.demarre()
 
       @interfaceGrille.construction
       self.changerInterface(@interfaceGrille.object, "Partie")
 
+      temps2 = (Time.now.to_f * 1000) - temps1
       # Puis attribution du nombre d'étoiles en fonction du timer (à définir)
-      chrono.metEnPause()
-      temps = chrono.getTemps()
 
-      case temps
-      when temps <= $SEUIL_5_ETOILES
+      temps = temps2.round(2)
+
+
+      if(temps < SEUIL_5_ETOILES)
         recompense = 5
-      when temps <= $SEUIL_4_ETOILES
-        recompense = 4
-      when temps <= $SEUIL_3_ETOILES
-        recompense = 3
-      when temps <= $SEUIL_2_ETOILES
-        recompense = 2
-      when temps <= $SEUIL_1_ETOILE
-        recompense = 1
       else
-        recompense = 0
+        if (temps < SEUIL_4_ETOILES)
+          recompense = 4
+        else
+          if (temps < SEUIL_3_ETOILES)
+            recompense = 3
+          else
+            if (temps < SEUIL_2_ETOILES)
+              recompense = 2
+            else
+              if (temps < SEUIL_1_ETOILE)
+                recompense = 1
+              else
+                recompense = 0
+              end
+            end
+          end
+        end
       end
+
 
       @aventure.setEtoileCourante(recompense)
       @aventure.etoilesEnPlus(recompense)
       @aventure.setTempsCourant(temps)
+
+      self.affichageEtoile(@aventure.getEtoileCourante())
+      self.affichageTemps()
+      self.affichageImageGrille()
     }
 
-    # On associe chaque boutons de la barre de déplacement avec la méthode de déplacement sur Grille de la classe Aventure
-    #for i in 0...@bouton.length()
-      #@bouton[i].signal_connect('clicked'){
-      #  self.setEffetBouton(i)
-      #}
-    #end
     @bouton[0].signal_connect('clicked'){
       self.setEffetBouton(0)
     }
