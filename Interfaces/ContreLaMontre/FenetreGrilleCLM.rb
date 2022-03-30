@@ -26,9 +26,6 @@ class FenetreGrilleCLM < FenetreGrille
                 @@partie.chronometre.metEnPause
             end
         }
-      
-        
-
     end
 
 
@@ -36,11 +33,42 @@ class FenetreGrilleCLM < FenetreGrille
     def construction
         @affChrono = Gtk::Label.new()
         @object.add(@affChrono)
-        super
+        taille_hauteur = @@partie.grilleEnCours.hauteur
+        taille_largeur = @@partie.grilleEnCours.largeur
+        @boutons = {}
+        tableFrame = Frame.new();
+        tableFrame.name = "grille"
+        table = Table.new(taille_hauteur,taille_largeur,false)
+        table.set_halign(3);
+        table.set_valign(3);
+        tableFrame.set_halign(3);
+        tableFrame.set_valign(3);
+        tableFrame.add(table)
+        for i in 0..taille_largeur-1
+            for j in 0..taille_hauteur-1
+                if @@partie.grilleEnCours.matriceCases[i][j].is_a?(CaseNombre)
+                    @boutons[[i,j]] = Button.new(:label=> @@partie.grilleEnCours.matriceCases[i][j].to_s)
+                    @boutons[[i,j]].name = "case_chiffre"
+                    table.attach(@boutons[[i,j]], i, i+1, j, j+1)
+                else
+                    @boutons[[i,j]] = Button.new()
+                    @boutons[[i,j]].name = "case_vide"
+                    table.attach(@boutons[[i,j]], i, i+1, j, j+1)
+                end
+            end
+        end
+        maj_boutons
+        signaux_boutons(tableFrame)
+        @object.add(table)
+        # supprime les boutons et changes d'interface quand on fait retour
         @builder.get_object('btn_retour').signal_connect('clicked'){#quitter
+            @object.remove(tableFrame)
             @object.remove(@affChrono)
             @@partie.chronometre.metEnPause
+            self.changerInterface(@menuParent, "Libre")
         }
+        @object.add(tableFrame)
+        tableFrame.show_all
         @@partie.chronometre.demarre
         actualiseChrono
     end
@@ -65,8 +93,7 @@ class FenetreGrilleCLM < FenetreGrille
                             @object.remove(tableFrame)
                             @object.remove(@affChrono)
                             @@partie.raz
-                            #@@profilActuel.ajouterPartie(@@partie)
-                            self.changerInterface(@menuParent, "Contre la Montre")
+                            self.changerInterface(@menuParent, "Libre")
                         end
                     end
                 }

@@ -30,14 +30,12 @@ class FenetreChoixGrilleCLM < Fenetre
     def gestionSignaux
         
         #Recuperation de la fenetre
-        @btn_retour = @builder.get_object('btn_retour')
-
-        @btn_retour.name = "retour_fleche"
+        btn_retour = @builder.get_object('btn_retour')
 
         initGrilles(0)
 
         #Gestion des signaux
-        @btn_retour.signal_connect('clicked'){#quitter
+        btn_retour.signal_connect('clicked'){#quitter
             self.changerInterface(@menuParent, "Contre-la-montre")
         }
 
@@ -102,16 +100,10 @@ class FenetreChoixGrilleCLM < Fenetre
 
     #Créer une table de boutons correspondants aux cases de la grille
     def construction(num_grille)
-        if (unePartie = @@profilActuel.chercherPartie(num_grille, @difficulte)) == nil
-            g=Grille.creer()
-            g.difficulte=@difficulte
-            g.chargerGrille(num_grille,@difficulte)
-            creerPartie(g)
-        else
-            print "\ntu as une partie de save"
-            @@partie = unePartie
-        end
-        #@interfaceClassement.construction
+        g=Grille.creer()
+        g.difficulte=@difficulte
+        g.chargerGrille(num_grille,@difficulte)
+        creerPartie(g)
     end
 
 end

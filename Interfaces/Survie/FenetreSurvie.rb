@@ -22,20 +22,11 @@ class FenetreSurvie < Fenetre
         @builder = Gtk::Builder.new(:file => 'glade/menu-libre.glade')
         @object = @builder.get_object("menu")
 
-		titre = @builder.get_object('titre')
-        titre.set_text("MODE SURVIE")
-
 		#recuperation des boutons de l'interface
 		@btn_facile = @builder.get_object("lvl_facile")
 		@btn_moyen = @builder.get_object("lvl_moyen")
 		@btn_difficile = @builder.get_object("lvl_difficile") 
 		@btn_retour = @builder.get_object("btn_retour")
-
-		@btn_retour.name = "retour_fleche"
-
-		@btn_facile.name = "boutonDiffSurvie"
-		@btn_moyen.name = "boutonDiffSurvie"
-		@btn_difficile.name = "boutonDiffSurvie"
 
 		@interfaceClassement = FenetreClassementSurvie.new(@object)
 		
@@ -86,15 +77,10 @@ class FenetreSurvie < Fenetre
 
 	 #Construit la partie en chargant une grille voulue
 	 def construction(num_grille)
-        if (unePartie = @@profilActuel.chercherPartie(num_grille, @interfaceClassement.difficulte)) == nil
-            g=Grille.creer()
-            g.difficulte=@interfaceClassement.difficulte
-            g.chargerGrille(num_grille,@interfaceClassement.difficulte)
-            creerPartie(g)
-            @@partie.chronometre=ChronometreSurvie.creer()
-		else
-            @@partie = unePartie
-        end
-        #@interfaceClassement.construction
+		g=Grille.creer()
+		g.difficulte=@interfaceClassement.difficulte
+		g.chargerGrille(num_grille,@interfaceClassement.difficulte)
+		creerPartie(g)
+		@@partie.chronometre=ChronometreSurvie.creer()
     end
 end

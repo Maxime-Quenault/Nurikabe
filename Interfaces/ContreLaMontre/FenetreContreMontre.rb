@@ -32,12 +32,6 @@ class FenetreContreMontre < Fenetre
 		@btn_difficile = @builder.get_object("lvl_difficile") 
 		@btn_retour = @builder.get_object("btn_retour")
 
-		@btn_facile.name = "boutonDiffMontre"
-		@btn_moyen.name = "boutonDiffMontre"
-		@btn_difficile.name = "boutonDiffMontre"
-
-		@btn_retour.name = "retour_fleche"
-
 		@interfaceChoixGrille = FenetreChoixGrilleCLM.new(@object)
 		
 		self.gestionSignaux

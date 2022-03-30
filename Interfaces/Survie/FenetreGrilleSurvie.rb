@@ -30,6 +30,11 @@ class FenetreGrilleSurvie < FenetreGrille
                 @@partie.chronometre.metEnPause
             end
         }
+        @builder.get_object('btn_clear').signal_connect('clicked'){#remet la partie a zero
+            @@partie.razSurvie
+            #@@partie.chronometre.demarre
+            #actualiseChrono
+        }
     end
 
      # Changes la couleur des boutons lorsqu'on clique dessus
@@ -93,17 +98,52 @@ end
         if !@grillesDejaFaites.include?([@@partie.grilleEnCours.numero,@@partie.grilleEnCours.difficulte])
             @grillesDejaFaites << [@@partie.grilleEnCours.numero, @@partie.grilleEnCours.difficulte]
         end
-        @affChrono = Gtk::Label.new()
         if @@partie.chronometre.temps<=0
+            puts "\n1"
             @@partie.chronometre=ChronometreSurvie.creer
         end
+       
+        @affChrono = Gtk::Label.new()
         @object.add(@affChrono)
         @object.show_all
-        super
+        taille_hauteur = @@partie.grilleEnCours.hauteur
+        taille_largeur = @@partie.grilleEnCours.largeur
+        @boutons = {}
+        tableFrame = Frame.new();
+        tableFrame.name = "grille"
+        table = Table.new(taille_hauteur,taille_largeur,false)
+        table.set_halign(3);
+        table.set_valign(3);
+        tableFrame.set_halign(3);
+        tableFrame.set_valign(3);
+        tableFrame.add(table)
+        for i in 0..taille_largeur-1
+            for j in 0..taille_hauteur-1
+                if @@partie.grilleEnCours.matriceCases[i][j].is_a?(CaseNombre)
+                    @boutons[[i,j]] = Button.new(:label=> @@partie.grilleEnCours.matriceCases[i][j].to_s)
+                    @boutons[[i,j]].name = "case_chiffre"
+                    table.attach(@boutons[[i,j]], i, i+1, j, j+1)
+                else
+                    @boutons[[i,j]] = Button.new()
+                    @boutons[[i,j]].name = "case_vide"
+                    table.attach(@boutons[[i,j]], i, i+1, j, j+1)
+                end
+            end
+        end
+        maj_boutons
+        signaux_boutons(tableFrame)
+        @object.add(table)
+        @object.add(tableFrame)
+        tableFrame.show_all
+         # supprime les boutons et changes d'interface quand on fait retour
         @builder.get_object('btn_retour').signal_connect('clicked'){#quitter
             @object.remove(@affChrono)
             @@partie.chronometre.metEnPause
+            @object.remove(tableFrame)
+            self.changerInterface(@menuParent, "Survie")
+            puts "\n2"
         }
+        puts "\n3"
         @@partie.chronometre.demarre
         actualiseChrono
     end
@@ -115,14 +155,14 @@ end
                     sleep(0.1)
                     @affChrono.set_label(@@partie.chronometre.getTemps.round(1).to_s)
                 end
+                puts "\n4"
                 affiche_fin
                 @fenetreClassement.ajoutScore
                 @object.remove(@tableFrame)
                 @object.remove(@affChrono)
                 @@partie.raz
-                #@@profilActuel.ajouterPartie(@@partie)
-                self.changerInterface(@menuParent, "Libre")
-                Thread.exit
+                self.changerInterface(@menuParent, "Survie")
+                @threadChrono=nil
             } 
         end
     end
