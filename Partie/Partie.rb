@@ -110,15 +110,6 @@ class Partie
     @chronometre.metEnPause
   end
 
-   # Remet les variables d'instance à 0 et lui affectes un chronometre Survie
-   def razSurvie()
-    @grilleEnCours.raz()
-    @tabCoup=Array.new()
-    @indiceCoup=0
-    @enPause=false
-    @chronometre=ChronometreSurvie.creer()
-  end
-
   #vrai si la partie est finie faux sinon
   def partieFinie?()
     return @grilleEnCours.grilleFinie
