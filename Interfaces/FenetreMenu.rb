@@ -77,7 +77,7 @@ class FenetreMenu < Fenetre
         #@interfaceAventure = AffichageAventure.new(@object)
         @interfaceSurvie = FenetreSurvie.new(@object)
         @interfaceContreMontre = FenetreContreMontre.new(@object)
-        @interfaceParametre = FenetreParametre.new(@object, @interfaceProfil)
+        @interfaceParametre = FenetreParametre.new(@object)
 
         
 
@@ -95,6 +95,8 @@ class FenetreMenu < Fenetre
         if @interfaceProfil.quit
             @quit = true
         end
+
+        setStyle(@@profilActuel)
 
         self.gestionSignaux
 

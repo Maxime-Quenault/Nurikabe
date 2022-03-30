@@ -53,7 +53,7 @@ class FenetreParametreProfil < Fenetre
             pixbuf = pixbuf.scale_simple(100, 100, Gdk::Pixbuf::INTERP_BILINEAR)
             @objectImage.set_from_pixbuf(pixbuf)
             print "Changement profil #{@@profilActuel}"
-            @objectPseudo.set_label(@@profilActuel.pseudo)
+            @objectPseudo.set_label(@@profilActuel.pseudo)  
         }
 
         @btnRetour.signal_connect( "clicked" ) {
