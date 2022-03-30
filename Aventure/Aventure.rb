@@ -166,6 +166,10 @@ class Aventure
     return @desGrilles[@posCourante];
   end
 
+  def getDifficulte
+    return @difficulte
+  end
+
   # On se déplace sur l'aventure de difficulté inférieure
   def difficultePrecedente
     if (@precedenteDiff != nil)
@@ -202,13 +206,7 @@ class Aventure
   # 1 -> Normal
   # 2 -> Hard
   def choixDifficulte(uneDiff)
-    if((uneDiff >= 0) && (uneDiff < 3) && (@@difficulteAcquise[uneDiff] == true))
-      if(uneDiff > @difficulte)
-        @suivanteDiff.choixDifficulte(uneDiff)
-      elsif(uneDiff < @difficulte)
-          @precedenteDiff.choixDifficulte(uneDiff)
-      end
-    end
+    return((uneDiff >= 0) && (uneDiff < 3) && (@@difficulteAcquise[uneDiff] == true))
   end
 
   # Le joueur souhaite débloquer une difficulté :
@@ -225,7 +223,7 @@ class Aventure
         print("\nTu ne possèdes pas assez d'étoiles pour débloquer cette difficulté...\nRefais d'autres niveaux.")
         return 0
       end
-    elsif((@difficulte == 1) && (@@difficulteAcquise[2] == false))
+    elsif((@@difficulteAcquise[1] == true) && (@@difficulteAcquise[2] == false))
       # Dans le cas où la difficulté Normal est débloquée
         if(self.assezEtoiles?(PALIER_HARD))
           @@difficulteAcquise[2] = true
@@ -236,6 +234,7 @@ class Aventure
           return 0
         end
     end
+
   end
 
 end
