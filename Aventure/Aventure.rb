@@ -1,6 +1,6 @@
 # Classes à charger :
-# Sûrement d'autres à ajouter
 load "Partie/Grille.rb"
+load "Partie/Partie.rb"
 
 # Définition de la classe Aventure
 class Aventure
@@ -102,10 +102,10 @@ class Aventure
   end
 
   # Pour générer l'aventure(suite de niveaux), on fait appel à la classe Grille pour générer les niveaux
-  def generationAventure(nbNiveau)
+  def generationAventure(nbNiveau,uneDiff)
     for i in 0...nbNiveau
       @desGrilles[i] = Grille.creer()
-      @desGrilles[i].lireGrille(i,FACILE)
+      @desGrilles[i].chargerGrille(i,uneDiff)
     end
   end
 
@@ -118,17 +118,17 @@ class Aventure
 
   # On se déplace sur le plateau du mode Aventure : ici on avance et on va au niveau suivant
   def prochaineGrille
-    if(@posCourante < 10)
+    if(@posCourante < 9)
       @posCourante += 1
-      #print "\n #{@posCourante}"
     end
   end
 
   # On se déplace sur le plateau du mode Aventure : ici on se place sur un niveau précis
   def placerSurGrille(numero)
-    if((@posCourante > 0) && (@posCourante < @desGrilles.length()))
+    if((numero >= 0) && (numero < @desGrilles.length()))
       @posCourante = numero
     end
+    print("\n position courante : #{@posCourante}")
   end
 
   # Méthode d'accès en lecture de la position courante

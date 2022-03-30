@@ -23,6 +23,10 @@ class AffichageAventure < Fenetre
   $SEUIL_2_ETOILES = 2.0
   $SEUIL_1_ETOILE = 2.20
 
+  FACILE = 0
+	MOYEN = 1
+	DIFFICILE = 2
+
   #################### Déclaration des VI
   #
   # @couleurFenetre : Variable d'instance qui représente la couleur de la fenêtre
@@ -31,7 +35,7 @@ class AffichageAventure < Fenetre
   #
   # @couleurVisible : Variable d'instance qui représente la couleur secondaire qui ressort de la couleur générale(thème)
   #
-  # @image : Variable d'instance qui contient une image png qui variera selon les grilles
+  # @img_centre : Variable d'instance qui contient une image png qui variera selon les grilles
   #
   # @fenetre : Variable d'instance qui contiendra la fenêtre de l'interface glade
   #
@@ -59,13 +63,13 @@ class AffichageAventure < Fenetre
     # On créer 3 objets aventures plus un autre qui manipulera les références des autres
     # Création des 3 aventures : Facile , Normale , Difficile avec générations des niveaux
     aventureFacile = Aventure.creer(0)
-    aventureFacile.generationAventure(10)
+    aventureFacile.generationAventure(10,FACILE)
 
     aventureNormale = Aventure.creer(1)
-    aventureNormale.generationAventure(10)
+    aventureNormale.generationAventure(10,MOYEN)
 
     aventureDifficile = Aventure.creer(2)
-    aventureDifficile.generationAventure(10)
+    aventureDifficile.generationAventure(10,DIFFICILE)
 
     # On édite les liens entre les 3 aventures
     aventureFacile.setPrecedent(nil)
@@ -80,7 +84,8 @@ class AffichageAventure < Fenetre
     @aventure = aventureFacile
 
     # On attribue une image par défaut
-    @image = Gtk::Image.new("Image/grilleVide.png")
+    #@img_centre = Image.new()
+    #@img_centre.set_from_file("Image/grilleVide.png")
 
     # On créer un buildeur qui récupère les éléments de notre fenêtre créée sur Glade
     monBuildeur = Gtk::Builder.new(:file => 'glade/aventure_normal_img.glade')
@@ -307,7 +312,7 @@ class AffichageAventure < Fenetre
   # Ainsi suivant la position du joueur(après le click sur suivant ou précédent)
   # On appel la méthode de "surbrillance" du bouton associé à notre position
   def boutonSuiv
-      @aventure.placerSurGrille(@aventure.prochaineGrille())
+      @aventure.prochaineGrille()
       self.affichageEtoile(@aventure.getEtoileCourante())
       self.affichageTemps()
       self.affichageImageGrille()
@@ -315,7 +320,7 @@ class AffichageAventure < Fenetre
 
   def boutonPreced
       #self.pack_start(@fenetre,@bouton[@aventure.getPosCourante()],false,false,nil)
-      @aventure.placerSurGrille(@aventure.grillePrecedente())
+      @aventure.grillePrecedente()
       self.affichageEtoile(@aventure.getEtoileCourante())
       self.affichageTemps()
       self.affichageImageGrille()
