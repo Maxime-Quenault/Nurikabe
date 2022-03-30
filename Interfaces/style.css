@@ -79,11 +79,20 @@ headerbar {
     transition: 0.1s ease-in-out;
 }
 
+#btn_menu_grille:hover {
+    background: @main_alt_color;
+    transition: 0.1s ease-in-out;
+}
+
 #btn_menu_grille_grise {
     background: @main_color_grey;
     border-radius: 0px;
     border-right: 1px black solid;
     transition: 0.1s ease-in-out;
+}
+
+#btn_menu_grille:nth-last-child(1) {
+    border-right: 0px;
 }
 
 #boutonLibre {
@@ -128,6 +137,10 @@ headerbar {
 #boutonSurvie:hover {
     background: #ee5968;
     transition: 0.1s ease-in-out;
+}
+
+#boutons_partie {
+    box-shadow: 0px 10px 5px -3px rgba(0,0,0,0.1);
 }
 
 #logoNurikabe {
