@@ -57,6 +57,12 @@ class FenetreLibre < Fenetre
 		@btn_difficile = @builder.get_object("lvl_difficile") 
 		@btn_retour = @builder.get_object("btn_retour")
 
+		@btn_retour.name = "retour_fleche"
+
+		@btn_facile.name = "boutonDiffLibre"
+		@btn_moyen.name = "boutonDiffLibre"
+		@btn_difficile.name = "boutonDiffLibre"
+
 		@interfaceChoixGrille = FenetreChoixGrille.new(@object)
 		
 		self.gestionSignaux

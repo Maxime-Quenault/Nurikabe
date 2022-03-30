@@ -28,6 +28,12 @@ class FenetreSurvie < Fenetre
 		@btn_difficile = @builder.get_object("lvl_difficile") 
 		@btn_retour = @builder.get_object("btn_retour")
 
+		@btn_retour.name = "retour_fleche"
+
+		@btn_facile.name = "boutonDiffSurvie"
+		@btn_moyen.name = "boutonDiffSurvie"
+		@btn_difficile.name = "boutonDiffSurvie"
+
 		@interfaceClassement = FenetreClassementSurvie.new(@object)
 		
 		self.gestionSignaux
@@ -77,10 +83,15 @@ class FenetreSurvie < Fenetre
 
 	 #Construit la partie en chargant une grille voulue
 	 def construction(num_grille)
-		g=Grille.creer()
-		g.difficulte=@interfaceClassement.difficulte
-		g.chargerGrille(num_grille,@interfaceClassement.difficulte)
-		creerPartie(g)
-		@@partie.chronometre=ChronometreSurvie.creer()
+        if (unePartie = @@profilActuel.chercherPartie(num_grille, @interfaceClassement.difficulte)) == nil
+            g=Grille.creer()
+            g.difficulte=@interfaceClassement.difficulte
+            g.chargerGrille(num_grille,@interfaceClassement.difficulte)
+            creerPartie(g)
+            @@partie.chronometre=ChronometreSurvie.creer()
+		else
+            @@partie = unePartie
+        end
+        #@interfaceClassement.construction
     end
 end

@@ -26,7 +26,7 @@ load "Parametre/Parametre.rb"
             - @langue           ==> id de la langue
             - @btnJeu           ==> id du bouton jeu de l'interface paramètre
             - @btnRetour        ==> id du bouton retour de l'interface paramètre 
-            - @btnProfils       ==> id du bouton profils dans l'interface paramètre
+            - @btnProfil       ==> id du bouton profils dans l'interface paramètre
             - @switchTheme      ==> id du bouton switchTheme dans l'interface paramètre
             - @switchAudio      ==> id du bouton switchAudio dans l'interface paramètre
 =end
@@ -54,7 +54,11 @@ class FenetreParametre < Fenetre
 
         @btnJeu = @builder.get_object("button_jeu")
         @btnRetour = @builder.get_object("button_retour")
-        @btnProfils = @builder.get_object("button_profils")
+        @btnProfil = @builder.get_object("button_profils")
+
+        @btnJeu.name = "btn_jeu"
+        @btnRetour.name = "btn_retour"
+        @btnProfil.name = "btn_profil"
 
         @switchTheme = @builder.get_object("switch_theme")
         @switchAudio = @builder.get_object("switch_audio")
@@ -68,7 +72,7 @@ class FenetreParametre < Fenetre
     # Méthode qui gère les évènements liés aux signaux attribués aux différents composants du fichier glade
     def gestionSignaux
 
-        @btnProfils.signal_connect( "clicked" ) { 
+        @btnProfil.signal_connect( "clicked" ) { 
             self.changerInterface(@interfaceParametreProfil.object, "Paramètres")
         }
 

@@ -129,7 +129,9 @@ class FenetreMenu < Fenetre
 
         @btn_tuto.signal_connect('clicked') {print "tu as clique sur le mode tuto\n"}
 
-        @btn_propos.signal_connect('clicked') {print "tu as clique sur a propos\n"}
+        @btn_propos.signal_connect('clicked') {
+            self.changerInterface(@interfaceAPropos.object, "A propos")
+        }
 
         @btn_parametre.signal_connect('clicked') {
             self.changerInterface(@interfaceParametre.object, "Parametre")

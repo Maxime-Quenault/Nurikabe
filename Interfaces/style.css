@@ -1,22 +1,9 @@
-@define-color main_color #AFA2FF;
+@define-color main_color #545E75;
 @define-color main_color_grey #d1d1d1;
-@define-color main_alt_color #CFBBFF;
-@define-color main_active_color #CFBBFF;
+@define-color main_alt_color #8992A9;
+@define-color main_active_color #ACB3C3;
 
-@define-color bg_color #e3d7ff;
-
-@define-color dark_color #242038;
-
-/****************/
-/** Interfaces **/
-/****************/
-
-@define-color main_color #AFA2FF;
-@define-color main_color_grey #d1d1d1;
-@define-color main_alt_color #CFBBFF;
-@define-color main_active_color #CFBBFF;
-
-@define-color bg_color #e3d7ff;
+@define-color bg_color #D0D4DD;
 
 @define-color dark_color #242038;
 
@@ -33,7 +20,7 @@ button {
     background: @main_color;
     border: 0px;
     border-radius: 5px;
-    color: black;
+    color: white;
     transition: 0.1s ease-in-out;
 }
 
@@ -145,6 +132,57 @@ headerbar {
 
 #logoNurikabe {
 	/*  */
+}
+
+#boutonDiffLibre {
+    background: #5bc0eb;
+    color: white;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonDiffLibre:hover {
+    background: #80CEEF;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonDiffSurvie {
+    background: #ea3546;
+    color: white;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonDiffSurvie:hover {
+    background: #ee5968;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonDiffMontre {
+    background: #9b5de5;
+    color: white;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonDiffMontre:hover {
+    background: #B284EB;
+    transition: 0.1s ease-in-out;
+}
+
+#retour_fleche {
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 100000;
+}
+
+#btn_jeu {
+    border-radius: 0;
+}
+
+#btn_retour {
+    border-radius: 0;
+}
+
+#btn_profil {
+    border-radius: 0;  
 }
 
 /******************/

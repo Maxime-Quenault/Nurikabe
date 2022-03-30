@@ -96,7 +96,7 @@ class FenetreProfil
                 boutonProfil.set_width_request(140)
                 ligneProfil.add(boutonProfil)
 
-                imageSupprimer = Gtk::Image.new :file => "Image/trash.png"
+                imageSupprimer = Gtk::Image.new :file => "Image/iconeMenu/trash.png"
                 boutonSupprimer = Button.new()
                 boutonSupprimer.image = imageSupprimer
                 boutonSupprimer.set_width_request(60)

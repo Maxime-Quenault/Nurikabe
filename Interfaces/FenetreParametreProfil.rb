@@ -29,9 +29,14 @@ class FenetreParametreProfil < Fenetre
 
         @btn_changer_image = @builderProfil.get_object("change_avatar")
 
+        @btnProfil = @builderProfil.get_object("btn_gestion_profil")
         @btnParametreJeu = @builderProfil.get_object("button_jeu")
         @btnRetour = @builderProfil.get_object("button_retour")
         @btnChangerProfils = @builderProfil.get_object("btn_changer_profil")
+
+        @btnParametreJeu.name = "btn_jeu"
+        @btnRetour.name = "btn_retour"
+        @btnProfil.name = "btn_profil"
 
         self.gestionSignaux
 
