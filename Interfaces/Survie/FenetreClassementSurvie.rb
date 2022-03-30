@@ -6,7 +6,7 @@ load "Interfaces/Survie/FenetreGrilleSurvie.rb"
 load "Sauvegarde/Score.rb"
 
 class FenetreClassementSurvie < Fenetre
-
+    attr :difficulte, true
     attr_accessor :object
 
 	##
@@ -78,7 +78,7 @@ class FenetreClassementSurvie < Fenetre
     end
 
     def ajoutScore
-        unScore = Score.new(@interfaceGrille.getTempsPartie, @@profilActuel)
+        unScore = Score.new(@interfaceGrille.getNbGrilles, @@profilActuel)
         @uneSave.ajoutScore(unScore)
         @tabScore = @uneSave.tabScore
         self.affichageScore
@@ -90,12 +90,12 @@ class FenetreClassementSurvie < Fenetre
 	def gestionSignaux
 
         @boutonRetour.signal_connect("clicked"){
-            self.changerInterface(@menuParent, "Contre La Montre")
+            self.changerInterface(@menuParent, "Survie")
         }
 
         @boutonPartie.signal_connect("clicked"){
             construction
-            self.changerInterface(@interfaceGrille.object, "Contre La Montre") #à modifier ensuite
+            self.changerInterface(@interfaceGrille.object, "Survie") #à modifier ensuite
         }
 
 	end

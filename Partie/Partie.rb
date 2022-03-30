@@ -1,6 +1,7 @@
 load "Partie/Grille.rb"
 load "Partie/Coup.rb"
 load "Partie/Indice.rb"
+load "Chrono/Chronometre.rb"
 
 =begin
   La classe Partie permet de :::
@@ -107,6 +108,15 @@ class Partie
     @enPause=false
     @chronometre=Chronometre.creer()
     @chronometre.metEnPause
+  end
+
+   # Remet les variables d'instance à 0 et lui affectes un chronometre Survie
+   def razSurvie()
+    @grilleEnCours.raz()
+    @tabCoup=Array.new()
+    @indiceCoup=0
+    @enPause=false
+    @chronometre=ChronometreSurvie.creer()
   end
 
   #vrai si la partie est finie faux sinon

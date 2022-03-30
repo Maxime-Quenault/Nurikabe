@@ -65,7 +65,7 @@ class FenetreParametre < Fenetre
     end
 
     ##
-    # Méthode qui g ère les évènements liés aux signaux attribués aux différents composants du fichier glade
+    # Méthode qui gère les évènements liés aux signaux attribués aux différents composants du fichier glade
     def gestionSignaux
 
         @btnProfils.signal_connect( "clicked" ) { 
@@ -75,7 +75,6 @@ class FenetreParametre < Fenetre
         @btnRetour.signal_connect( "clicked" ) {
             self.changerInterface(@menuParent, "Menu")
         }
-        
 
         @switchTheme.signal_connect('notify::active') {onSwitchTheme_activated()}
         @switchAudio.signal_connect('notify::active') {onSwitchAudio_activated()}

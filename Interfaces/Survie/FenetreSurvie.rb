@@ -1,11 +1,10 @@
 require 'gtk3'
 load "Interfaces/Fenetre.rb"
-load "Interfaces/Survie/FenetreChoixGrilleSurvie.rb"
+load "Interfaces/Survie/FenetreClassementSurvie.rb"
 
 class FenetreSurvie < Fenetre
-
     attr_accessor :object
-
+	
 	##
 	# initialize :
 	# 	Cette methode est le constructeur de la classe FenetreSurvie, il permet de recuperer
@@ -29,7 +28,7 @@ class FenetreSurvie < Fenetre
 		@btn_difficile = @builder.get_object("lvl_difficile") 
 		@btn_retour = @builder.get_object("btn_retour")
 
-		@interfaceChoixGrille = FenetreChoixGrilleSurvie.new(@object)
+		@interfaceClassement = FenetreClassementSurvie.new(@object)
 		
 		self.gestionSignaux
 
@@ -51,17 +50,23 @@ class FenetreSurvie < Fenetre
 	def gestionSignaux
 
 		@btn_facile.signal_connect("clicked"){
-			@interfaceChoixGrille.difficulte=0
-			self.changerInterface(@interfaceChoixGrille.object, "Facile")
+			@interfaceClassement.difficulte=0
+			construction(rand(10))
+			@interfaceClassement.recupeTab
+			self.changerInterface(@interfaceClassement.object, "Facile")
 		}
 		@btn_moyen.signal_connect("clicked"){
-			@interfaceChoixGrille.difficulte=1
-			self.changerInterface(@interfaceChoixGrille.object, "Moyen")
+			@interfaceClassement.difficulte=1
+			construction(rand(10))
+			@interfaceClassement.recupeTab
+			self.changerInterface(@interfaceClassement.object, "Moyen")
 		}
 
 		@btn_difficile.signal_connect("clicked"){
-			@interfaceChoixGrille.difficulte=2
-			self.changerInterface(@interfaceChoixGrille.object, "Difficile")
+			@interfaceClassement.difficulte=2
+			construction(rand(10))
+			@interfaceClassement.recupeTab
+			self.changerInterface(@interfaceClassement.object, "Difficile")
 		}
 		@btn_retour.signal_connect("clicked"){
 			self.changerInterface(@menuParent, "Menu")
@@ -69,4 +74,13 @@ class FenetreSurvie < Fenetre
 		}
 
 	end
+
+	 #Construit la partie en chargant une grille voulue
+	 def construction(num_grille)
+		g=Grille.creer()
+		g.difficulte=@interfaceClassement.difficulte
+		g.chargerGrille(num_grille,@interfaceClassement.difficulte)
+		creerPartie(g)
+		@@partie.chronometre=ChronometreSurvie.creer()
+    end
 end

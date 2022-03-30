@@ -89,7 +89,7 @@ class Fenetre
         @header.subtitle = "-"
         @@window.titlebar = @header
 
-        # CSS
+        #CSS
         @css = Gtk::CssProvider.new
         @css.load(path: "Interfaces/style.css")
         Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @css, Gtk::StyleProvider::PRIORITY_APPLICATION)

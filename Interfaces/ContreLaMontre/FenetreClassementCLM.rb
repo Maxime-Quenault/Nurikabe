@@ -89,7 +89,7 @@ class FenetreClassementCLM < Fenetre
 	def gestionSignaux
 
         @boutonRetour.signal_connect("clicked"){
-            self.changerInterface(@menuParent, "Contre La Montre")
+            self.changerInterface(@menuParent, "Contre-La-Montre")
         }
 
         @boutonPartie.signal_connect("clicked"){
