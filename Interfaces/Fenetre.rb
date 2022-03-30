@@ -90,9 +90,12 @@ class Fenetre
         @@window.titlebar = @header
 
         #CSS
-        @css = Gtk::CssProvider.new
-        @css.load(path: "Interfaces/style.css")
-        Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @css, Gtk::StyleProvider::PRIORITY_APPLICATION)
+        @@css = Gtk::CssProvider.new
+        @@css.load(path: "Interfaces/style.css")
+        Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @@css, Gtk::StyleProvider::PRIORITY_APPLICATION)
+
+        @@cssDark = Gtk::CssProvider.new
+        @@cssDark.load(path: "Interfaces/style_dark.css")
 
         #sauvegarde
         @save = SauvegardeProfil.new
@@ -192,5 +195,17 @@ class Fenetre
     def setNumGrille(unNum)
         @@numGrille = unNum
     end
+
+    ##
+    # setStyle :
+    #   Prend en paramètre un profil et change le style de la fenêtre en fonction du thème choisi par l'utilisateur
+    def setStyle(profil)
+        case (profil.parametre.themeSombre)
+        when false 
+           Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @@css, Gtk::StyleProvider::PRIORITY_APPLICATION)
+        when true 
+            Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, @@cssDark, Gtk::StyleProvider::PRIORITY_APPLICATION)
+        end 
+    end 
 
 end
