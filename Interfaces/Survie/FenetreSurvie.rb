@@ -77,15 +77,10 @@ class FenetreSurvie < Fenetre
 
 	 #Construit la partie en chargant une grille voulue
 	 def construction(num_grille)
-        if (unePartie = @@profilActuel.chercherPartie(num_grille, @interfaceClassement.difficulte)) == nil
-            g=Grille.creer()
-            g.difficulte=@interfaceClassement.difficulte
-            g.chargerGrille(num_grille,@interfaceClassement.difficulte)
-            creerPartie(g)
-            @@partie.chronometre=ChronometreSurvie.creer()
-		else
-            @@partie = unePartie
-        end
-        #@interfaceClassement.construction
+		g=Grille.creer()
+		g.difficulte=@interfaceClassement.difficulte
+		g.chargerGrille(num_grille,@interfaceClassement.difficulte)
+		creerPartie(g)
+		@@partie.chronometre=ChronometreSurvie.creer()
     end
 end
