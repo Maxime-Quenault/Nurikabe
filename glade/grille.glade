@@ -8,17 +8,27 @@
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkBox" id="bouton_zone">
+        <property name="name">boutons_partie</property>
+        <property name="height_request">50</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="homogeneous">True</property>
         <child>
           <object class="GtkButton" id="btn_retour">
-            <property name="label">gtk-quit</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="use_stock">True</property>
+            <property name="tooltip_text" translatable="yes">Quitter</property>
+            <property name="relief">none</property>
             <property name="always_show_image">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="pixbuf">../Image/iconeMenu/quitter.png</property>
+                <property name="icon_size">5</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -28,12 +38,19 @@
         </child>
         <child>
           <object class="GtkButton" id="btn_clear">
-            <property name="label">gtk-delete</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="use_stock">True</property>
+            <property name="tooltip_text" translatable="yes">Supprimer</property>
             <property name="always_show_image">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="pixbuf">../Image/iconeMenu/supprimer.png</property>
+                <property name="icon_size">5</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -43,12 +60,19 @@
         </child>
         <child>
           <object class="GtkButton" id="btn_rembobiner">
-            <property name="label">gtk-media-rewind</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="use_stock">True</property>
+            <property name="tooltip_text" translatable="yes">Rembobiner</property>
             <property name="always_show_image">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="pixbuf">../Image/iconeMenu/rembobiner.png</property>
+                <property name="icon_size">6</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -58,12 +82,19 @@
         </child>
         <child>
           <object class="GtkButton" id="btn_undo">
-            <property name="label">gtk-go-back</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="use_stock">True</property>
+            <property name="tooltip_text" translatable="yes">Précédent</property>
             <property name="always_show_image">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="pixbuf">../Image/iconeMenu/precedent.png</property>
+                <property name="icon_size">3</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -73,12 +104,19 @@
         </child>
         <child>
           <object class="GtkButton" id="btn_redo">
-            <property name="label">gtk-go-forward</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="use_stock">True</property>
+            <property name="tooltip_text" translatable="yes">Suivant</property>
             <property name="always_show_image">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="pixbuf">../Image/iconeMenu/suivant.png</property>
+                <property name="icon_size">3</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -88,12 +126,19 @@
         </child>
         <child>
           <object class="GtkButton" id="btn_pause">
-            <property name="label">gtk-media-pause</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="use_stock">True</property>
+            <property name="tooltip_text" translatable="yes">Pause</property>
             <property name="always_show_image">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="pixbuf">../Image/iconeMenu/pause.png</property>
+                <property name="icon_size">3</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -107,11 +152,13 @@
             <property name="can_focus">True</property>
             <property name="focus_on_click">False</property>
             <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Aide</property>
             <child>
               <object class="GtkImage">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="stock">gtk-help</property>
+                <property name="pixbuf">../Image/iconeMenu/aide.png</property>
+                <property name="icon_size">3</property>
               </object>
             </child>
           </object>

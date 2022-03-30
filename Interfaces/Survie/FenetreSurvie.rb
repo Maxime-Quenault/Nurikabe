@@ -22,6 +22,9 @@ class FenetreSurvie < Fenetre
         @builder = Gtk::Builder.new(:file => 'glade/menu-libre.glade')
         @object = @builder.get_object("menu")
 
+		titre = @builder.get_object('titre')
+        titre.set_text("MODE SURVIE")
+
 		#recuperation des boutons de l'interface
 		@btn_facile = @builder.get_object("lvl_facile")
 		@btn_moyen = @builder.get_object("lvl_moyen")
@@ -77,10 +80,15 @@ class FenetreSurvie < Fenetre
 
 	 #Construit la partie en chargant une grille voulue
 	 def construction(num_grille)
-		g=Grille.creer()
-		g.difficulte=@interfaceClassement.difficulte
-		g.chargerGrille(num_grille,@interfaceClassement.difficulte)
-		creerPartie(g)
-		@@partie.chronometre=ChronometreSurvie.creer()
+        if (unePartie = @@profilActuel.chercherPartie(num_grille, @interfaceClassement.difficulte)) == nil
+            g=Grille.creer()
+            g.difficulte=@interfaceClassement.difficulte
+            g.chargerGrille(num_grille,@interfaceClassement.difficulte)
+            creerPartie(g)
+            @@partie.chronometre=ChronometreSurvie.creer()
+		else
+            @@partie = unePartie
+        end
+        #@interfaceClassement.construction
     end
 end

@@ -1,10 +1,10 @@
-load "Chrono/Chronometre.rb"
+load "Chronometre.rb"
 
 # Chrono qui decompte son temps pour les modes de jeu Survie
 class ChronometreSurvie < Chronometre
 
     # Constante du temps de départ du Chronometre
-    CHRONOMETRE_BASE_TEMPS = 30
+    CHRONOMETRE_BASE_TEMPS = 60 
 
     def ChronometreSurvie.creer()
         new()
