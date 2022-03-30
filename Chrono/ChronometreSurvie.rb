@@ -4,7 +4,7 @@ load "Chrono/Chronometre.rb"
 class ChronometreSurvie < Chronometre
 
     # Constante du temps de départ du Chronometre
-    CHRONOMETRE_BASE_TEMPS = 30
+    CHRONOMETRE_BASE_TEMPS = 300
 
     def ChronometreSurvie.creer()
         new()
