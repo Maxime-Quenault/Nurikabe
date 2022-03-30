@@ -30,12 +30,14 @@ class FenetreChoixGrilleCLM < Fenetre
     def gestionSignaux
         
         #Recuperation de la fenetre
-        btn_retour = @builder.get_object('btn_retour')
+        @btn_retour = @builder.get_object('btn_retour')
+
+        @btn_retour.name = "retour_fleche"
 
         initGrilles(0)
 
         #Gestion des signaux
-        btn_retour.signal_connect('clicked'){#quitter
+        @btn_retour.signal_connect('clicked'){#quitter
             self.changerInterface(@menuParent, "Contre-la-montre")
         }
 
