@@ -266,7 +266,7 @@
               <object class="GtkImage">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="pixbuf">../Image/iconeMenu/book.png</property>
+                <property name="pixbuf">../Image/iconeMenu/lightbulb-fill.png</property>
               </object>
             </child>
           </object>
