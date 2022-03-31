@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class FenetreProfil - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-afficheToi">#afficheToi</a>
+    
+    <li ><a href="#method-i-destruction">#destruction</a>
+    
+    <li ><a href="#method-i-event">#event</a>
+    
+    <li ><a href="#method-i-setmargin">#setmargin</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-FenetreProfil">
+  <h1 id="class-FenetreProfil" class="class">
+    class FenetreProfil
+  </h1>
+
+  <section class="description">
+    
+<p>@author Trottier Léo / Quenault Maxime</p>
+
+<p>Cette classe permet de gerer l&#39;affichage de l&#39;interface qui s&#39;occupe des profils. Pour cela elle va creer une nouvelle fenetre et va recupere la liste de tous les profil sauvegardé sur la machine pour les proposer à l&#39;utilisateur. Cette classe est différentes des autres interface car elle est indépendante, et n&#39;utilise pas de fichier glade.</p>
+
+<p>Voici ses méthodes :</p>
+<ul><li>
+<p>initialize : est le constructeur de la classe, il va recuperer la listes des profils sauvegarder et initiliser une fenetre</p>
+</li><li>
+<p>setmargin : ??? (léo je te laisse ecrire)</p>
+</li><li>
+<p>afficheToi : permet d&#39;afficher la fenetre avec tous les profils de la sauvegarde, gère egalement la suppresion et la création</p>
+</li></ul>
+
+<p>de nouveau profils.</p>
+<ul><li>
+<p>event : permet de supprimer l&#39;affichage de la fenetre profil quand on a selectionner/créé un profil</p>
+</li><li>
+<p>destruction : permet de supprimer la fenetre si l&#39;utilisateur clique sur la croix.</p>
+</li></ul>
+
+<p>Voici ses VI :</p>
+
+<p>@save : recupere la sauvegarde de tous les profils present sur la machine actuelle @quit : permet de communiquer à <a href="FenetreMenu.html"><code>FenetreMenu</code></a> si la fenetre a été fermé ou pas @popUpProfil : représente la fenêtre qui va acceuillir l&#39;interface @profil : stock le profil selectionné par l&#39;utilisateur, est récupéré ensuite par <a href="FenetreMenu.html"><code>FenetreMenu</code></a></p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-profil" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">profil</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-quit" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">quit</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-save" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">save</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>initialize :</p>
+
+<pre>Cette méthode est le constructeur de la classe FenetreProfil, il permet d&#39;initialiser ses VI et de récupérer
+la sauvegarde des profils existant sur la machine actuelle.</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreProfil.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
+    <span class="ruby-ivar">@save</span> = <span class="ruby-constant">SauvegardeProfil</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@quit</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-ivar">@popUpProfil</span> = <span class="ruby-constant">Window</span>.<span class="ruby-identifier">new</span>()
+    <span class="ruby-ivar">@profil</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-afficheToi" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">afficheToi</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>afficheToi :</p>
+
+<pre>Cette méthode permet de creer et d&#39;afficher l&#39;interface du choix de profils, elle creer
+autant de bouton qu&#39;il y a de profils, ce qui permet une extension dynamique de la fenêtre.
+Elle permet aussi de gerer la suppresion des profils ou la création.</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="afficheToi-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreProfil.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficheToi</span>
+    <span class="ruby-ivar">@popUpProfil</span> = <span class="ruby-constant">Window</span>.<span class="ruby-identifier">new</span>()
+    <span class="ruby-ivar">@save</span> = <span class="ruby-constant">SauvegardeProfil</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@popUpProfil</span>.<span class="ruby-identifier">set_title</span>(<span class="ruby-string">&quot;Choix profil&quot;</span>)
+    <span class="ruby-ivar">@popUpProfil</span>.<span class="ruby-identifier">border_width</span>=<span class="ruby-value">10</span>
+    <span class="ruby-ivar">@popUpProfil</span>.<span class="ruby-identifier">set_resizable</span>(<span class="ruby-keyword">false</span>)
+    <span class="ruby-ivar">@popUpProfil</span>.<span class="ruby-identifier">set_window_position</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">WindowPosition</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER_ALWAYS</span>)
+    <span class="ruby-ivar">@popUpProfil</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;destroy&#39;</span>) {<span class="ruby-identifier">destruction</span>}
+    <span class="ruby-ivar">@popUpProfil</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">laFenetrePrincipale</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>, (<span class="ruby-ivar">@save</span>.<span class="ruby-identifier">nbProfil</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>) ) )
+
+    <span class="ruby-identifier">laFenetrePrincipale</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">haut</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>, <span class="ruby-value">2</span>))
+
+    <span class="ruby-identifier">zoneText</span> = <span class="ruby-constant">Entry</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">haut</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">setmargin</span>(<span class="ruby-identifier">zoneText</span>, <span class="ruby-value">0</span>, <span class="ruby-value">15</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>))
+
+    <span class="ruby-identifier">imageValider</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&quot;Image/valider.png&quot;</span>
+    <span class="ruby-identifier">boutonValider</span> = <span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>()
+    <span class="ruby-identifier">boutonValider</span>.<span class="ruby-identifier">image</span> = <span class="ruby-identifier">imageValider</span>
+    <span class="ruby-identifier">boutonValider</span>.<span class="ruby-identifier">set_width_request</span>(<span class="ruby-value">60</span>)
+    <span class="ruby-identifier">haut</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">setmargin</span>(<span class="ruby-identifier">boutonValider</span>, <span class="ruby-value">0</span>, <span class="ruby-value">15</span>, <span class="ruby-value">5</span>, <span class="ruby-value">0</span>))
+
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@save</span>.<span class="ruby-identifier">nbProfil</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+        <span class="ruby-ivar">@save</span>.<span class="ruby-identifier">listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">ligneProfil</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>, <span class="ruby-value">3</span>) <span class="ruby-comment"># Box pour l&#39;image du profil, son nom et le bouton supprimer</span>
+  
+            <span class="ruby-identifier">pixbuf</span> = <span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">imageJoueur</span>)
+            <span class="ruby-identifier">pixbuf</span> = <span class="ruby-identifier">pixbuf</span>.<span class="ruby-identifier">scale_simple</span>(<span class="ruby-value">20</span>, <span class="ruby-value">20</span>, <span class="ruby-constant">Gdk</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">INTERP_BILINEAR</span>)
+            <span class="ruby-identifier">imageProfil</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>
+            <span class="ruby-identifier">imageProfil</span>.<span class="ruby-identifier">set_from_pixbuf</span>(<span class="ruby-identifier">pixbuf</span>)
+            <span class="ruby-identifier">ligneProfil</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">setmargin</span>(<span class="ruby-identifier">imageProfil</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-value">5</span>))
+
+            <span class="ruby-identifier">boutonProfil</span> = <span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span>)
+            <span class="ruby-identifier">boutonProfil</span>.<span class="ruby-identifier">set_width_request</span>(<span class="ruby-value">140</span>)
+            <span class="ruby-identifier">ligneProfil</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">boutonProfil</span>)
+
+            <span class="ruby-identifier">imageSupprimer</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&quot;Image/iconeMenu/trash.png&quot;</span>
+            <span class="ruby-identifier">boutonSupprimer</span> = <span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>()
+            <span class="ruby-identifier">boutonSupprimer</span>.<span class="ruby-identifier">image</span> = <span class="ruby-identifier">imageSupprimer</span>
+            <span class="ruby-identifier">boutonSupprimer</span>.<span class="ruby-identifier">set_width_request</span>(<span class="ruby-value">60</span>)
+            <span class="ruby-identifier">ligneProfil</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">setmargin</span>(<span class="ruby-identifier">boutonSupprimer</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-value">5</span>, <span class="ruby-value">0</span>))
+
+            <span class="ruby-identifier">laFenetrePrincipale</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">ligneProfil</span>)
+            
+            <span class="ruby-identifier">boutonProfil</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+                <span class="ruby-ivar">@profil</span> = <span class="ruby-ivar">@save</span>.<span class="ruby-identifier">chargerProfil</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span>)
+                <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;Sauvegarde/SauvegardeGrille/listeGrille#{@profil.pseudo}.dump&quot;</span>))
+                    <span class="ruby-ivar">@profil</span>.<span class="ruby-identifier">listePartieCommence</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+                <span class="ruby-keyword">else</span>  
+                    <span class="ruby-ivar">@profil</span>.<span class="ruby-identifier">listePartieCommence</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">binread</span>(<span class="ruby-node">&quot;Sauvegarde/SauvegardeGrille/listeGrille#{@profil.pseudo}.dump&quot;</span>))
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">event</span>(<span class="ruby-ivar">@popUpProfil</span>)
+            }
+
+            <span class="ruby-identifier">boutonSupprimer</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+                <span class="ruby-identifier">d</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@popUpProfil</span>,
+                <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span><span class="ruby-operator">::</span><span class="ruby-constant">DESTROY_WITH_PARENT</span>,
+                <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MessageDialog</span><span class="ruby-operator">::</span><span class="ruby-constant">WARNING</span>,
+                <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MessageDialog</span><span class="ruby-operator">::</span><span class="ruby-constant">BUTTONS_YES_NO</span>,
+                <span class="ruby-node">&quot;Voulez-vous supprimer le profil #{key.pseudo} ?&quot;</span>)
+
+                <span class="ruby-identifier">response</span> = <span class="ruby-identifier">d</span>.<span class="ruby-identifier">run</span>
+
+                <span class="ruby-keyword">case</span> <span class="ruby-identifier">response</span>
+                    <span class="ruby-keyword">when</span> <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">YES</span>
+                        <span class="ruby-ivar">@save</span>.<span class="ruby-identifier">supprimerProfil</span>(<span class="ruby-identifier">key</span>)
+                        <span class="ruby-identifier">laFenetrePrincipale</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-identifier">ligneProfil</span>)
+                        <span class="ruby-identifier">d</span>.<span class="ruby-identifier">destroy</span>
+                    <span class="ruby-keyword">else</span>
+                        <span class="ruby-identifier">d</span>.<span class="ruby-identifier">destroy</span>
+                <span class="ruby-keyword">end</span>
+            }
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span> 
+
+
+    <span class="ruby-identifier">boutonValider</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+        <span class="ruby-identifier">pseudo</span> = <span class="ruby-identifier">zoneText</span>.<span class="ruby-identifier">text</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">pseudo</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+            <span class="ruby-ivar">@profil</span> = <span class="ruby-constant">Profil</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">pseudo</span>)
+            <span class="ruby-keyword">if</span> <span class="ruby-ivar">@save</span>.<span class="ruby-identifier">ajoutProfil</span>(<span class="ruby-identifier">profil</span>) <span class="ruby-operator">!=</span> <span class="ruby-value">-1</span>
+                <span class="ruby-ivar">@profil</span> = <span class="ruby-ivar">@save</span>.<span class="ruby-identifier">chargerProfil</span>(<span class="ruby-identifier">pseudo</span>)
+                <span class="ruby-identifier">event</span>(<span class="ruby-ivar">@popUpProfil</span>)
+            <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">d</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@popUpProfil</span>,
+                <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span><span class="ruby-operator">::</span><span class="ruby-constant">DESTROY_WITH_PARENT</span>,
+                <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MessageDialog</span><span class="ruby-operator">::</span><span class="ruby-constant">WARNING</span>,
+                <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MessageDialog</span><span class="ruby-operator">::</span><span class="ruby-constant">BUTTONS_CLOSE</span>,
+                <span class="ruby-node">&quot;Le pseudo #{pseudo} existe déjà...&quot;</span>)
+
+                <span class="ruby-identifier">d</span>.<span class="ruby-identifier">run</span>
+                <span class="ruby-identifier">d</span>.<span class="ruby-identifier">destroy</span>
+            <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+    }
+
+    <span class="ruby-ivar">@popUpProfil</span>.<span class="ruby-identifier">show_all</span>
+
+    <span class="ruby-constant">Gtk</span>.<span class="ruby-identifier">main</span>           
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-destruction" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">destruction</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>destruction :</p>
+
+<pre>Cette méthode permet de supprimer la fenetre si l&#39;utilisateur la ferme. Elle met donc le boolean &quot;@quit&quot; à jour.</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="destruction-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreProfil.rb, line 176</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">destruction</span>()
+    <span class="ruby-ivar">@quit</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-constant">Gtk</span>.<span class="ruby-identifier">main_quit</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-event" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">event</span><span
+            class="method-args">(popUpProfil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>event :</p>
+
+<pre>Cette méthode permet de cacher la fenetre lorsque l&#39;utilisateur a choisi/créé un profil
+@param popUpProfil represente la fenetre à cacher.</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="event-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreProfil.rb, line 168</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">event</span>(<span class="ruby-identifier">popUpProfil</span>)
+    <span class="ruby-identifier">popUpProfil</span>.<span class="ruby-identifier">hide</span>
+    <span class="ruby-constant">Gtk</span>.<span class="ruby-identifier">main_quit</span>  
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setmargin" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setmargin</span><span
+            class="method-args">(obj, top, bottom, left, right)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>setMargin :</p>
+
+<pre>???</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="setmargin-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreProfil.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setmargin</span>(<span class="ruby-identifier">obj</span>, <span class="ruby-identifier">top</span>, <span class="ruby-identifier">bottom</span>, <span class="ruby-identifier">left</span>, <span class="ruby-identifier">right</span>)
+    <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">set_margin_top</span>(<span class="ruby-identifier">top</span>)
+    <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">set_margin_bottom</span>(<span class="ruby-identifier">bottom</span>)
+    <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">set_margin_left</span>(<span class="ruby-identifier">left</span>)
+    <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">set_margin_right</span>(<span class="ruby-identifier">right</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">obj</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

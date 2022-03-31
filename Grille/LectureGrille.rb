@@ -75,6 +75,3 @@ class LectureGrille
 
 end
 
-p = LectureGrille.new()
-p.toGrilleJouable(1, 0)
-

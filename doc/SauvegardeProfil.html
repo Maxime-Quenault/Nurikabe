@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class SauvegardeProfil - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-ajoutProfil">#ajoutProfil</a>
+    
+    <li ><a href="#method-i-changerParametre">#changerParametre</a>
+    
+    <li ><a href="#method-i-chargerProfil">#chargerProfil</a>
+    
+    <li ><a href="#method-i-getNbProfil">#getNbProfil</a>
+    
+    <li ><a href="#method-i-modifierAvatar">#modifierAvatar</a>
+    
+    <li ><a href="#method-i-sauvegarder">#sauvegarder</a>
+    
+    <li ><a href="#method-i-suppAllProfil">#suppAllProfil</a>
+    
+    <li ><a href="#method-i-supprimerProfil">#supprimerProfil</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-SauvegardeProfil">
+  <h1 id="class-SauvegardeProfil" class="class">
+    class SauvegardeProfil
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-listeProfil" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">listeProfil</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-nbProfil" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">nbProfil</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>()
+    <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-string">&quot;Sauvegarde/SauvegardeProfil/listeProfil.dump&quot;</span>))
+        <span class="ruby-ivar">@listeProfil</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-ivar">@nbProfil</span> = <span class="ruby-value">0</span>
+    <span class="ruby-keyword">else</span>  
+        <span class="ruby-ivar">@listeProfil</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">binread</span>(<span class="ruby-string">&quot;Sauvegarde/SauvegardeProfil/listeProfil.dump&quot;</span>))
+        <span class="ruby-ivar">@nbProfil</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getNbProfil</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-ajoutProfil" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ajoutProfil</span><span
+            class="method-args">(unProfil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ajoutProfil-source">
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajoutProfil</span>(<span class="ruby-identifier">unProfil</span>)
+    <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unProfil</span>.<span class="ruby-identifier">pseudo</span>)
+            <span class="ruby-keyword">return</span> <span class="ruby-value">-1</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;\n\nunProfil : #{unProfil}&quot;</span>
+    <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">unProfil</span>)    
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&quot;Sauvegarde/SauvegardeProfil/listeProfil.dump&quot;</span>, <span class="ruby-string">&quot;wb&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@listeProfil</span>)) }
+    <span class="ruby-ivar">@listeProfil</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">binread</span>(<span class="ruby-string">&quot;Sauvegarde/SauvegardeProfil/listeProfil.dump&quot;</span>))
+    <span class="ruby-ivar">@nbProfil</span> = <span class="ruby-ivar">@nbProfil</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-changerParametre" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">changerParametre</span><span
+            class="method-args">(unProfil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="changerParametre-source">
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 73</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">changerParametre</span>(<span class="ruby-identifier">unProfil</span>)
+    <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unProfil</span>.<span class="ruby-identifier">pseudo</span>)
+            <span class="ruby-identifier">key</span> = <span class="ruby-identifier">unProfil</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&quot;Sauvegarde/SauvegardeProfil/listeProfil.dump&quot;</span>, <span class="ruby-string">&quot;wb&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@listeProfil</span>)) }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-chargerProfil" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chargerProfil</span><span
+            class="method-args">(unPseudo)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="chargerProfil-source">
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">chargerProfil</span>(<span class="ruby-identifier">unPseudo</span>)
+    <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unPseudo</span>)
+            <span class="ruby-keyword">return</span> <span class="ruby-identifier">key</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-value">-1</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getNbProfil" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getNbProfil</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="getNbProfil-source">
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getNbProfil</span>
+    <span class="ruby-identifier">nombre</span> = <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">nombre</span> = <span class="ruby-identifier">nombre</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">nombre</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-modifierAvatar" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">modifierAvatar</span><span
+            class="method-args">(uneImage, profilActuel)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="modifierAvatar-source">
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">modifierAvatar</span>(<span class="ruby-identifier">uneImage</span>, <span class="ruby-identifier">profilActuel</span>)
+    <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">profilActuel</span>.<span class="ruby-identifier">pseudo</span>
+            <span class="ruby-identifier">key</span>.<span class="ruby-identifier">imageJoueur</span> = <span class="ruby-identifier">uneImage</span>                
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&quot;Sauvegarde/SauvegardeProfil/listeProfil.dump&quot;</span>, <span class="ruby-string">&quot;wb&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@listeProfil</span>)) }
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sauvegarder" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sauvegarder</span><span
+            class="method-args">(unProfil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="sauvegarder-source">
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sauvegarder</span>(<span class="ruby-identifier">unProfil</span>)
+    <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unProfil</span>.<span class="ruby-identifier">pseudo</span>)
+            <span class="ruby-identifier">key</span> = <span class="ruby-identifier">unProfil</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&quot;Sauvegarde/SauvegardeProfil/listeProfil.dump&quot;</span>, <span class="ruby-string">&quot;wb&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@listeProfil</span>)) }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-suppAllProfil" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">suppAllProfil</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="suppAllProfil-source">
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">suppAllProfil</span>
+    <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">supprimerProfil</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">print</span> <span class="ruby-ivar">@listeProfil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-supprimerProfil" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">supprimerProfil</span><span
+            class="method-args">(unProfil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="supprimerProfil-source">
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">supprimerProfil</span>(<span class="ruby-identifier">unProfil</span>)
+    <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unProfil</span>.<span class="ruby-identifier">pseudo</span>)
+            <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)    
+            <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&quot;Sauvegarde/SauvegardeProfil/listeProfil.dump&quot;</span>, <span class="ruby-string">&quot;wb&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@listeProfil</span>)) }
+            <span class="ruby-ivar">@listeProfil</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">binread</span>(<span class="ruby-string">&quot;Sauvegarde/SauvegardeProfil/listeProfil.dump&quot;</span>))
+            <span class="ruby-ivar">@nbProfil</span> = <span class="ruby-ivar">@nbProfil</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

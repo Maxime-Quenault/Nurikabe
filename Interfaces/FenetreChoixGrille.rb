@@ -111,11 +111,3 @@ class FenetreChoixGrille < Fenetre
     end
 
 end
-
-=begin
-if @@partie.grilleEnCours.matriceCases[i][j].is_a?(CaseNombre)
-    table.attach(Button.new(:label=> (@@partie.grilleEnCours.matriceCases[i][j].valeur).to_s), i, i+1, j, j+1)
-else
-    table.attach(Button.new(:label=> ""), i, i+1, j, j+1)
-end
-=end

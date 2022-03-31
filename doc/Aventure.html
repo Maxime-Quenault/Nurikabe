@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Aventure - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-creer">::creer</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-assezEtoiles-3F">#assezEtoiles?</a>
+    
+    <li ><a href="#method-i-choixDifficulte">#choixDifficulte</a>
+    
+    <li ><a href="#method-i-difficultePrecedente">#difficultePrecedente</a>
+    
+    <li ><a href="#method-i-difficulteSuivante">#difficulteSuivante</a>
+    
+    <li ><a href="#method-i-estDebloquee">#estDebloquee</a>
+    
+    <li ><a href="#method-i-etoilesEnPlus">#etoilesEnPlus</a>
+    
+    <li ><a href="#method-i-generationAventure">#generationAventure</a>
+    
+    <li ><a href="#method-i-getDifficulte">#getDifficulte</a>
+    
+    <li ><a href="#method-i-getEtoileCourante">#getEtoileCourante</a>
+    
+    <li ><a href="#method-i-getGrilleCourante">#getGrilleCourante</a>
+    
+    <li ><a href="#method-i-getPosCourante">#getPosCourante</a>
+    
+    <li ><a href="#method-i-getTempsCourant">#getTempsCourant</a>
+    
+    <li ><a href="#method-i-grillePrecedente">#grillePrecedente</a>
+    
+    <li ><a href="#method-i-placerSurGrille">#placerSurGrille</a>
+    
+    <li ><a href="#method-i-prochaineGrille">#prochaineGrille</a>
+    
+    <li ><a href="#method-i-setEtoileCourante">#setEtoileCourante</a>
+    
+    <li ><a href="#method-i-setPrecedent">#setPrecedent</a>
+    
+    <li ><a href="#method-i-setSuivant">#setSuivant</a>
+    
+    <li ><a href="#method-i-setTempsCourant">#setTempsCourant</a>
+    
+    <li ><a href="#method-i-unlockDifficulte">#unlockDifficulte</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Aventure">
+  <h1 id="class-Aventure" class="class">
+    class Aventure
+  </h1>
+
+  <section class="description">
+    
+<p>Définition de la classe <a href="Aventure.html"><code>Aventure</code></a></p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="DIFFICILE">DIFFICILE
+        
+        <dd>
+        
+      
+        <dt id="FACILE">FACILE
+        
+        <dd>
+        
+      
+        <dt id="MOYEN">MOYEN
+        
+        <dd>
+        
+      
+        <dt id="PALIER_HARD">PALIER_HARD
+        
+        <dd><p>entier qui définit le nombre d&#39;étoiles nécessaires pour débloquer la difficultée hard</p>
+        
+      
+        <dt id="PALIER_NORMAL">PALIER_NORMAL
+        
+        <dd><p>Consernant les valeurs des deux VI palier ci-dessous elles sont provisoires(test) -&gt; se mettre d&#39;accord plus tard entier qui définit le nombre d&#39;étoiles nécessaires pour débloquer la difficultée normale</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-desEtoiles" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">desEtoiles</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-desGrilles" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">desGrilles</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Coding Assistant pour faciliter les accès des différentes variables</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-desTemps" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">desTemps</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-difficuleAcquise" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">difficuleAcquise</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Coding Assistant pour faciliter les accès des différentes variables</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-difficulte" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">difficulte</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Coding Assistant pour faciliter les accès des différentes variables</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-nbEtoiles" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">nbEtoiles</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-posCourante" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">posCourante</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-precedenteDiff" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">precedenteDiff</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Coding Assistant pour faciliter les accès des différentes variables</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-suivanteDiff" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">suivanteDiff</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Coding Assistant pour faciliter les accès des différentes variables</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-creer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creer</span><span
+            class="method-args">(uneDifficulte)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>On définit notre propre façon de générer une <a href="Aventure.html"><code>Aventure</code></a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="creer-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Aventure</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">uneDifficulte</span>)
+  <span class="ruby-identifier">new</span>(<span class="ruby-identifier">uneDifficulte</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(uneDifficulte)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>on redéfinit la méthode initialize() pour générer l&#39;Aventure selon nos critères</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">uneDifficulte</span>)
+  <span class="ruby-identifier">@@nbEtoiles</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@desGrilles</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+  <span class="ruby-comment"># Tableau qui contiendra les étoiles de chaque grille</span>
+  <span class="ruby-ivar">@desEtoiles</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">10</span>,<span class="ruby-value">0</span>)
+  <span class="ruby-comment"># Tableau qui contiendra les temps de chaque grille</span>
+  <span class="ruby-ivar">@desTemps</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">10</span>,<span class="ruby-value">1000.00</span>)
+
+  <span class="ruby-ivar">@posCourante</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@difficulte</span> = <span class="ruby-identifier">uneDifficulte</span>
+  <span class="ruby-comment"># Ici on initialise le tableau de sorte que seule la première difficulté(Facile) soit débloquée</span>
+  <span class="ruby-identifier">@@difficulteAcquise</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+  <span class="ruby-identifier">@@difficulteAcquise</span>[<span class="ruby-value">0</span>] = <span class="ruby-keyword">true</span>
+  <span class="ruby-identifier">@@difficulteAcquise</span>[<span class="ruby-value">1</span>] = <span class="ruby-identifier">@@difficulteAcquise</span>[<span class="ruby-value">2</span>] = <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-assezEtoiles-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">assezEtoiles?</span><span
+            class="method-args">(unNombre)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>On veut savoir si le joueur a assez d&#39;étoiles comparé à un certain montant : Retourne true si le joueur en a assez, false sinon</p>
+          
+          
+
+          
+          <div class="method-source-code" id="assezEtoiles-3F-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 200</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">assezEtoiles?</span>(<span class="ruby-identifier">unNombre</span>)
+  <span class="ruby-keyword">return</span> (<span class="ruby-identifier">@@nbEtoiles</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">unNombre</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-choixDifficulte" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">choixDifficulte</span><span
+            class="method-args">(uneDiff)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Le joueur choisit une difficulte 0 -&gt; Facile 1 -&gt; Normal 2 -&gt; Hard</p>
+          
+          
+
+          
+          <div class="method-source-code" id="choixDifficulte-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 208</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">choixDifficulte</span>(<span class="ruby-identifier">uneDiff</span>)
+  <span class="ruby-keyword">return</span>((<span class="ruby-identifier">uneDiff</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">uneDiff</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">3</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">@@difficulteAcquise</span>[<span class="ruby-identifier">uneDiff</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-difficultePrecedente" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">difficultePrecedente</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>On se déplace sur l&#39;aventure de difficulté inférieure</p>
+          
+          
+
+          
+          <div class="method-source-code" id="difficultePrecedente-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 174</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">difficultePrecedente</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@precedenteDiff</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@precedenteDiff</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-difficulteSuivante" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">difficulteSuivante</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>On se déplace sur l&#39;aventure de difficulté supérieure</p>
+          
+          
+
+          
+          <div class="method-source-code" id="difficulteSuivante-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 181</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">difficulteSuivante</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@suivanteDiff</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@suivanteDiff</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-estDebloquee" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">estDebloquee</span><span
+            class="method-args">(uneDiff)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode qui renvoie un booléen permettant de savoir si la difficulte est débloquée ou non</p>
+          
+          
+
+          
+          <div class="method-source-code" id="estDebloquee-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 194</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estDebloquee</span>(<span class="ruby-identifier">uneDiff</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">@@difficulteAcquise</span>[<span class="ruby-identifier">uneDiff</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-etoilesEnPlus" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">etoilesEnPlus</span><span
+            class="method-args">(desEtoiles)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Le joueur a terminé sa grille et obtient des étoiles : ces étoiles sont ajoutées à son compteur</p>
+          
+          
+
+          
+          <div class="method-source-code" id="etoilesEnPlus-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 189</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">etoilesEnPlus</span>(<span class="ruby-identifier">desEtoiles</span>)
+  <span class="ruby-identifier">@@nbEtoiles</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">desEtoiles</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-generationAventure" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">generationAventure</span><span
+            class="method-args">(nbNiveau,uneDiff)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Pour générer l&#39;aventure(suite de niveaux), on fait appel à la classe <a href="Grille.html"><code>Grille</code></a> pour générer les niveaux</p>
+          
+          
+
+          
+          <div class="method-source-code" id="generationAventure-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">generationAventure</span>(<span class="ruby-identifier">nbNiveau</span>,<span class="ruby-identifier">uneDiff</span>)
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">nbNiveau</span>
+    <span class="ruby-ivar">@desGrilles</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>()
+    <span class="ruby-ivar">@desGrilles</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">chargerGrille</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">uneDiff</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getDifficulte" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getDifficulte</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="getDifficulte-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 169</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getDifficulte</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@difficulte</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getEtoileCourante" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getEtoileCourante</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;accès en lecture de la position courante</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getEtoileCourante-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 135</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getEtoileCourante</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@desEtoiles</span>[<span class="ruby-ivar">@posCourante</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getGrilleCourante" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getGrilleCourante</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;accès en lecture de la grille courante</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getGrilleCourante-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 165</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getGrilleCourante</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@desGrilles</span>[<span class="ruby-ivar">@posCourante</span>];
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getPosCourante" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getPosCourante</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;accès en lecture de la position courante sur le plateau</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getPosCourante-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getPosCourante</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@posCourante</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getTempsCourant" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getTempsCourant</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;accès en lecture du temps de la grille actuelle</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getTempsCourant-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 148</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getTempsCourant</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@desTemps</span>[<span class="ruby-ivar">@posCourante</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-grillePrecedente" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">grillePrecedente</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>On se déplace sur le plateau du mode <a href="Aventure.html"><code>Aventure</code></a> : ici on recule et on retourne au niveau précédent</p>
+          
+          
+
+          
+          <div class="method-source-code" id="grillePrecedente-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 113</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">grillePrecedente</span>
+  <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@posCourante</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+    <span class="ruby-ivar">@posCourante</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-placerSurGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">placerSurGrille</span><span
+            class="method-args">(numero)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>On se déplace sur le plateau du mode <a href="Aventure.html"><code>Aventure</code></a> : ici on se place sur un niveau précis</p>
+          
+          
+
+          
+          <div class="method-source-code" id="placerSurGrille-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 127</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">placerSurGrille</span>(<span class="ruby-identifier">numero</span>)
+  <span class="ruby-keyword">if</span>((<span class="ruby-identifier">numero</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">numero</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@desGrilles</span>.<span class="ruby-identifier">length</span>()))
+    <span class="ruby-ivar">@posCourante</span> = <span class="ruby-identifier">numero</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">print</span>(<span class="ruby-node">&quot;\n position courante : #{@posCourante}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-prochaineGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">prochaineGrille</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>On se déplace sur le plateau du mode <a href="Aventure.html"><code>Aventure</code></a> : ici on avance et on va au niveau suivant</p>
+          
+          
+
+          
+          <div class="method-source-code" id="prochaineGrille-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 120</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prochaineGrille</span>
+  <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@posCourante</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">9</span>)
+    <span class="ruby-ivar">@posCourante</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setEtoileCourante" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setEtoileCourante</span><span
+            class="method-args">(unNombre)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;accès en écriture du nombre d&#39;étoiles de la grille</p>
+          
+          
+
+          
+          <div class="method-source-code" id="setEtoileCourante-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 140</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setEtoileCourante</span>(<span class="ruby-identifier">unNombre</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">unNombre</span> <span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getEtoileCourante</span>())
+    <span class="ruby-identifier">etoilesEnPlus</span>(<span class="ruby-identifier">unNombre</span> <span class="ruby-operator">-</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getEtoileCourante</span>())
+    <span class="ruby-ivar">@desEtoiles</span>[<span class="ruby-ivar">@posCourante</span>] = <span class="ruby-identifier">unNombre</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setPrecedent" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setPrecedent</span><span
+            class="method-args">(aventurePreced)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Lien entre les différentes aventures Méthode d&#39;accès en ecriture qui édite le lien de cette aventure avec la précédente(si il y en a)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="setPrecedent-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setPrecedent</span>(<span class="ruby-identifier">aventurePreced</span>)
+    <span class="ruby-ivar">@precedenteDiff</span> = <span class="ruby-identifier">aventurePreced</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setSuivant" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setSuivant</span><span
+            class="method-args">(aventureSuiv)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;accès en ecriture qui édite le lien de cette aventure avec la suivante(si il y en a)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="setSuivant-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setSuivant</span>(<span class="ruby-identifier">aventureSuiv</span>)
+  <span class="ruby-ivar">@suivanteDiff</span> = <span class="ruby-identifier">aventureSuiv</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setTempsCourant" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setTempsCourant</span><span
+            class="method-args">(unTemps)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;accès en écriture du temps de la grille actuelle</p>
+          
+          
+
+          
+          <div class="method-source-code" id="setTempsCourant-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 153</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setTempsCourant</span>(<span class="ruby-identifier">unTemps</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">unTemps</span> <span class="ruby-operator">&lt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getTempsCourant</span>())
+    <span class="ruby-ivar">@desTemps</span>[<span class="ruby-ivar">@posCourante</span>] = <span class="ruby-identifier">unTemps</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-unlockDifficulte" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">unlockDifficulte</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Le joueur souhaite débloquer une difficulté : On verifie d&#39;abord qu&#39;il ne l&#39;a pas déjà débloquée et ensuite son nombre d&#39;étoiles On affiche un message selon si il possède ou non assez d&#39;étoiles, et si c&#39;est le cas on actualise le tableau des difficultés acquises</p>
+          
+          
+
+          
+          <div class="method-source-code" id="unlockDifficulte-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 215</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unlockDifficulte</span>
+  <span class="ruby-comment"># Dans le cas où seule la difficulté Facile est débloquée</span>
+  <span class="ruby-keyword">if</span>((<span class="ruby-ivar">@difficulte</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">@@difficulteAcquise</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>))
+    <span class="ruby-keyword">if</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">assezEtoiles?</span>(<span class="ruby-constant">PALIER_NORMAL</span>))
+      <span class="ruby-identifier">@@difficulteAcquise</span>[<span class="ruby-value">1</span>] = <span class="ruby-keyword">true</span>;
+      <span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;\nBravo tu viens de débloquer la difficulté Normal !&quot;</span>)
+      <span class="ruby-keyword">return</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;\nTu ne possèdes pas assez d&#39;étoiles pour débloquer cette difficulté...\nRefais d&#39;autres niveaux.&quot;</span>)
+      <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">elsif</span>((<span class="ruby-identifier">@@difficulteAcquise</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">@@difficulteAcquise</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>))
+    <span class="ruby-comment"># Dans le cas où la difficulté Normal est débloquée</span>
+      <span class="ruby-keyword">if</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">assezEtoiles?</span>(<span class="ruby-constant">PALIER_HARD</span>))
+        <span class="ruby-identifier">@@difficulteAcquise</span>[<span class="ruby-value">2</span>] = <span class="ruby-keyword">true</span>
+        <span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;\nBravo tu viens de débloquer la difficulté Hard !&quot;</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-value">2</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;\nTu ne possèdes pas assez d&#39;étoiles pour débloquer cette difficulté...\nRefais d&#39;autres niveaux.&quot;</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

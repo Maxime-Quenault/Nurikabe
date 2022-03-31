@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Langue - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-creer">::creer</a>
+    
+    <li ><a href="#method-c-getInstance">::getInstance</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-enregistreTmp">#enregistreTmp</a>
+    
+    <li ><a href="#method-i-getText">#getText</a>
+    
+    <li ><a href="#method-i-utiliseLaLangue">#utiliseLaLangue</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Langue">
+  <h1 id="class-Langue" class="class">
+    class Langue
+  </h1>
+
+  <section class="description">
+    
+<p>Classe qui va gérer le choix d&#39;une langue une fois l&#39;appplication lancée (pas besoin de la redémarrer)</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-dictionnaire" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">dictionnaire</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Table de hashage permettant d&#39;accéder au texte traduit dans différentes langues</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-langueActuelle" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">langueActuelle</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="Langue.html"><code>Langue</code></a> actuelle</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-langues" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">langues</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Tableau qui contient les langues (anglais seulement pour l&#39;instant)</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-creer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creer</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode de création d&#39;une langue La création se fera en SINGLETON, c&#39;est-à-dire qu&#39;on va s&#39;assurer de l&#39;exsitence  d&#39;un seul objet de son genre et fournir un unique point d&#39;accès vers cet objet</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creer-source">
+            <pre><span class="ruby-comment"># File Parametre/Langue.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Langue</span>.<span class="ruby-identifier ruby-title">creer</span>()
+    <span class="ruby-keyword">if</span>( <span class="ruby-identifier">@@uneInstance</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> )
+        <span class="ruby-identifier">@@uneInstance</span> = <span class="ruby-identifier">new</span>
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">@@uneInstance</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-getInstance" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getInstance</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Getter de l&#39;unique instance</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getInstance-source">
+            <pre><span class="ruby-comment"># File Parametre/Langue.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">getInstance</span>()
+    <span class="ruby-identifier">@@uneInstance</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;initialisation de l&#39;instance de <a href="Langue.html"><code>Langue</code></a> Cette méthode sera appelée uniquement si la sauvegarde ne possède pas de langue</p>
+
+<pre>==&gt; inexistante ou corrompue</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Parametre/Langue.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>()
+
+    <span class="ruby-comment">###########</span>
+    <span class="ruby-comment"># ANGLAIS #</span>
+    <span class="ruby-comment">###########</span>
+
+    <span class="ruby-ivar">@dictionnaire</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;LIBRE&quot;</span>] = <span class="ruby-string">&quot;Free play&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;CONTRELAMONTRE&quot;</span>] = <span class="ruby-string">&quot;Time trial&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;SURVIE&quot;</span>] = <span class="ruby-string">&quot;Survival&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;TUTORIEL&quot;</span>] = <span class="ruby-string">&quot;Tutorial&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;CLASSEMENT&quot;</span>] = <span class="ruby-string">&quot;Ranking&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;PARAMETRES&quot;</span>] = <span class="ruby-string">&quot;Settings&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;A_PROPOS&quot;</span>] = <span class="ruby-string">&quot;About&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;QUITTER&quot;</span>] = <span class="ruby-string">&quot;Quit&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;FACILE&quot;</span>] = <span class="ruby-string">&quot;Easy&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MENU&quot;</span>] = <span class="ruby-string">&quot;Menu&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MOYEN&quot;</span>] = <span class="ruby-string">&quot;Medium&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;DIFFICILE&quot;</span>] = <span class="ruby-string">&quot;Hard&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MEILLEUR_SCORE&quot;</span>] = <span class="ruby-string">&quot;Best Score&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ACTUALISER&quot;</span>] = <span class="ruby-string">&quot;Refresh&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;RETOUR&quot;</span>] = <span class="ruby-string">&quot;Back&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;JEU&quot;</span>] = <span class="ruby-string">&quot;Game&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;UTILISATEUR&quot;</span>] = <span class="ruby-string">&quot;User&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;INTERFACE&quot;</span>] = <span class="ruby-string">&quot;Interface&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;REGLES&quot;</span>] = <span class="ruby-string">&quot;Rules&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;AUDIO&quot;</span>] = <span class="ruby-string">&quot;Audio&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;GRILLE&quot;</span>] = <span class="ruby-string">&quot;Grid&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;PARTIE&quot;</span>] = <span class="ruby-string">&quot;Game&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;AUCUN_RECORD&quot;</span>] = <span class="ruby-string">&quot;No record&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;GRILLES&quot;</span>] = <span class="ruby-string">&quot;Grids&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MON_SCORE&quot;</span>] = <span class="ruby-string">&quot;My time     &quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;CASESGRISES&quot;</span>] = <span class="ruby-string">&quot;Grey cells&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;COMPTEURILOTS&quot;</span>] = <span class="ruby-string">&quot;Island counter&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;AFFICHERPORTER&quot;</span>] = <span class="ruby-string">&quot;Island range&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MURS2x2&quot;</span>] = <span class="ruby-string">&quot;2x2 Walls&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;SUPPRIMER_SAUVEGARDE_PARTIE_EN_COURS&quot;</span>] = <span class="ruby-string">&quot;Delete current game saves&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;RESET_PARAMETRE&quot;</span>] = <span class="ruby-string">&quot;Reset to default settings&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MODESOMBRE&quot;</span>] = <span class="ruby-string">&quot;Dark mode&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;CHOISIRLANGUE&quot;</span>] = <span class="ruby-string">&quot;Choose language&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;IMPORTERLANGUE&quot;</span>] = <span class="ruby-string">&quot;Import language&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;SELECTION_MODE_LIBRE&quot;</span>] = <span class="ruby-string">&quot;Grid selection&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;PARTIE_LIBRE&quot;</span>] = <span class="ruby-string">&quot;Free play game&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;PARTIE_CLM&quot;</span>] = <span class="ruby-string">&quot;Time trial game&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;OK&quot;</span>] = <span class="ruby-string">&quot;Ok&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;PARTIE_SURVIE&quot;</span>] = <span class="ruby-string">&quot;Survival game&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;OUI&quot;</span>] = <span class="ruby-string">&quot;Yes&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;NON&quot;</span>] = <span class="ruby-string">&quot;No&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;REPRENDRE_SAUVEGARDE&quot;</span>] = <span class="ruby-string">&quot;Do you want to resume your saving ?&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;PARTIE_TUTORIEL&quot;</span>] = <span class="ruby-string">&quot;Tutorial&quot;</span>
+
+    <span class="ruby-comment"># Technique de résolution</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ILE_1&quot;</span>] = <span class="ruby-string">&quot;There is a cell next to an island with a value of 1, so it cannot be white&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ILE_ADJACENTE&quot;</span>] = <span class="ruby-string">&quot;There is a cell next to two islands, so it cannot be white otherwise the two islands would touch&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ILE_ADJACENTE_DIAG&quot;</span>] =<span class="ruby-string">&quot;There is a cell next to two islands, so it cannot be white otherwise the two islands would touch&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ILE_COMPLETE&quot;</span>] = <span class="ruby-string">&quot;There is a cell next to a completed island, so it cannot be white otherwise the island would be too big&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;CASE_ISOLEE&quot;</span>] = <span class="ruby-string">&quot;There is an isolated cell: there is no path connecting it to an island&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;EXPENSION_MUR&quot;</span>] = <span class="ruby-string">&quot;There is a wall that has only one way to expand to prevent it from being isolated&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;CONTINUITE_MUR&quot;</span>] = <span class="ruby-string">&quot;There is a cell that has to be expanded to prevent two walls from being separated&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;EXPENSION_ILE&quot;</span>] = <span class="ruby-string">&quot;There is a island that has onlu one way to expand in order to get developed&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;EXPENSION_2D&quot;</span>] = <span class="ruby-string">&quot;There is an almost finished island that can only expand in two direcitons, both having an adjacent cell in common that cannot be white&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;EXPENSION_CACHEE&quot;</span>] = <span class="ruby-string">&quot;There is a cell that has to be expanded for an island to develop enough&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;EVITER_2x2&quot;</span>] = <span class="ruby-string">&quot;There is almost a 2x2 wall block, so the remaining cell cannot be black&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;CONTINUITE_ILE&quot;</span>] = <span class="ruby-string">&quot;A white cell not connected to an island has to go through a cell to get to the island&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ILE_INATTEIGNABLE&quot;</span>] = <span class="ruby-string">&quot;A cell is too far from any island and cannot be reached&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MSG_REGLE_ILE&quot;</span>] = <span class="ruby-string">&quot;An island of size 4 must contain 4\nwhite cells surrounded by a black wall&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MSG_REGLE_MUR&quot;</span>] = <span class="ruby-string">&quot;The black wall must surround the\nislands and be continuous&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MSG_REGLE_2x2&quot;</span>] = <span class="ruby-string">&quot;The black wall cannot form 2x2 blocks&quot;</span>
+
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;APROPOSCONTENT&quot;</span>] = <span class="ruby-string">&quot;
+            Nurikabe is a Japanese puzzle in the style of sudoku.
+            
+            This game, sometimes called \&quot;island in the stream\&quot;, is a binary solving puzzle.
+            
+            One can decide, for each cell, if it is white or black according to very precise rules.
+            
+            The puzzle is solved on a rectangular grid of cells, some of which contain numbers.
+            
+            Two cells are connected if they are adjacent vertically or horizontally,
+            but not diagonally.
+            
+            The white cells constitute the islands while the connected black cells constitute the
+            the river.
+            
+            The player scores cells without numbers that he is sure belong to an island with one point.
+            belong to an island.
+            
+            This application was developed within the framework of a university project by :
+            
+                LEBOUC Julian
+                LOCHAIN Alexandre
+                MORICEAU Bastien
+                NOLIÈRE Alexis
+                QUENAULT Maxime
+                SANNA Florian
+                SCHERRER Arthur
+                TROTTIER Léo
+                VANNIER Allan
+    &quot;</span>
+    <span class="ruby-identifier">enregistreTmp</span>(<span class="ruby-string">&quot;../Parametres/EN_en.dump&quot;</span>)
+
+
+    <span class="ruby-comment">############</span>
+    <span class="ruby-comment"># FRANCAIS #</span>
+    <span class="ruby-comment">############</span>
+
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;LIBRE&quot;</span>] = <span class="ruby-string">&quot;Libre&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;CONTRELAMONTRE&quot;</span>] = <span class="ruby-string">&quot;Contre-La-Montre&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;SURVIE&quot;</span>] = <span class="ruby-string">&quot;Survie&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;TUTORIEL&quot;</span>] = <span class="ruby-string">&quot;Tutoriel&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;CLASSEMENT&quot;</span>] = <span class="ruby-string">&quot;Classement&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MENU&quot;</span>] = <span class="ruby-string">&quot;Menu&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;PARAMETRES&quot;</span>] = <span class="ruby-string">&quot;Paramètres&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;A_PROPOS&quot;</span>] = <span class="ruby-string">&quot;À Propos&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;QUITTER&quot;</span>] = <span class="ruby-string">&quot;Quitter&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;FACILE&quot;</span>] = <span class="ruby-string">&quot;Facile&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MOYEN&quot;</span>] = <span class="ruby-string">&quot;Moyen&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;DIFFICILE&quot;</span>] = <span class="ruby-string">&quot;Difficle&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MEILLEUR_SCORE&quot;</span>] = <span class="ruby-string">&quot;Meilleur Score&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ACTUALISER&quot;</span>] = <span class="ruby-string">&quot;Actualiser&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;RETOUR&quot;</span>] = <span class="ruby-string">&quot;Retour&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;JEU&quot;</span>] = <span class="ruby-string">&quot;Jeu&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;UTILISATEUR&quot;</span>] = <span class="ruby-string">&quot;Utilisateur&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;INTERFACE&quot;</span>] = <span class="ruby-string">&quot;Interface&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;REGLES&quot;</span>] = <span class="ruby-string">&quot;Règles&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;AUDIO&quot;</span>] = <span class="ruby-string">&quot;Audio&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;GRILLE&quot;</span>] = <span class="ruby-string">&quot;Grille&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;PARTIE&quot;</span>] = <span class="ruby-string">&quot;Partie&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;AUCUN_RECORD&quot;</span>] = <span class="ruby-string">&quot;Aucun record&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;GRILLES&quot;</span>] = <span class="ruby-string">&quot;Grilles&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MON_SCORE&quot;</span>] = <span class="ruby-string">&quot;Mon temps&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;CASESGRISES&quot;</span>] = <span class="ruby-string">&quot;Cases grises&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;COMPTEURILOTS&quot;</span>] = <span class="ruby-string">&quot;Compteur d&#39;île&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;AFFICHERPORTER&quot;</span>] = <span class="ruby-string">&quot;Portée d&#39;île&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MURS2x2&quot;</span>] = <span class="ruby-string">&quot;Murs 2x2&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;SUPPRIMER_SAUVEGARDE_PARTIE_EN_COURS&quot;</span>] = <span class="ruby-string">&quot;Supprimer les sauvegardes de parties en cours&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;RESET_PARAMETRE&quot;</span>] = <span class="ruby-string">&quot;Remettre les paramètres par défaut&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MODESOMBRE&quot;</span>] = <span class="ruby-string">&quot;Mode sombre&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;CHOISIRLANGUE&quot;</span>] = <span class="ruby-string">&quot;Choisir langue&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;IMPORTERLANGUE&quot;</span>] = <span class="ruby-string">&quot;Importer langue&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;SELECTION_MODE_LIBRE&quot;</span>] = <span class="ruby-string">&quot;Selection de grille&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;PARTIE_LIBRE&quot;</span>] = <span class="ruby-string">&quot;Partie libre&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;PARTIE_CLM&quot;</span>] = <span class="ruby-string">&quot;Partie contre-la-montre&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;OK&quot;</span>] = <span class="ruby-string">&quot;Ok&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;PARTIE_SURVIE&quot;</span>] = <span class="ruby-string">&quot;Partie survie&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;OUI&quot;</span>] = <span class="ruby-string">&quot;Oui&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;NON&quot;</span>] = <span class="ruby-string">&quot;Non&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;REPRENDRE_SAUVEGARDE&quot;</span>] = <span class="ruby-string">&quot;Voulez-vous reprendre la sauvegarde ?&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;PARTIE_TUTORIEL&quot;</span>] = <span class="ruby-string">&quot;Tutoriel&quot;</span>
+
+    <span class="ruby-comment"># Technique de résolution</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ILE_1&quot;</span>] = <span class="ruby-string">&quot;Il existe une case adjacente à une île de valeur 1, et qui ne peut donc pas être blanche&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ILE_ADJACENTE&quot;</span>] = <span class="ruby-string">&quot;Il existe une case adjacente à deux îles, elle ne peut donc pas être blanche sinon les deux îles seraient collées&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ILE_ADJACENTE_DIAG&quot;</span>] =<span class="ruby-string">&quot;Il existe une case adjacente à deux îles, elle ne peut donc pas être blanche sinon les deux îles seraient collées&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ILE_COMPLETE&quot;</span>] = <span class="ruby-string">&quot;Il existe une case adjacente à une île complète, elle ne peut donc pas être blanche, sinon l&#39;île déborderait&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;CASE_ISOLEE&quot;</span>] = <span class="ruby-string">&quot;Il existe une case isolée : il n&#39;y a aucun chemin qui la mène vers une île&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;EXPENSION_MUR&quot;</span>] = <span class="ruby-string">&quot;Il existe une case d&#39;expansion obligée pour éviter qu&#39;un mur se retrouve isolé&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;CONTINUITE_MUR&quot;</span>] = <span class="ruby-string">&quot;Il existe une case d&#39;expansion obligée pour éviter que deux murs soient séparés&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;EXPENSION_ILE&quot;</span>] = <span class="ruby-string">&quot;Il existe une case d&#39;expansion obligée pour qu&#39;une île se développe&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;EXPENSION_2D&quot;</span>] = <span class="ruby-string">&quot;Il existe une île presque terminée qui ne peut s&#39;étendre que dans deux direction, les deux ayant une case adjacente en commun qui ne pourra donc pas être blanche&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;EXPENSION_CACHEE&quot;</span>] = <span class="ruby-string">&quot;Il existe une case d&#39;expansion obligée pour qu&#39;une île se dévelope assez&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;EVITER_2x2&quot;</span>] = <span class="ruby-string">&quot;Il y a un presque un bloc de mur 2x2, la case restante ne peut donc pas être noire&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;CONTINUITE_ILE&quot;</span>] = <span class="ruby-string">&quot;Une case blanche qui n&#39;est pas reliée à une île passe nécessairement par une case pour rejoindre l&#39;île&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ILE_INATTEIGNABLE&quot;</span>] = <span class="ruby-string">&quot;Une case est trop loin de toute île et est donc inatteignable&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MSG_REGLE_ILE&quot;</span>] = <span class="ruby-string">&quot;Une île de taille 4 doit être constituée de 4\ncases blanches entourées de murs noirs.&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MSG_REGLE_MUR&quot;</span>] = <span class="ruby-string">&quot;Le mur de cases noires doit entourer\nles îles et être ininterrompu&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MSG_REGLE_2x2&quot;</span>] = <span class="ruby-string">&quot;Le mur de cases noires ne doit pas\nformer de carrés de taille 2x2&quot;</span>
+
+    <span class="ruby-comment"># TUTORIEL</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;MSG_DEBUT_TUTO&quot;</span>] = <span class="ruby-string">&quot;Bienvenue sur le tutoriel du Nurikabe !\nIci, nous allons te donner toutes les clés pour devenir un as de ce jeu.\nTu pourras survoler les boutons afin de découvrir à quoi ils servent.\nLes règles de base sont disponibles dans les paramètres.\nC&#39;est parti !&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ETAPE_1_TUTO&quot;</span>] = <span class="ruby-string">&quot;Premièrement, deux îles ne peuvent pas être connectées.\nElles sont forcément séparées par une case noire.&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ETAPE_2_TUTO&quot;</span>] = <span class="ruby-string">&quot;Lorsqu&#39;une île a un indice de 1 (sa taille = 1), elle est automatiquement complète et doit être entourée de cases noires.&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ETAPE_3_TUTO&quot;</span>] =  <span class="ruby-string">&quot;Les cases entourées de murs sont isolées et ne peuvent pas appartenir à une île et doivent donc être colorés en noir.&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ETAPE_4_TUTO&quot;</span>] =  <span class="ruby-string">&quot;Tous les murs doivent former un chemin continu.\nIl ne peut pas y avoir un groupe de murs isolé.&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ETAPE_5_TUTO&quot;</span>] = <span class="ruby-string">&quot;Une des règles du Nurikabe interdit les murs de 2x2 cases.\nCette configuration est donc impossible.&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ETAPE_6_TUTO&quot;</span>] = <span class="ruby-string">&quot;Ces cases ne sont atteignables car elles se situent trop loin des îles.\nElle font donc partie d&#39;un mur et doivent être noires.&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ETAPE_7_TUTO&quot;</span>] = <span class="ruby-string">&quot;Lorsque 2 îles sont adjacentes en diagonale, les cases adjacentes en communs doivent être blanches pour éviter que les îles soient liées&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ETAPE_8_TUTO&quot;</span>] = <span class="ruby-string">&quot;S&#39;il ne reste qu&#39;une case pour compléter une île et qu&#39;elle ne peut s&#39;extendre que dans deux directions perpendiculaires, la case située en diagonale doit être noire car elle est adjacentes aux deux possibilités d&#39;expansion.&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ETAPE_10_TUTO&quot;</span>] = <span class="ruby-string">&quot;Lorsqu&#39;un carré de mur 2x2 est presque formé, la case restante doit être coloriée en blanc pour éviter le carré noir.&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;ETAPE_11_TUTO&quot;</span>] = <span class="ruby-string">&quot;Une île complète doit être entourée de cases noires&quot;</span>
+
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;POPUP_REGLAGES&quot;</span>] = <span class="ruby-string">&quot;Réglages&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;POPUP_UNDO&quot;</span>] = <span class="ruby-string">&quot;Retour arrière&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;POPUP_REDO&quot;</span>] = <span class="ruby-string">&quot;Retour avant&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;POPUP_UNDOUNDO&quot;</span>] = <span class="ruby-string">&quot;Retour dernière fois sans erreur&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;POPUP_PLAY&quot;</span>] = <span class="ruby-string">&quot;Reprendre la partie&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;POPUP_PAUSE&quot;</span>] = <span class="ruby-string">&quot;Mettre en pause&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;POPUP_HELP&quot;</span>] = <span class="ruby-string">&quot;Demander une aide&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;POPUP_HELPLOCATION&quot;</span>] = <span class="ruby-string">&quot;Afficher la localisation de l&#39;erreur&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;POPUP_CLEAR&quot;</span>] = <span class="ruby-string">&quot;Réinitialiser la grille&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;POPUP_CHECK&quot;</span>] = <span class="ruby-string">&quot;Vérifier la grille&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;POPUP_QUIT&quot;</span>] = <span class="ruby-string">&quot;Quitter la partie&quot;</span>
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-string">&quot;APROPOSCONTENT&quot;</span>] = <span class="ruby-string">&quot;
+        Le Nurikabe est un puzzle japonais dans le style du sudoku.
+        
+        Ce jeu, quelquefois appelé « ilot dans le courant », est un puzzle à résolution binaire.
+        
+        On peut décider, pour chaque cellule, si elle est blanche ou noir en fonction de règles
+        bien précises.
+        
+        Le puzzle se résout sur une grille rectangulaire de cellules, dont certaines contiennent
+        des nombres.
+        
+        Deux cellules sont connectées si elles sont adjacentes verticalement ou horizontalement,
+        mais pas en diagonale.
+        
+        Les cellules blanches constituent les îlots alors que les cellules noires connectées constituent
+        le fleuve.
+        
+        Le joueur marque d&#39;un point les cellules sans numéro dont il est sûr qu&#39;elles appartiennent
+        à un îlot.
+        
+        Cette application a été dévelopée dans le cadre d&#39;un projet universitaire par :
+            
+            LEBOUC Julian
+            LOCHAIN Alexandre
+            MORICEAU Bastien
+            NOLIÈRE Alexis
+            QUENAULT Maxime
+            SANNA Florian
+            SCHERRER Arthur
+            TROTTIER Léo
+            VANNIER Allan
+    &quot;</span>
+  <span class="ruby-identifier">enregistreTmp</span>(<span class="ruby-string">&quot;../Parametres/FR_fr.dump&quot;</span>)
+
+  <span class="ruby-ivar">@langues</span> = [ <span class="ruby-string">&quot;Français&quot;</span> , <span class="ruby-string">&quot;Anglais&quot;</span> ]
+  <span class="ruby-ivar">@fichiersLangues</span> = [ <span class="ruby-string">&quot;../Parametres/FR_fr.dump&quot;</span> , <span class="ruby-string">&quot;../Parametres/EN_en.dump&quot;</span> ]
+  <span class="ruby-ivar">@langueActuelle</span> = <span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-enregistreTmp" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">enregistreTmp</span><span
+            class="method-args">( unChemin )</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Enregistrement d&#39;un dictionnaire contenant une langue donnée</p>
+
+<pre>1 paramètre :
+    unChemin ==&gt; chemin ou les données doivent être enregistrées</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="enregistreTmp-source">
+            <pre><span class="ruby-comment"># File Parametre/Langue.rb, line 299</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enregistreTmp</span>( <span class="ruby-identifier">unChemin</span> )
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>( <span class="ruby-identifier">unChemin</span> , <span class="ruby-string">&quot;wb&quot;</span> ){ <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>( <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@dictionnaire</span>) ) }
+    <span class="ruby-ivar">@dictionnaire</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>( <span class="ruby-constant">File</span>.<span class="ruby-identifier">binread</span>( <span class="ruby-identifier">unChemin</span> ) )
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getText" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getText</span><span
+            class="method-args">( unTexte )</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Renvoie le texte lié à la clé de hashage, ou INDEFINI si ce dernier n&#39;existe pas</p>
+
+<pre>1 paramètre :
+    unTexte ==&gt; texte à renvoyer</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="getText-source">
+            <pre><span class="ruby-comment"># File Parametre/Langue.rb, line 309</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getText</span>( <span class="ruby-identifier">unTexte</span> )
+    <span class="ruby-keyword">if</span>( <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-identifier">unTexte</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> )
+            <span class="ruby-string">&quot;INDEFINI&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">unTexte</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-ivar">@dictionnaire</span>[<span class="ruby-identifier">unTexte</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-utiliseLaLangue" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">utiliseLaLangue</span><span
+            class="method-args">( unId )</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Mise à jour de la langue</p>
+
+<pre>Paramètres :
+     - id ==&gt; id de la langue dans la table de hashage</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="utiliseLaLangue-source">
+            <pre><span class="ruby-comment"># File Parametre/Langue.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">utiliseLaLangue</span>( <span class="ruby-identifier">unId</span> )
+    <span class="ruby-ivar">@dictionnaire</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>( <span class="ruby-constant">File</span>.<span class="ruby-identifier">binread</span>( <span class="ruby-ivar">@fichiersLangues</span>[<span class="ruby-identifier">unId</span>] ) )
+    <span class="ruby-ivar">@langueActuelle</span> = <span class="ruby-identifier">unId</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

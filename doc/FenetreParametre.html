@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class FenetreParametre - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Fenetre.html">Fenetre</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-gestionSignaux">#gestionSignaux</a>
+    
+    <li ><a href="#method-i-onChange_parametre">#onChange_parametre</a>
+    
+    <li ><a href="#method-i-onChange_switchAudio">#onChange_switchAudio</a>
+    
+    <li ><a href="#method-i-onChange_switchTheme">#onChange_switchTheme</a>
+    
+    <li ><a href="#method-i-onSwitchAudio_activated">#onSwitchAudio_activated</a>
+    
+    <li ><a href="#method-i-onSwitchTheme_activated">#onSwitchTheme_activated</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-FenetreParametre">
+  <h1 id="class-FenetreParametre" class="class">
+    class FenetreParametre
+  </h1>
+
+  <section class="description">
+    <dl class="rdoc-list note-list"><dt>La classe AffichageParamètre :
+<dd><ul><li>
+<p>peut afficher l&#39;interface qui va gérer la langue</p>
+</li><li>
+<p>peut afficher l&#39;interface qui va gérer les couleurs</p>
+</li><li>
+<p>peut afficher l&#39;interface qui va gérer les effets sonores</p>
+</li><li>
+<p>peut afficher l&#39;interface qui va gérer les profils</p>
+</li><li>
+<p>peut changer la couleur du thème</p>
+</li><li>
+<p>peut activer/désactiver les effets sonores</p>
+</li><li>
+<p>permet à l&#39;utilisateur de gérer les profils</p>
+</li></ul>
+</dd></dl>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-object" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">object</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-save" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">save</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(menuParent)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;initialisation de la classe <a href="FenetreParametre.html"><code>FenetreParametre</code></a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">menuParent</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiseToi</span>
+    <span class="ruby-ivar">@builder</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;glade/settingsNurikabe.glade&#39;</span>)
+    <span class="ruby-ivar">@object</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;menuParam&quot;</span>)
+
+    <span class="ruby-ivar">@save</span> = <span class="ruby-constant">SauvegardeProfil</span>.<span class="ruby-identifier">new</span>
+
+    <span class="ruby-ivar">@interfaceParametreProfil</span> = <span class="ruby-constant">FenetreParametreProfil</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">menuParent</span>, <span class="ruby-ivar">@object</span>, <span class="ruby-ivar">@save</span>)
+
+    <span class="ruby-comment">#@interfaceProfil = interfaceProfil</span>
+
+    <span class="ruby-comment">#@paramProfil = @@profilActuel.profil.parametre</span>
+
+    <span class="ruby-ivar">@langue</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;cbt_langue&quot;</span>)
+
+    <span class="ruby-ivar">@btnJeu</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;button_jeu&quot;</span>)
+    <span class="ruby-ivar">@btnRetour</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;button_retour&quot;</span>)
+    <span class="ruby-ivar">@btnProfil</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;button_profils&quot;</span>)
+
+    <span class="ruby-ivar">@btnJeu</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_jeu&quot;</span>
+    <span class="ruby-ivar">@btnRetour</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_retour&quot;</span>
+    <span class="ruby-ivar">@btnProfil</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_profil&quot;</span>
+
+    <span class="ruby-ivar">@switchTheme</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;switch_theme&quot;</span>)
+    <span class="ruby-ivar">@switchAudio</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;switch_audio&quot;</span>)
+
+    <span class="ruby-comment"># récupération des boutons de changement de couleur de l&#39;interface</span>
+    <span class="ruby-ivar">@red</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;ff0341&quot;</span>)
+    <span class="ruby-ivar">@purple</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;afa2ff&quot;</span>)
+    <span class="ruby-ivar">@green</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;92ff6e&quot;</span>)
+    <span class="ruby-ivar">@black</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;000000&quot;</span>)
+    <span class="ruby-ivar">@orange</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;ffab46&quot;</span>)
+    <span class="ruby-ivar">@pink</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;fe63ff&quot;</span>)
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">gestionSignaux</span>
+
+    <span class="ruby-ivar">@menuParent</span> = <span class="ruby-identifier">menuParent</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-gestionSignaux" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">gestionSignaux</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode qui gère les évènements liés aux signaux attribués aux différents composants du fichier glade</p>
+          
+          
+
+          
+          <div class="method-source-code" id="gestionSignaux-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
+
+    <span class="ruby-ivar">@btnProfil</span>.<span class="ruby-identifier">signal_connect</span>( <span class="ruby-string">&quot;clicked&quot;</span> ) { 
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@interfaceParametreProfil</span>.<span class="ruby-identifier">object</span>, <span class="ruby-string">&quot;Paramètres&quot;</span>)
+    }
+
+    <span class="ruby-ivar">@btnRetour</span>.<span class="ruby-identifier">signal_connect</span>( <span class="ruby-string">&quot;clicked&quot;</span> ) {
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@menuParent</span>, <span class="ruby-string">&quot;Menu&quot;</span>)
+    }
+
+    <span class="ruby-ivar">@switchTheme</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;notify::active&#39;</span>) {<span class="ruby-identifier">onSwitchTheme_activated</span>()}
+    <span class="ruby-ivar">@switchAudio</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;notify::active&#39;</span>) {<span class="ruby-identifier">onSwitchAudio_activated</span>()}
+
+    <span class="ruby-ivar">@red</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;couleur ROUGE sélectionnée&quot;</span>}
+    <span class="ruby-ivar">@purple</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;couleur VIOLET sélectionnée&quot;</span>}
+    <span class="ruby-ivar">@green</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;couleur VERT sélectionnée&quot;</span>}
+    <span class="ruby-ivar">@black</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;couleur NOIR sélectionnée&quot;</span>}
+    <span class="ruby-ivar">@orange</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;couleur ORANGE sélectionnée&quot;</span>}
+    <span class="ruby-ivar">@pink</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;couleur ROSE sélectionnée&quot;</span>}
+
+    <span class="ruby-identifier">onChange_switchTheme</span>()
+    <span class="ruby-identifier">onChange_switchAudio</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-onChange_parametre" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">onChange_parametre</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode qui va mettre à jour les paramaètres en écrasant les anciennes données par les nouvelles</p>
+          
+          
+
+          
+          <div class="method-source-code" id="onChange_parametre-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 142</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">onChange_parametre</span>()
+    <span class="ruby-ivar">@save</span>.<span class="ruby-identifier">supprimerProfil</span>(<span class="ruby-identifier">@@profilActuel</span>)
+    <span class="ruby-ivar">@save</span>.<span class="ruby-identifier">ajoutProfil</span>(<span class="ruby-identifier">@@profilActuel</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-onChange_switchAudio" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">onChange_switchAudio</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Change la valeur du switch Audio dans l&#39;interface</p>
+          
+          
+
+          
+          <div class="method-source-code" id="onChange_switchAudio-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 132</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">onChange_switchAudio</span>()
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">parametre</span>.<span class="ruby-identifier">effetSonore</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@switchAudio</span>.<span class="ruby-identifier">set_active</span>(<span class="ruby-keyword">false</span>)
+    <span class="ruby-keyword">else</span> 
+        <span class="ruby-ivar">@switchAudio</span>.<span class="ruby-identifier">set_active</span>(<span class="ruby-keyword">true</span>)
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-onChange_switchTheme" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">onChange_switchTheme</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Change la valeur du switch Theme dans l&#39;interface</p>
+          
+          
+
+          
+          <div class="method-source-code" id="onChange_switchTheme-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">onChange_switchTheme</span>()
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">parametre</span>.<span class="ruby-identifier">themeSombre</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@switchTheme</span>.<span class="ruby-identifier">set_active</span>(<span class="ruby-keyword">false</span>)
+    <span class="ruby-keyword">else</span> 
+        <span class="ruby-ivar">@switchTheme</span>.<span class="ruby-identifier">set_active</span>(<span class="ruby-keyword">true</span>)
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-onSwitchAudio_activated" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">onSwitchAudio_activated</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode qui va changer la valeur du booleen effetSonore</p>
+          
+          
+
+          
+          <div class="method-source-code" id="onSwitchAudio_activated-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 125</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">onSwitchAudio_activated</span>()
+    <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">parametre</span>.<span class="ruby-identifier">effetSonore</span> = <span class="ruby-ivar">@switchAudio</span>.<span class="ruby-identifier">active?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-identifier">onChange_parametre</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-onSwitchTheme_activated" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">onSwitchTheme_activated</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode qui va changer la valeur du booleen themeSombre</p>
+          
+          
+
+          
+          <div class="method-source-code" id="onSwitchTheme_activated-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">onSwitchTheme_activated</span>()
+    <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">parametre</span>.<span class="ruby-identifier">themeSombre</span> = <span class="ruby-ivar">@switchTheme</span>.<span class="ruby-identifier">active?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-identifier">onChange_parametre</span>()
+    <span class="ruby-identifier">setStyle</span>(<span class="ruby-identifier">@@profilActuel</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

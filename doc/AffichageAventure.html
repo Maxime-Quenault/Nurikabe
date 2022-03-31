@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class AffichageAventure - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Fenetre.html">Fenetre</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-affichageEtoile">#affichageEtoile</a>
+    
+    <li ><a href="#method-i-affichageImageGrille">#affichageImageGrille</a>
+    
+    <li ><a href="#method-i-affichageNewDiff">#affichageNewDiff</a>
+    
+    <li ><a href="#method-i-affichageTemps">#affichageTemps</a>
+    
+    <li ><a href="#method-i-boutonPreced">#boutonPreced</a>
+    
+    <li ><a href="#method-i-boutonSuiv">#boutonSuiv</a>
+    
+    <li ><a href="#method-i-deplacementAventure">#deplacementAventure</a>
+    
+    <li ><a href="#method-i-destruction">#destruction</a>
+    
+    <li ><a href="#method-i-gestionSignaux">#gestionSignaux</a>
+    
+    <li ><a href="#method-i-getCouleurFenetre">#getCouleurFenetre</a>
+    
+    <li ><a href="#method-i-getCouleurGeneral">#getCouleurGeneral</a>
+    
+    <li ><a href="#method-i-getCouleurSecondaire">#getCouleurSecondaire</a>
+    
+    <li ><a href="#method-i-getObject">#getObject</a>
+    
+    <li ><a href="#method-i-setBackground">#setBackground</a>
+    
+    <li ><a href="#method-i-setBackgroundBoutons">#setBackgroundBoutons</a>
+    
+    <li ><a href="#method-i-setCouleurFenetre">#setCouleurFenetre</a>
+    
+    <li ><a href="#method-i-setCouleurGeneral">#setCouleurGeneral</a>
+    
+    <li ><a href="#method-i-setCouleurSecondaire">#setCouleurSecondaire</a>
+    
+    <li ><a href="#method-i-setEffetBouton">#setEffetBouton</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-AffichageAventure">
+  <h1 id="class-AffichageAventure" class="class">
+    class AffichageAventure
+  </h1>
+
+  <section class="description">
+    
+<p>Définition de la classe <a href="AffichageAventure.html"><code>AffichageAventure</code></a> qui affichera le mode <a href="Aventure.html"><code>Aventure</code></a></p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="DIFFICILE">DIFFICILE
+        
+        <dd>
+        
+      
+        <dt id="FACILE">FACILE
+        
+        <dd>
+        
+      
+        <dt id="MOYEN">MOYEN
+        
+        <dd>
+        
+      
+        <dt id="SEUIL_1_ETOILE">SEUIL_1_ETOILE
+        
+        <dd>
+        
+      
+        <dt id="SEUIL_2_ETOILES">SEUIL_2_ETOILES
+        
+        <dd>
+        
+      
+        <dt id="SEUIL_3_ETOILES">SEUIL_3_ETOILES
+        
+        <dd>
+        
+      
+        <dt id="SEUIL_4_ETOILES">SEUIL_4_ETOILES
+        
+        <dd>
+        
+      
+        <dt id="SEUIL_5_ETOILES">SEUIL_5_ETOILES
+        
+        <dd><p>Définition des constantes</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-fenetre" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">fenetre</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <pre class="ruby"><span class="ruby-constant">Déclaration</span> <span class="ruby-identifier">des</span> <span class="ruby-constant">VI</span>
+</pre>
+
+<p>@couleurFenetre : Variable d&#39;instance qui représente la couleur de la fenêtre</p>
+
+<p>@couleurBase : Variable d&#39;instance qui représente la couleur générale de la fenêtre(thème)</p>
+
+<p>@couleurVisible : Variable d&#39;instance qui représente la couleur secondaire qui ressort de la couleur générale(thème)</p>
+
+<p>@img_centre : Variable d&#39;instance qui contient une image png qui variera selon les grilles</p>
+
+<p>@fenetre : Variable d&#39;instance qui contiendra la fenêtre de l&#39;interface glade</p>
+
+<p>@aventure : Variable d&#39;instance qui contient l&#39;aventure en cours</p>
+
+<p>@tempsGrille : Variable d&#39;instance liée au temps de complétion de la grille</p>
+
+<p>@imgEtoile : Variable d&#39;instance liée aux images des étoiles -&gt; afin d&#39;être connu de toutes les méthodes</p>
+
+<p>@bouton : Variable d&#39;instance liée aux boutons de la barre de déplacement -&gt; afin d&#39;être connu de toutes les méthodes</p>
+
+<p>@menuParent : Variable d&#39;instance qui contient l&#39;interface parent transmise lors la création de celle-ci</p>
+
+<p>@interfaceGrille : Variable d&#39;instance qui contient le lien vers une fenêtre de grille avec laquelle l&#39;utilisateur pourra intéragir</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-interfaceGrille" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">interfaceGrille</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <pre class="ruby"><span class="ruby-constant">Déclaration</span> <span class="ruby-identifier">des</span> <span class="ruby-constant">VI</span>
+</pre>
+
+<p>@couleurFenetre : Variable d&#39;instance qui représente la couleur de la fenêtre</p>
+
+<p>@couleurBase : Variable d&#39;instance qui représente la couleur générale de la fenêtre(thème)</p>
+
+<p>@couleurVisible : Variable d&#39;instance qui représente la couleur secondaire qui ressort de la couleur générale(thème)</p>
+
+<p>@img_centre : Variable d&#39;instance qui contient une image png qui variera selon les grilles</p>
+
+<p>@fenetre : Variable d&#39;instance qui contiendra la fenêtre de l&#39;interface glade</p>
+
+<p>@aventure : Variable d&#39;instance qui contient l&#39;aventure en cours</p>
+
+<p>@tempsGrille : Variable d&#39;instance liée au temps de complétion de la grille</p>
+
+<p>@imgEtoile : Variable d&#39;instance liée aux images des étoiles -&gt; afin d&#39;être connu de toutes les méthodes</p>
+
+<p>@bouton : Variable d&#39;instance liée aux boutons de la barre de déplacement -&gt; afin d&#39;être connu de toutes les méthodes</p>
+
+<p>@menuParent : Variable d&#39;instance qui contient l&#39;interface parent transmise lors la création de celle-ci</p>
+
+<p>@interfaceGrille : Variable d&#39;instance qui contient le lien vers une fenêtre de grille avec laquelle l&#39;utilisateur pourra intéragir</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-menuParent" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">menuParent</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <pre class="ruby"><span class="ruby-constant">Déclaration</span> <span class="ruby-identifier">des</span> <span class="ruby-constant">VI</span>
+</pre>
+
+<p>@couleurFenetre : Variable d&#39;instance qui représente la couleur de la fenêtre</p>
+
+<p>@couleurBase : Variable d&#39;instance qui représente la couleur générale de la fenêtre(thème)</p>
+
+<p>@couleurVisible : Variable d&#39;instance qui représente la couleur secondaire qui ressort de la couleur générale(thème)</p>
+
+<p>@img_centre : Variable d&#39;instance qui contient une image png qui variera selon les grilles</p>
+
+<p>@fenetre : Variable d&#39;instance qui contiendra la fenêtre de l&#39;interface glade</p>
+
+<p>@aventure : Variable d&#39;instance qui contient l&#39;aventure en cours</p>
+
+<p>@tempsGrille : Variable d&#39;instance liée au temps de complétion de la grille</p>
+
+<p>@imgEtoile : Variable d&#39;instance liée aux images des étoiles -&gt; afin d&#39;être connu de toutes les méthodes</p>
+
+<p>@bouton : Variable d&#39;instance liée aux boutons de la barre de déplacement -&gt; afin d&#39;être connu de toutes les méthodes</p>
+
+<p>@menuParent : Variable d&#39;instance qui contient l&#39;interface parent transmise lors la création de celle-ci</p>
+
+<p>@interfaceGrille : Variable d&#39;instance qui contient le lien vers une fenêtre de grille avec laquelle l&#39;utilisateur pourra intéragir</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(menuParent)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">menuParent</span>)
+
+  <span class="ruby-ivar">@couleurBase</span> = <span class="ruby-string">&quot;white&quot;</span>
+  <span class="ruby-ivar">@couleurVisible</span> = <span class="ruby-string">&quot;grey&quot;</span>
+
+  <span class="ruby-comment"># On créer 3 objets aventures plus un autre qui manipulera les références des autres</span>
+  <span class="ruby-comment"># Création des 3 aventures : Facile , Normale , Difficile avec générations des niveaux</span>
+  <span class="ruby-identifier">aventureFacile</span> = <span class="ruby-constant">Aventure</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">0</span>)
+  <span class="ruby-identifier">aventureFacile</span>.<span class="ruby-identifier">generationAventure</span>(<span class="ruby-value">10</span>,<span class="ruby-constant">FACILE</span>)
+
+  <span class="ruby-identifier">aventureNormale</span> = <span class="ruby-constant">Aventure</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">1</span>)
+  <span class="ruby-identifier">aventureNormale</span>.<span class="ruby-identifier">generationAventure</span>(<span class="ruby-value">10</span>,<span class="ruby-constant">MOYEN</span>)
+
+  <span class="ruby-identifier">aventureDifficile</span> = <span class="ruby-constant">Aventure</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">2</span>)
+  <span class="ruby-identifier">aventureDifficile</span>.<span class="ruby-identifier">generationAventure</span>(<span class="ruby-value">10</span>,<span class="ruby-constant">DIFFICILE</span>)
+
+  <span class="ruby-comment"># On édite les liens entre les 3 aventures</span>
+  <span class="ruby-identifier">aventureFacile</span>.<span class="ruby-identifier">setPrecedent</span>(<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">aventureFacile</span>.<span class="ruby-identifier">setSuivant</span>(<span class="ruby-identifier">aventureNormale</span>)
+
+  <span class="ruby-identifier">aventureNormale</span>.<span class="ruby-identifier">setPrecedent</span>(<span class="ruby-identifier">aventureFacile</span>)
+  <span class="ruby-identifier">aventureNormale</span>.<span class="ruby-identifier">setSuivant</span>(<span class="ruby-identifier">aventureDifficile</span>)
+
+  <span class="ruby-identifier">aventureDifficile</span>.<span class="ruby-identifier">setPrecedent</span>(<span class="ruby-identifier">aventureNormale</span>)
+  <span class="ruby-identifier">aventureDifficile</span>.<span class="ruby-identifier">setSuivant</span>(<span class="ruby-keyword">nil</span>)
+
+  <span class="ruby-ivar">@aventure</span> = <span class="ruby-identifier">aventureFacile</span>
+
+  <span class="ruby-comment"># On créer un buildeur qui récupère les éléments de notre fenêtre créée sur Glade</span>
+  <span class="ruby-identifier">monBuildeur</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;glade/aventure_normal_img.glade&#39;</span>)
+
+  <span class="ruby-comment"># On déclare des objets que l&#39;on associe aux éléments de la fenêt1,8,6re Glade</span>
+
+  <span class="ruby-comment"># Déclaration du bouton de retour situé dans le coin supérieur gauche de la fenetre</span>
+  <span class="ruby-ivar">@retour</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_retour&#39;</span>)
+
+  <span class="ruby-comment"># Déclaration des boutons de déplacement de la barre située en bas de fenêtre</span>
+  <span class="ruby-ivar">@bouton</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">0</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_1&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">1</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_2&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">2</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_3&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">3</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_4&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">4</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_5&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">5</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_6&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">6</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_7&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">7</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_8&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">8</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_9&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">9</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_10&#39;</span>)
+
+  <span class="ruby-comment"># Déclaration des boutons de changement de difficulté situés en haut de la fenêtre</span>
+  <span class="ruby-ivar">@modeFacile</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_facile&#39;</span>)
+  <span class="ruby-ivar">@modeNormal</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_normal&#39;</span>)
+  <span class="ruby-ivar">@modeHard</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_difficile&#39;</span>)
+
+  <span class="ruby-comment"># Déclaration des boutons de déplacement Suivant et Précédent situés sur les côtés de la fenêtre</span>
+  <span class="ruby-ivar">@btnPreced</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_preced&#39;</span>)
+  <span class="ruby-ivar">@btnSuivant</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_suiv&#39;</span>)
+
+  <span class="ruby-comment"># Déclaration de l&#39;image centrale de la fenêtre</span>
+  <span class="ruby-ivar">@img_centre</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;img_grille&#39;</span>)
+  <span class="ruby-ivar">@btn_img</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_img&#39;</span>)
+  <span class="ruby-comment"># Déclaration de l&#39;affichage du temps</span>
+  <span class="ruby-ivar">@tempsGrille</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;temps_score&#39;</span>)
+
+  <span class="ruby-comment"># Déclaration des images étoiles qui seront liées au score de la grille actuelle</span>
+  <span class="ruby-ivar">@imgEtoile</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+  <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;etoile_1&#39;</span>)
+  <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;etoile_2&#39;</span>)
+  <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;etoile_3&#39;</span>)
+  <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;etoile_4&#39;</span>)
+  <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;etoile_5&#39;</span>)
+
+  <span class="ruby-comment"># on sauvegarde le menu parent via une variable d&#39;instance</span>
+  <span class="ruby-ivar">@menuParent</span> = <span class="ruby-identifier">menuParent</span>
+  <span class="ruby-comment"># Déclaration de la fenêtre du mode Aventure</span>
+  <span class="ruby-ivar">@fenetre</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;fenetre_aventure&#39;</span>)
+  <span class="ruby-comment"># on prépare une interface FenetreGrille que l&#39;on appellera quand on en aura besoin</span>
+  <span class="ruby-ivar">@interfaceGrille</span> = <span class="ruby-constant">FenetreGrille</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>)
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">gestionSignaux</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-affichageEtoile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">affichageEtoile</span><span
+            class="method-args">(nbEtoiles)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode qui gère l&#39;affichage des étoiles de la grille actuelle On prend en paramètre un nombre d&#39;étoiles (correspond au score de la grille) Puis on affiche autant d&#39;étoile que le paramètre puis on complète le reste avec des étoiles noires</p>
+          
+          
+
+          
+          <div class="method-source-code" id="affichageEtoile-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 263</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageEtoile</span>(<span class="ruby-identifier">nbEtoiles</span>)
+
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">nbEtoiles</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-value">1</span>
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-value">2</span>
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-value">3</span>
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-value">4</span>
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-value">5</span>
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+  <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-affichageImageGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">affichageImageGrille</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode qui modifie l&#39;image centrale à afficher Dans notre cas on possède 2 images png :</p>
+
+<h1 id="method-i-affichageImageGrille-label-3E+grilleVide+que+l-27on+affichera+si+la+grille+actuelle+n-27a+pas+-C3-A9t-C3-A9+termin-C3-A9e">&gt; grilleVide que l&#39;on affichera si la grille actuelle n&#39;a pas été terminée<span><a href="#method-i-affichageImageGrille-label-3E+grilleVide+que+l-27on+affichera+si+la+grille+actuelle+n-27a+pas+-C3-A9t-C3-A9+termin-C3-A9e">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<h1 id="method-i-affichageImageGrille-label-3E+grillePleine+que+l-27on+affichera+si+la+grille+actuelle+a+-C3-A9t-C3-A9+termin-C3-A9e-28peu+importe+le+score-29">&gt; grillePleine que l&#39;on affichera si la grille actuelle a été terminée(peu importe le score)<span><a href="#method-i-affichageImageGrille-label-3E+grillePleine+que+l-27on+affichera+si+la+grille+actuelle+a+-C3-A9t-C3-A9+termin-C3-A9e-28peu+importe+le+score-29">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>Pas de miniature de la grille -&gt; évite la triche</p>
+          
+          
+
+          
+          <div class="method-source-code" id="affichageImageGrille-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 252</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageImageGrille</span>
+  <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>() <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+    <span class="ruby-ivar">@img_centre</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/grilleVide.png&quot;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@img_centre</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/grillePleine.png&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-affichageNewDiff" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">affichageNewDiff</span><span
+            class="method-args">(unNumero)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="affichageNewDiff-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 215</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageNewDiff</span>(<span class="ruby-identifier">unNumero</span>)
+ <span class="ruby-identifier">dialog</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span>.<span class="ruby-identifier">new</span>()
+ <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Nouvelle Difficulté&quot;</span>
+ <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">set_default_size</span>(<span class="ruby-value">300</span>, <span class="ruby-value">100</span>)
+ <span class="ruby-keyword">case</span> <span class="ruby-identifier">unNumero</span>
+ <span class="ruby-keyword">when</span> <span class="ruby-value">0</span>
+   <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">child</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;\nTu ne possèdes pas assez d&#39;étoiles pour débloquer cette difficulté...\nRefais d&#39;autres niveaux.&quot;</span>))
+ <span class="ruby-keyword">when</span> <span class="ruby-value">1</span>
+   <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">child</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;\nBravo tu viens de débloquer la difficulté Normal !&quot;</span>))
+ <span class="ruby-keyword">when</span> <span class="ruby-value">2</span>
+   <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">child</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;\nBravo tu viens de débloquer la difficulté Hard !&quot;</span>))
+ <span class="ruby-keyword">end</span>
+ <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">add_button</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Stock</span><span class="ruby-operator">::</span><span class="ruby-constant">CLOSE</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">CLOSE</span>)
+ <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">set_default_response</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">CANCEL</span>)
+
+ <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;response&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">widget</span>, <span class="ruby-identifier">response</span><span class="ruby-operator">|</span>
+     <span class="ruby-keyword">case</span> <span class="ruby-identifier">response</span>
+     <span class="ruby-keyword">when</span> <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">CANCEL</span>
+     <span class="ruby-identifier">p</span> <span class="ruby-string">&quot;Cancel&quot;</span>
+     <span class="ruby-keyword">when</span> <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">CLOSE</span>
+     <span class="ruby-identifier">p</span> <span class="ruby-string">&quot;Close&quot;</span>
+     <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">destroy</span>
+     <span class="ruby-keyword">end</span>
+ <span class="ruby-keyword">end</span>
+ <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">show_all</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-affichageTemps" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">affichageTemps</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode qui modifie l&#39;affichage du temps de la grille</p>
+          
+          
+
+          
+          <div class="method-source-code" id="affichageTemps-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 243</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageTemps</span>
+  <span class="ruby-ivar">@tempsGrille</span>.<span class="ruby-identifier">set_text</span>(<span class="ruby-node">&quot;#{@aventure.getTempsCourant()}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-boutonPreced" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">boutonPreced</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="boutonPreced-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 318</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">boutonPreced</span>
+    <span class="ruby-comment">#self.pack_start(@fenetre,@bouton[@aventure.getPosCourante()],false,false,nil)</span>
+    <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">grillePrecedente</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageEtoile</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>())
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageTemps</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageImageGrille</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-boutonSuiv" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">boutonSuiv</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode qui gère la “surbrillance” des boutons Suivant et Précédent Lorsque l&#39;on clique sur l&#39;un des boutons dans la barre en bas de la fenêtre le bouton change de couleur pour indiquer que l&#39;on se situe sur tel niveau. Ainsi suivant la position du joueur(après le click sur suivant ou précédent) On appel la méthode de “surbrillance” du bouton associé à notre position</p>
+          
+          
+
+          
+          <div class="method-source-code" id="boutonSuiv-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 311</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">boutonSuiv</span>
+    <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">prochaineGrille</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageEtoile</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>())
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageTemps</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageImageGrille</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-deplacementAventure" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">deplacementAventure</span><span
+            class="method-args">(uneDiff)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="deplacementAventure-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 326</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">deplacementAventure</span>(<span class="ruby-identifier">uneDiff</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getDifficulte</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">uneDiff</span>)
+    <span class="ruby-keyword">while</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getDifficulte</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">uneDiff</span>)
+      <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">difficultePrecedente</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getDifficulte</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">uneDiff</span>)
+      <span class="ruby-keyword">while</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getDifficulte</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">uneDiff</span>)
+        <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">difficulteSuivante</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-destruction" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">destruction</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode qui ferme la fenêtre du mode <a href="Aventure.html"><code>Aventure</code></a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="destruction-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 210</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">destruction</span>
+  <span class="ruby-constant">Gtk</span>.<span class="ruby-identifier">main_quit</span>
+  <span class="ruby-keyword">return</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-gestionSignaux" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">gestionSignaux</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;affichage principale du mode <a href="Aventure.html"><code>Aventure</code></a> qui sera appelé par les autres Classes</p>
+          
+          
+
+          
+          <div class="method-source-code" id="gestionSignaux-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 343</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
+
+  <span class="ruby-comment"># On associe le bouton Retour avec la méthode de fermeture du mode Aventure</span>
+  <span class="ruby-ivar">@retour</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@menuParent</span>, <span class="ruby-string">&quot;Menu&quot;</span>)
+  }
+
+  <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;destroy&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">destruction</span>()
+  }
+
+  <span class="ruby-comment"># On associe le bouton Précédent avec la méthode grillePrecedente de la classe Aventure</span>
+  <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">boutonPreced</span>()
+    <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;\n #{@aventure.getPosCourante}&quot;</span>
+  }
+
+  <span class="ruby-comment"># On associe le bouton Suivant avec la méthode prochaineGrille de la classe Aventure</span>
+  <span class="ruby-ivar">@btnSuivant</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">boutonSuiv</span>()
+    <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;\n #{@aventure.getPosCourante}&quot;</span>
+  }
+
+  <span class="ruby-comment"># On associe le bouton facile avec la méthode de choix de difficulté de la classe Aventure</span>
+  <span class="ruby-ivar">@modeFacile</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">choixDifficulte</span>(<span class="ruby-value">0</span>)
+    <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">placerSurGrille</span>(<span class="ruby-value">0</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageEtoile</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>())
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageTemps</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageImageGrille</span>()
+    <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;\n #{@aventure.difficulte}&quot;</span>
+  }
+
+  <span class="ruby-comment"># On associe le bouton normal avec la méthode de choix de difficulté de la classe Aventure</span>
+  <span class="ruby-ivar">@modeNormal</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">estDebloquee</span>(<span class="ruby-value">1</span>))
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageNewDiff</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">unlockDifficulte</span>())
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">estDebloquee</span>(<span class="ruby-value">1</span>))
+
+      <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">choixDifficulte</span>(<span class="ruby-value">1</span>))
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">deplacementAventure</span>(<span class="ruby-value">1</span>)
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">placerSurGrille</span>(<span class="ruby-value">0</span>)
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageEtoile</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>())
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageTemps</span>()
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageImageGrille</span>()
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;\n #{@aventure.difficulte}&quot;</span>
+  }
+
+  <span class="ruby-comment"># On associe le bouton difficile avec la méthode de choix de difficulté de la classe Aventure</span>
+  <span class="ruby-ivar">@modeHard</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">estDebloquee</span>(<span class="ruby-value">2</span>))
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageNewDiff</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">unlockDifficulte</span>())
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">estDebloquee</span>(<span class="ruby-value">2</span>))
+
+      <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">choixDifficulte</span>(<span class="ruby-value">2</span>))
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">deplacementAventure</span>(<span class="ruby-value">2</span>)
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">choixDifficulte</span>(<span class="ruby-value">2</span>)
+      <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">placerSurGrille</span>(<span class="ruby-value">0</span>)
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageEtoile</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>())
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageTemps</span>()
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageImageGrille</span>()
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;\n #{@aventure.difficulte}&quot;</span>
+  }
+
+  <span class="ruby-comment"># On associe l&#39;image de la grille avec la méthode de lancement de la Partie</span>
+  <span class="ruby-comment"># + attribution des récompenses en fonction du timer</span>
+  <span class="ruby-ivar">@btn_img</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+
+    <span class="ruby-identifier">temps1</span> = (<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">1000</span>)
+    <span class="ruby-identifier">@@partie</span> = <span class="ruby-constant">Partie</span>.<span class="ruby-identifier">creeToi</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getGrilleCourante</span>())
+
+    <span class="ruby-ivar">@interfaceGrille</span>.<span class="ruby-identifier">construction</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@interfaceGrille</span>.<span class="ruby-identifier">object</span>, <span class="ruby-string">&quot;Partie&quot;</span>)
+
+    <span class="ruby-identifier">print</span>(<span class="ruby-node">&quot;\n #{@aventure.getGrilleCourante().pourcentageCompletion()}&quot;</span>)
+
+    <span class="ruby-identifier">temps2</span> = (<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-value">1000</span>) <span class="ruby-operator">-</span> <span class="ruby-identifier">temps1</span>
+    <span class="ruby-identifier">temps</span> = <span class="ruby-identifier">temps2</span>.<span class="ruby-identifier">round</span>(<span class="ruby-value">2</span>)
+
+    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getGrilleCourante</span>().<span class="ruby-identifier">pourcentageCompletion</span>() <span class="ruby-operator">&lt;</span> <span class="ruby-value">100</span>)
+      <span class="ruby-identifier">temps</span> = <span class="ruby-value">1000.0</span>
+      <span class="ruby-identifier">recompense</span> = <span class="ruby-value">0</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-comment"># Puis attribution du nombre d&#39;étoiles en fonction du timer (à définir)</span>
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">temps</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">SEUIL_5_ETOILES</span>)
+        <span class="ruby-identifier">recompense</span> = <span class="ruby-value">5</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">temps</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">SEUIL_4_ETOILES</span>)
+          <span class="ruby-identifier">recompense</span> = <span class="ruby-value">4</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-keyword">if</span> (<span class="ruby-identifier">temps</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">SEUIL_3_ETOILES</span>)
+            <span class="ruby-identifier">recompense</span> = <span class="ruby-value">3</span>
+          <span class="ruby-keyword">else</span>
+            <span class="ruby-keyword">if</span> (<span class="ruby-identifier">temps</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">SEUIL_2_ETOILES</span>)
+              <span class="ruby-identifier">recompense</span> = <span class="ruby-value">2</span>
+            <span class="ruby-keyword">else</span>
+              <span class="ruby-keyword">if</span> (<span class="ruby-identifier">temps</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">SEUIL_1_ETOILE</span>)
+                <span class="ruby-identifier">recompense</span> = <span class="ruby-value">1</span>
+              <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">recompense</span> = <span class="ruby-value">0</span>
+              <span class="ruby-keyword">end</span>
+            <span class="ruby-keyword">end</span>
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">setEtoileCourante</span>(<span class="ruby-identifier">recompense</span>)
+    <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">etoilesEnPlus</span>(<span class="ruby-identifier">recompense</span>)
+    <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">setTempsCourant</span>(<span class="ruby-identifier">temps</span>)
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageEtoile</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>())
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageTemps</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageImageGrille</span>()
+  }
+
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">0</span>)
+  }
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">1</span>)
+  }
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">2</span>)
+  }
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">3</span>)
+  }
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">4</span>)
+  }
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">5</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">5</span>)
+  }
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">6</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">6</span>)
+  }
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">7</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">7</span>)
+  }
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">8</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">8</span>)
+  }
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">9</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">9</span>)
+  }
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getCouleurFenetre" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getCouleurFenetre</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;accès en lecture de la couleur de la fenêtre</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getCouleurFenetre-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 154</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getCouleurFenetre</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@couleurFenetre</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getCouleurGeneral" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getCouleurGeneral</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;accès en lecture de la couleur générale de la fenêtre</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getCouleurGeneral-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 165</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getCouleurGeneral</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@couleurBase</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getCouleurSecondaire" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getCouleurSecondaire</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;accès en lecture de la couleur secondaire de la fenêtre</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getCouleurSecondaire-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 175</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getCouleurSecondaire</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@couleurVisible</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getObject" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getObject</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>getObjet :</p>
+
+<pre>Cette methode permet d&#39;envoyer sont objet (interface) a l&#39;objet qui le demande.</pre>
+
+<p>@return object qui represente l&#39;interface de la fenetre du mode libre.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getObject-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 149</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getObject</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@fenetre</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setBackground" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setBackground</span><span
+            class="method-args">(bouton, couleur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode qui prend en paramètre un bouton et une couleur : on applique cette couleur au bouton désigné</p>
+          
+          
+
+          
+          <div class="method-source-code" id="setBackground-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 185</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setBackground</span>(<span class="ruby-identifier">bouton</span>, <span class="ruby-identifier">couleur</span>)
+  <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">bg</span> = <span class="ruby-identifier">couleur</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setBackgroundBoutons" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setBackgroundBoutons</span><span
+            class="method-args">(indice, couleurUnique, couleurStandard)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode qui prend en paramètre un bouton et une couleur : on applique cette couleur au bouton désigné</p>
+          
+          
+
+          
+          <div class="method-source-code" id="setBackgroundBoutons-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 190</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setBackgroundBoutons</span>(<span class="ruby-identifier">indice</span>, <span class="ruby-identifier">couleurUnique</span>, <span class="ruby-identifier">couleurStandard</span>)
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">length</span>()
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">i</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">indice</span>)
+      <span class="ruby-ivar">@bouton</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">bg</span> = <span class="ruby-identifier">couleurUnique</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-ivar">@bouton</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">bg</span> = <span class="ruby-identifier">couleurStandard</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setCouleurFenetre" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setCouleurFenetre</span><span
+            class="method-args">(uneCouleur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;accès en écriture de la couleur de la fenêtre</p>
+          
+          
+
+          
+          <div class="method-source-code" id="setCouleurFenetre-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 159</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setCouleurFenetre</span>(<span class="ruby-identifier">uneCouleur</span>)
+  <span class="ruby-ivar">@couleurFenetre</span> = <span class="ruby-identifier">uneCouleur</span>
+  <span class="ruby-constant">Gtk</span>.<span class="ruby-identifier">gtk_widget_modify_bg</span>(<span class="ruby-ivar">@fenetre</span>, <span class="ruby-constant">GTK_STATE_NORMAL</span>, <span class="ruby-ivar">@couleurFenetre</span>);
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setCouleurGeneral" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setCouleurGeneral</span><span
+            class="method-args">(couleur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;accès en écriture de la couleur générale de la fenêtre</p>
+          
+          
+
+          
+          <div class="method-source-code" id="setCouleurGeneral-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 170</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setCouleurGeneral</span>(<span class="ruby-identifier">couleur</span>)
+  <span class="ruby-ivar">@couleurBase</span> = <span class="ruby-identifier">couleur</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setCouleurSecondaire" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setCouleurSecondaire</span><span
+            class="method-args">(couleur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;accès en écriture de la couleur secondaire de la fenêtre</p>
+          
+          
+
+          
+          <div class="method-source-code" id="setCouleurSecondaire-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 180</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setCouleurSecondaire</span>(<span class="ruby-identifier">couleur</span>)
+  <span class="ruby-ivar">@couleurVisible</span> = <span class="ruby-identifier">couleur</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setEffetBouton" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setEffetBouton</span><span
+            class="method-args">(indice)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="setEffetBouton-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 200</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setEffetBouton</span>(<span class="ruby-identifier">indice</span>)
+  <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">placerSurGrille</span>(<span class="ruby-identifier">indice</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageEtoile</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>())
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageTemps</span>()
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageImageGrille</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

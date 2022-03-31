@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class FenetreGrille - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Fenetre.html">Fenetre</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-afficheGrille">#afficheGrille</a>
+    
+    <li ><a href="#method-i-affiche_victoire">#affiche_victoire</a>
+    
+    <li ><a href="#method-i-construction">#construction</a>
+    
+    <li ><a href="#method-i-gestionSignaux">#gestionSignaux</a>
+    
+    <li ><a href="#method-i-griserBoutons">#griserBoutons</a>
+    
+    <li ><a href="#method-i-maj_bouton">#maj_bouton</a>
+    
+    <li ><a href="#method-i-maj_boutons">#maj_boutons</a>
+    
+    <li ><a href="#method-i-signaux_boutons">#signaux_boutons</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-FenetreGrille">
+  <h1 id="class-FenetreGrille" class="class">
+    class FenetreGrille
+  </h1>
+
+  <section class="description">
+    <dl class="rdoc-list note-list"><dt>La classe <a href="FenetreGrille.html"><code>FenetreGrille</code></a> :
+<dd><ul><li>
+<p>génère l&#39;interface d&#39;une partie</p>
+</li><li>
+<p>peut gérer les différents boutons et leur “cliquabilité” (s&#39;ils sont cliquables ou non, en fonction du contexte de la partie)</p>
+</li></ul>
+</dd><dt>Les VI de la classe sont :
+<dd><ul><li>
+<p>@builder          ==&gt; builder de la fenêtre courante</p>
+</li><li>
+<p>@object           ==&gt; contient l&#39;identifiant glade de l&#39;interface courante</p>
+</li><li>
+<p>@grid             ==&gt; contient l&#39;identifiant glade de la grille</p>
+</li><li>
+<p>@interfaceRetour  ==&gt; </p>
+</li><li>
+<p>@profil           ==&gt; contient le profil courant</p>
+</li><li>
+<p>@menuParent       ==&gt; contient l&#39;interface parente de l&#39;interface courante</p>
+</li><li>
+<p>@boutons          ==&gt; table contenant une liste de boutons</p>
+</li></ul>
+</dd><dt>Les VC de la classe sont :
+<dd><ul><li>
+<p>@@partie  ==&gt; partie en cours</p>
+</li></ul>
+</dd></dl>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-object" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">object</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-popover" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">popover</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(menuParent)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">menuParent</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiseToi</span>
+    <span class="ruby-ivar">@popover</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Popover</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@builder</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">add_from_file</span>(<span class="ruby-string">&quot;glade/grille.glade&quot;</span>)
+    <span class="ruby-ivar">@object</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;menu&quot;</span>)
+    <span class="ruby-ivar">@boutons</span>
+    <span class="ruby-ivar">@menuParent</span> = <span class="ruby-identifier">menuParent</span>
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">gestionSignaux</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-afficheGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">afficheGrille</span><span
+            class="method-args">(hauteur, largeur, grille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Créer un affichage de la grille pour la librarie de grille</p>
+          
+          
+
+          
+          <div class="method-source-code" id="afficheGrille-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 171</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficheGrille</span>(<span class="ruby-identifier">hauteur</span>, <span class="ruby-identifier">largeur</span>, <span class="ruby-identifier">grille</span>)
+    <span class="ruby-identifier">taille_hauteur</span> = <span class="ruby-identifier">hauteur</span>
+    <span class="ruby-identifier">taille_largeur</span> = <span class="ruby-identifier">largeur</span>
+    <span class="ruby-ivar">@boutons</span> = {}
+    <span class="ruby-identifier">tableFrame</span> = <span class="ruby-constant">Frame</span>.<span class="ruby-identifier">new</span>();
+    <span class="ruby-identifier">tableFrame</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;grille_preview&quot;</span>
+    <span class="ruby-identifier">table</span> = <span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">taille_hauteur</span>,<span class="ruby-identifier">taille_largeur</span>,<span class="ruby-keyword">false</span>)
+    <span class="ruby-identifier">table</span>.<span class="ruby-identifier">set_halign</span>(<span class="ruby-value">3</span>);
+    <span class="ruby-identifier">table</span>.<span class="ruby-identifier">set_valign</span>(<span class="ruby-value">3</span>);
+    <span class="ruby-identifier">tableFrame</span>.<span class="ruby-identifier">set_halign</span>(<span class="ruby-value">3</span>);
+    <span class="ruby-identifier">tableFrame</span>.<span class="ruby-identifier">set_valign</span>(<span class="ruby-value">3</span>);
+    <span class="ruby-identifier">tableFrame</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">table</span>)
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille_largeur</span><span class="ruby-value">-1</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille_hauteur</span><span class="ruby-value">-1</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>)
+                <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]] = <span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">to_s</span>)
+                <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;case_chiffre_preview&quot;</span>
+                <span class="ruby-identifier">table</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]], <span class="ruby-identifier">i</span>, <span class="ruby-identifier">i</span><span class="ruby-value">+1</span>, <span class="ruby-identifier">j</span>, <span class="ruby-identifier">j</span><span class="ruby-value">+1</span>)
+            <span class="ruby-keyword">else</span>
+                <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]] = <span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>()
+                <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;case_vide_preview&quot;</span>
+                <span class="ruby-identifier">table</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]], <span class="ruby-identifier">i</span>, <span class="ruby-identifier">i</span><span class="ruby-value">+1</span>, <span class="ruby-identifier">j</span>, <span class="ruby-identifier">j</span><span class="ruby-value">+1</span>)
+            <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-comment"># maj_boutons</span>
+    <span class="ruby-comment"># signaux_boutons(tableFrame)</span>
+    <span class="ruby-comment"># @object.add(table)</span>
+            
+    <span class="ruby-comment"># # supprime les boutons</span>
+    <span class="ruby-comment"># @builder.get_object(&#39;btn_retour&#39;).signal_connect(&#39;clicked&#39;){#quitter</span>
+    <span class="ruby-comment">#     @object.remove(tableFrame)</span>
+    <span class="ruby-comment">#     @@profilActuel.ajouterPartie(@@partie)</span>
+    <span class="ruby-comment">#     self.changerInterface(@menuParent, &quot;Libre&quot;)</span>
+    <span class="ruby-comment"># }</span>
+
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">tableFrame</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-affiche_victoire" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">affiche_victoire</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Affiche une popup de victoire</p>
+          
+          
+
+          
+          <div class="method-source-code" id="affiche_victoire-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 111</span>
+   <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affiche_victoire</span>
+    <span class="ruby-identifier">dialog</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Victoire&quot;</span>
+    <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">set_default_size</span>(<span class="ruby-value">300</span>, <span class="ruby-value">100</span>)
+    <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">child</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Bravo, vous avez résolu le puzzle !&quot;</span>))
+    <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">add_button</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Stock</span><span class="ruby-operator">::</span><span class="ruby-constant">CLOSE</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">CLOSE</span>)
+    <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">set_default_response</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">CANCEL</span>)
+
+    <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;response&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">widget</span>, <span class="ruby-identifier">response</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">response</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">CANCEL</span>
+        <span class="ruby-identifier">p</span> <span class="ruby-string">&quot;Cancel&quot;</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">CLOSE</span>
+        <span class="ruby-identifier">p</span> <span class="ruby-string">&quot;Close&quot;</span>
+        <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">destroy</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">show_all</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-construction" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">construction</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Créer une table de boutons correspondants aux cases de la grille</p>
+          
+          
+
+          
+          <div class="method-source-code" id="construction-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 132</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">construction</span>
+    <span class="ruby-identifier">taille_hauteur</span> = <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">hauteur</span>
+    <span class="ruby-identifier">taille_largeur</span> = <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">largeur</span>
+    <span class="ruby-ivar">@boutons</span> = {}
+    <span class="ruby-identifier">tableFrame</span> = <span class="ruby-constant">Frame</span>.<span class="ruby-identifier">new</span>();
+    <span class="ruby-identifier">tableFrame</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;grille&quot;</span>
+    <span class="ruby-identifier">table</span> = <span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">taille_hauteur</span>,<span class="ruby-identifier">taille_largeur</span>,<span class="ruby-keyword">false</span>)
+    <span class="ruby-identifier">table</span>.<span class="ruby-identifier">set_halign</span>(<span class="ruby-value">3</span>);
+    <span class="ruby-identifier">table</span>.<span class="ruby-identifier">set_valign</span>(<span class="ruby-value">3</span>);
+    <span class="ruby-identifier">tableFrame</span>.<span class="ruby-identifier">set_halign</span>(<span class="ruby-value">3</span>);
+    <span class="ruby-identifier">tableFrame</span>.<span class="ruby-identifier">set_valign</span>(<span class="ruby-value">3</span>);
+    <span class="ruby-identifier">tableFrame</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">table</span>)
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille_largeur</span><span class="ruby-value">-1</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille_hauteur</span><span class="ruby-value">-1</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>)
+                <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]] = <span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">to_s</span>)
+                <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;case_chiffre&quot;</span>
+                <span class="ruby-identifier">table</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]], <span class="ruby-identifier">i</span>, <span class="ruby-identifier">i</span><span class="ruby-value">+1</span>, <span class="ruby-identifier">j</span>, <span class="ruby-identifier">j</span><span class="ruby-value">+1</span>)
+            <span class="ruby-keyword">else</span>
+                <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]] = <span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>()
+                <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;case_vide&quot;</span>
+                <span class="ruby-identifier">table</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]], <span class="ruby-identifier">i</span>, <span class="ruby-identifier">i</span><span class="ruby-value">+1</span>, <span class="ruby-identifier">j</span>, <span class="ruby-identifier">j</span><span class="ruby-value">+1</span>)
+            <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">maj_boutons</span>
+    <span class="ruby-identifier">signaux_boutons</span>(<span class="ruby-identifier">tableFrame</span>)
+    <span class="ruby-ivar">@object</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">table</span>)
+    <span class="ruby-comment"># supprime les boutons</span>
+    <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_retour&#39;</span>).<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){<span class="ruby-comment">#quitter</span>
+        <span class="ruby-ivar">@object</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-identifier">tableFrame</span>)
+        <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">ajouterPartie</span>(<span class="ruby-identifier">@@partie</span>)
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@menuParent</span>, <span class="ruby-string">&quot;Libre&quot;</span>)
+    }
+    <span class="ruby-ivar">@object</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">tableFrame</span>)
+    <span class="ruby-identifier">tableFrame</span>.<span class="ruby-identifier">show_all</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-gestionSignaux" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">gestionSignaux</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="gestionSignaux-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
+    
+    <span class="ruby-comment">#Recuperation de la fenetre</span>
+    <span class="ruby-identifier">btn_retour</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_retour&#39;</span>)
+    <span class="ruby-identifier">btn_undo</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_undo&#39;</span>)
+    <span class="ruby-identifier">btn_redo</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_redo&#39;</span>)
+    <span class="ruby-identifier">btn_pause</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_pause&#39;</span>)
+    <span class="ruby-identifier">btn_rembobiner</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_rembobiner&#39;</span>)
+    <span class="ruby-identifier">btn_clear</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_clear&#39;</span>)
+    <span class="ruby-identifier">btn_aide</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_aide&#39;</span>)
+
+    <span class="ruby-comment">#Gestion Graphique CSS</span>
+    <span class="ruby-identifier">btn_retour</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_menu_grille&quot;</span>
+    <span class="ruby-identifier">btn_undo</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_menu_grille_grise&quot;</span>
+    <span class="ruby-identifier">btn_redo</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_menu_grille_grise&quot;</span>
+    <span class="ruby-identifier">btn_pause</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_menu_grille&quot;</span>
+    <span class="ruby-identifier">btn_rembobiner</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_menu_grille_grise&quot;</span>
+    <span class="ruby-identifier">btn_clear</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_menu_grille&quot;</span>
+    <span class="ruby-identifier">btn_aide</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_menu_grille&quot;</span>
+    
+    <span class="ruby-identifier">btn_aide</span>.<span class="ruby-identifier">set_popover</span>(<span class="ruby-ivar">@popover</span>)
+
+    <span class="ruby-comment">#Gestion des signaux</span>
+    <span class="ruby-identifier">btn_redo</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){<span class="ruby-comment">#redo</span>
+        <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">redo</span>
+        <span class="ruby-identifier">maj_boutons</span>
+        <span class="ruby-identifier">griserBoutons</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>
+    }
+    <span class="ruby-identifier">btn_undo</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){<span class="ruby-comment">#undo</span>
+        <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">undo</span>
+        <span class="ruby-identifier">maj_boutons</span>
+        <span class="ruby-identifier">griserBoutons</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>
+    }
+    <span class="ruby-identifier">btn_rembobiner</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){<span class="ruby-comment">#retour tant qu&#39;il y a des erreurs</span>
+        <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">reviensALaBonnePosition</span>()
+        <span class="ruby-identifier">maj_boutons</span>
+        <span class="ruby-identifier">griserBoutons</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>
+    }
+    <span class="ruby-identifier">btn_aide</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){<span class="ruby-comment">#affiche un indice</span>
+        <span class="ruby-identifier">indice</span>=<span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">clicSurIndice</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">indice</span><span class="ruby-operator">==</span><span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">dernierIndice</span>
+            <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">indice</span>.<span class="ruby-identifier">coordonneesCase</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">indice</span>.<span class="ruby-identifier">coordonneesCase</span>[<span class="ruby-value">1</span>]]].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;case_indice&quot;</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-ivar">@popover</span>.<span class="ruby-identifier">destroy</span>
+        <span class="ruby-ivar">@popover</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Popover</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">labelIndice</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">indice</span>.<span class="ruby-identifier">to_s</span>)
+        <span class="ruby-ivar">@popover</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">labelIndice</span>)
+        <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_aide&#39;</span>).<span class="ruby-identifier">set_popover</span>(<span class="ruby-ivar">@popover</span>)
+        <span class="ruby-ivar">@popover</span>.<span class="ruby-identifier">show_all</span>
+        <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">dernierIndice</span>=<span class="ruby-identifier">indice</span>
+        
+    }
+    <span class="ruby-identifier">btn_clear</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){<span class="ruby-comment">#remet la partie a zero</span>
+        <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">raz</span>
+        <span class="ruby-identifier">griserBoutons</span>
+        <span class="ruby-identifier">maj_boutons</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>
+    }
+    
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-griserBoutons" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">griserBoutons</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="griserBoutons-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 233</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">griserBoutons</span>
+    <span class="ruby-identifier">btn_undo</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_undo&#39;</span>)
+    <span class="ruby-identifier">btn_redo</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_redo&#39;</span>)
+    <span class="ruby-identifier">btn_rembobiner</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_rembobiner&#39;</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">undoPossible?</span>
+        <span class="ruby-identifier">btn_undo</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_menu_grille&quot;</span>
+        <span class="ruby-identifier">btn_rembobiner</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_menu_grille&quot;</span>
+    <span class="ruby-keyword">else</span> 
+        <span class="ruby-identifier">btn_undo</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_menu_grille_grise&quot;</span>
+        <span class="ruby-identifier">btn_rembobiner</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_menu_grille_grise&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">redoPossible?</span>
+        <span class="ruby-identifier">btn_redo</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_menu_grille&quot;</span>
+    <span class="ruby-keyword">else</span> 
+        <span class="ruby-identifier">btn_redo</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_menu_grille_grise&quot;</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-maj_bouton" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">maj_bouton</span><span
+            class="method-args">(i,j)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Change la couleur d&#39;un bouton aux coordonnées passées en paramètres en fonction de l&#39;état de la case correspondante</p>
+          
+          
+
+          
+          <div class="method-source-code" id="maj_bouton-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 260</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">maj_bouton</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>)
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>)
+        <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;case_vide&quot;</span>
+        <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]].<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot; &quot;</span>)
+    <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">1</span>)
+        <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;case_noir&quot;</span>
+        <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]].<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot; &quot;</span>)
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;case_point&quot;</span>  
+        <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]].<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;•&quot;</span>)
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-maj_boutons" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">maj_boutons</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="maj_boutons-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 251</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">maj_boutons</span>
+    <span class="ruby-ivar">@boutons</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cle</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">cle</span>[<span class="ruby-value">0</span>]][<span class="ruby-identifier">cle</span>[<span class="ruby-value">1</span>]].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>)
+            <span class="ruby-identifier">maj_bouton</span>(<span class="ruby-identifier">cle</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">cle</span>[<span class="ruby-value">1</span>])
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-signaux_boutons" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">signaux_boutons</span><span
+            class="method-args">(tableFrame)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Changes la couleur des boutons lorsqu&#39;on clique dessus</p>
+          
+          
+
+          
+          <div class="method-source-code" id="signaux_boutons-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 211</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">signaux_boutons</span>(<span class="ruby-identifier">tableFrame</span>)
+    <span class="ruby-ivar">@boutons</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cle</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">cle</span>[<span class="ruby-value">0</span>]][<span class="ruby-identifier">cle</span>[<span class="ruby-value">1</span>]].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>)
+            <span class="ruby-identifier">val</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+                <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">clicSurCase</span>(<span class="ruby-identifier">cle</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">cle</span>[<span class="ruby-value">1</span>])
+                <span class="ruby-identifier">maj_bouton</span>(<span class="ruby-identifier">cle</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">cle</span>[<span class="ruby-value">1</span>])
+                <span class="ruby-identifier">griserBoutons</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">dernierIndice</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">dernierIndice</span>.<span class="ruby-identifier">type</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">dernierIndice</span>.<span class="ruby-identifier">coordonneesCase</span>[<span class="ruby-value">0</span>]][<span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">dernierIndice</span>.<span class="ruby-identifier">coordonneesCase</span>[<span class="ruby-value">1</span>]].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>)
+                    <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">dernierIndice</span>.<span class="ruby-identifier">coordonneesCase</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">dernierIndice</span>.<span class="ruby-identifier">coordonneesCase</span>[<span class="ruby-value">1</span>]]].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;case_chiffre&quot;</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">partieFinie?</span>
+                    <span class="ruby-identifier">affiche_victoire</span>
+                    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Bien joué, la partie est finie !&quot;</span>
+                    <span class="ruby-ivar">@object</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-identifier">tableFrame</span>)
+                    <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">ajouterPartie</span>(<span class="ruby-identifier">@@partie</span>)
+                    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@menuParent</span>, <span class="ruby-string">&quot;Libre&quot;</span>)
+                <span class="ruby-keyword">end</span>
+            }
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Grille - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-creer">::creer</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-chargerGrille">#chargerGrille</a>
+    
+    <li ><a href="#method-i-copierCorrection">#copierCorrection</a>
+    
+    <li ><a href="#method-i-copierMatrice">#copierMatrice</a>
+    
+    <li ><a href="#method-i-grilleFinie">#grilleFinie</a>
+    
+    <li ><a href="#method-i-lireGrille">#lireGrille</a>
+    
+    <li ><a href="#method-i-nbErreurs">#nbErreurs</a>
+    
+    <li ><a href="#method-i-pourcentageCompletion">#pourcentageCompletion</a>
+    
+    <li ><a href="#method-i-raz">#raz</a>
+    
+    <li ><a href="#method-i-to_s">#to_s</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Grille">
+  <h1 id="class-Grille" class="class">
+    class Grille
+  </h1>
+
+  <section class="description">
+    <dl class="rdoc-list note-list"><dt>La classe <a href="Grille.html"><code>Grille</code></a> :
+<dd><ul><li>
+<p>représente la grille de la partie</p>
+</li><li>
+<p>possède un identifiant</p>
+</li><li>
+<p>une largeur et une hauteur</p>
+</li><li>
+<p>une matrice de cases sur laquelle on jouera</p>
+</li><li>
+<p>une matrice de cases corrigée</p>
+</li><li>
+<p>un nombre d&#39;étoiles</p>
+</li></ul>
+</dd><dt>Les VI de la classe sont :
+<dd><ul><li>
+<p>@numero                     ==&gt; identifiant de la grille</p>
+</li><li>
+<p>@hauteur                    ==&gt; hauteur de la grille</p>
+</li><li>
+<p>@largeur                    ==&gt; largeur de la grille</p>
+</li><li>
+<p>@matriceCases               ==&gt; matrice de cases sur laquelle le joueur jouera</p>
+</li><li>
+<p>@correction         ==&gt; matrice contenant la solution</p>
+</li><li>
+<p>@etoiles                    ==&gt; nombre d&#39;étoiles</p>
+</li></ul>
+</dd></dl>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="DIFFICILE">DIFFICILE
+        
+        <dd>
+        
+      
+        <dt id="FACILE">FACILE
+        
+        <dd>
+        
+      
+        <dt id="MOYEN">MOYEN
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-correction" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">correction</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-difficulte" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">difficulte</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-etoiles" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">etoiles</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-hauteur" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">hauteur</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-largeur" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">largeur</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-matriceCases" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">matriceCases</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-numero" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">numero</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-creer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creer</span><span
+            class="method-args">(num,h,l)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>constructeur de test</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creer-source">
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Grille</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">num</span>,<span class="ruby-identifier">h</span>,<span class="ruby-identifier">l</span>)
+        <span class="ruby-identifier">new</span>(<span class="ruby-identifier">num</span>,<span class="ruby-identifier">h</span>,<span class="ruby-identifier">l</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(num,h,l)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">num</span>,<span class="ruby-identifier">h</span>,<span class="ruby-identifier">l</span>)
+        <span class="ruby-ivar">@numero</span>=<span class="ruby-identifier">num</span>
+        <span class="ruby-ivar">@hauteur</span>=<span class="ruby-identifier">h</span>
+        <span class="ruby-ivar">@largeur</span>=<span class="ruby-identifier">l</span>
+        <span class="ruby-ivar">@matriceCases</span>=<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@largeur</span>){<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@hauteur</span>)}
+        <span class="ruby-ivar">@correction</span>=<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@largeur</span>){<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@hauteur</span>)}
+        <span class="ruby-ivar">@etoiles</span>=<span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-chargerGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chargerGrille</span><span
+            class="method-args">(unIndex, uneDifficulte)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="chargerGrille-source">
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 213</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">chargerGrille</span>(<span class="ruby-identifier">unIndex</span>, <span class="ruby-identifier">uneDifficulte</span>)
+
+    <span class="ruby-identifier">chaine</span> = <span class="ruby-identifier">lireGrille</span>(<span class="ruby-identifier">unIndex</span>, <span class="ruby-identifier">uneDifficulte</span>)
+    
+    <span class="ruby-identifier">numeroCases</span> = <span class="ruby-identifier">chaine</span>.<span class="ruby-identifier">lines</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39; &#39;</span>)
+    <span class="ruby-identifier">grille</span> = <span class="ruby-identifier">chaine</span>.<span class="ruby-identifier">lines</span>.<span class="ruby-identifier">drop</span>(<span class="ruby-value">1</span>)
+
+            <span class="ruby-comment"># p grille[0].split &lt;-- print chaque caractère de la ligne à part</span>
+
+            <span class="ruby-comment"># Génération de la matrice de cases</span>
+            <span class="ruby-identifier">matriceCases</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">length</span>) { <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">grille</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>.<span class="ruby-identifier">length</span>) }
+            <span class="ruby-identifier">correction</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">length</span>) { <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">grille</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>.<span class="ruby-identifier">length</span>) }
+
+            <span class="ruby-identifier">x</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">y</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">compteur</span> = <span class="ruby-value">0</span>
+            <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+                    <span class="ruby-identifier">x</span> = <span class="ruby-value">0</span>
+                    <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">grille</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">split</span> <span class="ruby-keyword">do</span>
+                            <span class="ruby-keyword">if</span> (<span class="ruby-identifier">j</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;2&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">j</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>)
+                                    <span class="ruby-identifier">correction</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>] = <span class="ruby-constant">CaseNombre</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">numeroCases</span>[<span class="ruby-identifier">compteur</span>].<span class="ruby-identifier">to_i</span>) 
+                                    <span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>] = <span class="ruby-constant">CaseNombre</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">numeroCases</span>[<span class="ruby-identifier">compteur</span>].<span class="ruby-identifier">to_i</span>) 
+                                    <span class="ruby-identifier">compteur</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                            <span class="ruby-keyword">else</span>
+                                    <span class="ruby-identifier">correction</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>] = <span class="ruby-constant">CaseJouable</span>.<span class="ruby-identifier">creer</span>()
+                                    <span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>] = <span class="ruby-constant">CaseJouable</span>.<span class="ruby-identifier">creer</span>()
+                                    <span class="ruby-keyword">if</span> <span class="ruby-identifier">j</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                                            <span class="ruby-identifier">correction</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>].<span class="ruby-identifier">etat</span>=<span class="ruby-value">1</span>
+                                    <span class="ruby-keyword">else</span>
+                                            <span class="ruby-identifier">correction</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>].<span class="ruby-identifier">etat</span>=<span class="ruby-value">2</span>
+                                    <span class="ruby-keyword">end</span>
+                            <span class="ruby-keyword">end</span>
+                            
+                            <span class="ruby-identifier">x</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                    <span class="ruby-keyword">end</span>
+                    <span class="ruby-identifier">y</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+            <span class="ruby-keyword">end</span>
+            <span class="ruby-ivar">@numero</span>=<span class="ruby-identifier">unIndex</span>
+            <span class="ruby-ivar">@hauteur</span>=<span class="ruby-identifier">y</span>
+            <span class="ruby-ivar">@largeur</span>=<span class="ruby-identifier">x</span>
+            <span class="ruby-ivar">@matriceCases</span>=<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@largeur</span>){<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@hauteur</span>)}
+            <span class="ruby-ivar">@correction</span>=<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@largeur</span>){<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@hauteur</span>)}
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">copierMatrice</span>(<span class="ruby-identifier">matriceCases</span>)
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">copierCorrection</span>(<span class="ruby-identifier">correction</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-copierCorrection" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">copierCorrection</span><span
+            class="method-args">(mat2)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>affectes les cases de la matrice passée en paramètre à la matrice correction</p>
+          
+          
+
+          
+          <div class="method-source-code" id="copierCorrection-source">
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">copierCorrection</span>(<span class="ruby-identifier">mat2</span>)
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@hauteur</span><span class="ruby-value">-1</span>  <span class="ruby-keyword">do</span>
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@largeur</span><span class="ruby-value">-1</span> <span class="ruby-keyword">do</span>
+                        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">mat2</span>[<span class="ruby-identifier">j</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>))
+                                <span class="ruby-identifier">c</span> = <span class="ruby-constant">CaseJouable</span>.<span class="ruby-identifier">creer</span>()
+                                <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span>=<span class="ruby-identifier">mat2</span>[<span class="ruby-identifier">j</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">etat</span>
+                                <span class="ruby-ivar">@correction</span>[<span class="ruby-identifier">j</span>][<span class="ruby-identifier">i</span>]=<span class="ruby-identifier">c</span>
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-ivar">@correction</span>[<span class="ruby-identifier">j</span>][<span class="ruby-identifier">i</span>]=<span class="ruby-constant">CaseNombre</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">mat2</span>[<span class="ruby-identifier">j</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">valeur</span>)
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-copierMatrice" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">copierMatrice</span><span
+            class="method-args">(mat2)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>affectes les cases de la matrice passée en paramètre à la matriceCases</p>
+          
+          
+
+          
+          <div class="method-source-code" id="copierMatrice-source">
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 73</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">copierMatrice</span>(<span class="ruby-identifier">mat2</span>)
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@hauteur</span><span class="ruby-value">-1</span>  <span class="ruby-keyword">do</span>
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@largeur</span><span class="ruby-value">-1</span> <span class="ruby-keyword">do</span>
+                        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">mat2</span>[<span class="ruby-identifier">j</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>))
+                                <span class="ruby-identifier">c</span> = <span class="ruby-constant">CaseJouable</span>.<span class="ruby-identifier">creer</span>()
+                                <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span>=<span class="ruby-identifier">mat2</span>[<span class="ruby-identifier">j</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">etat</span>
+                                <span class="ruby-ivar">@matriceCases</span>[<span class="ruby-identifier">j</span>][<span class="ruby-identifier">i</span>]=<span class="ruby-identifier">c</span>
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-ivar">@matriceCases</span>[<span class="ruby-identifier">j</span>][<span class="ruby-identifier">i</span>]=<span class="ruby-constant">CaseNombre</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">mat2</span>[<span class="ruby-identifier">j</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">valeur</span>)
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-grilleFinie" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">grilleFinie</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>retournes un booléen : vrai si la matriceCases est finie, faux sinon</p>
+          
+          
+
+          
+          <div class="method-source-code" id="grilleFinie-source">
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 145</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">grilleFinie</span>()
+        <span class="ruby-identifier">nbErr</span> = <span class="ruby-value">0</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@hauteur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@largeur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>)<span class="ruby-operator">&amp;&amp;</span><span class="ruby-ivar">@matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">!=</span><span class="ruby-ivar">@correction</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span>)
+                                <span class="ruby-identifier">nbErr</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">nbErr</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-lireGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lireGrille</span><span
+            class="method-args">(unIndex, uneDifficulte)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="lireGrille-source">
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 168</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lireGrille</span>(<span class="ruby-identifier">unIndex</span>, <span class="ruby-identifier">uneDifficulte</span>)
+    <span class="ruby-identifier">compteur</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">chaine</span> = <span class="ruby-string">&quot;&quot;</span>
+
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">uneDifficulte</span> <span class="ruby-operator">==</span> <span class="ruby-constant">FACILE</span>)
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-string">&#39;./Partie/grillesEasy.txt&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+            <span class="ruby-comment"># Si on arrive au mot &quot;END&quot; dans le fichier, on arrête la recherche en envoyant le mot-clé &quot;END&quot;</span>
+                            <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-string">&quot;END&quot;</span>) 
+                                    <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;END&quot;</span>
+                            <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+                <span class="ruby-identifier">compteur</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                            <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">compteur</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unIndex</span>
+                <span class="ruby-identifier">chaine</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>
+            <span class="ruby-keyword">end</span>
+
+            <span class="ruby-keyword">return</span> <span class="ruby-identifier">chaine</span> <span class="ruby-keyword">if</span> (<span class="ruby-identifier">compteur</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unIndex</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
+
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">uneDifficulte</span> <span class="ruby-operator">==</span> <span class="ruby-constant">MOYEN</span>)
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-string">&#39;./Partie/grillesMedium.txt&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+                <span class="ruby-identifier">compteur</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                            <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">compteur</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unIndex</span>
+                <span class="ruby-identifier">chaine</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>
+            <span class="ruby-keyword">end</span>
+
+            <span class="ruby-keyword">return</span> <span class="ruby-identifier">chaine</span> <span class="ruby-keyword">if</span> (<span class="ruby-identifier">compteur</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unIndex</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
+
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">uneDifficulte</span> <span class="ruby-operator">==</span> <span class="ruby-constant">DIFFICILE</span>)
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-string">&#39;./Partie/grillesHard.txt&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+                <span class="ruby-identifier">compteur</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                            <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">compteur</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unIndex</span>
+                <span class="ruby-identifier">chaine</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>
+            <span class="ruby-keyword">end</span>
+
+            <span class="ruby-keyword">return</span> <span class="ruby-identifier">chaine</span> <span class="ruby-keyword">if</span> (<span class="ruby-identifier">compteur</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unIndex</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
+
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nbErreurs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nbErreurs</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>retournes le nombre d&#39;erreurs de la matriceCases</p>
+          
+          
+
+          
+          <div class="method-source-code" id="nbErreurs-source">
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 132</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nbErreurs</span>()
+        <span class="ruby-identifier">nbErr</span> = <span class="ruby-value">0</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@hauteur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@largeur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>)<span class="ruby-operator">&amp;&amp;</span><span class="ruby-ivar">@matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">!=</span><span class="ruby-ivar">@correction</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">&amp;&amp;</span><span class="ruby-ivar">@matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">!=</span><span class="ruby-value">0</span>)
+                                <span class="ruby-identifier">nbErr</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">nbErr</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pourcentageCompletion" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pourcentageCompletion</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>retournes le pourcentage de complétion de la matriceCases</p>
+          
+          
+
+          
+          <div class="method-source-code" id="pourcentageCompletion-source">
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 116</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pourcentageCompletion</span>()
+        <span class="ruby-identifier">nbPareil</span> = <span class="ruby-value">0</span>
+        <span class="ruby-identifier">nbCasesNombre</span> = <span class="ruby-value">0</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@hauteur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@largeur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-ivar">@correction</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span>)
+                                <span class="ruby-identifier">nbPareil</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">elsif</span> (<span class="ruby-ivar">@matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>))
+                                <span class="ruby-identifier">nbCasesNombre</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> (<span class="ruby-identifier">nbPareil</span><span class="ruby-operator">/</span>(<span class="ruby-ivar">@hauteur</span><span class="ruby-operator">*</span><span class="ruby-ivar">@largeur</span><span class="ruby-operator">-</span><span class="ruby-identifier">nbCasesNombre</span>).<span class="ruby-identifier">to_f</span>)<span class="ruby-operator">*</span><span class="ruby-value">100</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-raz" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">raz</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Remet toutes les cases jouables de la matriceCases à l&#39;état non joué</p>
+          
+          
+
+          
+          <div class="method-source-code" id="raz-source">
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 158</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">raz</span>()
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@hauteur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@largeur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>))
+                                <span class="ruby-ivar">@matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span>=<span class="ruby-value">0</span>
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>()
+        <span class="ruby-identifier">res</span> = <span class="ruby-string">&quot;-------------\n&quot;</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@hauteur</span><span class="ruby-value">-1</span>  <span class="ruby-keyword">do</span>
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@largeur</span><span class="ruby-value">-1</span> <span class="ruby-keyword">do</span>
+                        <span class="ruby-identifier">res</span><span class="ruby-operator">+=</span> <span class="ruby-ivar">@matriceCases</span>[<span class="ruby-identifier">j</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">to_s</span>
+                        <span class="ruby-identifier">res</span><span class="ruby-operator">+=</span> <span class="ruby-string">&quot; &quot;</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">res</span><span class="ruby-operator">+=</span> <span class="ruby-string">&quot;\n&quot;</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

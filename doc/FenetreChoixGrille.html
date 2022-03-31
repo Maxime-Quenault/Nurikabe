@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class FenetreChoixGrille - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Fenetre.html">Fenetre</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-afficheGrille">#afficheGrille</a>
+    
+    <li ><a href="#method-i-construction">#construction</a>
+    
+    <li ><a href="#method-i-gestionSignaux">#gestionSignaux</a>
+    
+    <li ><a href="#method-i-initGrilles">#initGrilles</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-FenetreChoixGrille">
+  <h1 id="class-FenetreChoixGrille" class="class">
+    class FenetreChoixGrille
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-difficulte" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">difficulte</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-object" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">object</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(menuParent)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">menuParent</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiseToi</span>
+    <span class="ruby-ivar">@difficulte</span>
+    <span class="ruby-ivar">@builder</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">add_from_file</span>(<span class="ruby-string">&quot;glade/menu-choix-grille.glade&quot;</span>)
+    <span class="ruby-ivar">@object</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;menu&quot;</span>)
+    <span class="ruby-ivar">@boutons</span>
+    <span class="ruby-ivar">@menuParent</span> = <span class="ruby-identifier">menuParent</span>
+
+    <span class="ruby-ivar">@interfaceGrille</span> = <span class="ruby-constant">FenetreGrille</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@object</span>)
+    
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">gestionSignaux</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-afficheGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">afficheGrille</span><span
+            class="method-args">(id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="afficheGrille-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 43</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficheGrille</span>(<span class="ruby-identifier">id</span>)
+
+    <span class="ruby-ivar">@grid_grilles</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;grid_grilles&#39;</span>)
+    
+    <span class="ruby-identifier">boutonGrille</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>()
+    <span class="ruby-identifier">contenuBoutonG</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+
+    <span class="ruby-identifier">titreBoutonG</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Grille #&#39;</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">id</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">to_s</span>)
+    <span class="ruby-identifier">titreBoutonG</span>.<span class="ruby-identifier">set_margin_top</span>(<span class="ruby-value">5</span>)
+    <span class="ruby-identifier">titreBoutonG</span>.<span class="ruby-identifier">set_margin_bottom</span>(<span class="ruby-value">5</span>)
+    <span class="ruby-identifier">contenuBoutonG</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">titreBoutonG</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>)
+
+            <span class="ruby-comment"># On ajoute l&#39;affichage de la grille dans son bouton</span>
+            <span class="ruby-identifier">g</span> = <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>()
+            <span class="ruby-identifier">g</span>.<span class="ruby-identifier">difficulte</span> = <span class="ruby-value">0</span>
+            <span class="ruby-identifier">g</span>.<span class="ruby-identifier">chargerGrille</span>(<span class="ruby-identifier">id</span>, <span class="ruby-value">0</span>)
+
+    <span class="ruby-identifier">contenuBoutonG</span>.<span class="ruby-identifier">add</span>( <span class="ruby-ivar">@interfaceGrille</span>.<span class="ruby-identifier">afficheGrille</span>(<span class="ruby-identifier">g</span>.<span class="ruby-identifier">hauteur</span>, <span class="ruby-identifier">g</span>.<span class="ruby-identifier">largeur</span>, <span class="ruby-identifier">g</span>) )
+
+    <span class="ruby-identifier">boutonGrille</span>.<span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">contenuBoutonG</span>)
+
+    <span class="ruby-comment"># &lt;!!&gt; Classe à ajouter si la grille est finie - à voir avec les sauvegardes donc.</span>
+    <span class="ruby-comment"># boutonGrille.set_name(&#39;grilleFinie&#39;)</span>
+
+            <span class="ruby-identifier">boutonGrille</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){<span class="ruby-comment">#quitter</span>
+        <span class="ruby-identifier">construction</span>(<span class="ruby-identifier">id</span>)
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@interfaceGrille</span>.<span class="ruby-identifier">object</span>, <span class="ruby-string">&quot;Partie&quot;</span>)
+    }
+
+    <span class="ruby-ivar">@grid_grilles</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">boutonGrille</span>, <span class="ruby-ivar">@pos_h</span>, <span class="ruby-ivar">@pos_v</span>, <span class="ruby-value">1</span>, <span class="ruby-value">1</span>)
+
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@pos_h</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">2</span>
+        <span class="ruby-ivar">@pos_h</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-ivar">@pos_h</span> = <span class="ruby-value">0</span>
+        <span class="ruby-ivar">@pos_v</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-construction" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">construction</span><span
+            class="method-args">(num_grille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Créer une table de boutons correspondants aux cases de la grille</p>
+          
+          
+
+          
+          <div class="method-source-code" id="construction-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">construction</span>(<span class="ruby-identifier">num_grille</span>)
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">unePartie</span> = <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">chercherPartie</span>(<span class="ruby-identifier">num_grille</span>, <span class="ruby-ivar">@difficulte</span>)) <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">g</span>=<span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>()
+        <span class="ruby-identifier">g</span>.<span class="ruby-identifier">difficulte</span>=<span class="ruby-identifier">difficulte</span>
+        <span class="ruby-identifier">g</span>.<span class="ruby-identifier">chargerGrille</span>(<span class="ruby-identifier">num_grille</span>,<span class="ruby-ivar">@difficulte</span>)
+        <span class="ruby-identifier">creerPartie</span>(<span class="ruby-identifier">g</span>)
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;\ntu as une partie de save&quot;</span>
+        <span class="ruby-identifier">@@partie</span> = <span class="ruby-identifier">unePartie</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@interfaceGrille</span>.<span class="ruby-identifier">construction</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-gestionSignaux" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">gestionSignaux</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="gestionSignaux-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
+    
+    <span class="ruby-comment"># Recuperation de la fenetre</span>
+    <span class="ruby-ivar">@btn_retour</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_retour&#39;</span>)
+
+    <span class="ruby-ivar">@btn_retour</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;retour_fleche&quot;</span>
+
+            <span class="ruby-identifier">initGrilles</span>(<span class="ruby-value">0</span>)
+
+    <span class="ruby-comment">#Gestion des signaux</span>
+    <span class="ruby-ivar">@btn_retour</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){<span class="ruby-comment">#quitter</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@menuParent</span>, <span class="ruby-string">&quot;Libre&quot;</span>)
+    }
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-initGrilles" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">initGrilles</span><span
+            class="method-args">(uneDifficulte)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Initialise la liste de grilles à afficher dans la librairie</p>
+          
+          
+
+          
+          <div class="method-source-code" id="initGrilles-source">
+            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initGrilles</span>(<span class="ruby-identifier">uneDifficulte</span>)
+
+    <span class="ruby-ivar">@pos_v</span> = <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@pos_h</span> = <span class="ruby-value">0</span>
+
+    <span class="ruby-identifier">p</span> = <span class="ruby-constant">LectureGrille</span>.<span class="ruby-identifier">new</span>()
+    <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+            
+    <span class="ruby-keyword">while</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">lireGrille</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">uneDifficulte</span>) <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;END&quot;</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">afficheGrille</span>(<span class="ruby-identifier">i</span>)
+        <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Partie - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-creeToi">::creeToi</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-caseJouableAccessibleQueDUneDirection">#caseJouableAccessibleQueDUneDirection</a>
+    
+    <li ><a href="#method-i-caseNombreAccessibleQueDUneDirection">#caseNombreAccessibleQueDUneDirection</a>
+    
+    <li ><a href="#method-i-clicSurCase">#clicSurCase</a>
+    
+    <li ><a href="#method-i-clicSurIndice">#clicSurIndice</a>
+    
+    <li ><a href="#method-i-indice_IlesDiagonalesNonSeparees">#indice_IlesDiagonalesNonSeparees</a>
+    
+    <li ><a href="#method-i-indice_IlesVoisinesNonSeparees">#indice_IlesVoisinesNonSeparees</a>
+    
+    <li ><a href="#method-i-indice_Ocean2x2">#indice_Ocean2x2</a>
+    
+    <li ><a href="#method-i-indice_caseJouableIsolee">#indice_caseJouableIsolee</a>
+    
+    <li ><a href="#method-i-indice_expansionIle">#indice_expansionIle</a>
+    
+    <li ><a href="#method-i-indice_expansionMur">#indice_expansionMur</a>
+    
+    <li ><a href="#method-i-indice_ile1NonEntouree">#indice_ile1NonEntouree</a>
+    
+    <li ><a href="#method-i-metToiEnPause">#metToiEnPause</a>
+    
+    <li ><a href="#method-i-nouveauCoup">#nouveauCoup</a>
+    
+    <li ><a href="#method-i-partieFinie-3F">#partieFinie?</a>
+    
+    <li ><a href="#method-i-raz">#raz</a>
+    
+    <li ><a href="#method-i-razSurvie">#razSurvie</a>
+    
+    <li ><a href="#method-i-redo">#redo</a>
+    
+    <li ><a href="#method-i-redoPossible-3F">#redoPossible?</a>
+    
+    <li ><a href="#method-i-reprend">#reprend</a>
+    
+    <li ><a href="#method-i-reviensALaBonnePosition">#reviensALaBonnePosition</a>
+    
+    <li ><a href="#method-i-undo">#undo</a>
+    
+    <li ><a href="#method-i-undoPossible-3F">#undoPossible?</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Partie">
+  <h1 id="class-Partie" class="class">
+    class Partie
+  </h1>
+
+  <section class="description">
+    <dl class="rdoc-list note-list"><dt>La classe <a href="Partie.html"><code>Partie</code></a> permet de :
+<dd><ul><li>
+<p>représenter une partie</p>
+</li><li>
+<p>jouer sur une grille</p>
+</li><li>
+<p>connaître le temps grâce à un chronomêtre</p>
+</li><li>
+<p>faire des undo redo grâce à un système d&#39;undo/redo</p>
+</li></ul>
+<dl class="rdoc-list note-list"><dt>Les VI de la classe sont :
+<dd><ul><li>
+<p>@grilleEnCours  ==&gt; grille sur laquelle le joueur évolue</p>
+</li><li>
+<p>@chronometre    ==&gt; temps de jeu sur la grille</p>
+</li><li>
+<p>@tabCoup        ==&gt; tableau contenant les coups joués</p>
+</li><li>
+<p>@indiceCoup     ==&gt; indice représentant le coup joué par le joueur</p>
+</li><li>
+<p>@enPause        ==&gt; booleen indiquant vrai si la partie est en pause</p>
+</li></ul>
+</dd></dl>
+</dd></dl>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-chronometre" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">chronometre</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-dernierIndice" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">dernierIndice</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-enPause" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">enPause</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-grilleEnCours" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">grilleEnCours</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-indiceCoup" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">indiceCoup</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-tabCoup" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">tabCoup</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-creeToi" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creeToi</span><span
+            class="method-args">(uneGrille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="creeToi-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Partie</span>.<span class="ruby-identifier ruby-title">creeToi</span>(<span class="ruby-identifier">uneGrille</span>)
+  <span class="ruby-identifier">new</span>(<span class="ruby-identifier">uneGrille</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(uneGrille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">uneGrille</span>)
+  <span class="ruby-ivar">@grilleEnCours</span>=<span class="ruby-identifier">uneGrille</span>
+  <span class="ruby-ivar">@tabCoup</span>=<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+  <span class="ruby-ivar">@indiceCoup</span>=<span class="ruby-value">0</span>
+  <span class="ruby-ivar">@enPause</span>=<span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@chronometre</span>=<span class="ruby-constant">Chronometre</span>.<span class="ruby-identifier">creer</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-caseJouableAccessibleQueDUneDirection" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">caseJouableAccessibleQueDUneDirection</span><span
+            class="method-args">(i,j)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne les coordonnées de la case adjacente à celle aux coordonnées passées en paramètres si cetter dernière n&#39;est accessible que d&#39;une seule case</p>
+          
+          
+
+          
+          <div class="method-source-code" id="caseJouableAccessibleQueDUneDirection-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 268</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">caseJouableAccessibleQueDUneDirection</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>)
+  <span class="ruby-identifier">gaucheNonJouable</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">droiteNonJouable</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">hautNonJouable</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">basNonJouable</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">j</span><span class="ruby-operator">==</span><span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>))
+    <span class="ruby-identifier">hautNonJouable</span>=<span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">i</span><span class="ruby-operator">==</span><span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>))
+    <span class="ruby-identifier">gaucheNonJouable</span>=<span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">j</span><span class="ruby-operator">==</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>))
+    <span class="ruby-identifier">basNonJouable</span>=<span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">i</span><span class="ruby-operator">==</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>))
+    <span class="ruby-identifier">droiteNonJouable</span>=<span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">gaucheNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">droiteNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">basNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">hautNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>)
+    <span class="ruby-keyword">return</span> [<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>]
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">gaucheNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">droiteNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">basNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hautNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>)
+    <span class="ruby-keyword">return</span> [<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>]
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">gaucheNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">droiteNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">basNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hautNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>) 
+    <span class="ruby-keyword">return</span> [<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>,<span class="ruby-identifier">j</span>]
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">gaucheNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">droiteNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">basNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hautNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>)
+    <span class="ruby-keyword">return</span> [<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>,<span class="ruby-identifier">j</span>]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+    
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-caseNombreAccessibleQueDUneDirection" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">caseNombreAccessibleQueDUneDirection</span><span
+            class="method-args">(i,j)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne les coordonnées de la case adjacente à celle aux coordonnées passées en paramètres si cetter dernière n&#39;est accessible que d&#39;une seule case</p>
+          
+          
+
+          
+          <div class="method-source-code" id="caseNombreAccessibleQueDUneDirection-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 313</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">caseNombreAccessibleQueDUneDirection</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>)
+  <span class="ruby-identifier">gaucheNonJouable</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">droiteNonJouable</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">hautNonJouable</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">basNonJouable</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">j</span><span class="ruby-operator">==</span><span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span>  <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">1</span>)
+    <span class="ruby-identifier">hautNonJouable</span>=<span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">i</span><span class="ruby-operator">==</span><span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">1</span>)
+    <span class="ruby-identifier">gaucheNonJouable</span>=<span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">j</span><span class="ruby-operator">==</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">1</span>)
+    <span class="ruby-identifier">basNonJouable</span>=<span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">i</span><span class="ruby-operator">==</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">1</span>)
+    <span class="ruby-identifier">droiteNonJouable</span>=<span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">gaucheNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">droiteNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">basNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">hautNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>)
+    <span class="ruby-keyword">return</span> [<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>]
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">gaucheNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">droiteNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">basNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hautNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>)
+    <span class="ruby-keyword">return</span> [<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>]
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">gaucheNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">droiteNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">basNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hautNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>) 
+    <span class="ruby-keyword">return</span> [<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>,<span class="ruby-identifier">j</span>]
+  <span class="ruby-keyword">elsif</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">gaucheNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">droiteNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">basNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">hautNonJouable</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>)
+    <span class="ruby-keyword">return</span> [<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>,<span class="ruby-identifier">j</span>]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-clicSurCase" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clicSurCase</span><span
+            class="method-args">(x,y)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>changes l&#39;état de la case cliquée et créer un nouveau coup correspondant, supprimmes les coups suivants</p>
+          
+          
+
+          
+          <div class="method-source-code" id="clicSurCase-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clicSurCase</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>))
+             <span class="ruby-identifier">anc_etat</span> =<span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>].<span class="ruby-identifier">etat</span>
+    <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>].<span class="ruby-identifier">changerEtat</span>
+                <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nouveauCoup</span>(<span class="ruby-constant">Coup</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>],<span class="ruby-identifier">anc_etat</span>,<span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>].<span class="ruby-identifier">etat</span>))
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">tabCoup</span>[<span class="ruby-ivar">@indiceCoup</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Coup</span>))
+      <span class="ruby-identifier">i</span>=<span class="ruby-ivar">@indiceCoup</span>
+      <span class="ruby-keyword">while</span>(<span class="ruby-identifier">tabCoup</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Coup</span>))
+        <span class="ruby-identifier">tabCoup</span>[<span class="ruby-identifier">i</span>]=<span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">i</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-clicSurIndice" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clicSurIndice</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Cherche si il y a un indice à donner à l&#39;utilisateur dans l&#39;ordre du plus simple au plus complexe et le retourne (si il existe, sinon on retourne nil)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="clicSurIndice-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 358</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clicSurIndice</span>()
+  <span class="ruby-identifier">indice</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">indice_ile1NonEntouree</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">indice</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">indice</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">indice</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">indice_Ocean2x2</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">indice</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">indice</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">indice</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">indice_caseJouableIsolee</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">indice</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">indice</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">indice</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">indice_IlesVoisinesNonSeparees</span> 
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">indice</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span>
+          <span class="ruby-keyword">return</span> <span class="ruby-identifier">indice</span>
+        <span class="ruby-keyword">else</span> 
+          <span class="ruby-identifier">indice</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">indice_IlesDiagonalesNonSeparees</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">indice</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-identifier">indice</span>
+          <span class="ruby-keyword">else</span>  
+            <span class="ruby-identifier">indice</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">indice_expansionMur</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">indice</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span>
+              <span class="ruby-keyword">return</span> <span class="ruby-identifier">indice</span>
+            <span class="ruby-keyword">else</span>  
+              <span class="ruby-identifier">indice</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">indice_expansionIle</span>
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">indice</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">indice</span>
+              <span class="ruby-keyword">else</span>  
+                <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-keyword">nil</span>,<span class="ruby-keyword">nil</span>)
+              <span class="ruby-keyword">end</span>
+            <span class="ruby-keyword">end</span>
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-indice_IlesDiagonalesNonSeparees" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">indice_IlesDiagonalesNonSeparees</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Recherche et retourne les coordonnées d&#39;une case jouable non jouée séparant deux cases îles en diagonales (si elle existe, sinon on retourne nil)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="indice_IlesDiagonalesNonSeparees-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 183</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indice_IlesDiagonalesNonSeparees</span>()
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span>
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span><span class="ruby-value">+1</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">j</span><span class="ruby-value">+1</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>)
+          <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ilesDiagonalesNonSeparees</span>,[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>,<span class="ruby-identifier">j</span>])
+          <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ilesDiagonalesNonSeparees</span>,[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>])
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span><span class="ruby-value">+1</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">j</span><span class="ruby-value">-1</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>)
+          <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ilesDiagonalesNonSeparees</span>,[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>,<span class="ruby-identifier">j</span>])
+          <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ilesDiagonalesNonSeparees</span>,[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>])
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span><span class="ruby-value">-1</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">j</span><span class="ruby-value">+1</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>)
+          <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ilesDiagonalesNonSeparees</span>,[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>,<span class="ruby-identifier">j</span>])
+          <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ilesDiagonalesNonSeparees</span>,[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>])
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span><span class="ruby-value">-1</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">j</span><span class="ruby-value">-1</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>)
+          <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ilesDiagonalesNonSeparees</span>,[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>,<span class="ruby-identifier">j</span>])
+          <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ilesDiagonalesNonSeparees</span>,[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>])
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-indice_IlesVoisinesNonSeparees" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">indice_IlesVoisinesNonSeparees</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Recherche et retourne les coordonnées d&#39;une case jouable non jouée séparant deux cases îles (si elle existe, sinon on retourne nil)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="indice_IlesVoisinesNonSeparees-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 162</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indice_IlesVoisinesNonSeparees</span>()
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span>
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span>
+      <span class="ruby-comment"># On regarde si il existe deux cases îles séparées par une case jouable non jouée</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span><span class="ruby-value">+2</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+2</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>)
+          <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ilesVoisinesNonSeparees</span>,[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>,<span class="ruby-identifier">j</span>])
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">j</span><span class="ruby-value">+2</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+2</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>)
+          <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ilesVoisinesNonSeparees</span>,[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>])
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">j</span><span class="ruby-value">-2</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-2</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>)
+          <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ilesVoisinesNonSeparees</span>,[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>])
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">i</span><span class="ruby-value">-2</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-2</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>)
+          <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ilesVoisinesNonSeparees</span>,[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>,<span class="ruby-identifier">j</span>])
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-indice_Ocean2x2" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">indice_Ocean2x2</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Recherche un carré de cases océan de taille 2x2 et retourne ses coordonnées (si il existe, sinon on retourne nil)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="indice_Ocean2x2-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 222</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indice_Ocean2x2</span>()
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-2</span>
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-2</span>
+      <span class="ruby-comment"># si les cases aux coordonnées [i,j],[i+1,j],[i,j+1],[i+1,j+1] sont jouables et ont l&#39;état océan, on retourne les coordonnées i,j</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) 
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">1</span> 
+          <span class="ruby-keyword">return</span>(<span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ocean2x2</span>,[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]))
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-indice_caseJouableIsolee" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">indice_caseJouableIsolee</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Recherche une case jouable (avec l&#39;état non joué ou île) entourée de cases océan ou des bords le la grille (si elle existe, sinon on retourne nil)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="indice_caseJouableIsolee-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 237</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indice_caseJouableIsolee</span>()
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span>
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span>
+      <span class="ruby-identifier">gauche</span> = <span class="ruby-keyword">false</span>
+      <span class="ruby-identifier">droite</span> = <span class="ruby-keyword">false</span>
+      <span class="ruby-identifier">bas</span> = <span class="ruby-keyword">false</span>
+      <span class="ruby-identifier">haut</span> = <span class="ruby-keyword">false</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">!=</span><span class="ruby-value">1</span>
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">i</span><span class="ruby-operator">==</span><span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">1</span>)
+          <span class="ruby-identifier">gauche</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span> 
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">j</span><span class="ruby-operator">==</span><span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">1</span>)
+          <span class="ruby-identifier">haut</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">j</span><span class="ruby-operator">==</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">1</span>)
+          <span class="ruby-identifier">bas</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">i</span><span class="ruby-operator">==</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">1</span>)
+          <span class="ruby-identifier">droite</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">gauche</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">droite</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">haut</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">bas</span>)
+        <span class="ruby-keyword">return</span>(<span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:caseJouableIsolee</span>, [<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]))
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-indice_expansionIle" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">indice_expansionIle</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Recherche si une île peut être étendue en mettant une case jouable à l&#39;état île et on retourne ses coordonnées (si elle existe, sinon on retourne nil)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="indice_expansionIle-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 345</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indice_expansionIle</span>()
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span>
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">valeur</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">caseNombreAccessibleQueDUneDirection</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span>
+          <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:expansionIle</span>,<span class="ruby-identifier">caseNombreAccessibleQueDUneDirection</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>))
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-indice_expansionMur" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">indice_expansionMur</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Recherche si un “mur” peut être étendu en mettant une case jouable à l&#39;état océan et on retourne ses coordonnées (si elle existe, sinon on retourne nil)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="indice_expansionMur-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 301</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indice_expansionMur</span>()
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span>
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">caseJouableAccessibleQueDUneDirection</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>)<span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span>
+          <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:expansionMur</span>,<span class="ruby-identifier">caseJouableAccessibleQueDUneDirection</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>))
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-indice_ile1NonEntouree" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">indice_ile1NonEntouree</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Recherche et retourne les coordonnées d&#39;une case Ile de valeur 1 non entourée (si elle existe, sinon on retourne nil)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="indice_ile1NonEntouree-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 141</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indice_ile1NonEntouree</span>()
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span>
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span>
+      <span class="ruby-comment"># On regarde si une case est une case ile de valeur 1 et si les cases autours ne sont pas jouées</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseNombre</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">valeur</span><span class="ruby-operator">==</span><span class="ruby-value">1</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span><span class="ruby-value">+1</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
+          <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ile1NonEntouree</span>,[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>])
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">j</span><span class="ruby-value">+1</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
+          <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ile1NonEntouree</span>,[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>])
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">j</span><span class="ruby-value">-1</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span> 
+          <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ile1NonEntouree</span>,[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>])
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">i</span><span class="ruby-value">-1</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>
+          <span class="ruby-keyword">return</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">:ile1NonEntouree</span>,[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>])
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-metToiEnPause" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">metToiEnPause</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="metToiEnPause-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 134</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">metToiEnPause</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nouveauCoup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nouveauCoup</span><span
+            class="method-args">(unCoup)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>ajoutes le coup passé en paramètre au tableau de coups et incrémente l&#39;indiceCoup</p>
+          
+          
+
+          
+          <div class="method-source-code" id="nouveauCoup-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nouveauCoup</span>(<span class="ruby-identifier">unCoup</span>)
+  <span class="ruby-ivar">@tabCoup</span>[<span class="ruby-ivar">@indiceCoup</span>]=<span class="ruby-identifier">unCoup</span>
+  <span class="ruby-ivar">@indiceCoup</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-partieFinie-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">partieFinie?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>vrai si la partie est finie faux sinon</p>
+          
+          
+
+          
+          <div class="method-source-code" id="partieFinie-3F-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 123</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">partieFinie?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">grilleFinie</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-raz" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">raz</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Remet les variables d&#39;instance à 0</p>
+          
+          
+
+          
+          <div class="method-source-code" id="raz-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 104</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">raz</span>()
+  <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">raz</span>()
+  <span class="ruby-ivar">@tabCoup</span>=<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+  <span class="ruby-ivar">@indiceCoup</span>=<span class="ruby-value">0</span>
+  <span class="ruby-ivar">@enPause</span>=<span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@chronometre</span>=<span class="ruby-constant">Chronometre</span>.<span class="ruby-identifier">creer</span>()
+  <span class="ruby-ivar">@chronometre</span>.<span class="ruby-identifier">metEnPause</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-razSurvie" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">razSurvie</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Remet les variables d&#39;instance à 0 et lui affectes un chronometre Survie</p>
+          
+          
+
+          
+          <div class="method-source-code" id="razSurvie-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 114</span>
+ <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">razSurvie</span>()
+  <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">raz</span>()
+  <span class="ruby-ivar">@tabCoup</span>=<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+  <span class="ruby-ivar">@indiceCoup</span>=<span class="ruby-value">0</span>
+  <span class="ruby-ivar">@enPause</span>=<span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@chronometre</span>=<span class="ruby-constant">ChronometreSurvie</span>.<span class="ruby-identifier">creer</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-redo" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">redo</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retournes à l&#39;état suivant</p>
+          
+          
+
+          
+          <div class="method-source-code" id="redo-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 96</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">redo</span>()
+  <span class="ruby-keyword">if</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">redoPossible?</span>)
+    <span class="ruby-ivar">@tabCoup</span>[<span class="ruby-identifier">indiceCoup</span>].<span class="ruby-identifier">case</span>.<span class="ruby-identifier">etat</span>=<span class="ruby-ivar">@tabCoup</span>[<span class="ruby-identifier">indiceCoup</span>].<span class="ruby-identifier">etat</span>
+    <span class="ruby-ivar">@indiceCoup</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-redoPossible-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">redoPossible?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>vrai si on peut redo, faux sinon</p>
+          
+          
+
+          
+          <div class="method-source-code" id="redoPossible-3F-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">redoPossible?</span>()
+         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@tabCoup</span>[<span class="ruby-ivar">@indiceCoup</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Coup</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-reprend" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reprend</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reprend-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 137</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reprend</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-reviensALaBonnePosition" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reviensALaBonnePosition</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>undo tant qu&#39;il y a des erreurs</p>
+          
+          
+
+          
+          <div class="method-source-code" id="reviensALaBonnePosition-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 128</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reviensALaBonnePosition</span>()
+  <span class="ruby-keyword">while</span>(<span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">nbErreurs</span><span class="ruby-operator">&gt;</span><span class="ruby-value">0</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">undo</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-undo" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">undo</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retournes à l&#39;état précédant le dernier clic sur une case</p>
+          
+          
+
+          
+          <div class="method-source-code" id="undo-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">undo</span>()
+  <span class="ruby-keyword">if</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">undoPossible?</span>)
+    <span class="ruby-identifier">tmpEtat</span>=<span class="ruby-ivar">@tabCoup</span>[<span class="ruby-ivar">@indiceCoup</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">case</span>.<span class="ruby-identifier">etat</span>
+    <span class="ruby-identifier">tmpCase</span>=<span class="ruby-ivar">@tabCoup</span>[<span class="ruby-ivar">@indiceCoup</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">case</span>
+    <span class="ruby-ivar">@tabCoup</span>[<span class="ruby-ivar">@indiceCoup</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">case</span>.<span class="ruby-identifier">etat</span>=<span class="ruby-ivar">@tabCoup</span>[<span class="ruby-ivar">@indiceCoup</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">ancienEtat</span>
+    <span class="ruby-ivar">@indiceCoup</span><span class="ruby-operator">-=</span><span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-undoPossible-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">undoPossible?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>vrai si on peut undo, faux sinon</p>
+          
+          
+
+          
+          <div class="method-source-code" id="undoPossible-3F-source">
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">undoPossible?</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@indiceCoup</span><span class="ruby-operator">&gt;</span><span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
