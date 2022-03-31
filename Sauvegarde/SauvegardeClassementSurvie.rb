@@ -23,7 +23,7 @@ class SauvegardeClassementSurvie
         flagAjoute = 0
         # Parcours tous les scores et insert le score en fonction des autres
         while i < nbScoreOccupe && flagAjoute == 0
-        	if unScore.getTempsEnSecondes < @tabScore[i].getTempsEnSecondes
+        	if unScore.getTempsEnSecondes > @tabScore[i].getTempsEnSecondes
         		@tabScore.insert(i, unScore)
                 if self.getNbScoreOccupe() > 10 # Il vérifie le nombre de score occupé, si c'est > 10, il faut alors supprimer le 11ème qui est le plus nul
                     @tabScore.delete_at(10)
