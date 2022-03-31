@@ -695,7 +695,7 @@
                       <object class="GtkLabel" id="temps_score">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">0.00</property>
+                        <property name="label" translatable="yes">0h0m0s</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
