@@ -28,6 +28,11 @@ class FenetreSurvie < Fenetre
 		@btn_difficile = @builder.get_object("lvl_difficile") 
 		@btn_retour = @builder.get_object("btn_retour")
 
+		@btn_facile.name = "boutonDiffSurvie"
+		@btn_moyen.name = "boutonDiffSurvie"
+		@btn_difficile.name = "boutonDiffSurvie"
+		@btn_retour.name = "retour_fleche"
+
 		@interfaceClassement = FenetreClassementSurvie.new(@object)
 		
 		self.gestionSignaux
