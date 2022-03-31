@@ -91,6 +91,101 @@ headerbar {
     transition: 0.1s ease-in-out;
 }
 
+#boutonLibre {
+    background: #5bc0eb;
+    color: white;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonLibre:hover {
+    background: #80CEEF;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonAventure {
+    background: #9bc53d;
+    color: white;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonAventure:hover {
+    background: #add062;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonMontre {
+    background: #9b5de5;
+    color: white;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonMontre:hover {
+    background: #B284EB;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonSurvie {
+    background: #ea3546;
+    color: white;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonSurvie:hover {
+    background: #ee5968;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonDiffLibre {
+    background: #5bc0eb;
+    color: white;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonDiffLibre:hover {
+    background: #80CEEF;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonDiffSurvie {
+    background: #ea3546;
+    color: white;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonDiffSurvie:hover {
+    background: #ee5968;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonDiffMontre {
+    background: #9b5de5;
+    color: white;
+    transition: 0.1s ease-in-out;
+}
+
+#boutonDiffMontre:hover {
+    background: #B284EB;
+    transition: 0.1s ease-in-out;
+}
+
+#retour_fleche {
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 100000;
+}
+
+#btn_jeu {
+    border-radius: 0;
+}
+
+#btn_retour {
+    border-radius: 0;
+}
+
+#btn_profil {
+    border-radius: 0;  
+}
+
 /******************/
 /** Cases Grille **/
 /******************/
