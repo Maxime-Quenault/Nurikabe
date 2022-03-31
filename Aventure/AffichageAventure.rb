@@ -24,10 +24,6 @@ class AffichageAventure < Fenetre
   SEUIL_2_ETOILES = 120.00
   SEUIL_1_ETOILE = 140.00
 
-  FACILE = 0
-	MOYEN = 1
-	DIFFICILE = 2
-
   #################### Déclaration des VI
   #
   # @couleurFenetre : Variable d'instance qui représente la couleur de la fenêtre
@@ -63,26 +59,31 @@ class AffichageAventure < Fenetre
 
     # On créer 3 objets aventures plus un autre qui manipulera les références des autres
     # Création des 3 aventures : Facile , Normale , Difficile avec générations des niveaux
-    aventureFacile = Aventure.creer(0)
-    aventureFacile.generationAventure(10,FACILE)
 
-    aventureNormale = Aventure.creer(1)
-    aventureNormale.generationAventure(10,MOYEN)
+    #@aventureFacile = @@profilActuel.uneAventureFacile
+    #@aventureNormale = @@profilActuel.uneAventureMoyen
+    #@aventureDifficile = @@profilActuel.uneAventureDifficile
 
-    aventureDifficile = Aventure.creer(2)
-    aventureDifficile.generationAventure(10,DIFFICILE)
+    @aventureFacile = Aventure.creer(0)
+    @aventureFacile.generationAventure(10,0)
+
+    @aventureNormale = Aventure.creer(1)
+    @aventureNormale.generationAventure(10,1)
+
+    @aventureDifficile = Aventure.creer(2)
+    @aventureDifficile.generationAventure(10,2)
 
     # On édite les liens entre les 3 aventures
-    aventureFacile.setPrecedent(nil)
-    aventureFacile.setSuivant(aventureNormale)
+    @aventureFacile.setPrecedent(nil)
+    @aventureFacile.setSuivant(@aventureNormale)
 
-    aventureNormale.setPrecedent(aventureFacile)
-    aventureNormale.setSuivant(aventureDifficile)
+    @aventureNormale.setPrecedent(@aventureFacile)
+    @aventureNormale.setSuivant(@aventureDifficile)
 
-    aventureDifficile.setPrecedent(aventureNormale)
-    aventureDifficile.setSuivant(nil)
+    @aventureDifficile.setPrecedent(@aventureNormale)
+    @aventureDifficile.setSuivant(nil)
 
-    @aventure = aventureFacile
+    @aventure = @aventureFacile
 
     # On créer un buildeur qui récupère les éléments de notre fenêtre créée sur Glade
     monBuildeur = Gtk::Builder.new(:file => 'glade/aventure_normal_img.glade')
@@ -241,7 +242,8 @@ class AffichageAventure < Fenetre
 
   # Méthode qui modifie l'affichage du temps de la grille
   def affichageTemps
-    @tempsGrille.set_text("#{@aventure.getTempsCourant()}")
+    chaine = (@aventure.getTempsCourant()/3600).to_i.to_s + "h" + (@aventure.getTempsCourant()/60).to_i.to_s + "m" + @aventure.getTempsCourant().to_s + "s"
+    @tempsGrille.set_text(chaine)
   end
 
   # Méthode qui modifie l'image centrale à afficher
@@ -324,16 +326,13 @@ class AffichageAventure < Fenetre
   end
 
   def deplacementAventure(uneDiff)
-    if(@aventure.getDifficulte < uneDiff)
-      while(@aventure.getDifficulte < uneDiff)
-        @aventure.difficultePrecedente
-      end
-    else
-      if(@aventure.getDifficulte < uneDiff)
-        while(@aventure.getDifficulte < uneDiff)
-          @aventure.difficulteSuivante
-        end
-      end
+    case uneDiff
+    when 0
+      @aventure = @aventureFacile
+    when 1
+      @aventure = @aventureNormale
+    when 2
+      @aventure = @aventureDifficile
     end
   end
 
@@ -420,7 +419,7 @@ class AffichageAventure < Fenetre
     # + attribution des récompenses en fonction du timer
     @btn_img.signal_connect('clicked'){
 
-      temps1 = (Time.now.to_f * 1000)
+      temps1 = (Time.now.to_f * 1000).to_i
       @@partie = Partie.creeToi(@aventure.getGrilleCourante())
 
       @interfaceGrille.construction
@@ -428,11 +427,11 @@ class AffichageAventure < Fenetre
 
       print("\n #{@aventure.getGrilleCourante().pourcentageCompletion()}")
 
-      temps2 = (Time.now.to_f * 1000) - temps1
+      temps2 = (Time.now.to_f * 1000).to_i - temps1
       temps = temps2.round(2)
 
       if(@aventure.getGrilleCourante().pourcentageCompletion() < 100)
-        temps = 1000.0
+        temps = 0
         recompense = 0
       else
         # Puis attribution du nombre d'étoiles en fonction du timer (à définir)
