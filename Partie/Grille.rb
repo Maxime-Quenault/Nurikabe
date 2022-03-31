@@ -3,23 +3,19 @@ load "Partie/Case.rb"
 load "Partie/CaseJouable.rb"
 
 =begin
-
+	@author Julian LEBOUC
 	La classe Grille :::
 		- représente la grille de la partie
-		- possède un identifiant
-		- une largeur et une hauteur
-		- une matrice de cases sur laquelle on jouera
-		- une matrice de cases corrigée
-		- un nombre d'étoiles
 
 	Les VI de la classe sont :::
 
 		- @numero			==> identifiant de la grille
 		- @hauteur			==> hauteur de la grille
 		- @largeur			==> largeur de la grille
-		- @matriceCases		==> matrice de cases sur laquelle le joueur jouera
-		- @correction		==> matrice contenant la solution
+		- @matriceCases		==> matrice de @Case sur laquelle le joueur jouera
+		- @correction		==> matrice corrigée
 		- @etoiles			==> nombre d'étoiles 
+		- @difficulte       ==> la difficulté de la grille
 
 =end
 
@@ -40,6 +36,8 @@ class Grille
 	def Grille.creer(num,h,l)
 		new(num,h,l)
 	end
+
+	##
 	#Constructeur pour chargement via fichier texte
 	def Grille.creer()
 		new()
@@ -69,6 +67,7 @@ class Grille
 		@etoiles=0
 	end
 
+	##
 	#affectes les cases de la matrice passée en paramètre à la matriceCases
 	def copierMatrice(mat2)
 		for i in 0..@hauteur-1  do
@@ -165,6 +164,8 @@ class Grille
 		end
 	end
 
+	##
+	# Lis les fichiers Texte contenants les grilles, retournes une chaine correspondant à la grille d'index et de difficulté passé en paramètres
 	def lireGrille(unIndex, uneDifficulte)
         compteur = 0
         chaine = ""
@@ -210,6 +211,8 @@ class Grille
 
     end
 
+	##
+	# Affectes à @matriceCases et @correction la grille d'index et de difficulté passée en paramètres
     def chargerGrille(unIndex, uneDifficulte)
 
         chaine = lireGrille(unIndex, uneDifficulte)

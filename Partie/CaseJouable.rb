@@ -1,9 +1,10 @@
 =begin
+	@author Julian LEBOUC
 	La classe CaseJouable :::
 		-  représente une case sur laquelle on peut cliquer
 
-	Les VI de la classe sont :::
-		
+		Voici ses VI :::
+
 		- @etat	==> indique si la case est une case ile, océan ou non jouée
 			0	= case non jouée
 			1	= océan
@@ -21,10 +22,13 @@ class CaseJouable
 	private_class_method :new
 	attr :etat, true
 
+	##
+	#constructeur de CaseJouable, initialise @etat à 0 (nonJoué)
 	def initialize()
 		@etat=0
 	end
 
+	##
 	#changes l'état de la case en fonction de son état courant
 	def changerEtat()
 		if(@etat==0)
@@ -47,6 +51,8 @@ class CaseJouable
 		end
 	end
 
+	##
+	#permet de comparer des CaseJouables selon leur état
 	def <=>(c)
 		return @etat<=>c.etat
 	end

@@ -105,6 +105,8 @@ class FenetreClassementCLM < Fenetre
         @interfaceGrille.construction
     end
 
+    ##
+    # Affiches le classement des 10 meilleurs scores
     def affichageScore()
     
         if @tabScore[0] != nil

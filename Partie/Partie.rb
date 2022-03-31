@@ -4,6 +4,7 @@ load "Partie/Indice.rb"
 load "Chrono/Chronometre.rb"
 
 =begin
+  @author Julian LEBOUC
   La classe Partie permet de :::
     - représenter une partie
     - jouer sur une grille
@@ -17,6 +18,7 @@ load "Chrono/Chronometre.rb"
       - @tabCoup        ==> tableau contenant les coups joués
       - @indiceCoup     ==> indice représentant le coup joué par le joueur
       - @enPause        ==> booleen indiquant vrai si la partie est en pause
+      - @dernierIndice  ==> sauvegarde le dernier indice délivré
 =end
 
 class Partie
@@ -50,12 +52,14 @@ class Partie
     @chronometre=Chronometre.creer()
   end
 
+  ##
   # ajoutes le coup passé en paramètre au tableau de coups et incrémente l'indiceCoup
   def nouveauCoup(unCoup)
     @tabCoup[@indiceCoup]=unCoup
     @indiceCoup+=1
   end
 
+  ##
   # changes l'état de la case cliquée et créer un nouveau coup correspondant, supprimmes les coups suivants
   def clicSurCase(x,y)
     if(@grilleEnCours.matriceCases[x][y].is_a?(CaseJouable))
@@ -72,11 +76,13 @@ class Partie
     end
   end
 
-  # vrai si on peut undo, faux sinon
+  ##
+  # retourne vrai si on peut undo, faux sinon
   def undoPossible?()
     return @indiceCoup>0
   end
 
+  ##
   # Retournes à l'état précédant le dernier clic sur une case
   def undo()
     if(self.undoPossible?)
@@ -87,11 +93,13 @@ class Partie
     end
   end
 
-  # vrai si on peut redo, faux sinon
+  ##
+  # retourne vrai si on peut redo, faux sinon
   def redoPossible?()
 	   return @tabCoup[@indiceCoup].is_a?(Coup)
   end
 
+  ##
   # Retournes à l'état suivant
   def redo()
     if(self.redoPossible?)
@@ -100,7 +108,8 @@ class Partie
     end
   end
 
-  # Remet les variables d'instance à 0
+  ##
+  # Reéinitialise les variables d'instance
   def raz()
     @grilleEnCours.raz()
     @tabCoup=Array.new()
@@ -110,8 +119,9 @@ class Partie
     @chronometre.metEnPause
   end
 
-   # Remet les variables d'instance à 0 et lui affectes un chronometre Survie
-   def razSurvie()
+  ##
+  # Reéinitialise les variables d'instance et lui affectes un chronometre Survie
+  def razSurvie()
     @grilleEnCours.raz()
     @tabCoup=Array.new()
     @indiceCoup=0
@@ -119,11 +129,13 @@ class Partie
     @chronometre=ChronometreSurvie.creer()
   end
 
-  #vrai si la partie est finie faux sinon
+  ##
+  #retourne vrai si la partie est finie faux sinon
   def partieFinie?()
     return @grilleEnCours.grilleFinie
   end
 
+  ##
   #undo tant qu'il y a des erreurs
   def reviensALaBonnePosition()
     while(@grilleEnCours.nbErreurs>0)
@@ -131,13 +143,8 @@ class Partie
     end
   end
 
-  def metToiEnPause()
-  end
-
-  def reprend()
-  end
-
-  # Recherche et retourne les coordonnées d'une case Ile de valeur 1 non entourée (si elle existe, sinon on retourne nil)
+  ##
+  # Recherche et retourne l'indice d'une case Ile de valeur 1 non entourée (si elle existe, sinon on retourne nil)
   def indice_ile1NonEntouree()
     for i in 0..@grilleEnCours.largeur-1
       for j in 0..@grilleEnCours.hauteur-1
@@ -158,7 +165,8 @@ class Partie
     return nil
   end
 
-  # Recherche et retourne les coordonnées d'une case jouable non jouée séparant deux cases îles (si elle existe, sinon on retourne nil)
+  ##
+  # Recherche et retourne l'indice d'une case jouable non jouée séparant deux cases îles (si elle existe, sinon on retourne nil)
   def indice_IlesVoisinesNonSeparees()
     for j in 0..@grilleEnCours.hauteur-1
       for i in 0..@grilleEnCours.largeur-1
@@ -179,7 +187,8 @@ class Partie
     return nil
   end
 
-  # Recherche et retourne les coordonnées d'une case jouable non jouée séparant deux cases îles en diagonales (si elle existe, sinon on retourne nil)
+  ##
+  # Recherche et retourne l'indice d'une case jouable non jouée séparant deux cases îles en diagonales (si elle existe, sinon on retourne nil)
   def indice_IlesDiagonalesNonSeparees()
     for j in 0..@grilleEnCours.hauteur-1
       for i in 0..@grilleEnCours.largeur-1
@@ -218,7 +227,8 @@ class Partie
     return nil
   end
 
-  # Recherche un carré de cases océan de taille 2x2 et retourne ses coordonnées (si il existe, sinon on retourne nil)
+  ##
+  # Recherche un carré de cases océan de taille 2x2 et retourne l'indice (si il existe, sinon on retourne nil)
   def indice_Ocean2x2()
     for j in 0..@grilleEnCours.hauteur-2
       for i in 0..@grilleEnCours.largeur-2
@@ -233,7 +243,8 @@ class Partie
     return nil
   end
 
-  # Recherche une case jouable (avec l'état non joué ou île) entourée de cases océan ou des bords le la grille (si elle existe, sinon on retourne nil)
+  ##
+  # Recherche une case jouable (avec l'état non joué ou île) entourée de cases océan ou des bords le la grille et reourne l'indice (si elle existe, sinon on retourne nil)
   def indice_caseJouableIsolee()
     for j in 0..@grilleEnCours.hauteur-1
       for i in 0..@grilleEnCours.largeur-1
@@ -263,7 +274,7 @@ class Partie
     return nil
   end
 
-  
+  ##
   # Retourne les coordonnées de la case adjacente à celle aux coordonnées passées en paramètres si cetter dernière n'est accessible que d'une seule case
   def caseJouableAccessibleQueDUneDirection(i,j)
     gaucheNonJouable = false
@@ -297,7 +308,8 @@ class Partie
       
   end
 
-  # Recherche si un "mur" peut être étendu en mettant une case jouable à l'état océan et on retourne ses coordonnées (si elle existe, sinon on retourne nil)
+  ##
+  # Recherche si un "mur" peut être étendu en mettant une case jouable à l'état océan et on retourne l'indice (si elle existe, sinon on retourne nil)
   def indice_expansionMur()
     for i in 0..@grilleEnCours.largeur-1
       for j in 0..@grilleEnCours.hauteur-1
@@ -309,6 +321,7 @@ class Partie
     return nil
   end
 
+  ##
   # Retourne les coordonnées de la case adjacente à celle aux coordonnées passées en paramètres si cetter dernière n'est accessible que d'une seule case
   def caseNombreAccessibleQueDUneDirection(i,j)
     gaucheNonJouable = false
@@ -340,8 +353,9 @@ class Partie
       return nil
     end
   end
-        
-  # Recherche si une île peut être étendue en mettant une case jouable à l'état île et on retourne ses coordonnées (si elle existe, sinon on retourne nil)
+  
+  ##
+  # Recherche si une île peut être étendue en mettant une case jouable à l'état île et on retourne l'indice (si elle existe, sinon on retourne nil)
   def indice_expansionIle()
     for i in 0..@grilleEnCours.largeur-1
       for j in 0..@grilleEnCours.hauteur-1
@@ -353,7 +367,7 @@ class Partie
     return nil
   end
     
-
+  ##
   # Cherche si il y a un indice à donner à l'utilisateur dans l'ordre du plus simple au plus complexe et le retourne (si il existe, sinon on retourne nil)
   def clicSurIndice()
     indice = self.indice_ile1NonEntouree

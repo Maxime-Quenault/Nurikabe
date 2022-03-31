@@ -109,19 +109,11 @@
   </h1>
 
   <section class="description">
-    <dl class="rdoc-list note-list"><dt>La classe <a href="Grille.html"><code>Grille</code></a> :
+    
+<p>@author Julian LEBOUC</p>
+<dl class="rdoc-list note-list"><dt>La classe <a href="Grille.html"><code>Grille</code></a> :
 <dd><ul><li>
 <p>représente la grille de la partie</p>
-</li><li>
-<p>possède un identifiant</p>
-</li><li>
-<p>une largeur et une hauteur</p>
-</li><li>
-<p>une matrice de cases sur laquelle on jouera</p>
-</li><li>
-<p>une matrice de cases corrigée</p>
-</li><li>
-<p>un nombre d&#39;étoiles</p>
 </li></ul>
 </dd><dt>Les VI de la classe sont :
 <dd><ul><li>
@@ -131,11 +123,13 @@
 </li><li>
 <p>@largeur                    ==&gt; largeur de la grille</p>
 </li><li>
-<p>@matriceCases               ==&gt; matrice de cases sur laquelle le joueur jouera</p>
+<p>@matriceCases               ==&gt; matrice de @Case sur laquelle le joueur jouera</p>
 </li><li>
-<p>@correction         ==&gt; matrice contenant la solution</p>
+<p>@correction         ==&gt; matrice corrigée</p>
 </li><li>
-<p>@etoiles                    ==&gt; nombre d&#39;étoiles</p>
+<p>@etoiles                    ==&gt; nombre d&#39;étoiles </p>
+</li><li>
+<p>@difficulte       ==&gt; la difficulté de la grille</p>
 </li></ul>
 </dd></dl>
 
@@ -300,7 +294,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 40</span>
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Grille</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">num</span>,<span class="ruby-identifier">h</span>,<span class="ruby-identifier">l</span>)
         <span class="ruby-identifier">new</span>(<span class="ruby-identifier">num</span>,<span class="ruby-identifier">h</span>,<span class="ruby-identifier">l</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -333,7 +327,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 59</span>
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">num</span>,<span class="ruby-identifier">h</span>,<span class="ruby-identifier">l</span>)
         <span class="ruby-ivar">@numero</span>=<span class="ruby-identifier">num</span>
         <span class="ruby-ivar">@hauteur</span>=<span class="ruby-identifier">h</span>
@@ -373,13 +367,13 @@
 
         <div class="method-description">
           
-          
+          <p>Affectes à @matriceCases et @correction la grille d&#39;index et de difficulté passée en paramètres</p>
           
           
 
           
           <div class="method-source-code" id="chargerGrille-source">
-            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 213</span>
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 216</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">chargerGrille</span>(<span class="ruby-identifier">unIndex</span>, <span class="ruby-identifier">uneDifficulte</span>)
 
     <span class="ruby-identifier">chaine</span> = <span class="ruby-identifier">lireGrille</span>(<span class="ruby-identifier">unIndex</span>, <span class="ruby-identifier">uneDifficulte</span>)
@@ -452,7 +446,7 @@
 
           
           <div class="method-source-code" id="copierCorrection-source">
-            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 88</span>
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 87</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">copierCorrection</span>(<span class="ruby-identifier">mat2</span>)
         <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@hauteur</span><span class="ruby-value">-1</span>  <span class="ruby-keyword">do</span>
                 <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@largeur</span><span class="ruby-value">-1</span> <span class="ruby-keyword">do</span>
@@ -495,7 +489,7 @@
 
           
           <div class="method-source-code" id="copierMatrice-source">
-            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 73</span>
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">copierMatrice</span>(<span class="ruby-identifier">mat2</span>)
         <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@hauteur</span><span class="ruby-value">-1</span>  <span class="ruby-keyword">do</span>
                 <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@largeur</span><span class="ruby-value">-1</span> <span class="ruby-keyword">do</span>
@@ -538,7 +532,7 @@
 
           
           <div class="method-source-code" id="grilleFinie-source">
-            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 145</span>
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 144</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">grilleFinie</span>()
         <span class="ruby-identifier">nbErr</span> = <span class="ruby-value">0</span>
         <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@hauteur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
@@ -573,13 +567,13 @@
 
         <div class="method-description">
           
-          
+          <p>Lis les fichiers Texte contenants les grilles, retournes une chaine correspondant à la grille d&#39;index et de difficulté passé en paramètres</p>
           
           
 
           
           <div class="method-source-code" id="lireGrille-source">
-            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 168</span>
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 169</span>
     <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lireGrille</span>(<span class="ruby-identifier">unIndex</span>, <span class="ruby-identifier">uneDifficulte</span>)
     <span class="ruby-identifier">compteur</span> = <span class="ruby-value">0</span>
     <span class="ruby-identifier">chaine</span> = <span class="ruby-string">&quot;&quot;</span>
@@ -653,7 +647,7 @@
 
           
           <div class="method-source-code" id="nbErreurs-source">
-            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 132</span>
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 131</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nbErreurs</span>()
         <span class="ruby-identifier">nbErr</span> = <span class="ruby-value">0</span>
         <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@hauteur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
@@ -694,7 +688,7 @@
 
           
           <div class="method-source-code" id="pourcentageCompletion-source">
-            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 116</span>
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 115</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pourcentageCompletion</span>()
         <span class="ruby-identifier">nbPareil</span> = <span class="ruby-value">0</span>
         <span class="ruby-identifier">nbCasesNombre</span> = <span class="ruby-value">0</span>
@@ -738,7 +732,7 @@
 
           
           <div class="method-source-code" id="raz-source">
-            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 158</span>
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 157</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">raz</span>()
         <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@hauteur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
                 <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@largeur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
@@ -777,7 +771,7 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 103</span>
+            <pre><span class="ruby-comment"># File Partie/Grille.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>()
         <span class="ruby-identifier">res</span> = <span class="ruby-string">&quot;-------------\n&quot;</span>
         <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@hauteur</span><span class="ruby-value">-1</span>  <span class="ruby-keyword">do</span>

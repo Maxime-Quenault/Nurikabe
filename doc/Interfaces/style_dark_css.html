@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>style_dark.css - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
+</script>
+
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Grille/Fichiers/grillesEasy_txt.html">grillesEasy</a>
+  
+    <li><a href="../Interfaces/style_css.html">style.css</a>
+  
+    <li><a href="../Interfaces/style_dark_css.html">style_dark.css</a>
+  
+    <li><a href="../Partie/grilleAventure_txt.html">grilleAventure</a>
+  
+    <li><a href="../Partie/grillesEasy_txt.html">grillesEasy</a>
+  
+    <li><a href="../Partie/grillesHard_txt.html">grillesHard</a>
+  
+    <li><a href="../Partie/grillesMedium_txt.html">grillesMedium</a>
+  
+    <li><a href="../gestion_profil_glade.html">gestion_profil.glade</a>
+  
+    <li><a href="../glade/apropos_glade.html">apropos.glade</a>
+  
+    <li><a href="../glade/aventure_normal_img_glade.html">aventure_normal_img.glade</a>
+  
+    <li><a href="../glade/contre_la_montre_nouvelle_partie_glade.html">contre_la_montre_nouvelle_partie.glade</a>
+  
+    <li><a href="../glade/gestion_profil_glade.html">gestion_profil.glade</a>
+  
+    <li><a href="../glade/grille_glade.html">grille.glade</a>
+  
+    <li><a href="../glade/menu-choix-grille_glade.html">menu-choix-grille.glade</a>
+  
+    <li><a href="../glade/menu-librairie_glade.html">menu-librairie.glade</a>
+  
+    <li><a href="../glade/menu-libre_glade.html">menu-libre.glade</a>
+  
+    <li><a href="../glade/menu_glade.html">menu.glade</a>
+  
+    <li><a href="../glade/menu_glade_old.html">menu.glade.old</a>
+  
+    <li><a href="../glade/regles_glade.html">regles.glade</a>
+  
+    <li><a href="../glade/settingsNurikabe-audio_glade.html">settingsNurikabe-audio.glade</a>
+  
+    <li><a href="../glade/settingsNurikabe-interface_glade.html">settingsNurikabe-interface.glade</a>
+  
+    <li><a href="../glade/settingsNurikabe-jeu_glade.html">settingsNurikabe-jeu.glade</a>
+  
+    <li><a href="../glade/settingsNurikabe_glade.html">settingsNurikabe.glade</a>
+  
+    <li><a href="../glade/survie_nouvelle_partie_glade.html">survie_nouvelle_partie.glade</a>
+  
+    <li><a href="../glade/techniqueResolution_glade.html">techniqueResolution.glade</a>
+  
+    <li><a href="../settingsNurikabe_glade.html">settingsNurikabe.glade</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page Interfaces/style_dark.css">
+
+<p>@define-color main_color #7b2cbf; @define-color main_color_grey d1d1d1; @define-color main_alt_color #9d4edd; @define-color main_active_color c77dff;</p>
+
+<p>@define-color bg_color #240046;</p>
+
+<p>@define-color mode_dark_bg_color #343434;</p>
+
+<p>@define-color dark_color #242038;</p>
+
+<p>/****************/ /** Interfaces **/ /****************/</p>
+
+<p>window {</p>
+
+<pre>background-color: @mode_dark_bg_color;
+color: white;</pre>
+
+<p>}</p>
+
+<p>button {</p>
+
+<pre>background: @main_color;
+border: 0px;
+border-radius: 5px;
+color: white;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>button:hover {</p>
+
+<pre>transition: 0.1s ease-in-out;
+background: @main_alt_color;</pre>
+
+<p>}</p>
+
+<p>button:active {</p>
+
+<pre>transition: 0.1s ease-in-out;
+background: @main_active_color;</pre>
+
+<p>}</p>
+
+<p>entry {</p>
+
+<pre>background: @bg_color;
+color: white;</pre>
+
+<p>}</p>
+
+<p>switch:checked {</p>
+
+<pre>background-color: @main_color;</pre>
+
+<p>}</p>
+
+<p>switch {</p>
+
+<pre>background-color: @dark_color;</pre>
+
+<p>}</p>
+
+<p>entry selection {</p>
+
+<pre>background-color: purple;</pre>
+
+<p>}</p>
+
+<p>combobox &gt; window.popup * {</p>
+
+<pre>background: @dark_color;
+color: white;</pre>
+
+<p>}</p>
+
+<p>headerbar {</p>
+
+<pre>color: white;</pre>
+
+<p>}</p>
+
+<p>button_jeu, button_profils, button_retour {</p>
+
+<pre>border-radius: 0px;</pre>
+
+<p>}</p>
+
+<p>bg_buttons_param {</p>
+
+<pre>background: #212529;</pre>
+
+<p>}</p>
+
+<p>btn_menu_grille {</p>
+
+<pre>background: @main_color;
+border-radius: 0px;
+border-right: 1px black solid;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>btn_menu_grille_grise {</p>
+
+<pre>background: @main_color_grey;
+border-radius: 0px;
+border-right: 1px black solid;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>btn_menu_grille:last-child {</p>
+
+<pre>border-radius: 0px;
+border: 0;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>boutonLibre {</p>
+
+<pre>background: #5bc0eb;
+color: white;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>boutonLibre:hover {</p>
+
+<pre>background: #80CEEF;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>boutonAventure {</p>
+
+<pre>background: #9bc53d;
+color: white;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>boutonAventure:hover {</p>
+
+<pre>background: #add062;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>boutonMontre {</p>
+
+<pre>background: #9b5de5;
+color: white;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>boutonMontre:hover {</p>
+
+<pre>background: #B284EB;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>boutonSurvie {</p>
+
+<pre>background: #ea3546;
+color: white;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>boutonSurvie:hover {</p>
+
+<pre>background: #ee5968;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>boutonDiffLibre {</p>
+
+<pre>background: #5bc0eb;
+color: white;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>boutonDiffLibre:hover {</p>
+
+<pre>background: #80CEEF;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>boutonDiffSurvie {</p>
+
+<pre>background: #ea3546;
+color: white;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>boutonDiffSurvie:hover {</p>
+
+<pre>background: #ee5968;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>boutonDiffMontre {</p>
+
+<pre>background: #9b5de5;
+color: white;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>boutonDiffMontre:hover {</p>
+
+<pre>background: #B284EB;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>retour_fleche {</p>
+
+<pre>margin-top: 10px;
+margin-left: 10px;
+border-radius: 100000;</pre>
+
+<p>}</p>
+
+<p>btn_jeu {</p>
+
+<pre>border-radius: 0;</pre>
+
+<p>}</p>
+
+<p>btn_retour {</p>
+
+<pre>border-radius: 0;</pre>
+
+<p>}</p>
+
+<p>btn_profil {</p>
+
+<pre>border-radius: 0;</pre>
+
+<p>}</p>
+
+<p>/******************/ /** Cases <a href="../Grille.html"><code>Grille</code></a> **/ /******************/</p>
+
+<p>grille {</p>
+
+<pre>border: 1px black solid;
+margin: 15px;</pre>
+
+<p>}</p>
+
+<p>case_chiffre, case_vide {</p>
+
+<pre>border-radius: 0;
+color: black;
+background: #636363;
+border: 2px black solid;
+font-size: 50px;
+transition: 0.08s ease;
+min-width: 70px;
+min-height: 70px;</pre>
+
+<p>}</p>
+
+<p>case_indice{</p>
+
+<pre>border-radius: 0;
+color: black;
+background: #636363;
+border: 2px red solid;
+font-size: 50px;
+transition: 0.08s ease;
+min-width: 70px;
+min-height: 70px;</pre>
+
+<p>}</p>
+
+<p>case_noir {</p>
+
+<pre>border-radius: 0;
+color: black;
+background: black;
+border: 2px black solid;
+font-size: 50px;
+transition: 0.08s ease;
+min-width: 70px;
+min-height: 70px;</pre>
+
+<p>}</p>
+
+<p>case_point {</p>
+
+<pre>border-radius: 0;
+color: black;
+background: #636363;
+border: 2px black solid;
+font-size: 50px;
+transition: 0.08s ease;
+min-width: 70px;
+min-height: 70px;</pre>
+
+<p>}</p>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

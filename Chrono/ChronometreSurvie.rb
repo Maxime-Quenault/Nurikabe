@@ -29,6 +29,11 @@ class ChronometreSurvie < Chronometre
         end
     end
 
+    # augmente le temps par un bonus
+    def ajouteTemps(unBonus)
+        @temps+=unBonus
+    end
+
     # diminue le temps par un malus 
     def retireTemps(unMalus)
         @temps -= unMalus

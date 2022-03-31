@@ -98,6 +98,8 @@
 
   <section class="description">
     
+<p>Affiches les différentes grilles parmis lesquelles l&#39;utilisateur peut choisir</p>
+
   </section>
 
   
@@ -170,7 +172,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 13</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">menuParent</span>)
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiseToi</span>
     <span class="ruby-ivar">@difficulte</span>
@@ -221,7 +223,7 @@
 
           
           <div class="method-source-code" id="afficheGrille-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 43</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 45</span>
     <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficheGrille</span>(<span class="ruby-identifier">id</span>)
 
     <span class="ruby-ivar">@grid_grilles</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;grid_grilles&#39;</span>)
@@ -290,7 +292,7 @@
 
           
           <div class="method-source-code" id="construction-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 100</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">construction</span>(<span class="ruby-identifier">num_grille</span>)
     <span class="ruby-keyword">if</span> (<span class="ruby-identifier">unePartie</span> = <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">chercherPartie</span>(<span class="ruby-identifier">num_grille</span>, <span class="ruby-ivar">@difficulte</span>)) <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-identifier">g</span>=<span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>()
@@ -332,7 +334,7 @@
 
           
           <div class="method-source-code" id="gestionSignaux-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 27</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
     
     <span class="ruby-comment"># Recuperation de la fenetre</span>
@@ -377,7 +379,7 @@
 
           
           <div class="method-source-code" id="initGrilles-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 84</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreChoixGrille.rb, line 86</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initGrilles</span>(<span class="ruby-identifier">uneDifficulte</span>)
 
     <span class="ruby-ivar">@pos_v</span> = <span class="ruby-value">0</span>

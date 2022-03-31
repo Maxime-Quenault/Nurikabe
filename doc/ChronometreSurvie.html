@@ -79,6 +79,8 @@
     
     <li class="calls-super" ><a href="#method-c-new">::new</a>
     
+    <li ><a href="#method-i-ajouteTemps">#ajouteTemps</a>
+    
     <li ><a href="#method-i-retireTemps">#retireTemps</a>
     
     <li ><a href="#method-i-top">#top</a>
@@ -211,6 +213,39 @@
        </header>
 
     
+      <div id="method-i-ajouteTemps" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ajouteTemps</span><span
+            class="method-args">(unBonus)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>augmente le temps par un bonus</p>
+          
+          
+
+          
+          <div class="method-source-code" id="ajouteTemps-source">
+            <pre><span class="ruby-comment"># File Chrono/ChronometreSurvie.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouteTemps</span>(<span class="ruby-identifier">unBonus</span>)
+    <span class="ruby-ivar">@temps</span><span class="ruby-operator">+=</span><span class="ruby-identifier">unBonus</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-retireTemps" class="method-detail ">
         
         <div class="method-heading">
@@ -230,7 +265,7 @@
 
           
           <div class="method-source-code" id="retireTemps-source">
-            <pre><span class="ruby-comment"># File Chrono/ChronometreSurvie.rb, line 33</span>
+            <pre><span class="ruby-comment"># File Chrono/ChronometreSurvie.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retireTemps</span>(<span class="ruby-identifier">unMalus</span>)
     <span class="ruby-ivar">@temps</span> <span class="ruby-operator">-=</span> <span class="ruby-identifier">unMalus</span>
 <span class="ruby-keyword">end</span></pre>

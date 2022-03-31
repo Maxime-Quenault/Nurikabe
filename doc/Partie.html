@@ -101,8 +101,6 @@
     
     <li ><a href="#method-i-indice_ile1NonEntouree">#indice_ile1NonEntouree</a>
     
-    <li ><a href="#method-i-metToiEnPause">#metToiEnPause</a>
-    
     <li ><a href="#method-i-nouveauCoup">#nouveauCoup</a>
     
     <li ><a href="#method-i-partieFinie-3F">#partieFinie?</a>
@@ -114,8 +112,6 @@
     <li ><a href="#method-i-redo">#redo</a>
     
     <li ><a href="#method-i-redoPossible-3F">#redoPossible?</a>
-    
-    <li ><a href="#method-i-reprend">#reprend</a>
     
     <li ><a href="#method-i-reviensALaBonnePosition">#reviensALaBonnePosition</a>
     
@@ -135,7 +131,9 @@
   </h1>
 
   <section class="description">
-    <dl class="rdoc-list note-list"><dt>La classe <a href="Partie.html"><code>Partie</code></a> permet de :
+    
+<p>@author Julian LEBOUC</p>
+<dl class="rdoc-list note-list"><dt>La classe <a href="Partie.html"><code>Partie</code></a> permet de :
 <dd><ul><li>
 <p>représenter une partie</p>
 </li><li>
@@ -156,6 +154,8 @@
 <p>@indiceCoup     ==&gt; indice représentant le coup joué par le joueur</p>
 </li><li>
 <p>@enPause        ==&gt; booleen indiquant vrai si la partie est en pause</p>
+</li><li>
+<p>@dernierIndice  ==&gt; sauvegarde le dernier indice délivré</p>
 </li></ul>
 </dd></dl>
 </dd></dl>
@@ -284,7 +284,7 @@
 
           
           <div class="method-source-code" id="creeToi-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 34</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Partie</span>.<span class="ruby-identifier ruby-title">creeToi</span>(<span class="ruby-identifier">uneGrille</span>)
   <span class="ruby-identifier">new</span>(<span class="ruby-identifier">uneGrille</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -317,7 +317,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 45</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">uneGrille</span>)
   <span class="ruby-ivar">@grilleEnCours</span>=<span class="ruby-identifier">uneGrille</span>
   <span class="ruby-ivar">@tabCoup</span>=<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
@@ -362,7 +362,7 @@
 
           
           <div class="method-source-code" id="caseJouableAccessibleQueDUneDirection-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 268</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 279</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">caseJouableAccessibleQueDUneDirection</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>)
   <span class="ruby-identifier">gaucheNonJouable</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-identifier">droiteNonJouable</span> = <span class="ruby-keyword">false</span>
@@ -423,7 +423,7 @@
 
           
           <div class="method-source-code" id="caseNombreAccessibleQueDUneDirection-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 313</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 326</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">caseNombreAccessibleQueDUneDirection</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>)
   <span class="ruby-identifier">gaucheNonJouable</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-identifier">droiteNonJouable</span> = <span class="ruby-keyword">false</span>
@@ -483,7 +483,7 @@
 
           
           <div class="method-source-code" id="clicSurCase-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 60</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clicSurCase</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>)
   <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>))
              <span class="ruby-identifier">anc_etat</span> =<span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>].<span class="ruby-identifier">etat</span>
@@ -527,7 +527,7 @@
 
           
           <div class="method-source-code" id="clicSurIndice-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 358</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 372</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clicSurIndice</span>()
   <span class="ruby-identifier">indice</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">indice_ile1NonEntouree</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">indice</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span>
@@ -589,13 +589,13 @@
 
         <div class="method-description">
           
-          <p>Recherche et retourne les coordonnées d&#39;une case jouable non jouée séparant deux cases îles en diagonales (si elle existe, sinon on retourne nil)</p>
+          <p>Recherche et retourne l&#39;indice d&#39;une case jouable non jouée séparant deux cases îles en diagonales (si elle existe, sinon on retourne nil)</p>
           
           
 
           
           <div class="method-source-code" id="indice_IlesDiagonalesNonSeparees-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 183</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 192</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indice_IlesDiagonalesNonSeparees</span>()
   <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span>
     <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span>
@@ -656,13 +656,13 @@
 
         <div class="method-description">
           
-          <p>Recherche et retourne les coordonnées d&#39;une case jouable non jouée séparant deux cases îles (si elle existe, sinon on retourne nil)</p>
+          <p>Recherche et retourne l&#39;indice d&#39;une case jouable non jouée séparant deux cases îles (si elle existe, sinon on retourne nil)</p>
           
           
 
           
           <div class="method-source-code" id="indice_IlesVoisinesNonSeparees-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 162</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 170</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indice_IlesVoisinesNonSeparees</span>()
   <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span>
     <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span>
@@ -705,13 +705,13 @@
 
         <div class="method-description">
           
-          <p>Recherche un carré de cases océan de taille 2x2 et retourne ses coordonnées (si il existe, sinon on retourne nil)</p>
+          <p>Recherche un carré de cases océan de taille 2x2 et retourne l&#39;indice (si il existe, sinon on retourne nil)</p>
           
           
 
           
           <div class="method-source-code" id="indice_Ocean2x2-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 222</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 232</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indice_Ocean2x2</span>()
   <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-2</span>
     <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-2</span>
@@ -748,13 +748,13 @@
 
         <div class="method-description">
           
-          <p>Recherche une case jouable (avec l&#39;état non joué ou île) entourée de cases océan ou des bords le la grille (si elle existe, sinon on retourne nil)</p>
+          <p>Recherche une case jouable (avec l&#39;état non joué ou île) entourée de cases océan ou des bords le la grille et reourne l&#39;indice (si elle existe, sinon on retourne nil)</p>
           
           
 
           
           <div class="method-source-code" id="indice_caseJouableIsolee-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 237</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 248</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indice_caseJouableIsolee</span>()
   <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span>
     <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span>
@@ -806,13 +806,13 @@
 
         <div class="method-description">
           
-          <p>Recherche si une île peut être étendue en mettant une case jouable à l&#39;état île et on retourne ses coordonnées (si elle existe, sinon on retourne nil)</p>
+          <p>Recherche si une île peut être étendue en mettant une case jouable à l&#39;état île et on retourne l&#39;indice (si elle existe, sinon on retourne nil)</p>
           
           
 
           
           <div class="method-source-code" id="indice_expansionIle-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 345</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 359</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indice_expansionIle</span>()
   <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span>
     <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span>
@@ -846,13 +846,13 @@
 
         <div class="method-description">
           
-          <p>Recherche si un “mur” peut être étendu en mettant une case jouable à l&#39;état océan et on retourne ses coordonnées (si elle existe, sinon on retourne nil)</p>
+          <p>Recherche si un “mur” peut être étendu en mettant une case jouable à l&#39;état océan et on retourne l&#39;indice (si elle existe, sinon on retourne nil)</p>
           
           
 
           
           <div class="method-source-code" id="indice_expansionMur-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 301</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 313</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indice_expansionMur</span>()
   <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span>
     <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span>
@@ -886,13 +886,13 @@
 
         <div class="method-description">
           
-          <p>Recherche et retourne les coordonnées d&#39;une case Ile de valeur 1 non entourée (si elle existe, sinon on retourne nil)</p>
+          <p>Recherche et retourne l&#39;indice d&#39;une case Ile de valeur 1 non entourée (si elle existe, sinon on retourne nil)</p>
           
           
 
           
           <div class="method-source-code" id="indice_ile1NonEntouree-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 141</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 148</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indice_ile1NonEntouree</span>()
   <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">largeur</span><span class="ruby-value">-1</span>
     <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">hauteur</span><span class="ruby-value">-1</span>
@@ -911,38 +911,6 @@
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-metToiEnPause" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">metToiEnPause</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="metToiEnPause-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 134</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">metToiEnPause</span>()
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -973,7 +941,7 @@
 
           
           <div class="method-source-code" id="nouveauCoup-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 54</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nouveauCoup</span>(<span class="ruby-identifier">unCoup</span>)
   <span class="ruby-ivar">@tabCoup</span>[<span class="ruby-ivar">@indiceCoup</span>]=<span class="ruby-identifier">unCoup</span>
   <span class="ruby-ivar">@indiceCoup</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
@@ -1001,13 +969,13 @@
 
         <div class="method-description">
           
-          <p>vrai si la partie est finie faux sinon</p>
+          <p>retourne vrai si la partie est finie faux sinon</p>
           
           
 
           
           <div class="method-source-code" id="partieFinie-3F-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 123</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 134</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">partieFinie?</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">grilleFinie</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1034,13 +1002,13 @@
 
         <div class="method-description">
           
-          <p>Remet les variables d&#39;instance à 0</p>
+          <p>Reéinitialise les variables d&#39;instance</p>
           
           
 
           
           <div class="method-source-code" id="raz-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 104</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 113</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">raz</span>()
   <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">raz</span>()
   <span class="ruby-ivar">@tabCoup</span>=<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
@@ -1072,14 +1040,14 @@
 
         <div class="method-description">
           
-          <p>Remet les variables d&#39;instance à 0 et lui affectes un chronometre Survie</p>
+          <p>Reéinitialise les variables d&#39;instance et lui affectes un chronometre Survie</p>
           
           
 
           
           <div class="method-source-code" id="razSurvie-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 114</span>
- <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">razSurvie</span>()
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 124</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">razSurvie</span>()
   <span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">raz</span>()
   <span class="ruby-ivar">@tabCoup</span>=<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
   <span class="ruby-ivar">@indiceCoup</span>=<span class="ruby-value">0</span>
@@ -1115,7 +1083,7 @@
 
           
           <div class="method-source-code" id="redo-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 96</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 104</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">redo</span>()
   <span class="ruby-keyword">if</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">redoPossible?</span>)
     <span class="ruby-ivar">@tabCoup</span>[<span class="ruby-identifier">indiceCoup</span>].<span class="ruby-identifier">case</span>.<span class="ruby-identifier">etat</span>=<span class="ruby-ivar">@tabCoup</span>[<span class="ruby-identifier">indiceCoup</span>].<span class="ruby-identifier">etat</span>
@@ -1145,47 +1113,15 @@
 
         <div class="method-description">
           
-          <p>vrai si on peut redo, faux sinon</p>
+          <p>retourne vrai si on peut redo, faux sinon</p>
           
           
 
           
           <div class="method-source-code" id="redoPossible-3F-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 91</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 98</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">redoPossible?</span>()
          <span class="ruby-keyword">return</span> <span class="ruby-ivar">@tabCoup</span>[<span class="ruby-ivar">@indiceCoup</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Coup</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-reprend" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">reprend</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="reprend-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 137</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reprend</span>()
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -1216,7 +1152,7 @@
 
           
           <div class="method-source-code" id="reviensALaBonnePosition-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 128</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 140</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reviensALaBonnePosition</span>()
   <span class="ruby-keyword">while</span>(<span class="ruby-ivar">@grilleEnCours</span>.<span class="ruby-identifier">nbErreurs</span><span class="ruby-operator">&gt;</span><span class="ruby-value">0</span>)
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">undo</span>
@@ -1251,7 +1187,7 @@
 
           
           <div class="method-source-code" id="undo-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 81</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 87</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">undo</span>()
   <span class="ruby-keyword">if</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">undoPossible?</span>)
     <span class="ruby-identifier">tmpEtat</span>=<span class="ruby-ivar">@tabCoup</span>[<span class="ruby-ivar">@indiceCoup</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">case</span>.<span class="ruby-identifier">etat</span>
@@ -1283,13 +1219,13 @@
 
         <div class="method-description">
           
-          <p>vrai si on peut undo, faux sinon</p>
+          <p>retourne vrai si on peut undo, faux sinon</p>
           
           
 
           
           <div class="method-source-code" id="undoPossible-3F-source">
-            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 76</span>
+            <pre><span class="ruby-comment"># File Partie/Partie.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">undoPossible?</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@indiceCoup</span><span class="ruby-operator">&gt;</span><span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>

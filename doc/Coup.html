@@ -91,7 +91,9 @@
   </h1>
 
   <section class="description">
-    <dl class="rdoc-list note-list"><dt>La classe <a href="Coup.html"><code>Coup</code></a> :
+    
+<p>@author Julian LEBOUC</p>
+<dl class="rdoc-list note-list"><dt>La classe <a href="Coup.html"><code>Coup</code></a> :
 <dd><ul><li>
 <p>représente un coup effectué lors d&#39;une partie</p>
 </li></ul>
@@ -190,7 +192,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Partie/Coup.rb, line 21</span>
+            <pre><span class="ruby-comment"># File Partie/Coup.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Coup</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">c</span>, <span class="ruby-identifier">ancienEtat</span>, <span class="ruby-identifier">etat</span>)
         <span class="ruby-identifier">new</span>(<span class="ruby-identifier">c</span>,<span class="ruby-identifier">ancienEtat</span>,<span class="ruby-identifier">etat</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -217,13 +219,13 @@
 
         <div class="method-description">
           
-          
+          <p>constructeur de <a href="Coup.html"><code>Coup</code></a>, prends en paramètres une case, son ancien état et son état actuel</p>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Partie/Coup.rb, line 30</span>
+            <pre><span class="ruby-comment"># File Partie/Coup.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">c</span>, <span class="ruby-identifier">ancienEtat</span>, <span class="ruby-identifier">etat</span>)
         <span class="ruby-ivar">@case</span>=<span class="ruby-identifier">c</span>
         <span class="ruby-ivar">@ancienEtat</span>=<span class="ruby-identifier">ancienEtat</span>

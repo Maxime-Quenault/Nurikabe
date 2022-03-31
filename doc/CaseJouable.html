@@ -97,12 +97,15 @@
   </h1>
 
   <section class="description">
-    <dl class="rdoc-list note-list"><dt>La classe <a href="CaseJouable.html"><code>CaseJouable</code></a> :
+    
+<p>@author Julian LEBOUC</p>
+<dl class="rdoc-list note-list"><dt>La classe <a href="CaseJouable.html"><code>CaseJouable</code></a> :
 <dd><ul><li>
 <p>représente une case sur laquelle on peut cliquer</p>
 </li></ul>
-</dd><dt>Les VI de la classe sont :
-<dd><ul><li>
+<dl class="rdoc-list note-list"><dt>Voici ses VI :
+<dd></dd></dl>
+<ul><li>
 <p>@etat       ==&gt; indique si la case est une case ile, océan ou non jouée</p>
 
 <pre>0    = case non jouée
@@ -170,7 +173,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Partie/CaseJouable.rb, line 17</span>
+            <pre><span class="ruby-comment"># File Partie/CaseJouable.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">CaseJouable</span>.<span class="ruby-identifier ruby-title">creer</span>()
         <span class="ruby-identifier">new</span>()
 <span class="ruby-keyword">end</span></pre>
@@ -197,13 +200,13 @@
 
         <div class="method-description">
           
-          
+          <p>constructeur de <a href="CaseJouable.html"><code>CaseJouable</code></a>, initialise @etat à 0 (nonJoué)</p>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Partie/CaseJouable.rb, line 24</span>
+            <pre><span class="ruby-comment"># File Partie/CaseJouable.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>()
         <span class="ruby-ivar">@etat</span>=<span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -238,13 +241,13 @@
 
         <div class="method-description">
           
-          
+          <p>permet de comparer des CaseJouables selon leur état</p>
           
           
 
           
           <div class="method-source-code" id="3C-3D-3E-source">
-            <pre><span class="ruby-comment"># File Partie/CaseJouable.rb, line 50</span>
+            <pre><span class="ruby-comment"># File Partie/CaseJouable.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&lt;=&gt;</span>(<span class="ruby-identifier">c</span>)
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@etat</span><span class="ruby-operator">&lt;=&gt;</span><span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span>
 <span class="ruby-keyword">end</span></pre>
@@ -277,7 +280,7 @@
 
           
           <div class="method-source-code" id="changerEtat-source">
-            <pre><span class="ruby-comment"># File Partie/CaseJouable.rb, line 29</span>
+            <pre><span class="ruby-comment"># File Partie/CaseJouable.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">changerEtat</span>()
         <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>)
                 <span class="ruby-ivar">@etat</span>=<span class="ruby-value">1</span>
@@ -317,7 +320,7 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File Partie/CaseJouable.rb, line 40</span>
+            <pre><span class="ruby-comment"># File Partie/CaseJouable.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
                 <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;.&quot;</span>

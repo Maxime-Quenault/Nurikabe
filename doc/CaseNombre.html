@@ -95,7 +95,9 @@
   </h1>
 
   <section class="description">
-    <dl class="rdoc-list note-list"><dt>La classe <a href="CaseNombre.html"><code>CaseNombre</code></a> :
+    
+<p>@author Julian LEBOUC</p>
+<dl class="rdoc-list note-list"><dt>La classe <a href="CaseNombre.html"><code>CaseNombre</code></a> :
 <dd><ul><li>
 <p>représente une case contenant un nombre </p>
 </li></ul>
@@ -191,13 +193,13 @@
 
         <div class="method-description">
           
-          
+          <p>constructeur de <a href="CaseNombre.html"><code>CaseNombre</code></a>, prends en paramêtre un entier et l&#39;affectes à @valeur</p>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Partie/CaseNombre.rb, line 18</span>
+            <pre><span class="ruby-comment"># File Partie/CaseNombre.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">val</span>)
         <span class="ruby-ivar">@valeur</span>=<span class="ruby-identifier">val</span>
 <span class="ruby-keyword">end</span></pre>
@@ -232,13 +234,13 @@
 
         <div class="method-description">
           
-          
+          <p>permet de comparer des CaseNombres selon leur valeur</p>
           
           
 
           
           <div class="method-source-code" id="3C-3D-3E-source">
-            <pre><span class="ruby-comment"># File Partie/CaseNombre.rb, line 22</span>
+            <pre><span class="ruby-comment"># File Partie/CaseNombre.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">&lt;=&gt;</span>(<span class="ruby-identifier">c</span>)
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@valeur</span><span class="ruby-operator">&lt;=&gt;</span><span class="ruby-identifier">c</span>.<span class="ruby-identifier">valeur</span>
 <span class="ruby-keyword">end</span></pre>
@@ -271,7 +273,7 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File Partie/CaseNombre.rb, line 26</span>
+            <pre><span class="ruby-comment"># File Partie/CaseNombre.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@valeur</span>.<span class="ruby-identifier">to_s</span>
 <span class="ruby-keyword">end</span></pre>

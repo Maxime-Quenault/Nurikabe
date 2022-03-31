@@ -5,6 +5,8 @@ load "./Interfaces/Fenetre.rb"
 load "./Interfaces/FenetreGrille.rb"
 load "./Grille/LectureGrille.rb"
 
+##
+# Affiches les différentes grilles parmis lesquelles l'utilisateur peut choisir
 class FenetreChoixGrille < Fenetre
 
     attr_accessor :object

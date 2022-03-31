@@ -14,6 +14,8 @@ class FenetreGrilleCLM < FenetreGrille
         @fenetreClassement=fenetreClassement
     end
 
+    ##
+    # Récupère les boutons et créer tout les signaux correspondants
     def gestionSignaux
         super
         #Recuperation de la fenetre
@@ -28,7 +30,7 @@ class FenetreGrilleCLM < FenetreGrille
         }
     end
 
-
+    ##
     # Créer une table de boutons correspondants aux cases de la grille
     def construction
         @affChrono = Gtk::Label.new()

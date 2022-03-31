@@ -1,8 +1,7 @@
 load "Partie/Case.rb"
-# Représentes un coup effectué lors d'une partie
 
 =begin
-
+	@author Julian LEBOUC
 	La classe Coup :::
 		- représente un coup effectué lors d'une partie
 
@@ -27,6 +26,8 @@ class Coup
 	attr :ancienEtat, false
 	attr :etat, false
 
+	##
+	#constructeur de Coup, prends en paramètres une case, son ancien état et son état actuel
 	def initialize(c, ancienEtat, etat)
 		@case=c
 		@ancienEtat=ancienEtat

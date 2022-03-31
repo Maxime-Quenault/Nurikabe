@@ -4,6 +4,10 @@ load "Partie/Case.rb"
 load "Partie/CaseJouable.rb"
 load "Partie/Partie.rb"
 load "Partie/Indice.rb"
+=begin
+  @author Julian LEBOUC
+  La classe Test permet de tester les fonctionnalités d'une partie sans interface graphique
+=end
 class Test
 	def Test.test()
 =begin

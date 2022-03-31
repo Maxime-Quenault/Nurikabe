@@ -1,5 +1,5 @@
 =begin
-
+    @author Julian LEBOUC
     La classe Indice :::
         - représente un indice, lui même représenté par
             - un type (différent selon les différents patrons)
@@ -8,7 +8,7 @@
     Les VI de la classe sont :::
 
         - @type             ==> type de l'indice
-        - @coordonneesCase  ==> coordonnées de la case
+        - @coordonneesCase  ==> coordonnées de la case, tableau de deux entiers [x,y]
 
 =end
 
@@ -30,6 +30,8 @@ class Indice
 		new(t,c)
 	end
 	private_class_method :new
+    ##
+    # Constructeur affectant aux variables @type et @coordonneesCase les valeurs passées en paramètres
 	def initialize(t,c)
 		@type=t
         @coordonneesCase=c
@@ -37,7 +39,8 @@ class Indice
     attr :type, false
     attr :coordonneesCase, false
 
-    #affichage d'un indice
+    ##
+    # Retournes un texte décrivant l'indice
     def to_s()
         if self.type==nil
             return "Pas d'indice disponible"
@@ -67,6 +70,8 @@ class Indice
         return res
     end
 
+    ##
+    # méthode de comparaison des indices selon leur type et coordonnées
     def ==(indice)
         if indice!=nil && indice.type!=nil
             return @type == indice.type && @coordonneesCase[0] == indice.coordonneesCase[0] && @coordonneesCase[1] == indice.coordonneesCase[1]

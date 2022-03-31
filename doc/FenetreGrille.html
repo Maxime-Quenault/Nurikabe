@@ -254,7 +254,7 @@
 
           
           <div class="method-source-code" id="afficheGrille-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 171</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 174</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficheGrille</span>(<span class="ruby-identifier">hauteur</span>, <span class="ruby-identifier">largeur</span>, <span class="ruby-identifier">grille</span>)
     <span class="ruby-identifier">taille_hauteur</span> = <span class="ruby-identifier">hauteur</span>
     <span class="ruby-identifier">taille_largeur</span> = <span class="ruby-identifier">largeur</span>
@@ -322,7 +322,7 @@
 
           
           <div class="method-source-code" id="affiche_victoire-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 111</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 113</span>
    <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affiche_victoire</span>
     <span class="ruby-identifier">dialog</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Victoire&quot;</span>
@@ -365,13 +365,13 @@
 
         <div class="method-description">
           
-          <p>Créer une table de boutons correspondants aux cases de la grille</p>
+          <p>Construit la grille de boutons correpondants aux cases de la grille</p>
           
           
 
           
           <div class="method-source-code" id="construction-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 132</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 135</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">construction</span>
     <span class="ruby-identifier">taille_hauteur</span> = <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">hauteur</span>
     <span class="ruby-identifier">taille_largeur</span> = <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">largeur</span>
@@ -432,13 +432,13 @@
 
         <div class="method-description">
           
-          
+          <p>Récupère les boutons et créer tout les signaux correspondants</p>
           
           
 
           
           <div class="method-source-code" id="gestionSignaux-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 45</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
     
     <span class="ruby-comment">#Recuperation de la fenetre</span>
@@ -532,7 +532,7 @@
 
           
           <div class="method-source-code" id="griserBoutons-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 233</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 236</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">griserBoutons</span>
     <span class="ruby-identifier">btn_undo</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_undo&#39;</span>)
     <span class="ruby-identifier">btn_redo</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_redo&#39;</span>)
@@ -579,7 +579,7 @@
 
           
           <div class="method-source-code" id="maj_bouton-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 260</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 263</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">maj_bouton</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>)
     <span class="ruby-keyword">if</span>(<span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>)
         <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;case_vide&quot;</span>
@@ -621,7 +621,7 @@
 
           
           <div class="method-source-code" id="maj_boutons-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 251</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 254</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">maj_boutons</span>
     <span class="ruby-ivar">@boutons</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cle</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">cle</span>[<span class="ruby-value">0</span>]][<span class="ruby-identifier">cle</span>[<span class="ruby-value">1</span>]].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>)
@@ -658,7 +658,7 @@
 
           
           <div class="method-source-code" id="signaux_boutons-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 211</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrille.rb, line 214</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">signaux_boutons</span>(<span class="ruby-identifier">tableFrame</span>)
     <span class="ruby-ivar">@boutons</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cle</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">cle</span>[<span class="ruby-value">0</span>]][<span class="ruby-identifier">cle</span>[<span class="ruby-value">1</span>]].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>)

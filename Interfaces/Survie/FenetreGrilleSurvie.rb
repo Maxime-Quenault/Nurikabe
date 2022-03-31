@@ -6,6 +6,9 @@ load "./Interfaces/Fenetre.rb"
 load "Interfaces/FenetreGrille.rb"
 load "Chrono/ChronometreSurvie.rb"
 
+##
+# Fenetre sur laquelle on joue une partie Survie
+#
 class FenetreGrilleSurvie < FenetreGrille
     @fenetreClassement
     @threadChrono
@@ -18,9 +21,10 @@ class FenetreGrilleSurvie < FenetreGrille
         @grillesDejaFaites = Array.new
     end
 
+    ##
+    # Récupère les boutons et créer tout les signaux correspondants
     def gestionSignaux
         super
-        #Recuperation de la fenetre
         btn_pause = @builder.get_object('btn_pause')
         #Gestion des signaux
         btn_pause.signal_connect('clicked'){#pause
@@ -38,6 +42,7 @@ class FenetreGrilleSurvie < FenetreGrille
     end
 
      # Changes la couleur des boutons lorsqu'on clique dessus
+     # Si la grille est finie, on affecte à la partie une grille au hasard de même difficulté
      def signaux_boutons(tableFrame)
         @tableFrame=tableFrame
         @boutons.each do |cle, val|
@@ -61,6 +66,7 @@ class FenetreGrilleSurvie < FenetreGrille
                             g.chargerGrille(numGrille,g.difficulte)
                             creerPartie(g)
                             @@partie.chronometre=temp
+                            @@partie.chronometre.ajouteTemps(30)
                             @object.remove(tableFrame)
                             @object.remove(@affChrono)
                             
@@ -92,14 +98,13 @@ class FenetreGrilleSurvie < FenetreGrille
     end
     dialog.show_all
 end
-
-     # Créer un label pour le chronometre
+    ##
+     # Construit la grille de boutons correpondants aux cases de la grille et affiches le chronomètre
      def construction
         if !@grillesDejaFaites.include?([@@partie.grilleEnCours.numero,@@partie.grilleEnCours.difficulte])
             @grillesDejaFaites << [@@partie.grilleEnCours.numero, @@partie.grilleEnCours.difficulte]
         end
         if @@partie.chronometre.temps<=0
-            puts "\n1"
             @@partie.chronometre=ChronometreSurvie.creer
         end
        
@@ -141,13 +146,13 @@ end
             @@partie.chronometre.metEnPause
             @object.remove(tableFrame)
             self.changerInterface(@menuParent, "Survie")
-            puts "\n2"
         }
-        puts "\n3"
         @@partie.chronometre.demarre
         actualiseChrono
     end
 
+    ##
+    #Créer un thread raffraichissant le chronomètre toutes les 100ms, si ce dernier atteint 0, on quitte la partie
     def actualiseChrono
         if @threadChrono==nil
             @threadChrono = Thread.new{
@@ -155,7 +160,6 @@ end
                     sleep(0.1)
                     @affChrono.set_label(@@partie.chronometre.getTemps.round(1).to_s)
                 end
-                puts "\n4"
                 affiche_fin
                 @fenetreClassement.ajoutScore
                 @object.remove(@tableFrame)
@@ -167,6 +171,7 @@ end
         end
     end
 
+    # Retournes le nombre de grilles finies lors de cette partie
     def getNbGrilles
         @grillesDejaFaites.length-1
     end

@@ -130,6 +130,8 @@
     
 <p>Définition de la classe <a href="AffichageAventure.html"><code>AffichageAventure</code></a> qui affichera le mode <a href="Aventure.html"><code>Aventure</code></a></p>
 
+<p>Définition de la classe <a href="AffichageAventure.html"><code>AffichageAventure</code></a> qui affichera le mode <a href="Aventure.html"><code>Aventure</code></a></p>
+
   </section>
 
   
@@ -333,7 +335,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 59</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">menuParent</span>)
 
   <span class="ruby-ivar">@couleurBase</span> = <span class="ruby-string">&quot;white&quot;</span>
@@ -453,7 +455,7 @@
 
           
           <div class="method-source-code" id="affichageEtoile-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 263</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 263</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageEtoile</span>(<span class="ruby-identifier">nbEtoiles</span>)
 
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">nbEtoiles</span>
@@ -531,7 +533,7 @@
 
           
           <div class="method-source-code" id="affichageImageGrille-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 252</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 252</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageImageGrille</span>
   <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>() <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
     <span class="ruby-ivar">@img_centre</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/grilleVide.png&quot;</span>)
@@ -568,7 +570,7 @@
 
           
           <div class="method-source-code" id="affichageNewDiff-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 215</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 215</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageNewDiff</span>(<span class="ruby-identifier">unNumero</span>)
  <span class="ruby-identifier">dialog</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span>.<span class="ruby-identifier">new</span>()
  <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Nouvelle Difficulté&quot;</span>
@@ -624,7 +626,7 @@
 
           
           <div class="method-source-code" id="affichageTemps-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 243</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 243</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageTemps</span>
   <span class="ruby-ivar">@tempsGrille</span>.<span class="ruby-identifier">set_text</span>(<span class="ruby-node">&quot;#{@aventure.getTempsCourant()}&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -657,7 +659,7 @@
 
           
           <div class="method-source-code" id="boutonPreced-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 318</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 318</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">boutonPreced</span>
     <span class="ruby-comment">#self.pack_start(@fenetre,@bouton[@aventure.getPosCourante()],false,false,nil)</span>
     <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">grillePrecedente</span>()
@@ -694,7 +696,7 @@
 
           
           <div class="method-source-code" id="boutonSuiv-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 311</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 311</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">boutonSuiv</span>
     <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">prochaineGrille</span>()
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageEtoile</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>())
@@ -730,7 +732,7 @@
 
           
           <div class="method-source-code" id="deplacementAventure-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 326</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 326</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">deplacementAventure</span>(<span class="ruby-identifier">uneDiff</span>)
   <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getDifficulte</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">uneDiff</span>)
     <span class="ruby-keyword">while</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getDifficulte</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">uneDiff</span>)
@@ -773,7 +775,7 @@
 
           
           <div class="method-source-code" id="destruction-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 210</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 210</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">destruction</span>
   <span class="ruby-constant">Gtk</span>.<span class="ruby-identifier">main_quit</span>
   <span class="ruby-keyword">return</span>
@@ -807,7 +809,7 @@
 
           
           <div class="method-source-code" id="gestionSignaux-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 343</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 343</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
 
   <span class="ruby-comment"># On associe le bouton Retour avec la méthode de fermeture du mode Aventure</span>
@@ -997,7 +999,7 @@
 
           
           <div class="method-source-code" id="getCouleurFenetre-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 154</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 154</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getCouleurFenetre</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@couleurFenetre</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1030,7 +1032,7 @@
 
           
           <div class="method-source-code" id="getCouleurGeneral-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 165</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 165</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getCouleurGeneral</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@couleurBase</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1063,7 +1065,7 @@
 
           
           <div class="method-source-code" id="getCouleurSecondaire-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 175</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 175</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getCouleurSecondaire</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@couleurVisible</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1100,7 +1102,7 @@
 
           
           <div class="method-source-code" id="getObject-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 149</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 149</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getObject</span>
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@fenetre</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1133,7 +1135,7 @@
 
           
           <div class="method-source-code" id="setBackground-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 185</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 185</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setBackground</span>(<span class="ruby-identifier">bouton</span>, <span class="ruby-identifier">couleur</span>)
   <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">bg</span> = <span class="ruby-identifier">couleur</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1166,7 +1168,7 @@
 
           
           <div class="method-source-code" id="setBackgroundBoutons-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 190</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 190</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setBackgroundBoutons</span>(<span class="ruby-identifier">indice</span>, <span class="ruby-identifier">couleurUnique</span>, <span class="ruby-identifier">couleurStandard</span>)
   <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">length</span>()
     <span class="ruby-keyword">if</span>(<span class="ruby-identifier">i</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">indice</span>)
@@ -1205,7 +1207,7 @@
 
           
           <div class="method-source-code" id="setCouleurFenetre-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 159</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 159</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setCouleurFenetre</span>(<span class="ruby-identifier">uneCouleur</span>)
   <span class="ruby-ivar">@couleurFenetre</span> = <span class="ruby-identifier">uneCouleur</span>
   <span class="ruby-constant">Gtk</span>.<span class="ruby-identifier">gtk_widget_modify_bg</span>(<span class="ruby-ivar">@fenetre</span>, <span class="ruby-constant">GTK_STATE_NORMAL</span>, <span class="ruby-ivar">@couleurFenetre</span>);
@@ -1239,7 +1241,7 @@
 
           
           <div class="method-source-code" id="setCouleurGeneral-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 170</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 170</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setCouleurGeneral</span>(<span class="ruby-identifier">couleur</span>)
   <span class="ruby-ivar">@couleurBase</span> = <span class="ruby-identifier">couleur</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1272,7 +1274,7 @@
 
           
           <div class="method-source-code" id="setCouleurSecondaire-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 180</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 180</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setCouleurSecondaire</span>(<span class="ruby-identifier">couleur</span>)
   <span class="ruby-ivar">@couleurVisible</span> = <span class="ruby-identifier">couleur</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1305,7 +1307,7 @@
 
           
           <div class="method-source-code" id="setEffetBouton-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 200</span>
+            <pre><span class="ruby-comment"># File AffichageAventure.rb, line 200</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setEffetBouton</span>(<span class="ruby-identifier">indice</span>)
   <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">placerSurGrille</span>(<span class="ruby-identifier">indice</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageEtoile</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>())

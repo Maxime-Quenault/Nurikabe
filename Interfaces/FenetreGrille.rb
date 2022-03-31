@@ -42,6 +42,8 @@ class FenetreGrille < Fenetre
         self.gestionSignaux
     end
 
+    ##
+    # Récupère les boutons et créer tout les signaux correspondants
     def gestionSignaux
         
         #Recuperation de la fenetre
@@ -128,7 +130,8 @@ class FenetreGrille < Fenetre
     dialog.show_all
 end
 
-    # Créer une table de boutons correspondants aux cases de la grille
+    ##
+    # Construit la grille de boutons correpondants aux cases de la grille
     def construction
         taille_hauteur = @@partie.grilleEnCours.hauteur
         taille_largeur = @@partie.grilleEnCours.largeur

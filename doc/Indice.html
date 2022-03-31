@@ -95,7 +95,9 @@
   </h1>
 
   <section class="description">
-    <dl class="rdoc-list note-list"><dt>La classe <a href="Indice.html"><code>Indice</code></a> :
+    
+<p>@author Julian LEBOUC</p>
+<dl class="rdoc-list note-list"><dt>La classe <a href="Indice.html"><code>Indice</code></a> :
 <dd><ul><li>
 <p>représente un indice, lui même représenté par</p>
 
@@ -106,7 +108,7 @@
 <dd><ul><li>
 <p>@type             ==&gt; type de l&#39;indice</p>
 </li><li>
-<p>@coordonneesCase  ==&gt; coordonnées de la case</p>
+<p>@coordonneesCase  ==&gt; coordonnées de la case, tableau de deux entiers [x,y]</p>
 </li></ul>
 </dd></dl>
 
@@ -209,13 +211,13 @@
 
         <div class="method-description">
           
-          
+          <p>Constructeur affectant aux variables @type et @coordonneesCase les valeurs passées en paramètres</p>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Partie/Indice.rb, line 33</span>
+            <pre><span class="ruby-comment"># File Partie/Indice.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">t</span>,<span class="ruby-identifier">c</span>)
         <span class="ruby-ivar">@type</span>=<span class="ruby-identifier">t</span>
 <span class="ruby-ivar">@coordonneesCase</span>=<span class="ruby-identifier">c</span>
@@ -251,13 +253,13 @@
 
         <div class="method-description">
           
-          
+          <p>méthode de comparaison des indices selon leur type et coordonnées</p>
           
           
 
           
           <div class="method-source-code" id="3D-3D-source">
-            <pre><span class="ruby-comment"># File Partie/Indice.rb, line 70</span>
+            <pre><span class="ruby-comment"># File Partie/Indice.rb, line 75</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">==</span>(<span class="ruby-identifier">indice</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">indice</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">indice</span>.<span class="ruby-identifier">type</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@type</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">indice</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@coordonneesCase</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">indice</span>.<span class="ruby-identifier">coordonneesCase</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@coordonneesCase</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">indice</span>.<span class="ruby-identifier">coordonneesCase</span>[<span class="ruby-value">1</span>]
@@ -288,13 +290,13 @@
 
         <div class="method-description">
           
-          <p>affichage d&#39;un indice</p>
+          <p>Retournes un texte décrivant l&#39;indice</p>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File Partie/Indice.rb, line 41</span>
+            <pre><span class="ruby-comment"># File Partie/Indice.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>()
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">type</span><span class="ruby-operator">==</span><span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;Pas d&#39;indice disponible&quot;</span>
