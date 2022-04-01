@@ -12,21 +12,18 @@ load "Partie/Grille.rb"
 load "Sauvegarde/SauvegardeProfil.rb"
 load "Sauvegarde/Profil.rb"
 load "Interfaces/Fenetre.rb"
-load "Interfaces/FenetreGrille.rb"
+load "Interfaces/FenetreGrilleAventure.rb"
 
 # Définition de la classe AffichageAventure qui affichera le mode Aventure
 class AffichageAventure < Fenetre
 
   # Définition des constantes
-  SEUIL_5_ETOILES ||= 60.00
-  SEUIL_4_ETOILES ||= 80.00
-  SEUIL_3_ETOILES ||= 100.00
-  SEUIL_2_ETOILES ||= 120.00
-  SEUIL_1_ETOILE ||= 140.00
-
-  FACILE ||= 0
-	MOYEN ||= 1
-	DIFFICILE ||= 2
+  # Les différents palliers de temps sur lesquels on se basera pour attribuer des récompenses
+  SEUIL_5_ETOILES ||= 30
+  SEUIL_4_ETOILES ||= 60
+  SEUIL_3_ETOILES ||= 80
+  SEUIL_2_ETOILES ||= 100
+  SEUIL_1_ETOILE ||= 120
 
   #################### Déclaration des VI
   #
@@ -40,6 +37,12 @@ class AffichageAventure < Fenetre
   #
   # @fenetre : Variable d'instance qui contiendra la fenêtre de l'interface glade
   #
+  # @aventureFacile : Objet Aventure en difficulté "Facile"
+  #
+  # @aventureNormale : Objet Aventure en difficulté "Normale"
+  #
+  # @aventureDifficile : Objet Aventure en difficulté "Difficile"
+  #
   # @aventure : Variable d'instance qui contient l'aventure en cours
   #
   # @tempsGrille : Variable d'instance liée au temps de complétion de la grille
@@ -52,9 +55,27 @@ class AffichageAventure < Fenetre
   #
   # @interfaceGrille : Variable d'instance qui contient le lien vers une fenêtre de grille avec laquelle l'utilisateur pourra intéragir
   #
-  ####################
+  # @retour : Variable d'instance liée au bouton "retour"
+  #
+  # @modeFacile : Variable d'instance qui donne accès au mode "Facile"
+  #
+  # @modeNormal : Variable d'instance qui donne accès au mode "Normale"
+  #
+  # @modeHard : Variable d'instance qui donne accès au mode "Difficile"
+  #
+  # @btn_img : Bouton qui lance la partie
+  #
+  # @menuParent : Lien avec la fenêtre précédente
+  #
+  # @interfaceGrille : Lien vers la partie lorsqu'elle sera lancée
+  #
+  # @btnPreced : Bouton qui déplace le curseur sur la grille précédent la position courante
+  #
+  # @btnSuivant : Bouton qui déplace le curseur sur la grille succédant la position courante
+  #
+  ################
 
-  attr_accessor :fenetre, :menuParent, :interfaceGrille
+  attr_accessor :fenetre, :menuParent, :interfaceGrille, :aventure, :temps;
 
   def initialize(menuParent)
 
@@ -63,26 +84,31 @@ class AffichageAventure < Fenetre
 
     # On créer 3 objets aventures plus un autre qui manipulera les références des autres
     # Création des 3 aventures : Facile , Normale , Difficile avec générations des niveaux
-    aventureFacile = Aventure.creer(0)
-    aventureFacile.generationAventure(10,FACILE)
 
-    aventureNormale = Aventure.creer(1)
-    aventureNormale.generationAventure(10,MOYEN)
+    #@aventureFacile = @@profilActuel.uneAventureFacile
+    #@aventureNormale = @@profilActuel.uneAventureMoyen
+    #@aventureDifficile = @@profilActuel.uneAventureDifficile
 
-    aventureDifficile = Aventure.creer(2)
-    aventureDifficile.generationAventure(10,DIFFICILE)
+    @aventureFacile = Aventure.creer(0)
+    @aventureFacile.generationAventure(10,0)
+
+    @aventureNormale = Aventure.creer(1)
+    @aventureNormale.generationAventure(10,1)
+
+    @aventureDifficile = Aventure.creer(2)
+    @aventureDifficile.generationAventure(10,2)
 
     # On édite les liens entre les 3 aventures
-    aventureFacile.setPrecedent(nil)
-    aventureFacile.setSuivant(aventureNormale)
+    @aventureFacile.setPrecedent(nil)
+    @aventureFacile.setSuivant(@aventureNormale)
 
-    aventureNormale.setPrecedent(aventureFacile)
-    aventureNormale.setSuivant(aventureDifficile)
+    @aventureNormale.setPrecedent(@aventureFacile)
+    @aventureNormale.setSuivant(@aventureDifficile)
 
-    aventureDifficile.setPrecedent(aventureNormale)
-    aventureDifficile.setSuivant(nil)
+    @aventureDifficile.setPrecedent(@aventureNormale)
+    @aventureDifficile.setSuivant(nil)
 
-    @aventure = aventureFacile
+    @aventure = @aventureFacile
 
     # On créer un buildeur qui récupère les éléments de notre fenêtre créée sur Glade
     monBuildeur = Gtk::Builder.new(:file => 'glade/aventure_normal_img.glade')
@@ -133,8 +159,9 @@ class AffichageAventure < Fenetre
     # Déclaration de la fenêtre du mode Aventure
     @fenetre = monBuildeur.get_object('fenetre_aventure')
     # on prépare une interface FenetreGrille que l'on appellera quand on en aura besoin
-    @interfaceGrille = FenetreGrille.new(@fenetre)
+    @interfaceGrille = FenetreGrilleAventure.new(@fenetre,self)
 
+    # On lance l'attribution des effets aux éléments de l'interface
     self.gestionSignaux
 
   end
@@ -197,6 +224,7 @@ class AffichageAventure < Fenetre
     end
   end
 
+  # Méthode qui prend en paramètre un indice et qui attribue les effets suivants au bouton n°"indice"
   def setEffetBouton(indice)
     @aventure.placerSurGrille(indice)
     self.affichageEtoile(@aventure.getEtoileCourante())
@@ -212,6 +240,7 @@ class AffichageAventure < Fenetre
     return
   end
 
+  # Méthode qui affiche une fenêtre pop-up lorsque le joueur souhaite débloquer une nouvelle difficulté
   def affichageNewDiff(unNumero)
    dialog = Gtk::Dialog.new()
    dialog.title = "Nouvelle Difficulté"
@@ -241,7 +270,8 @@ class AffichageAventure < Fenetre
 
   # Méthode qui modifie l'affichage du temps de la grille
   def affichageTemps
-    @tempsGrille.set_text("#{@aventure.getTempsCourant()}")
+    chaine = (@aventure.getTempsCourant()/3600).to_i.to_s + "h" + (@aventure.getTempsCourant()/60).to_i.to_s + "m" + @aventure.getTempsCourant().to_s + "s"
+    @tempsGrille.set_text(chaine)
   end
 
   # Méthode qui modifie l'image centrale à afficher
@@ -303,11 +333,7 @@ class AffichageAventure < Fenetre
 
   end
 
-  # Méthode qui gère la "surbrillance" des boutons Suivant et Précédent
-  # Lorsque l'on clique sur l'un des boutons dans la barre en bas de la fenêtre
-  # le bouton change de couleur pour indiquer que l'on se situe sur tel niveau.
-  # Ainsi suivant la position du joueur(après le click sur suivant ou précédent)
-  # On appel la méthode de "surbrillance" du bouton associé à notre position
+  # Méthode qui gère le passage à la grille précédente en déplaçant le curseur puis en affichage l'image de la grille, ses étoiles et son temps
   def boutonSuiv
       @aventure.prochaineGrille()
       self.affichageEtoile(@aventure.getEtoileCourante())
@@ -315,26 +341,66 @@ class AffichageAventure < Fenetre
       self.affichageImageGrille()
   end
 
+  # Méthode qui gère le passage à la grille suivante en déplaçant le curseur puis en affichage l'image de la grille, ses étoiles et son temps
   def boutonPreced
-      #self.pack_start(@fenetre,@bouton[@aventure.getPosCourante()],false,false,nil)
       @aventure.grillePrecedente()
       self.affichageEtoile(@aventure.getEtoileCourante())
       self.affichageTemps()
       self.affichageImageGrille()
   end
 
+  # Méthode qui gère le changement de mode de difficulté du mode Aventure
   def deplacementAventure(uneDiff)
-    if(@aventure.getDifficulte < uneDiff)
-      while(@aventure.getDifficulte < uneDiff)
-        @aventure.difficultePrecedente
-      end
+    case uneDiff
+    when 0
+      @aventure = @aventureFacile
+    when 1
+      @aventure = @aventureNormale
+    when 2
+      @aventure = @aventureDifficile
+    end
+  end
+
+  def compterNombreEtoile()
+
+    temps = (Time.now.to_f).to_i - @temps1
+
+    if(@aventure.getGrilleCourante().pourcentageCompletion() < 100)
+      temps = 0
+      recompense = 0
     else
-      if(@aventure.getDifficulte < uneDiff)
-        while(@aventure.getDifficulte < uneDiff)
-          @aventure.difficulteSuivante
+      # Puis attribution du nombre d'étoiles en fonction du timer (à définir)
+      if(temps < SEUIL_5_ETOILES)
+        recompense = 5
+      else
+        if (temps < SEUIL_4_ETOILES)
+          recompense = 4
+        else
+          if (temps < SEUIL_3_ETOILES)
+            recompense = 3
+          else
+            if (temps < SEUIL_2_ETOILES)
+              recompense = 2
+            else
+              if (temps < SEUIL_1_ETOILE)
+                recompense = 1
+              else
+                recompense = 0
+              end
+            end
+          end
         end
       end
     end
+
+    @aventure.setEtoileCourante(recompense)
+    @aventure.etoilesEnPlus(recompense)
+    @aventure.setTempsCourant(temps)
+
+    self.affichageEtoile(@aventure.getEtoileCourante())
+    self.affichageTemps()
+    self.affichageImageGrille()
+
   end
 
   ################### Méthode principale - gestionSignaux  ###################
@@ -354,23 +420,20 @@ class AffichageAventure < Fenetre
     # On associe le bouton Précédent avec la méthode grillePrecedente de la classe Aventure
     @btnPreced.signal_connect('clicked'){
       self.boutonPreced()
-      print "\n #{@aventure.getPosCourante}"
     }
 
     # On associe le bouton Suivant avec la méthode prochaineGrille de la classe Aventure
     @btnSuivant.signal_connect('clicked'){
       self.boutonSuiv()
-      print "\n #{@aventure.getPosCourante}"
     }
 
     # On associe le bouton facile avec la méthode de choix de difficulté de la classe Aventure
     @modeFacile.signal_connect('clicked'){
-      @aventure.choixDifficulte(0)
+      self.deplacementAventure(0)
       @aventure.placerSurGrille(0)
       self.affichageEtoile(@aventure.getEtoileCourante())
       self.affichageTemps()
       self.affichageImageGrille()
-      print "\n #{@aventure.difficulte}"
     }
 
     # On associe le bouton normal avec la méthode de choix de difficulté de la classe Aventure
@@ -382,7 +445,9 @@ class AffichageAventure < Fenetre
       if(@aventure.estDebloquee(1))
 
         if(@aventure.choixDifficulte(1))
+          #uneAv = @aventure.clone()
           self.deplacementAventure(1)
+          #@aventureFacile = uneAv
         end
 
         @aventure.placerSurGrille(0)
@@ -391,7 +456,6 @@ class AffichageAventure < Fenetre
         self.affichageImageGrille()
       end
 
-      print "\n #{@aventure.difficulte}"
     }
 
     # On associe le bouton difficile avec la méthode de choix de difficulté de la classe Aventure
@@ -413,59 +477,18 @@ class AffichageAventure < Fenetre
         self.affichageImageGrille()
       end
 
-      print "\n #{@aventure.difficulte}"
     }
 
     # On associe l'image de la grille avec la méthode de lancement de la Partie
     # + attribution des récompenses en fonction du timer
     @btn_img.signal_connect('clicked'){
 
-      temps1 = (Time.now.to_f * 1000)
+      @temps1 = (Time.now.to_f).to_i
       @@partie = Partie.creeToi(@aventure.getGrilleCourante())
 
       @interfaceGrille.construction
       self.changerInterface(@interfaceGrille.object, "Partie")
 
-      print("\n #{@aventure.getGrilleCourante().pourcentageCompletion()}")
-
-      temps2 = (Time.now.to_f * 1000) - temps1
-      temps = temps2.round(2)
-
-      if(@aventure.getGrilleCourante().pourcentageCompletion() < 100)
-        temps = 1000.0
-        recompense = 0
-      else
-        # Puis attribution du nombre d'étoiles en fonction du timer (à définir)
-        if(temps < SEUIL_5_ETOILES)
-          recompense = 5
-        else
-          if (temps < SEUIL_4_ETOILES)
-            recompense = 4
-          else
-            if (temps < SEUIL_3_ETOILES)
-              recompense = 3
-            else
-              if (temps < SEUIL_2_ETOILES)
-                recompense = 2
-              else
-                if (temps < SEUIL_1_ETOILE)
-                  recompense = 1
-                else
-                  recompense = 0
-                end
-              end
-            end
-          end
-        end
-      end
-
-      @aventure.setEtoileCourante(recompense)
-      @aventure.etoilesEnPlus(recompense)
-      @aventure.setTempsCourant(temps)
-
-      self.affichageEtoile(@aventure.getEtoileCourante())
-      self.affichageTemps()
-      self.affichageImageGrille()
     }
 
     @bouton[0].signal_connect('clicked'){

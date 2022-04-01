@@ -106,7 +106,6 @@ class FenetreChoixGrille < Fenetre
             g.chargerGrille(num_grille,@difficulte)
             creerPartie(g)
         else
-            print "\ntu as une partie de save"
             @@partie = unePartie
         end
         @interfaceGrille.construction

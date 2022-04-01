@@ -89,12 +89,12 @@ class FenetreLibre < Fenetre
 			@interfaceChoixGrille.difficulte=0
 			self.changerInterface(@interfaceChoixGrille.object, "Facile")
 		}
-		@btn_moyen.signal_connect("clicked"){print "\nTu as cliqué sur le mode Moyen"
+		@btn_moyen.signal_connect("clicked"){
 			@interfaceChoixGrille.difficulte=1
 			self.changerInterface(@interfaceChoixGrille.object, "Partie")
 		}
 
-		@btn_difficile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Difficile"
+		@btn_difficile.signal_connect("clicked"){
 			@interfaceChoixGrille.difficulte=2
 			self.changerInterface(@interfaceChoixGrille.object, "Partie")
 		}
@@ -106,80 +106,4 @@ class FenetreLibre < Fenetre
 	end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=begin
-	def not_yet_implemented(object)
-		puts "#{object.class.name} sent a signal!"
-	end
-
-	def on_main_window_destroy(object)
-		Gtk.main_quit()
-	end
-
-
-	def ajouterGrille(id)
-		liste_grille = @builder.get_object('liste_grille')
-
-		ligneGrille = Gtk::Box.new(:horizontal)
-		ligneGrille.set_homogeneous(true)
-		ligneGrille.set_size_request(-1, 40)
-
-		# id de la grille
-		ligneGrille.add(Gtk::Label.new(id.to_s), :expand => false, :fill => true)
-
-		# aperçu de la grille
-		ligneGrille.add(Gtk::Image.new(:stock => 'gtk-missing-image'), :expand => false, :fill => true)
-
-		# taille de la grille
-		ligneGrille.add(Gtk::Label.new('6x8'), :expand => false, :fill => true)
-
-		# progression de la grille
-		progressbar = Gtk::ProgressBar.new
-		progressbar.set_halign(3)
-		progressbar.set_valign(3)
-		progressbar.set_pulse_step(0.10)
-		progressbar.set_show_text(true)
-		ligneGrille.add(progressbar, :expand => false, :fill => true)
-
-		liste_grille.add_child(ligneGrille)
-		liste_grille.show_all
-
-	end
-=end
 

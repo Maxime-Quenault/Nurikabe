@@ -20,6 +20,10 @@ load "Interfaces/FenetreMenu.rb"
 class Jeu
 
     attr_accessor :quit
+
+    ##
+    # initialize:
+    #   Constructeur du Jeu, creer une nouvelle interface et initialise quit à faux 
     def initialize
         @interface = FenetreMenu.new
         @quit = false
@@ -28,6 +32,9 @@ class Jeu
         end
     end
 
+    ## 
+    # lanceToi:
+    #   Cette méthode permet de lancer le jeu, d'afficher la fenêtre du Menu
     def lanceToi
         @interface.changerInterface(@interface.object, "Menu")
         Gtk.main

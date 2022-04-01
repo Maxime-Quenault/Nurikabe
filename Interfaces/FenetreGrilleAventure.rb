@@ -14,11 +14,11 @@ load "./Interfaces/Fenetre.rb"
         - @builder          ==> builder de la fenêtre courante
         - @object           ==> contient l'identifiant glade de l'interface courante
         - @grid             ==> contient l'identifiant glade de la grille
-        - @interfaceRetour  ==> 
+        - @interfaceRetour  ==>
         - @profil           ==> contient le profil courant
         - @menuParent       ==> contient l'interface parente de l'interface courante
         - @boutons          ==> table contenant une liste de boutons
-    
+
     Les VC de la classe sont :::
         - @@partie  ==> partie en cours
 
@@ -26,11 +26,11 @@ load "./Interfaces/Fenetre.rb"
 =end
 
 
-class FenetreGrille < Fenetre
+class FenetreGrilleAventure < Fenetre
 
     attr_accessor :object, :popover
 
-    def initialize(menuParent)
+    def initialize(menuParent,fenetreAventure)
         self.initialiseToi
         @popover = Gtk::Popover.new
         @builder = Gtk::Builder.new
@@ -38,14 +38,14 @@ class FenetreGrille < Fenetre
         @object = @builder.get_object("menu")
         @boutons
         @menuParent = menuParent
-
+        @fenetreAventure = fenetreAventure
         self.gestionSignaux
     end
 
     ##
     # Récupère les boutons et créer tout les signaux correspondants
     def gestionSignaux
-        
+
         #Recuperation de la fenetre
         btn_retour = @builder.get_object('btn_retour')
         btn_undo = @builder.get_object('btn_undo')
@@ -63,7 +63,7 @@ class FenetreGrille < Fenetre
         btn_rembobiner.name = "btn_menu_grille_grise"
         btn_clear.name = "btn_menu_grille"
         btn_aide.name = "btn_menu_grille"
-        
+
         btn_aide.set_popover(@popover)
 
         #Gestion des signaux
@@ -94,14 +94,14 @@ class FenetreGrille < Fenetre
             @builder.get_object('btn_aide').set_popover(@popover)
             @popover.show_all
             @@partie.dernierIndice=indice
-            
+
         }
         btn_clear.signal_connect('clicked'){#remet la partie a zero
             @@partie.raz
             griserBoutons
             maj_boutons
         }
-        
+
 
     end
 
@@ -163,36 +163,7 @@ end
             self.changerInterface(@menuParent, "Libre")
         }
         @object.add(tableFrame)
-
-        ajustementsCSS()
-
         tableFrame.show_all
-    end
-
-    # Ajuste la taille des cases de la grille pour la faire rentrer dans la fenêtre dynamiquement
-    def ajustementsCSS()
-        
-        taille_hauteur = @@partie.grilleEnCours.hauteur
-        taille_largeur = @@partie.grilleEnCours.largeur
-
-        classList = Array.new
-        
-        File.delete("Interfaces/style_temp.css") if File.exist?("Interfaces/style_temp.css")
-        cssTemp = File.new("Interfaces/style_temp.css", "w")
-
-        grilleTailleH = ($HAUTEUR_FENETRE - 100) / taille_hauteur / 1.5
-        grilleTailleW = ($LARGEUR_FENETRE - 100) / taille_largeur / 1.5
-        grilleTailleCase = [grilleTailleH, grilleTailleW].min
-
-        cssTemp.puts(
-                "#case_chiffre, #case_vide, #case_indice, #case_noir, #case_point"\
-                "{ font-size: #{grilleTailleCase}px; min-width: #{grilleTailleCase + 4}px; min-height: #{grilleTailleCase}px; }"
-        )
-        cssTemp.close
-        cssTemp = Gtk::CssProvider.new
-        cssTemp.load(path: "Interfaces/style_temp.css")
-        Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, cssTemp, Gtk::StyleProvider::PRIORITY_APPLICATION)
-
     end
 
 	# Créer un affichage de la grille pour la librarie de grille
@@ -224,7 +195,7 @@ end
         # maj_boutons
         # signaux_boutons(tableFrame)
         # @object.add(table)
-		
+
         # # supprime les boutons
         # @builder.get_object('btn_retour').signal_connect('clicked'){#quitter
         #     @object.remove(tableFrame)
@@ -247,6 +218,7 @@ end
                         @boutons[[@@partie.dernierIndice.coordonneesCase[0],@@partie.dernierIndice.coordonneesCase[1]]].name = "case_chiffre"
                     end
                     if @@partie.partieFinie?
+                        @fenetreAventure.compterNombreEtoile()
                         affiche_victoire
                         @object.remove(tableFrame)
                         @@profilActuel.ajouterPartie(@@partie)
@@ -264,13 +236,13 @@ end
         if @@partie.undoPossible?
             btn_undo.name = "btn_menu_grille"
             btn_rembobiner.name = "btn_menu_grille"
-        else 
+        else
             btn_undo.name = "btn_menu_grille_grise"
             btn_rembobiner.name = "btn_menu_grille_grise"
         end
         if @@partie.redoPossible?
             btn_redo.name = "btn_menu_grille"
-        else 
+        else
             btn_redo.name = "btn_menu_grille_grise"
         end
     end
@@ -292,7 +264,7 @@ end
             @boutons[[i,j]].name = "case_noir"
             @boutons[[i,j]].set_label(" ")
         else
-            @boutons[[i,j]].name = "case_point"  
+            @boutons[[i,j]].name = "case_point"
             @boutons[[i,j]].set_label("•")
         end
     end

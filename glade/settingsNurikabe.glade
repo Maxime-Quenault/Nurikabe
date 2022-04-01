@@ -87,94 +87,6 @@
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_top">30</property>
-                    <property name="margin_bottom">20</property>
-                    <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="margin_bottom">15</property>
-                        <property name="label" translatable="yes">Langue</property>
-                        <attributes>
-                          <attribute name="weight" value="heavy"/>
-                          <attribute name="size" value="15000"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkComboBoxText" id="cbt_langue">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="active">0</property>
-                        <items>
-                          <item id="fr" translatable="yes">Français</item>
-                          <item id="en" translatable="yes">Anglais</item>
-                        </items>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">center</property>
-                    <property name="valign">center</property>
-                    <property name="margin_top">30</property>
-                    <property name="margin_bottom">20</property>
-                    <child>
-                      <object class="GtkSwitch" id="switch_audio">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="active">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">  Effets sonores</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="margin_top">30</property>
@@ -206,7 +118,7 @@
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">3</property>
+                    <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
@@ -251,6 +163,8 @@
                             <property name="margin_right">40</property>
                             <property name="margin_start">40</property>
                             <property name="margin_end">40</property>
+                            <property name="margin_top">20</property>
+                            <property name="margin_bottom">20</property>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -273,6 +187,8 @@
                             <property name="margin_right">40</property>
                             <property name="margin_start">40</property>
                             <property name="margin_end">40</property>
+                            <property name="margin_top">20</property>
+                            <property name="margin_bottom">20</property>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -295,6 +211,8 @@
                             <property name="margin_right">40</property>
                             <property name="margin_start">40</property>
                             <property name="margin_end">40</property>
+                            <property name="margin_top">20</property>
+                            <property name="margin_bottom">20</property>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -317,6 +235,8 @@
                             <property name="margin_right">40</property>
                             <property name="margin_start">40</property>
                             <property name="margin_end">40</property>
+                            <property name="margin_top">20</property>
+                            <property name="margin_bottom">20</property>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -339,6 +259,8 @@
                             <property name="margin_right">40</property>
                             <property name="margin_start">40</property>
                             <property name="margin_end">40</property>
+                            <property name="margin_top">20</property>
+                            <property name="margin_bottom">20</property>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -361,6 +283,8 @@
                             <property name="margin_right">40</property>
                             <property name="margin_start">40</property>
                             <property name="margin_end">40</property>
+                            <property name="margin_top">20</property>
+                            <property name="margin_bottom">20</property>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -385,7 +309,7 @@
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">4</property>
+                    <property name="position">1</property>
                   </packing>
                 </child>
               </object>

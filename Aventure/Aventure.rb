@@ -63,7 +63,6 @@ class Aventure
   #
   ####################
 
-
   # Coding Assistant pour faciliter les accès des différentes variables
   attr_reader :desGrilles, :difficuleAcquise, :difficulte, :precedenteDiff, :suivanteDiff;
   attr_accessor :posCourante, :nbEtoiles, :desEtoiles, :desTemps;
@@ -75,19 +74,21 @@ class Aventure
 
   # on redéfinit la méthode initialize() pour générer l'Aventure selon nos critères
   def initialize(uneDifficulte)
-    @@nbEtoiles = 0
     @desGrilles = Array.new()
     # Tableau qui contiendra les étoiles de chaque grille
     @desEtoiles = Array.new(10,0)
     # Tableau qui contiendra les temps de chaque grille
-    @desTemps = Array.new(10,1000.00)
+    @desTemps = Array.new(10,0)
 
     @posCourante = 0
     @difficulte = uneDifficulte
+
+    @@nbEtoiles = 40
     # Ici on initialise le tableau de sorte que seule la première difficulté(Facile) soit débloquée
     @@difficulteAcquise = Array.new()
     @@difficulteAcquise[0] = true
     @@difficulteAcquise[1] = @@difficulteAcquise[2] = false
+
   end
 
   # Lien entre les différentes aventures
@@ -128,7 +129,6 @@ class Aventure
     if((numero >= 0) && (numero < @desGrilles.length()))
       @posCourante = numero
     end
-    print("\n position courante : #{@posCourante}")
   end
 
   # Méthode d'accès en lecture de la position courante
@@ -151,8 +151,12 @@ class Aventure
 
   # Méthode d'accès en écriture du temps de la grille actuelle
   def setTempsCourant(unTemps)
-    if(unTemps < self.getTempsCourant())
+    if(self.getTempsCourant() == 0)
       @desTemps[@posCourante] = unTemps
+    else
+      if(unTemps > 5 && unTemps < self.getTempsCourant())
+        @desTemps[@posCourante] = unTemps
+      end
     end
   end
 
@@ -217,20 +221,16 @@ class Aventure
     if((@difficulte == 0) && (@@difficulteAcquise[1] == false))
       if(self.assezEtoiles?(PALIER_NORMAL))
         @@difficulteAcquise[1] = true;
-        print("\nBravo tu viens de débloquer la difficulté Normal !")
         return 1
       else
-        print("\nTu ne possèdes pas assez d'étoiles pour débloquer cette difficulté...\nRefais d'autres niveaux.")
         return 0
       end
     elsif((@@difficulteAcquise[1] == true) && (@@difficulteAcquise[2] == false))
       # Dans le cas où la difficulté Normal est débloquée
         if(self.assezEtoiles?(PALIER_HARD))
           @@difficulteAcquise[2] = true
-          print("\nBravo tu viens de débloquer la difficulté Hard !")
           return 2
         else
-          print("\nTu ne possèdes pas assez d'étoiles pour débloquer cette difficulté...\nRefais d'autres niveaux.")
           return 0
         end
     end

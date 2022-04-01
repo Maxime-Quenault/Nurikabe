@@ -186,6 +186,10 @@ headerbar {
     border-radius: 0;  
 }
 
+#bouton_aventure_active  {
+    background: red;
+}
+
 /******************/
 /** Cases Grille **/
 /******************/
