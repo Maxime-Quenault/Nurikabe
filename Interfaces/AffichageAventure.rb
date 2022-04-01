@@ -19,11 +19,11 @@ class AffichageAventure < Fenetre
 
   # Définition des constantes
   # Les différents palliers de temps sur lesquels on se basera pour attribuer des récompenses
-  SEUIL_5_ETOILES = 30
-  SEUIL_4_ETOILES = 60
-  SEUIL_3_ETOILES = 80
-  SEUIL_2_ETOILES = 100
-  SEUIL_1_ETOILE = 120
+  SEUIL_5_ETOILES ||= 30
+  SEUIL_4_ETOILES ||= 60
+  SEUIL_3_ETOILES ||= 80
+  SEUIL_2_ETOILES ||= 100
+  SEUIL_1_ETOILE ||= 120
 
   #################### Déclaration des VI
   #
@@ -420,13 +420,11 @@ class AffichageAventure < Fenetre
     # On associe le bouton Précédent avec la méthode grillePrecedente de la classe Aventure
     @btnPreced.signal_connect('clicked'){
       self.boutonPreced()
-      print "\n #{@aventure.getPosCourante}"
     }
 
     # On associe le bouton Suivant avec la méthode prochaineGrille de la classe Aventure
     @btnSuivant.signal_connect('clicked'){
       self.boutonSuiv()
-      print "\n #{@aventure.getPosCourante}"
     }
 
     # On associe le bouton facile avec la méthode de choix de difficulté de la classe Aventure
@@ -436,7 +434,6 @@ class AffichageAventure < Fenetre
       self.affichageEtoile(@aventure.getEtoileCourante())
       self.affichageTemps()
       self.affichageImageGrille()
-      print "\n #{@aventure.difficulte}"
     }
 
     # On associe le bouton normal avec la méthode de choix de difficulté de la classe Aventure
@@ -459,7 +456,6 @@ class AffichageAventure < Fenetre
         self.affichageImageGrille()
       end
 
-      print "\n #{@aventure.difficulte}"
     }
 
     # On associe le bouton difficile avec la méthode de choix de difficulté de la classe Aventure
@@ -481,7 +477,6 @@ class AffichageAventure < Fenetre
         self.affichageImageGrille()
       end
 
-      print "\n #{@aventure.difficulte}"
     }
 
     # On associe l'image de la grille avec la méthode de lancement de la Partie

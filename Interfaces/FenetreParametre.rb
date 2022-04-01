@@ -87,32 +87,32 @@ class FenetreParametre < Fenetre
 
         @red.signal_connect('clicked') {
             @@profilActuel.parametre.couleur = "\#FF0341"
-            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
+            
             onChange_parametre()
         }
         @purple.signal_connect('clicked') {
             @@profilActuel.parametre.couleur = "\#AFA2FF"
-            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
+            
             onChange_parametre()
         }
         @green.signal_connect('clicked') {
             @@profilActuel.parametre.couleur = "\#92FF6E"
-            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
+            
             onChange_parametre()
         }
         @black.signal_connect('clicked') {
             @@profilActuel.parametre.couleur = "\#000000"
-            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
+            
             onChange_parametre()
         }
         @orange.signal_connect('clicked') {
             @@profilActuel.parametre.couleur = "\#FFAB46"
-            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
+            
             onChange_parametre()
         }
         @pink.signal_connect('clicked') {
             @@profilActuel.parametre.couleur = "\#FE63FF"
-            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
+            
             onChange_parametre()
         }
 

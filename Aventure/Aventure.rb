@@ -31,13 +31,13 @@ class Aventure
 
   # Consernant les valeurs des deux VI palier ci-dessous elles sont provisoires(test) -> se mettre d'accord plus tard
   # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée normale
-  PALIER_NORMAL = 30
+  PALIER_NORMAL ||= 30
   # entier qui définit le nombre d'étoiles nécessaires pour débloquer la difficultée hard
-  PALIER_HARD = 70
+  PALIER_HARD ||= 70
 
-  FACILE = 0
-	MOYEN = 1
-	DIFFICILE = 2
+  FACILE ||= 0
+	MOYEN ||= 1
+	DIFFICILE ||= 2
 
   #################### Déclaration des VI
   #
@@ -129,7 +129,6 @@ class Aventure
     if((numero >= 0) && (numero < @desGrilles.length()))
       @posCourante = numero
     end
-    print("\n position courante : #{@posCourante}")
   end
 
   # Méthode d'accès en lecture de la position courante

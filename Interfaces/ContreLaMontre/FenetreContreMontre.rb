@@ -62,12 +62,12 @@ class FenetreContreMontre < Fenetre
 			@interfaceChoixGrille.difficulte=0
 			self.changerInterface(@interfaceChoixGrille.object, "Facile")
 		}
-		@btn_moyen.signal_connect("clicked"){print "\nTu as cliqué sur le mode Moyen"
+		@btn_moyen.signal_connect("clicked"){
 			@interfaceChoixGrille.difficulte=1
 			self.changerInterface(@interfaceChoixGrille.object, "Moyen")
 		}
 
-		@btn_difficile.signal_connect("clicked"){print "\nTu as cliqué sur le mode Difficile"
+		@btn_difficile.signal_connect("clicked"){
 			@interfaceChoixGrille.difficulte=2
 			self.changerInterface(@interfaceChoixGrille.object, "Difficile")
 		}
