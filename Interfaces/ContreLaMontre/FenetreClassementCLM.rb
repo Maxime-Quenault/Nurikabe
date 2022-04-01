@@ -140,7 +140,7 @@ class FenetreClassementCLM < Fenetre
 
     ##
     # affichageScore:
-    #   Affiches le classement des 10 meilleurs scores
+    #   Affiche le classement des 10 meilleurs scores
     def affichageScore
     
         if @tabScore[0] != nil
