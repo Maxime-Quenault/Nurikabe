@@ -167,7 +167,36 @@ end
             self.changerInterface(@menuParent, "Libre")
         }
         @object.add(tableFrame)
+
+        ajustementsCSS()
+
         tableFrame.show_all
+    end
+
+    # Ajuste la taille des cases de la grille pour la faire rentrer dans la fenêtre dynamiquement
+    def ajustementsCSS()
+        
+        taille_hauteur = @@partie.grilleEnCours.hauteur
+        taille_largeur = @@partie.grilleEnCours.largeur
+
+        classList = Array.new
+        
+        File.delete("Interfaces/style_temp.css") if File.exist?("Interfaces/style_temp.css")
+        cssTemp = File.new("Interfaces/style_temp.css", "w")
+
+        grilleTailleH = ($HAUTEUR_FENETRE - 100) / taille_hauteur / 1.5
+        grilleTailleW = ($LARGEUR_FENETRE - 100) / taille_largeur / 1.5
+        grilleTailleCase = [grilleTailleH, grilleTailleW].min
+
+        cssTemp.puts(
+                "#case_chiffre, #case_vide, #case_indice, #case_noir, #case_point"\
+                "{ font-size: #{grilleTailleCase}px; min-width: #{grilleTailleCase + 4}px; min-height: #{grilleTailleCase}px; }"
+        )
+        cssTemp.close
+        cssTemp = Gtk::CssProvider.new
+        cssTemp.load(path: "Interfaces/style_temp.css")
+        Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, cssTemp, Gtk::StyleProvider::PRIORITY_APPLICATION)
+
     end
 
 	# Créer un affichage de la grille pour la librarie de grille

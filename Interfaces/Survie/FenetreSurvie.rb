@@ -45,6 +45,9 @@ class FenetreSurvie < Fenetre
         @builder = Gtk::Builder.new(:file => 'glade/menu-libre.glade')
         @object = @builder.get_object("menu")
 
+		titre = @builder.get_object('titre')
+        titre.set_text("MODE SURVIE")
+
 		#recuperation des boutons de l'interface
 		@btn_facile = @builder.get_object("lvl_facile")
 		@btn_moyen = @builder.get_object("lvl_moyen")
