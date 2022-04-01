@@ -41,7 +41,6 @@
             <property name="name">boutonLibre</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="can_default">True</property>
             <property name="receives_default">True</property>
             <child>
               <object class="GtkBox">
@@ -92,7 +91,6 @@
             <property name="name">boutonMontre</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="can_default">True</property>
             <property name="receives_default">True</property>
             <child>
               <object class="GtkBox">
@@ -143,7 +141,6 @@
             <property name="name">boutonSurvie</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="can_default">True</property>
             <property name="receives_default">True</property>
             <child>
               <object class="GtkBox">
@@ -194,7 +191,6 @@
             <property name="name">boutonAventure</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="can_default">True</property>
             <property name="receives_default">True</property>
             <child>
               <object class="GtkBox">
@@ -262,26 +258,7 @@
         <property name="spacing">20</property>
         <property name="homogeneous">True</property>
         <child>
-          <object class="GtkButton" id="btn_technique">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="pixbuf">../Image/iconeMenu/lightbulb-fill.png</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="btn_regle">
+          <object class="GtkButton" id="btn_tuto">
             <property name="name">boutonTuto</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -303,7 +280,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="position">0</property>
           </packing>
         </child>
         <child>
@@ -328,7 +305,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">2</property>
+            <property name="position">1</property>
           </packing>
         </child>
         <child>
@@ -353,7 +330,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">3</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>

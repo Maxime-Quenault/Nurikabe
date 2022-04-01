@@ -29,30 +29,21 @@ class Partie
   @enPause
   @dernierIndice
 
-  # Coding Assistant pour faciliter l'accès à la variable
   attr_accessor :grilleEnCours
 
-  ##
-  # Partie.creeToi:
-  #   Cette méthode permet de créer une nouvelle partie
+  attr_accessor :grilleEnCours
+
   def Partie.creeToi(uneGrille)
     new(uneGrille)
   end
   private_class_method :new
 
   attr :grilleEnCours, false
-  # Coding Assistant pour faciliter l'accès à la variable
   attr :chronometre, true
   attr :tabCoup, false
   attr :indiceCoup, false
   attr :enPause, false
   attr :dernierIndice, true
-
-  ##
-  # initialize:
-  #   Cette méthode est le constructeur, il permet d'initialiser tous les VI de la classe 
-  #   sauf dernierIndice. Le constructeur créer un chronomêtre et associe la grille en paramêtre
-  #   avec la variable grilleEnCours.
   def initialize(uneGrille)
     @grilleEnCours=uneGrille
     @tabCoup=Array.new()
@@ -62,20 +53,14 @@ class Partie
   end
 
   ##
-  # nouveauCoup:
-  #   Cette méthode permet d'ajouter le coup passé en paramètre au tableau de coups et incrémente 
-  #   l'indiceCoup.
-  #
-  #   @param unCoup représente le nouveau coup du Joueur.
+  # ajoutes le coup passé en paramètre au tableau de coups et incrémente l'indiceCoup
   def nouveauCoup(unCoup)
     @tabCoup[@indiceCoup]=unCoup
     @indiceCoup+=1
   end
 
   ##
-  # clicSurCase:
-  #   Cette méthode permet de changer l'état de la case cliquée et créer un nouveau coup correspondant, 
-  #   supprime les coups suivants.
+  # changes l'état de la case cliquée et créer un nouveau coup correspondant, supprimmes les coups suivants
   def clicSurCase(x,y)
     if(@grilleEnCours.matriceCases[x][y].is_a?(CaseJouable))
 	  	anc_etat =@grilleEnCours.matriceCases[x][y].etat
@@ -92,26 +77,30 @@ class Partie
   end
 
   ##
-  # undoPossible:
-  #   Cette méthode permet de tester si l'undo est possible.
-  #
-  #   @return si le nomnbre de coup est plus grand que 0.
+  # retourne vrai si on peut undo, faux sinon
   def undoPossible?()
     return @indiceCoup>0
   end
 
   ##
-  # redoPossible:
-  #   Cette méthode permet de tester si le redo est possible.
-  #
-  #   @return s'il reste un coup dans le @tabCoup.
+  # Retournes à l'état précédant le dernier clic sur une case
+  def undo()
+    if(self.undoPossible?)
+      tmpEtat=@tabCoup[@indiceCoup-1].case.etat
+      tmpCase=@tabCoup[@indiceCoup-1].case
+      @tabCoup[@indiceCoup-1].case.etat=@tabCoup[@indiceCoup-1].ancienEtat
+      @indiceCoup-=1
+    end
+  end
+
+  ##
+  # retourne vrai si on peut redo, faux sinon
   def redoPossible?()
 	   return @tabCoup[@indiceCoup].is_a?(Coup)
   end
 
   ##
-  # redo:
-  #   Cette méthode permet de retourner à l'état suivant.
+  # Retournes à l'état suivant
   def redo()
     if(self.redoPossible?)
       @tabCoup[indiceCoup].case.etat=@tabCoup[indiceCoup].etat
@@ -120,8 +109,7 @@ class Partie
   end
 
   ##
-  # raz:
-  #   Cette méthode permet de réinitialiser les variables d'instance.
+  # Reéinitialise les variables d'instance
   def raz()
     @grilleEnCours.raz()
     @tabCoup=Array.new()
@@ -132,9 +120,7 @@ class Partie
   end
 
   ##
-  # razSuirvie:
-  #   Cette méthode permet de réinialiser les variables d'instance et 
-  #   lui affecte un chronometre Survie.
+  # Reéinitialise les variables d'instance et lui affectes un chronometre Survie
   def razSurvie()
     @grilleEnCours.raz()
     @tabCoup=Array.new()
@@ -144,17 +130,13 @@ class Partie
   end
 
   ##
-  # partieFinie:
-  #   Cette méthode permet tester si une partie est fini. 
-  #
-  #   @return si la partie est finie ou non.
+  #retourne vrai si la partie est finie faux sinon
   def partieFinie?()
     return @grilleEnCours.grilleFinie
   end
 
   ##
-  # reviensALaBonnePosition:
-  #   Cette méthode permet d'undo tant qu'il y a des erreurs.
+  #undo tant qu'il y a des erreurs
   def reviensALaBonnePosition()
     while(@grilleEnCours.nbErreurs>0)
       self.undo
@@ -162,10 +144,7 @@ class Partie
   end
 
   ##
-  # indice_ile1NonEntouree:
-  #   Cette méthode permet de rechercher une case Ile de valeur 1 non entourée.
-  #
-  #   @return l'indice d'une case Ile de valeur 1 non entourée ou nil s'il n'y en a pas.
+  # Recherche et retourne l'indice d'une case Ile de valeur 1 non entourée (si elle existe, sinon on retourne nil)
   def indice_ile1NonEntouree()
     for i in 0..@grilleEnCours.largeur-1
       for j in 0..@grilleEnCours.hauteur-1
@@ -187,15 +166,17 @@ class Partie
   end
 
   ##
-  # indice_IlesVoisinesNonSeparees:
-  #   Cette méthode permet de rechercher une case jouable non jouée séparant deux cases îles.
-  #
-  #   @return l'indice d'une case jouable non jouée séparant deux cases îles ou nil s'il n'y en a pas.
+  # Recherche et retourne l'indice d'une case jouable non jouée séparant deux cases îles (si elle existe, sinon on retourne nil)
   def indice_IlesVoisinesNonSeparees()
     for j in 0..@grilleEnCours.hauteur-1
       for i in 0..@grilleEnCours.largeur-1
         # On regarde si il existe deux cases îles séparées par une case jouable non jouée
-        if @grilleEnCours.matriceCases[i][j].is_areéinitialiseeCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==0 && @grilleEnCours.matriceCases[i][j-2].is_a?(CaseNombre)
+        if @grilleEnCours.matriceCases[i][j].is_a?(CaseNombre)
+          if i+2 < @grilleEnCours.largeur-1 && @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==0 && @grilleEnCours.matriceCases[i+2][j].is_a?(CaseNombre)
+            return Indice.creer(:ilesVoisinesNonSeparees,[i+1,j])
+          elsif j+2 < @grilleEnCours.hauteur-1 && @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==0 && @grilleEnCours.matriceCases[i][j+2].is_a?(CaseNombre)
+            return Indice.creer(:ilesVoisinesNonSeparees,[i,j+1])
+          elsif j-2 >= 0 && @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j-1].etat==0 && @grilleEnCours.matriceCases[i][j-2].is_a?(CaseNombre)
             return Indice.creer(:ilesVoisinesNonSeparees,[i,j-1])
           elsif i-2 >= 0 && @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==0 && @grilleEnCours.matriceCases[i-2][j].is_a?(CaseNombre)
             return Indice.creer(:ilesVoisinesNonSeparees,[i-1,j])
@@ -207,19 +188,17 @@ class Partie
   end
 
   ##
-  # indice_IlesDiagonalesNonSeparees:
-  #   Cette méthode permet de rechercher une case jouable non jouée séparant deux cases îles en diagonales.
-  #
-  #   @return l'indice d'une case jouable non jouée séparant deux cases îles en diagonales ou nil s'il n'y en a pas.
+  # Recherche et retourne l'indice d'une case jouable non jouée séparant deux cases îles en diagonales (si elle existe, sinon on retourne nil)
   def indice_IlesDiagonalesNonSeparees()
     for j in 0..@grilleEnCours.hauteur-1
-      for i in 0..@grilleEnCours.larg  Constants:   0 (0 undocumented)
-        Attributes:  6 (5 undocumented)
-        Methods:    21 (0 undocumented)
-      
-        Total:      28 (5 undocumented)
-         82.14% documented
-      
+      for i in 0..@grilleEnCours.largeur-1
+        if @grilleEnCours.matriceCases[i][j].is_a?(CaseNombre)
+          if i+1 < @grilleEnCours.largeur-1 && j+1 < @grilleEnCours.hauteur-1 && @grilleEnCours.matriceCases[i+1][j+1].is_a?(CaseNombre)
+            if @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==0
+              return Indice.creer(:ilesDiagonalesNonSeparees,[i+1,j])
+            elsif @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==0
+              return Indice.creer(:ilesDiagonalesNonSeparees,[i,j+1])
+            end
           end
           if i+1 < @grilleEnCours.largeur-1 && j-1 >= 0 && @grilleEnCours.matriceCases[i+1][j-1].is_a?(CaseNombre)
             if @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==0
@@ -249,10 +228,7 @@ class Partie
   end
 
   ##
-  # indice_Ocean2x2:
-  #   Cette méthode permet de rechercher un carré de cases océan de taille 2x2.
-  #
-  #   @return l'indice d'un océan de cases de taille 2x2 ou nil s'il n'y en a pas.
+  # Recherche un carré de cases océan de taille 2x2 et retourne l'indice (si il existe, sinon on retourne nil)
   def indice_Ocean2x2()
     for j in 0..@grilleEnCours.hauteur-2
       for i in 0..@grilleEnCours.largeur-2
@@ -268,11 +244,7 @@ class Partie
   end
 
   ##
-  # indice_caseJouableIsolee:
-  #   Cette méthode permet rechercher une case jouable, avec l'état non joué ou île, 
-  #   entourée de cases océan ou des bords le la grille.
-  #
-  #   @return l'indice d'une case jouable avec l'état non joué ou île ou nil s'il n'y en a pas.
+  # Recherche une case jouable (avec l'état non joué ou île) entourée de cases océan ou des bords le la grille et reourne l'indice (si elle existe, sinon on retourne nil)
   def indice_caseJouableIsolee()
     for j in 0..@grilleEnCours.hauteur-1
       for i in 0..@grilleEnCours.largeur-1
@@ -303,14 +275,7 @@ class Partie
   end
 
   ##
-  # caseJouableAccessibleQueDUneDirection:
-  #   Cette méthode permet de rechercher les coordonnées de la case adjacente à la case dont les coordonnées passées en paramètres, 
-  #   si cette dernière n'est accessible que d'une seule case.
-  #
-  #   @param i représente la coordonnée en X de la case sélectionnée par le joueur.
-  #   @param j représente la coordonnée en Y de la case sélectionnée par le joueur.
-  #
-  #   @return une case Jouable ou nil s'il n'y en a pas.
+  # Retourne les coordonnées de la case adjacente à celle aux coordonnées passées en paramètres si cetter dernière n'est accessible que d'une seule case
   def caseJouableAccessibleQueDUneDirection(i,j)
     gaucheNonJouable = false
     droiteNonJouable = false
@@ -344,10 +309,7 @@ class Partie
   end
 
   ##
-  # indice_expansionMur:
-  #   Cette méthode permet de rechercher si un "mur" peut être étendu en mettant une case jouable à l'état océan. 
-  #
-  #   @return l'indice d'une case peut être un "mur" ou nil s'il n'y en a pas.
+  # Recherche si un "mur" peut être étendu en mettant une case jouable à l'état océan et on retourne l'indice (si elle existe, sinon on retourne nil)
   def indice_expansionMur()
     for i in 0..@grilleEnCours.largeur-1
       for j in 0..@grilleEnCours.hauteur-1
@@ -360,14 +322,7 @@ class Partie
   end
 
   ##
-  # caseNombreAccessibleQueDUneDirection: 
-  #   Cette méthode permet de rechercher les coordonnées de la case adjacente à la case dont les coordonnées passées en paramètres,
-  #   si cette dernière n'est accessible que par une seule case.
-  #
-  #   @param i représente la coordonnée en X de la case sélectionnée par le joueur.
-  #   @param y représente la coordonnée en Y de la case sélectionnée par le joueur.
-  #
-  #   @return une case Jouable ou nil s'il n'y en a pas.
+  # Retourne les coordonnées de la case adjacente à celle aux coordonnées passées en paramètres si cetter dernière n'est accessible que d'une seule case
   def caseNombreAccessibleQueDUneDirection(i,j)
     gaucheNonJouable = false
     droiteNonJouable = false
@@ -400,10 +355,7 @@ class Partie
   end
   
   ##
-  # indice_expansionIle:
-  #   Cette méthode permet de rechercher si une île peut être étendue en mettant une case jouable à l'état île. 
-  #
-  #   @return l'indice d'île pouvant être étendue ou nil s'il n'y en a pas.
+  # Recherche si une île peut être étendue en mettant une case jouable à l'état île et on retourne l'indice (si elle existe, sinon on retourne nil)
   def indice_expansionIle()
     for i in 0..@grilleEnCours.largeur-1
       for j in 0..@grilleEnCours.hauteur-1
@@ -416,11 +368,7 @@ class Partie
   end
     
   ##
-  # clicSurIndice:
-  #   Cette méthode permet de chercher s'il y a un indice à donner à l'utilisateur 
-  #   dans l'ordre du plus simple au plus complexe.
-  #
-  #   @return un indice si c'est possible ou nil au c'est impossible.
+  # Cherche si il y a un indice à donner à l'utilisateur dans l'ordre du plus simple au plus complexe et le retourne (si il existe, sinon on retourne nil)
   def clicSurIndice()
     indice = self.indice_ile1NonEntouree
     if indice!=nil
@@ -459,3 +407,5 @@ class Partie
       end
     end
   end
+    
+end
