@@ -83,7 +83,7 @@ class Aventure
     @posCourante = 0
     @difficulte = uneDifficulte
 
-    @@nbEtoiles = 0
+    @@nbEtoiles = 40
     # Ici on initialise le tableau de sorte que seule la première difficulté(Facile) soit débloquée
     @@difficulteAcquise = Array.new()
     @@difficulteAcquise[0] = true
@@ -155,7 +155,7 @@ class Aventure
     if(self.getTempsCourant() == 0)
       @desTemps[@posCourante] = unTemps
     else
-      if(unTemps < self.getTempsCourant())
+      if(unTemps > 5 && unTemps < self.getTempsCourant())
         @desTemps[@posCourante] = unTemps
       end
     end
