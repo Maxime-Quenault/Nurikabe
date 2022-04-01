@@ -71,19 +71,16 @@ class FenetreGrilleAventure < Fenetre
             @@partie.redo
             maj_boutons
             griserBoutons
-            puts @@partie.grilleEnCours
         }
         btn_undo.signal_connect('clicked'){#undo
             @@partie.undo
             maj_boutons
             griserBoutons
-            puts @@partie.grilleEnCours
         }
         btn_rembobiner.signal_connect('clicked'){#retour tant qu'il y a des erreurs
             @@partie.reviensALaBonnePosition()
             maj_boutons
             griserBoutons
-            puts @@partie.grilleEnCours
         }
         btn_aide.signal_connect('clicked'){#affiche un indice
             indice=@@partie.clicSurIndice
@@ -103,7 +100,6 @@ class FenetreGrilleAventure < Fenetre
             @@partie.raz
             griserBoutons
             maj_boutons
-            puts @@partie.grilleEnCours
         }
 
 
@@ -224,7 +220,6 @@ end
                     if @@partie.partieFinie?
                         @fenetreAventure.compterNombreEtoile()
                         affiche_victoire
-                        puts "Bien joué, la partie est finie !"
                         @object.remove(tableFrame)
                         @@profilActuel.ajouterPartie(@@partie)
                         self.changerInterface(@menuParent, "Libre")

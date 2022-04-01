@@ -26,7 +26,6 @@ class SauvegardeProfil
                 return -1
             end
         end
-        print "\n\nunProfil : #{unProfil}"
         @listeProfil.push(unProfil)    
         File.open("Sauvegarde/SauvegardeProfil/listeProfil.dump", "wb") { |file| file.write(Marshal.dump(@listeProfil)) }
         @listeProfil = Marshal.load(File.binread("Sauvegarde/SauvegardeProfil/listeProfil.dump"))
@@ -38,7 +37,6 @@ class SauvegardeProfil
         @listeProfil.each do |key, value|
             supprimerProfil(key)
         end
-        print @listeProfil
     end
 
     def supprimerProfil(unProfil)
