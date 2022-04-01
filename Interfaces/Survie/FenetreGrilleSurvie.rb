@@ -7,44 +7,14 @@ load "Interfaces/FenetreGrille.rb"
 load "Chrono/ChronometreSurvie.rb"
 
 ##
-# 	@author Lebouc Julian
+# Fenetre sur laquelle on joue une partie Survie
 #
-#	Cette classe va permettre d'afficher la grille du mode de jeu puis de pouvoir y jouer.
-#
-#	Voici les methodes de la classe FenetreGrilleCLM :
-#
-#	- initialize : cette methode est le constructeur, elle recupere le fichier glade et initialise ses VI.
-#	- gestionSignaux : permet d'attribuer des actions à tous les objets de l'interface récupéré dans le constructeur.
-#   - construction : permet de constuire la grille courente
-#   - signaux_boutons : permet de gerer les signaux des bouton de la grille jouable
-#   - actualiseChrono : permet de gerer le chronometre en parallèle du jeu.
-#   - affiche_fin : affiche la pop up de fin de partie
-#   - getNbGrilles : recupere le nombre de grille résolue
-#
-#	Voici ses VI :
-#
-#	@fenetreClassement : represente le classement de la difficulté courente
-#   @grillesDejaFaites : represente un tableau qui va contenir toute les grilles déjà réalisé durant la partie en cour
-#   @threadChrono : represente le thread qui va gerer le chronometre
-#   @builder : represente le fichier glade
-#   @object : represente l'interface courante
-#   @boutons : representes les boutons de la grille jouable
-#   @tableFrame : represente l'ensemble des boutons de la grille
-#   @affChrono : represente l'affichage du chronometre
 class FenetreGrilleSurvie < FenetreGrille
     @fenetreClassement
     @threadChrono
     @grillesDejaFaites
     attr_accessor :object
 
-    ##
-	# initialize :
-	# 	Cette methode est le constructeur de la classe FenetreGrilleSurvie, il permet de recuperer
-	#	le fichier glade et tout les objets qui le compose. Ensuite nous attribuons les bonnes 
-	#	actions a chaque objets récupérés.
-	#
-	# @param menuParent represente l'interface parent, elle sera util pour le bouton retour en arrière.
-    # @param fenetreClassement represente le classement du mode de jeu
     def initialize(menuParent, fenetreClassement)
         super(menuParent)
         @fenetreClassement=fenetreClassement
@@ -56,7 +26,8 @@ class FenetreGrilleSurvie < FenetreGrille
     def gestionSignaux
         super
         btn_pause = @builder.get_object('btn_pause')
-        btn_pause.signal_connect('clicked'){
+        #Gestion des signaux
+        btn_pause.signal_connect('clicked'){#pause
             if @@partie.chronometre.estEnPause?
                 @@partie.chronometre.demarre
             else
@@ -65,14 +36,13 @@ class FenetreGrilleSurvie < FenetreGrille
         }
         @builder.get_object('btn_clear').signal_connect('clicked'){#remet la partie a zero
             @@partie.razSurvie
+            #@@partie.chronometre.demarre
+            #actualiseChrono
         }
     end
 
-    ##
-    # signaux_boutons:
-    #   Changes la couleur des boutons lorsqu'on clique dessus
-    #   Si la grille est finie, on affecte à la partie une grille au hasard de même difficulté
-    # @param tableFrame represente la table de bouton
+     # Changes la couleur des boutons lorsqu'on clique dessus
+     # Si la grille est finie, on affecte à la partie une grille au hasard de même difficulté
      def signaux_boutons(tableFrame)
         @tableFrame=tableFrame
         @boutons.each do |cle, val|
@@ -108,35 +78,29 @@ class FenetreGrilleSurvie < FenetreGrille
         end
     end
 
+     # Affiche une popup de fin de partie
+   def affiche_fin
+    dialog = Gtk::Dialog.new
+    dialog.title = "Fin"
+    dialog.set_default_size(300, 100)
+    dialog.child.add(Gtk::Label.new("Le temps est écoulé !"))
+    dialog.add_button(Gtk::Stock::CLOSE, Gtk::ResponseType::CLOSE)
+    dialog.set_default_response(Gtk::ResponseType::CANCEL)
 
-    ##
-    # affiche_fin:
-    #   Affiche une popup de fin de partie
-    def affiche_fin
-        dialog = Gtk::Dialog.new
-        dialog.title = "Fin"
-        dialog.set_default_size(300, 100)
-        dialog.child.add(Gtk::Label.new("Le temps est écoulé !"))
-        dialog.add_button(Gtk::Stock::CLOSE, Gtk::ResponseType::CLOSE)
-        dialog.set_default_response(Gtk::ResponseType::CANCEL)
-
-        dialog.signal_connect("response") do |widget, response|
-            case response
-            when Gtk::ResponseType::CANCEL
-            p "Cancel"
-            when Gtk::ResponseType::CLOSE
-            p "Close"
-            dialog.destroy
-            end
+    dialog.signal_connect("response") do |widget, response|
+        case response
+        when Gtk::ResponseType::CANCEL
+        p "Cancel"
+        when Gtk::ResponseType::CLOSE
+        p "Close"
+        dialog.destroy
         end
-        dialog.show_all
     end
-
-
+    dialog.show_all
+end
     ##
-    # construction:
-    #   Construit la grille de boutons correpondants aux cases de la grille et affiches le chronomètre
-    def construction
+     # Construit la grille de boutons correpondants aux cases de la grille et affiches le chronomètre
+     def construction
         if !@grillesDejaFaites.include?([@@partie.grilleEnCours.numero,@@partie.grilleEnCours.difficulte])
             @grillesDejaFaites << [@@partie.grilleEnCours.numero, @@partie.grilleEnCours.difficulte]
         end
@@ -188,8 +152,7 @@ class FenetreGrilleSurvie < FenetreGrille
     end
 
     ##
-    # actualiseChrono:
-    #   Créer un thread raffraichissant le chronomètre toutes les 100ms, si ce dernier atteint 0, on quitte la partie
+    #Créer un thread raffraichissant le chronomètre toutes les 100ms, si ce dernier atteint 0, on quitte la partie
     def actualiseChrono
         if @threadChrono==nil
             @threadChrono = Thread.new{
@@ -208,9 +171,7 @@ class FenetreGrilleSurvie < FenetreGrille
         end
     end
 
-    ##
-    # getNbGrilles:
-    #   Retournes le nombre de grilles finies lors de cette partie
+    # Retournes le nombre de grilles finies lors de cette partie
     def getNbGrilles
         @grillesDejaFaites.length-1
     end
