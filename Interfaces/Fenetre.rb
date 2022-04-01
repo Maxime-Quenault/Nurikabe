@@ -208,4 +208,18 @@ class Fenetre
         end 
     end 
 
+     #
+    # Ajuste la taille des cases de la grille pour la faire rentrer dans la fenêtre dynamiquement
+    # #case_chiffre, #case_vide, #case_indice, #case_noir, #case_point 
+    def ajustementsCSS()
+        classList = Array.new
+        File.delete("Interfaces/style_temp.css") if File.exist?("Interfaces/style_temp.css")
+        cssTemp = File.new("Interfaces/style_temp.css", "w")
+        cssTemp.puts("#case_noir { background: #{@@profilActuel.parametre.couleur}; } #case_point, #case_chiffre { color : #{@@profilActuel.parametre.couleur}; }")
+        cssTemp.close
+        cssTemp = Gtk::CssProvider.new
+        cssTemp.load(path: "Interfaces/style_temp.css")
+        Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, cssTemp, Gtk::StyleProvider::PRIORITY_APPLICATION)
+    end
+
 end

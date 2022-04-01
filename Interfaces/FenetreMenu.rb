@@ -102,6 +102,7 @@ class FenetreMenu < Fenetre
         end
 
         setStyle(@@profilActuel)
+        ajustementsCSS()
 
         self.gestionSignaux
 

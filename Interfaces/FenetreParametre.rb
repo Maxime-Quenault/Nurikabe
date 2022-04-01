@@ -4,6 +4,7 @@ load "Interfaces/FenetreProfil.rb"
 load "Sauvegarde/SauvegardeProfil.rb"
 load "Interfaces/FenetreParametreProfil.rb"
 load "Parametre/Parametre.rb"
+load "Interfaces/FenetreGrille.rb"
 
 =begin
         La classe AffichageParamètre :::
@@ -26,9 +27,8 @@ load "Parametre/Parametre.rb"
             - @langue           ==> id de la langue
             - @btnJeu           ==> id du bouton jeu de l'interface paramètre
             - @btnRetour        ==> id du bouton retour de l'interface paramètre 
-            - @btnProfil       ==> id du bouton profils dans l'interface paramètre
+            - @btnProfil        ==> id du bouton profils dans l'interface paramètre
             - @switchTheme      ==> id du bouton switchTheme dans l'interface paramètre
-            - @switchAudio      ==> id du bouton switchAudio dans l'interface paramètre
 =end
 
 class FenetreParametre < Fenetre
@@ -46,10 +46,6 @@ class FenetreParametre < Fenetre
 
         @interfaceParametreProfil = FenetreParametreProfil.new(menuParent, @object, @save)
 
-        #@interfaceProfil = interfaceProfil
-
-        #@paramProfil = @@profilActuel.profil.parametre
-
         @langue = @builder.get_object("cbt_langue")
 
         @btnJeu = @builder.get_object("button_jeu")
@@ -61,7 +57,6 @@ class FenetreParametre < Fenetre
         @btnProfil.name = "btn_profil"
 
         @switchTheme = @builder.get_object("switch_theme")
-        @switchAudio = @builder.get_object("switch_audio")
 
         # récupération des boutons de changement de couleur de l'interface
         @red = @builder.get_object("ff0341")
@@ -89,17 +84,39 @@ class FenetreParametre < Fenetre
         }
 
         @switchTheme.signal_connect('notify::active') {onSwitchTheme_activated()}
-        @switchAudio.signal_connect('notify::active') {onSwitchAudio_activated()}
 
-        @red.signal_connect('clicked') {puts "couleur ROUGE sélectionnée"}
-        @purple.signal_connect('clicked') {puts "couleur VIOLET sélectionnée"}
-        @green.signal_connect('clicked') {puts "couleur VERT sélectionnée"}
-        @black.signal_connect('clicked') {puts "couleur NOIR sélectionnée"}
-        @orange.signal_connect('clicked') {puts "couleur ORANGE sélectionnée"}
-        @pink.signal_connect('clicked') {puts "couleur ROSE sélectionnée"}
+        @red.signal_connect('clicked') {
+            @@profilActuel.parametre.couleur = "\#FF0341"
+            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
+            onChange_parametre()
+        }
+        @purple.signal_connect('clicked') {
+            @@profilActuel.parametre.couleur = "\#AFA2FF"
+            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
+            onChange_parametre()
+        }
+        @green.signal_connect('clicked') {
+            @@profilActuel.parametre.couleur = "\#92FF6E"
+            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
+            onChange_parametre()
+        }
+        @black.signal_connect('clicked') {
+            @@profilActuel.parametre.couleur = "\#000000"
+            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
+            onChange_parametre()
+        }
+        @orange.signal_connect('clicked') {
+            @@profilActuel.parametre.couleur = "\#FFAB46"
+            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
+            onChange_parametre()
+        }
+        @pink.signal_connect('clicked') {
+            @@profilActuel.parametre.couleur = "\#FE63FF"
+            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
+            onChange_parametre()
+        }
 
         onChange_switchTheme()
-        onChange_switchAudio()
     end
 
     ##
@@ -121,25 +138,9 @@ class FenetreParametre < Fenetre
     end
 
     ##
-    # Méthode qui va changer la valeur du booleen effetSonore
-    def onSwitchAudio_activated()
-        @@profilActuel.parametre.effetSonore = @switchAudio.active? ? true : false
-        onChange_parametre()
-    end
-
-    ##
-    # Change la valeur du switch Audio dans l'interface
-    def onChange_switchAudio()
-        if (@@profilActuel.parametre.effetSonore == false)
-            @switchAudio.set_active(false)
-        else 
-            @switchAudio.set_active(true)
-        end
-    end
-
-    ##
     # Méthode qui va mettre à jour les paramaètres en écrasant les anciennes données par les nouvelles
     def onChange_parametre()
+        ajustementsCSS()
         @save.supprimerProfil(@@profilActuel)
         @save.ajoutProfil(@@profilActuel)
     end
