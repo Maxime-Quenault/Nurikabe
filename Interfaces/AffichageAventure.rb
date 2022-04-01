@@ -18,15 +18,15 @@ load "Interfaces/FenetreGrille.rb"
 class AffichageAventure < Fenetre
 
   # Définition des constantes
-  SEUIL_5_ETOILES ||= 60.00
-  SEUIL_4_ETOILES ||= 80.00
-  SEUIL_3_ETOILES ||= 100.00
-  SEUIL_2_ETOILES ||= 120.00
-  SEUIL_1_ETOILE ||= 140.00
+  SEUIL_5_ETOILES = 60.00
+  SEUIL_4_ETOILES = 80.00
+  SEUIL_3_ETOILES = 100.00
+  SEUIL_2_ETOILES = 120.00
+  SEUIL_1_ETOILE = 140.00
 
-  FACILE ||= 0
-	MOYEN ||= 1
-	DIFFICILE ||= 2
+  FACILE = 0
+	MOYEN = 1
+	DIFFICILE = 2
 
   #################### Déclaration des VI
   #

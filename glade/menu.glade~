@@ -41,7 +41,6 @@
             <property name="name">boutonLibre</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="can_default">True</property>
             <property name="receives_default">True</property>
             <child>
               <object class="GtkBox">
@@ -92,7 +91,6 @@
             <property name="name">boutonMontre</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="can_default">True</property>
             <property name="receives_default">True</property>
             <child>
               <object class="GtkBox">
@@ -143,7 +141,6 @@
             <property name="name">boutonSurvie</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="can_default">True</property>
             <property name="receives_default">True</property>
             <child>
               <object class="GtkBox">
@@ -194,7 +191,6 @@
             <property name="name">boutonAventure</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="can_default">True</property>
             <property name="receives_default">True</property>
             <child>
               <object class="GtkBox">

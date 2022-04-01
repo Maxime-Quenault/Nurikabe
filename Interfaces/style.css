@@ -183,7 +183,7 @@ headerbar {
 #retour_fleche {
     margin-top: 10px;
     margin-left: 10px;
-    border-radius: 100000px;
+    border-radius: 100000;
 }
 
 #btn_jeu {
