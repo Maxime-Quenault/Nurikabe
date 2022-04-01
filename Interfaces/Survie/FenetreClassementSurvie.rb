@@ -5,38 +5,12 @@ load "Sauvegarde/SauvegardeClassementSurvie.rb"
 load "Interfaces/Survie/FenetreGrilleSurvie.rb"		
 load "Sauvegarde/Score.rb"
 
-##
-# 	@author Quenault Maxime
-#
-#	Cette classe va permettre d'afficher le classement de la difficulté séléctionnée.
-#
-#	Voici les methodes de la classe FenetreClassementSurvie :
-#
-#	- initialize : cette methode est le constructeur, elle recupere le fichier glade et initialise ses VI.
-#	- gestionSignaux : permet d'attribuer des actions à tous les objets de l'interface récupéré dans le constructeur.
-#   - getObjet : permet de recuperer l'interface courante
-#   - recupeTab : permet de recuperer le tableau des scores de la grille courante
-#   - ajoutScore : permet d'ajouter un score au classement et d'actualiser l'affichage
-#   - construction : permet de construire la grille si on commence une partie
-#   - affichageSore : permet d'afficher le tableau des scores à l'ecran.
-#
-#	Voici ses VI :
-#
-#	@builder : represente le fichier glade
-#	@object : represente l'interface de la classe
-#   @boutonRetour : permet de revenir au menu parent
-#   @@boutonPartie : permet de lancer la partie
-#   @menuParent : represente l'interface de menu parent, elle devra être affiché si on clique sur le bouton retour
-#   @interfaceGrille : represente l'interface de la grille qui devra être afficher au besoin
-#   @pseudo{1..10} : represente le pseudo d'un profil
-#   @score{1..10} : represente un score associé à un profil
-
 class FenetreClassementSurvie < Fenetre
     attr :difficulte, true
     attr_accessor :object
 
 	##
-	# initialize:
+	# initialize :
 	# 	Cette methode est le constructeur de la classe FenetreClassementCLM, il permet de recuperer
 	#	le fichier glade et tout les objets qui le compose. Ensuite nous attribuons les bonnes 
 	#	actions a chaque objets récupérés.
@@ -77,6 +51,7 @@ class FenetreClassementSurvie < Fenetre
 
         @boutonPartie = @builder.get_object("btn_partie")
         @boutonRetour = @builder.get_object("btn_retour")
+        @titre = @builder.get_object("titre")
 		
         # Création d'une interface grille
         @interfaceGrille = FenetreGrilleSurvie.new(@object, self)
@@ -88,7 +63,7 @@ class FenetreClassementSurvie < Fenetre
 
     
 	##
-	# getObjet:
+	# getObjet :
 	# 	Cette methode permet d'envoyer sont objet (interface) a l'objet qui le demande.
 	#
 	# @return object qui represente l'interface de la fenetre du mode libre.
@@ -96,19 +71,12 @@ class FenetreClassementSurvie < Fenetre
 		return @object
 	end
 
-    ##
-    # recupeTab:
-    #   permet de recuperer le tableau des scores de la grille courante.
     def recupeTab
         @uneSave = SauvegardeClassementSurvie.new(self.getNumGrille)
         @tabScore = @uneSave.tabScore
         self.affichageScore
     end
 
-    ##
-    # ajoutScore:
-    #   permet d'ajouter un score au classmement des profils du mode de jeu,
-    #   elle met à jour l'affichage.
     def ajoutScore
         unScore = Score.new(@interfaceGrille.getNbGrilles, @@profilActuel)
         @uneSave.ajoutScore(unScore)
@@ -117,7 +85,7 @@ class FenetreClassementSurvie < Fenetre
     end
 
 	##
-	# gestionSignaux:
+	# gestionSignaux :
 	#	Cette methode permet d'assigner des actions à chaques boutons récupérés dans le fichier galde.
 	def gestionSignaux
 
@@ -127,22 +95,17 @@ class FenetreClassementSurvie < Fenetre
 
         @boutonPartie.signal_connect("clicked"){
             construction
-            self.changerInterface(@interfaceGrille.object, "Survie")
+            self.changerInterface(@interfaceGrille.object, "Survie") #à modifier ensuite
         }
 
 	end
 
 
-    ##
-    # construction:
-    #   génère la grille
+    #génère la grille
     def construction
         @interfaceGrille.construction
     end
 
-    ##
-    # affichageScore:
-    #   Affiche le classement des 10 meilleurs scores
     def affichageScore()
     
         if @tabScore[0] != nil

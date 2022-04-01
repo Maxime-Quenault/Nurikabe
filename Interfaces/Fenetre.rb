@@ -111,6 +111,8 @@ class Fenetre
     def initialiseToi
         if @@window == nil
             Fenetre.new()
+        else
+            puts "Fenêtre déjà initialisée"
         end
     end
 

@@ -46,6 +46,7 @@ class FenetreParametreProfil < Fenetre
 
     def gestionSignaux
         @btnChangerProfils.signal_connect( "clicked" ) {
+            print "\nTu as clique sur profil"
             @interfaceProfil = FenetreProfil.new
             @interfaceProfil.afficheToi
             @save = SauvegardeProfil.new
@@ -56,6 +57,7 @@ class FenetreParametreProfil < Fenetre
             pixbuf = GdkPixbuf::Pixbuf.new(:file => @@profilActuel.imageJoueur)
             pixbuf = pixbuf.scale_simple(100, 100, Gdk::Pixbuf::INTERP_BILINEAR)
             @objectImage.set_from_pixbuf(pixbuf)
+            print "Changement profil #{@@profilActuel}"
             @objectPseudo.set_label(@@profilActuel.pseudo)  
         }
 
