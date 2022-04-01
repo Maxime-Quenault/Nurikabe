@@ -69,6 +69,8 @@
   
     <li><a href="../Interfaces/style_dark_css.html">style_dark.css</a>
   
+    <li><a href="../Interfaces/style_temp_css.html">style_temp.css</a>
+  
     <li><a href="../Partie/grilleAventure_txt.html">grilleAventure</a>
   
     <li><a href="../Partie/grillesEasy_txt.html">grillesEasy</a>
@@ -76,8 +78,6 @@
     <li><a href="../Partie/grillesHard_txt.html">grillesHard</a>
   
     <li><a href="../Partie/grillesMedium_txt.html">grillesMedium</a>
-  
-    <li><a href="../gestion_profil_glade.html">gestion_profil.glade</a>
   
     <li><a href="../glade/apropos_glade.html">apropos.glade</a>
   
@@ -113,8 +113,6 @@
   
     <li><a href="../glade/techniqueResolution_glade.html">techniqueResolution.glade</a>
   
-    <li><a href="../settingsNurikabe_glade.html">settingsNurikabe.glade</a>
-  
   </ul>
 </div>
 
@@ -123,7 +121,7 @@
 
 <main role="main" aria-label="Page Interfaces/style.css">
 
-<p>@define-color main_color #545E75; @define-color main_color_grey d1d1d1; @define-color main_alt_color #8992A9; @define-color main_active_color #ACB3C3;</p>
+<p>/*@define-color main_color_focus #2A2B2F;*/ @define-color main_color #545E75; @define-color main_color_grey d1d1d1; @define-color main_alt_color #8992A9; @define-color main_active_color #ACB3C3;</p>
 
 <p>@define-color bg_color #D0D4DD;</p>
 
@@ -370,7 +368,7 @@ transition: 0.1s ease-in-out;</pre>
 
 <pre>margin-top: 10px;
 margin-left: 10px;
-border-radius: 100000;</pre>
+border-radius: 100000px;</pre>
 
 <p>}</p>
 
@@ -389,6 +387,34 @@ border-radius: 100000;</pre>
 <p>btn_profil {</p>
 
 <pre>border-radius: 0;</pre>
+
+<p>}</p>
+
+<p>active_aventure  {</p>
+
+<pre>background: white;
+color: black;
+border: 2px solid blue;</pre>
+
+<p>}</p>
+
+<p>btn_disabled {</p>
+
+<pre>background: @main_color_grey;
+transition: 0.1s ease-in-out;</pre>
+
+<p>}</p>
+
+<p>btn_pagination {</p>
+
+<pre>border: 2px solid @main_color;</pre>
+
+<p>}</p>
+
+<p>boxEtoiles {</p>
+
+<pre>margin-top: 8px;
+margin-right: 8px;</pre>
 
 <p>}</p>
 

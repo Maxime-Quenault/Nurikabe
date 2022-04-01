@@ -165,6 +165,45 @@
         </div>
       </div>
       
+      <div id="attribute-i-uneAventureDifficile" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">uneAventureDifficile</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-uneAventureFacile" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">uneAventureFacile</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-uneAventureMoyen" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">uneAventureMoyen</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
     </section>
     
 
@@ -194,12 +233,22 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 5</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">unPseudo</span>)
     <span class="ruby-ivar">@imageJoueur</span> = <span class="ruby-string">&quot;Image/utilisateur.png&quot;</span>
     <span class="ruby-ivar">@pseudo</span> = <span class="ruby-identifier">unPseudo</span>
     <span class="ruby-ivar">@parametre</span> = <span class="ruby-constant">Parametre</span>.<span class="ruby-identifier">new</span>()
     <span class="ruby-ivar">@listePartieCommence</span> = []
+
+    <span class="ruby-ivar">@uneAventureFacile</span> = <span class="ruby-constant">Aventure</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">0</span>)
+    <span class="ruby-ivar">@uneAventureFacile</span>.<span class="ruby-identifier">generationAventure</span>(<span class="ruby-value">10</span>, <span class="ruby-value">0</span>)
+
+    <span class="ruby-ivar">@uneAventureMoyen</span> = <span class="ruby-constant">Aventure</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">1</span>)
+    <span class="ruby-ivar">@uneAventureMoyen</span>.<span class="ruby-identifier">generationAventure</span>(<span class="ruby-value">10</span>, <span class="ruby-value">1</span>)
+
+    <span class="ruby-ivar">@uneAventureDifficile</span> = <span class="ruby-constant">Aventure</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">2</span>)
+    <span class="ruby-ivar">@uneAventureDifficile</span>.<span class="ruby-identifier">generationAventure</span>(<span class="ruby-value">10</span>, <span class="ruby-value">2</span>)
+    
     <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;Sauvegarde/SauvegardeGrille/listeGrille#{@pseudo}.dump&quot;</span>))
         <span class="ruby-ivar">@listePartieCommence</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-keyword">else</span>  
@@ -243,7 +292,7 @@
 
           
           <div class="method-source-code" id="ajouterPartie-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 17</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouterPartie</span>(<span class="ruby-identifier">unePartie</span>)
     <span class="ruby-ivar">@listePartieCommence</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">unePartie</span>)
     <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;Sauvegarde/SauvegardeGrille/listeGrille#{@pseudo}.dump&quot;</span>, <span class="ruby-string">&quot;wb&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@listePartieCommence</span>)) }
@@ -277,7 +326,7 @@
 
           
           <div class="method-source-code" id="chercherPartie-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 22</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">chercherPartie</span>(<span class="ruby-identifier">numero</span>, <span class="ruby-identifier">difficulte</span>)
     <span class="ruby-ivar">@listePartieCommence</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">numero</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">numero</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">difficulte</span><span class="ruby-operator">==</span><span class="ruby-identifier">difficulte</span>
@@ -315,7 +364,7 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 31</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>()
     <span class="ruby-identifier">pseudo</span>
 <span class="ruby-keyword">end</span></pre>

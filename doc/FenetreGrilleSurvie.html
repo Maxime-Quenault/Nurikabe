@@ -102,7 +102,31 @@
 
   <section class="description">
     
-<p><a href="Fenetre.html"><code>Fenetre</code></a> sur laquelle on joue une partie Survie</p>
+<pre>@author Lebouc Julian
+
+Cette classe va permettre d&#39;afficher la grille du mode de jeu puis de pouvoir y jouer.
+
+Voici les methodes de la classe FenetreGrilleCLM :
+
+- initialize : cette methode est le constructeur, elle recupere le fichier glade et initialise ses VI.
+- gestionSignaux : permet d&#39;attribuer des actions à tous les objets de l&#39;interface récupéré dans le constructeur.</pre>
+<ul><li>
+<p>construction : permet de constuire la grille courente</p>
+</li><li>
+<p><a href="FenetreGrilleSurvie.html#method-i-signaux_boutons"><code>signaux_boutons</code></a> : permet de gerer les signaux des bouton de la grille jouable</p>
+</li><li>
+<p>actualiseChrono : permet de gerer le chronometre en parallèle du jeu.</p>
+</li><li>
+<p><a href="FenetreGrilleSurvie.html#method-i-affiche_fin"><code>affiche_fin</code></a> : affiche la pop up de fin de partie</p>
+</li><li>
+<p>getNbGrilles : recupere le nombre de grille résolue</p>
+
+<pre>Voici ses VI :
+
+@fenetreClassement : represente le classement de la difficulté courente</pre>
+</li></ul>
+
+<p>@grillesDejaFaites : represente un tableau qui va contenir toute les grilles déjà réalisé durant la partie en cour @threadChrono : represente le thread qui va gerer le chronometre @builder : represente le fichier glade @object : represente l&#39;interface courante @boutons : representes les boutons de la grille jouable @tableFrame : represente l&#39;ensemble des boutons de la grille @affChrono : represente l&#39;affichage du chronometre</p>
 
   </section>
 
@@ -157,7 +181,13 @@
 
         <div class="method-description">
           
-          
+          <p>initialize :</p>
+
+<pre>Cette methode est le constructeur de la classe FenetreGrilleSurvie, il permet de recuperer
+le fichier glade et tout les objets qui le compose. Ensuite nous attribuons les bonnes 
+actions a chaque objets récupérés.</pre>
+
+<p>@param menuParent represente l&#39;interface parent, elle sera util pour le bouton retour en arrière. @param fenetreClassement represente le classement du mode de jeu</p>
           
           
             <div class="method-calls-super">
@@ -168,7 +198,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreGrilleSurvie.rb, line 18</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreGrilleSurvie.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">menuParent</span>, <span class="ruby-identifier">fenetreClassement</span>)
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">menuParent</span>)
     <span class="ruby-ivar">@fenetreClassement</span>=<span class="ruby-identifier">fenetreClassement</span>
@@ -205,13 +235,15 @@
 
         <div class="method-description">
           
-          <p>Créer un thread raffraichissant le chronomètre toutes les 100ms, si ce dernier atteint 0, on quitte la partie</p>
+          <p>actualiseChrono:</p>
+
+<pre>Créer un thread raffraichissant le chronomètre toutes les 100ms, si ce dernier atteint 0, on quitte la partie</pre>
           
           
 
           
           <div class="method-source-code" id="actualiseChrono-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreGrilleSurvie.rb, line 156</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreGrilleSurvie.rb, line 193</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">actualiseChrono</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@threadChrono</span><span class="ruby-operator">==</span><span class="ruby-keyword">nil</span>
         <span class="ruby-ivar">@threadChrono</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span>{
@@ -252,14 +284,17 @@
 
         <div class="method-description">
           
-          <p>Affiche une popup de fin de partie</p>
+          <p><a href="FenetreGrilleSurvie.html#method-i-affiche_fin"><code>affiche_fin</code></a>:</p>
+
+<pre class="ruby"><span class="ruby-constant">Affiche</span> <span class="ruby-identifier">une</span> <span class="ruby-identifier">popup</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">fin</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">partie</span>
+</pre>
           
           
 
           
           <div class="method-source-code" id="affiche_fin-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreGrilleSurvie.rb, line 82</span>
-   <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affiche_fin</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreGrilleSurvie.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affiche_fin</span>
     <span class="ruby-identifier">dialog</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Fin&quot;</span>
     <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">set_default_size</span>(<span class="ruby-value">300</span>, <span class="ruby-value">100</span>)
@@ -301,14 +336,17 @@
 
         <div class="method-description">
           
-          <p>Construit la grille de boutons correpondants aux cases de la grille et affiches le chronomètre</p>
+          <p>construction:</p>
+
+<pre class="ruby"><span class="ruby-constant">Construit</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">grille</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">boutons</span> <span class="ruby-identifier">correpondants</span> <span class="ruby-identifier">aux</span> <span class="ruby-identifier">cases</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">grille</span> <span class="ruby-identifier">et</span> <span class="ruby-identifier">affiches</span> <span class="ruby-identifier">le</span> <span class="ruby-identifier">chronomètre</span>
+</pre>
           
           
 
           
           <div class="method-source-code" id="construction-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreGrilleSurvie.rb, line 103</span>
- <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">construction</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreGrilleSurvie.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">construction</span>
     <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@grillesDejaFaites</span>.<span class="ruby-identifier">include?</span>([<span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">numero</span>,<span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">difficulte</span>])
         <span class="ruby-ivar">@grillesDejaFaites</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">numero</span>, <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">difficulte</span>]
     <span class="ruby-keyword">end</span>
@@ -392,12 +430,11 @@
 
           
           <div class="method-source-code" id="gestionSignaux-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreGrilleSurvie.rb, line 26</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreGrilleSurvie.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
     <span class="ruby-keyword">super</span>
     <span class="ruby-identifier">btn_pause</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_pause&#39;</span>)
-    <span class="ruby-comment">#Gestion des signaux</span>
-    <span class="ruby-identifier">btn_pause</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){<span class="ruby-comment">#pause</span>
+    <span class="ruby-identifier">btn_pause</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">chronometre</span>.<span class="ruby-identifier">estEnPause?</span>
             <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">chronometre</span>.<span class="ruby-identifier">demarre</span>
         <span class="ruby-keyword">else</span>
@@ -406,8 +443,6 @@
     }
     <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_clear&#39;</span>).<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){<span class="ruby-comment">#remet la partie a zero</span>
         <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">razSurvie</span>
-        <span class="ruby-comment">#@@partie.chronometre.demarre</span>
-        <span class="ruby-comment">#actualiseChrono</span>
     }
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -433,13 +468,16 @@
 
         <div class="method-description">
           
-          <p>Retournes le nombre de grilles finies lors de cette partie</p>
+          <p>getNbGrilles:</p>
+
+<pre class="ruby"><span class="ruby-constant">Retournes</span> <span class="ruby-identifier">le</span> <span class="ruby-identifier">nombre</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">grilles</span> <span class="ruby-identifier">finies</span> <span class="ruby-identifier">lors</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">cette</span> <span class="ruby-identifier">partie</span>
+</pre>
           
           
 
           
           <div class="method-source-code" id="getNbGrilles-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreGrilleSurvie.rb, line 175</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreGrilleSurvie.rb, line 214</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getNbGrilles</span>
     <span class="ruby-ivar">@grillesDejaFaites</span>.<span class="ruby-identifier">length</span><span class="ruby-value">-1</span>
 <span class="ruby-keyword">end</span></pre>
@@ -466,13 +504,18 @@
 
         <div class="method-description">
           
-          <p>Changes la couleur des boutons lorsqu&#39;on clique dessus Si la grille est finie, on affecte à la partie une grille au hasard de même difficulté</p>
+          <p><a href="FenetreGrilleSurvie.html#method-i-signaux_boutons"><code>signaux_boutons</code></a>:</p>
+
+<pre>Changes la couleur des boutons lorsqu&#39;on clique dessus
+Si la grille est finie, on affecte à la partie une grille au hasard de même difficulté</pre>
+
+<p>@param tableFrame represente la table de bouton</p>
           
           
 
           
           <div class="method-source-code" id="signaux_boutons-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreGrilleSurvie.rb, line 46</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreGrilleSurvie.rb, line 76</span>
  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">signaux_boutons</span>(<span class="ruby-identifier">tableFrame</span>)
     <span class="ruby-ivar">@tableFrame</span>=<span class="ruby-identifier">tableFrame</span>
     <span class="ruby-ivar">@boutons</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cle</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>

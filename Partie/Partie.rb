@@ -425,6 +425,60 @@ class Partie
   end
     
   ##
+  # caseNombreAccessibleQueDeDeuxDirections:
+  # Cette méthode permet de vérifier si une case aux coordonnées passées en paramètres est accessible de deux directions adjacentes.
+  #
+  # @return les coordonnées de la case adjacente aux deux directions
+  def caseNombreAccessibleQueDeDeuxDirections(i,j)
+    gaucheNonJouable = false
+    droiteNonJouable = false
+    hautNonJouable = false
+    basNonJouable = false
+    if (j==0 || @grilleEnCours.matriceCases[i][j-1].is_a?(CaseJouable) &&  @grilleEnCours.matriceCases[i][j-1].etat==1)
+      hautNonJouable=true
+    end
+    if (i==0 || @grilleEnCours.matriceCases[i-1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i-1][j].etat==1)
+      gaucheNonJouable=true
+    end
+    if (j==@grilleEnCours.hauteur-1 || @grilleEnCours.matriceCases[i][j+1].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i][j+1].etat==1)
+      basNonJouable=true
+    end
+    if(i==@grilleEnCours.largeur-1 || @grilleEnCours.matriceCases[i+1][j].is_a?(CaseJouable) && @grilleEnCours.matriceCases[i+1][j].etat==1)
+      droiteNonJouable=true
+    end
+    
+    if(gaucheNonJouable && !droiteNonJouable && basNonJouable && !hautNonJouable && @grilleEnCours.matriceCases[i][j-1].etat==0)
+      return [i+1,j-1]
+    elsif(gaucheNonJouable && !droiteNonJouable && !basNonJouable && hautNonJouable && @grilleEnCours.matriceCases[i][j+1].etat==0)
+      return [i+1,j+1]
+    elsif(!gaucheNonJouable && droiteNonJouable && basNonJouable && !hautNonJouable && @grilleEnCours.matriceCases[i+1][j].etat==0) 
+      return [i-1,j-1]
+    elsif(!gaucheNonJouable && droiteNonJouable && !basNonJouable && hautNonJouable && @grilleEnCours.matriceCases[i-1][j].etat==0)
+      return [i-1,j+1]
+    else
+      return nil
+    end 
+  end
+  
+  
+
+  ##
+  #indice_doubleExpansionIle
+  # Cherche une case nombre de valeur 2 qui ne peut être étendue que dans 2 directions
+  #  
+  # @return l'indice doubleExpansionIle ou nil si il n'y en a pas
+ def indice_doubleExpansionIle()
+    for i in 0..@grilleEnCours.largeur-1
+      for j in 0..@grilleEnCours.hauteur-1
+        if @grilleEnCours.matriceCases[i][j].is_a?(CaseNombre) && @grilleEnCours.matriceCases[i][j].valeur==2 && caseNombreAccessibleQueDeDeuxDirections(i,j)!=nil
+            return Indice.creer(:doubleExpansionIle,caseNombreAccessibleQueDeDeuxDirections(i,j))
+        end
+      end
+    end
+    return nil
+  end
+  
+  ##
   # clicSurIndice:
   #   Cette méthode permet de chercher s'il y a un indice à donner à l'utilisateur 
   #   dans l'ordre du plus simple au plus complexe.
@@ -459,7 +513,12 @@ class Partie
                 if indice!=nil
                   return indice
                 else  
-                  return Indice.creer(nil,nil)
+                  indice = self.indice_doubleExpansionIle
+                  if indice!=nil
+                    return indice
+                  else 
+                    return Indice.creer(nil,nil)
+                  end
                 end
               end
             end

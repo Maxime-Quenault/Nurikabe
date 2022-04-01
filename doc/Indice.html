@@ -184,7 +184,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Partie/Indice.rb, line 29</span>
+            <pre><span class="ruby-comment"># File Partie/Indice.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Indice</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">t</span>,<span class="ruby-identifier">c</span>)
             <span class="ruby-identifier">new</span>(<span class="ruby-identifier">t</span>,<span class="ruby-identifier">c</span>)
     <span class="ruby-keyword">end</span></pre>
@@ -217,7 +217,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Partie/Indice.rb, line 35</span>
+            <pre><span class="ruby-comment"># File Partie/Indice.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">t</span>,<span class="ruby-identifier">c</span>)
         <span class="ruby-ivar">@type</span>=<span class="ruby-identifier">t</span>
 <span class="ruby-ivar">@coordonneesCase</span>=<span class="ruby-identifier">c</span>
@@ -259,7 +259,7 @@
 
           
           <div class="method-source-code" id="3D-3D-source">
-            <pre><span class="ruby-comment"># File Partie/Indice.rb, line 75</span>
+            <pre><span class="ruby-comment"># File Partie/Indice.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">==</span>(<span class="ruby-identifier">indice</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">indice</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">indice</span>.<span class="ruby-identifier">type</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@type</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">indice</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@coordonneesCase</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">indice</span>.<span class="ruby-identifier">coordonneesCase</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@coordonneesCase</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">indice</span>.<span class="ruby-identifier">coordonneesCase</span>[<span class="ruby-value">1</span>]
@@ -296,7 +296,7 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File Partie/Indice.rb, line 44</span>
+            <pre><span class="ruby-comment"># File Partie/Indice.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>()
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">type</span><span class="ruby-operator">==</span><span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;Pas d&#39;indice disponible&quot;</span>
@@ -317,6 +317,8 @@
         <span class="ruby-identifier">res</span>=<span class="ruby-identifier">res</span><span class="ruby-string">+&quot;On peut étendre un mur avec une case Océan&quot;</span>
     <span class="ruby-keyword">when</span> <span class="ruby-value">:expansionIle</span>
         <span class="ruby-identifier">res</span>=<span class="ruby-identifier">res</span><span class="ruby-string">+&quot;On peut étendre une île avec une case île&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:doubleExpansionIle</span>
+        <span class="ruby-identifier">res</span>=<span class="ruby-identifier">res</span><span class="ruby-string">+&quot;Une île de valeur 2 peut être étendue dans 2 directions&quot;</span>
     <span class="ruby-keyword">else</span>
         <span class="ruby-identifier">res</span>=<span class="ruby-identifier">res</span><span class="ruby-string">+&quot;Pas d&#39;indice trouvé&quot;</span>
     <span class="ruby-keyword">end</span>

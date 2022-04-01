@@ -100,6 +100,32 @@
 
   <section class="description">
     
+<pre>@author Lebouc Julian
+
+Cette classe va permettre d&#39;afficher la grille du mode de jeu puis de pouvoir y jouer.
+
+Voici les methodes de la classe FenetreGrilleCLM :
+
+- initialize : cette methode est le constructeur, elle recupere le fichier glade et initialise ses VI.
+- gestionSignaux : permet d&#39;attribuer des actions à tous les objets de l&#39;interface récupéré dans le constructeur.</pre>
+<ul><li>
+<p>construction : permet de constuire la grille courente</p>
+</li><li>
+<p><a href="FenetreGrilleCLM.html#method-i-signaux_boutons"><code>signaux_boutons</code></a> : permet de gerer les signaux des bouton de la grille jouable</p>
+</li><li>
+<p>actualiseChrono : permet de gerer le chronometre en parallèle du jeu.</p>
+</li><li>
+<p>getTempsPartie : permet de recuperer le temps de la partie seulement quand elle est terminé.</p>
+</li></ul>
+
+<p>- </p>
+
+<pre>Voici ses VI :
+
+@fenetreClassement : represente le classement de la grille courente</pre>
+
+<p>@affChrono : represente l&#39;affichage du chronometre @builder : represente le fichier glade @object : represente l&#39;interface courante @boutons : representes les boutons de la grille jouable @temps : represente le temps de resolution de la grille</p>
+
   </section>
 
   
@@ -153,7 +179,13 @@
 
         <div class="method-description">
           
-          
+          <p>initialize :</p>
+
+<pre>Cette methode est le constructeur de la classe FenetreGrilleCLM, il permet de recuperer
+le fichier glade et tout les objets qui le compose. Ensuite nous attribuons les bonnes 
+actions a chaque objets récupérés.</pre>
+
+<p>@param menuParent represente l&#39;interface parent, elle sera util pour le bouton retour en arrière. @param fenetreClassement represente le classement du mode de jeu</p>
           
           
             <div class="method-calls-super">
@@ -164,7 +196,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreGrilleCLM.rb, line 12</span>
+            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreGrilleCLM.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">menuParent</span>, <span class="ruby-identifier">fenetreClassement</span>)
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">menuParent</span>)
     <span class="ruby-ivar">@fenetreClassement</span>=<span class="ruby-identifier">fenetreClassement</span>
@@ -200,13 +232,15 @@
 
         <div class="method-description">
           
-          
+          <p>actualiseChrono:</p>
+
+<pre>permet de gerer le chronometre en parallèle du jeu.</pre>
           
           
 
           
           <div class="method-source-code" id="actualiseChrono-source">
-            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreGrilleCLM.rb, line 106</span>
+            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreGrilleCLM.rb, line 145</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">actualiseChrono</span>
     <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span>{
         <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span><span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">partieFinie?</span>
@@ -238,13 +272,16 @@
 
         <div class="method-description">
           
-          <p>Créer une table de boutons correspondants aux cases de la grille</p>
+          <p>construction:</p>
+
+<pre class="ruby"><span class="ruby-constant">Créer</span> <span class="ruby-identifier">une</span> <span class="ruby-identifier">table</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">boutons</span> <span class="ruby-identifier">correspondants</span> <span class="ruby-identifier">aux</span> <span class="ruby-identifier">cases</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">grille</span>
+</pre>
           
           
 
           
           <div class="method-source-code" id="construction-source">
-            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreGrilleCLM.rb, line 35</span>
+            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreGrilleCLM.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">construction</span>
     <span class="ruby-ivar">@affChrono</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>()
     <span class="ruby-ivar">@object</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@affChrono</span>)
@@ -310,7 +347,10 @@
 
         <div class="method-description">
           
-          <p>Récupère les boutons et créer tout les signaux correspondants</p>
+          <p>gestionSignaux:</p>
+
+<pre class="ruby"><span class="ruby-constant">Récupère</span> <span class="ruby-identifier">les</span> <span class="ruby-identifier">boutons</span> <span class="ruby-identifier">et</span> <span class="ruby-identifier">créer</span> <span class="ruby-identifier">tout</span> <span class="ruby-identifier">les</span> <span class="ruby-identifier">signaux</span> <span class="ruby-identifier">correspondants</span>
+</pre>
           
           
             <div class="method-calls-super">
@@ -321,7 +361,7 @@
 
           
           <div class="method-source-code" id="gestionSignaux-source">
-            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreGrilleCLM.rb, line 19</span>
+            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreGrilleCLM.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
     <span class="ruby-keyword">super</span>
     <span class="ruby-comment">#Recuperation de la fenetre</span>
@@ -358,13 +398,15 @@
 
         <div class="method-description">
           
-          
+          <p>getTempsPartie</p>
+
+<pre>permet de recuperer le temps de la partie seulement quand elle est terminé.</pre>
           
           
 
           
           <div class="method-source-code" id="getTempsPartie-source">
-            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreGrilleCLM.rb, line 115</span>
+            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreGrilleCLM.rb, line 157</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getTempsPartie</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">partieFinie?</span>
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@temps</span>
@@ -393,13 +435,15 @@
 
         <div class="method-description">
           
-          <p>Changes la couleur des boutons lorsqu&#39;on clique dessus</p>
+          <p><a href="FenetreGrilleCLM.html#method-i-signaux_boutons"><code>signaux_boutons</code></a>:</p>
+
+<pre>Changes la couleur des boutons lorsqu&#39;on clique dessus</pre>
           
           
 
           
           <div class="method-source-code" id="signaux_boutons-source">
-            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreGrilleCLM.rb, line 79</span>
+            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreGrilleCLM.rb, line 115</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">signaux_boutons</span>(<span class="ruby-identifier">tableFrame</span>)
     <span class="ruby-ivar">@boutons</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cle</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">cle</span>[<span class="ruby-value">0</span>]][<span class="ruby-identifier">cle</span>[<span class="ruby-value">1</span>]].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>)

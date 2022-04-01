@@ -250,12 +250,12 @@ actions a chaque objets récupérés.</pre>
                 <span class="ruby-ivar">@interfaceChoixGrille</span>.<span class="ruby-identifier">difficulte</span>=<span class="ruby-value">0</span>
                 <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@interfaceChoixGrille</span>.<span class="ruby-identifier">object</span>, <span class="ruby-string">&quot;Facile&quot;</span>)
         }
-        <span class="ruby-ivar">@btn_moyen</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){<span class="ruby-identifier">print</span> <span class="ruby-string">&quot;\nTu as cliqué sur le mode Moyen&quot;</span>
+        <span class="ruby-ivar">@btn_moyen</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
                 <span class="ruby-ivar">@interfaceChoixGrille</span>.<span class="ruby-identifier">difficulte</span>=<span class="ruby-value">1</span>
                 <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@interfaceChoixGrille</span>.<span class="ruby-identifier">object</span>, <span class="ruby-string">&quot;Partie&quot;</span>)
         }
 
-        <span class="ruby-ivar">@btn_difficile</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){<span class="ruby-identifier">print</span> <span class="ruby-string">&quot;\nTu as cliqué sur le mode Difficile&quot;</span>
+        <span class="ruby-ivar">@btn_difficile</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
                 <span class="ruby-ivar">@interfaceChoixGrille</span>.<span class="ruby-identifier">difficulte</span>=<span class="ruby-value">2</span>
                 <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@interfaceChoixGrille</span>.<span class="ruby-identifier">object</span>, <span class="ruby-string">&quot;Partie&quot;</span>)
         }

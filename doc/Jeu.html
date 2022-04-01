@@ -156,13 +156,15 @@
 
         <div class="method-description">
           
-          
+          <p>initialize:</p>
+
+<pre>Constructeur du Jeu, creer une nouvelle interface et initialise quit à faux</pre>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Jeu.rb, line 23</span>
+            <pre><span class="ruby-comment"># File Jeu.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
     <span class="ruby-ivar">@interface</span> = <span class="ruby-constant">FenetreMenu</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-ivar">@quit</span> = <span class="ruby-keyword">false</span>
@@ -201,13 +203,15 @@
 
         <div class="method-description">
           
-          
+          <p>lanceToi:</p>
+
+<pre>Cette méthode permet de lancer le jeu, d&#39;afficher la fenêtre du Menu</pre>
           
           
 
           
           <div class="method-source-code" id="lanceToi-source">
-            <pre><span class="ruby-comment"># File Jeu.rb, line 31</span>
+            <pre><span class="ruby-comment"># File Jeu.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lanceToi</span>
     <span class="ruby-ivar">@interface</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@interface</span>.<span class="ruby-identifier">object</span>, <span class="ruby-string">&quot;Menu&quot;</span>)
     <span class="ruby-constant">Gtk</span>.<span class="ruby-identifier">main</span>

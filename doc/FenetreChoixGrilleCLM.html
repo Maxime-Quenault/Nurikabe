@@ -98,6 +98,31 @@
 
   <section class="description">
     
+<pre>@author Quenault Maxime / Lebouc Julian
+
+Cette classe va permettre d&#39;afficher une liste de grille selon une difficulté,</pre>
+
+<p>ce qui permettra au joueur de séléctionner la grille de sont choix.</p>
+
+<pre>Voici les methodes de la classe FenetreChoixGrilleCLM :
+
+- initialize : cette methode est le constructeur, elle recupere le fichier glade et initialise ses VI.
+- gestionSignaux : permet d&#39;attribuer des actions à tous les objets de l&#39;interface récupéré dans le constructeur.</pre>
+<ul><li>
+<p>afficheGrille : Cette methode permet d&#39;afficher une grille à l&#39;ecran de séléction des grilles.</p>
+</li><li>
+<p>initGrilles : Initialise la liste de grilles à afficher dans la librairie</p>
+</li><li>
+<p>construction : Créer une table de boutons correspondants aux cases de la grille.</p>
+
+<pre>Voici ses VI :
+
+@builder : represente le fichier glade
+@object : represente l&#39;interface de la classe</pre>
+</li></ul>
+
+<p>@boutons : represente les boutons pour selectionner la grille que l&#39;on veut jouer @menuParent : represente l&#39;interface de menu parent, elle devra être affiché si on clique sur le bouton retour @difficulte : represente la difficulté des grilles à initialiser @tempGrille : represente une grille de previsualisation  @interfaceClassement : represente l&#39;interface du classement du mode de jeu @grid_grilles : represente l&#39;objet qui va contenir la grille de previsualisation @pos_v : represente la position verticale d&#39;un element de la grille de previsualisation @pos_h : represente la position horizontal d&#39;un element de la grille de previsualisation</p>
+
   </section>
 
   
@@ -164,13 +189,19 @@
 
         <div class="method-description">
           
-          
+          <p>initialize :</p>
+
+<pre>Cette methode est le constructeur de la classe FenetreChoixGrilleCLM, il permet de recuperer
+le fichier glade et tout les objets qui le compose. Ensuite nous attribuons les bonnes 
+actions a chaque objets récupérés.</pre>
+
+<p>@param menuParent represente l&#39;interface parent, elle sera util pour le bouton retour en arrière.</p>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreChoixGrilleCLM.rb, line 15</span>
+            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreChoixGrilleCLM.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">menuParent</span>)
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiseToi</span>
     <span class="ruby-ivar">@difficulte</span>
@@ -216,13 +247,17 @@
 
         <div class="method-description">
           
-          
+          <p>afficheGrille:</p>
+
+<pre>Cette methode permet d&#39;afficher une grille à l&#39;ecran de séléction des grilles.</pre>
+
+<p>@param id represente le numero de la grille à afficher.</p>
           
           
 
           
           <div class="method-source-code" id="afficheGrille-source">
-            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreChoixGrilleCLM.rb, line 44</span>
+            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreChoixGrilleCLM.rb, line 85</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficheGrille</span>(<span class="ruby-identifier">id</span>)
 
     <span class="ruby-ivar">@grid_grilles</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;grid_grilles&#39;</span>)
@@ -241,13 +276,8 @@
             <span class="ruby-identifier">g</span>.<span class="ruby-identifier">chargerGrille</span>(<span class="ruby-identifier">id</span>, <span class="ruby-value">0</span>)
 
     <span class="ruby-identifier">contenuBoutonG</span>.<span class="ruby-identifier">add</span>( <span class="ruby-ivar">@tempGrille</span>.<span class="ruby-identifier">afficheGrille</span>(<span class="ruby-identifier">g</span>.<span class="ruby-identifier">hauteur</span>, <span class="ruby-identifier">g</span>.<span class="ruby-identifier">largeur</span>, <span class="ruby-identifier">g</span>) )
-
     <span class="ruby-identifier">boutonGrille</span>.<span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">contenuBoutonG</span>)
-
-    <span class="ruby-comment"># &lt;!!&gt; Classe à ajouter si la grille est finie - à voir avec les sauvegardes donc.</span>
-    <span class="ruby-comment"># boutonGrille.set_name(&#39;grilleFinie&#39;)</span>
-
-            <span class="ruby-identifier">boutonGrille</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){<span class="ruby-comment">#quitter</span>
+            <span class="ruby-identifier">boutonGrille</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setNumGrille</span>(<span class="ruby-identifier">id</span>)
         <span class="ruby-identifier">construction</span>(<span class="ruby-identifier">id</span>)
         <span class="ruby-ivar">@interfaceClassement</span>.<span class="ruby-identifier">recupeTab</span>
@@ -287,13 +317,17 @@
 
         <div class="method-description">
           
-          <p>Créer une table de boutons correspondants aux cases de la grille</p>
+          <p>construction:</p>
+
+<pre>Créer une table de boutons correspondants aux cases de la grille.</pre>
+
+<p>@param num_grille represente le numero de la grille à construire une fois qu&#39;elle est cliqué.</p>
           
           
 
           
           <div class="method-source-code" id="construction-source">
-            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreChoixGrilleCLM.rb, line 102</span>
+            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreChoixGrilleCLM.rb, line 144</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">construction</span>(<span class="ruby-identifier">num_grille</span>)
     <span class="ruby-identifier">g</span>=<span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>()
     <span class="ruby-identifier">g</span>.<span class="ruby-identifier">difficulte</span>=<span class="ruby-ivar">@difficulte</span>
@@ -323,21 +357,22 @@
 
         <div class="method-description">
           
-          
+          <p>gestionSignaux:</p>
+
+<pre>   Cette methode permet d&#39;assigner des actions à chaques boutons récupérés dans le fichier galde.
+Egalement, elle permet d&#39;initialiser la liste des grilles facile.</pre>
           
           
 
           
           <div class="method-source-code" id="gestionSignaux-source">
-            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreChoixGrilleCLM.rb, line 30</span>
+            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreChoixGrilleCLM.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
     
-    <span class="ruby-comment">#Recuperation de la fenetre</span>
     <span class="ruby-identifier">btn_retour</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_retour&#39;</span>)
 
     <span class="ruby-identifier">initGrilles</span>(<span class="ruby-value">0</span>)
 
-    <span class="ruby-comment">#Gestion des signaux</span>
     <span class="ruby-identifier">btn_retour</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){<span class="ruby-comment">#quitter</span>
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@menuParent</span>, <span class="ruby-string">&quot;Contre-la-montre&quot;</span>)
     }
@@ -366,13 +401,18 @@
 
         <div class="method-description">
           
-          <p>Initialise la liste de grilles à afficher dans la librairie</p>
+          <p>initGrilles:</p>
+
+<pre class="ruby"><span class="ruby-constant">Initialise</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">liste</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">grilles</span> <span class="ruby-identifier">à</span> <span class="ruby-identifier">afficher</span> <span class="ruby-identifier">dans</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">librairie</span>
+</pre>
+
+<p>@param uneDifficulte represente la dificulté des grilles à initialiser.</p>
           
           
 
           
           <div class="method-source-code" id="initGrilles-source">
-            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreChoixGrilleCLM.rb, line 87</span>
+            <pre><span class="ruby-comment"># File Interfaces/ContreLaMontre/FenetreChoixGrilleCLM.rb, line 126</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initGrilles</span>(<span class="ruby-identifier">uneDifficulte</span>)
 
     <span class="ruby-ivar">@pos_v</span> = <span class="ruby-value">0</span>

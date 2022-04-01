@@ -81,11 +81,7 @@
     
     <li ><a href="#method-i-onChange_parametre">#onChange_parametre</a>
     
-    <li ><a href="#method-i-onChange_switchAudio">#onChange_switchAudio</a>
-    
     <li ><a href="#method-i-onChange_switchTheme">#onChange_switchTheme</a>
-    
-    <li ><a href="#method-i-onSwitchAudio_activated">#onSwitchAudio_activated</a>
     
     <li ><a href="#method-i-onSwitchTheme_activated">#onSwitchTheme_activated</a>
     
@@ -201,10 +197,6 @@
 
     <span class="ruby-ivar">@interfaceParametreProfil</span> = <span class="ruby-constant">FenetreParametreProfil</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">menuParent</span>, <span class="ruby-ivar">@object</span>, <span class="ruby-ivar">@save</span>)
 
-    <span class="ruby-comment">#@interfaceProfil = interfaceProfil</span>
-
-    <span class="ruby-comment">#@paramProfil = @@profilActuel.profil.parametre</span>
-
     <span class="ruby-ivar">@langue</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;cbt_langue&quot;</span>)
 
     <span class="ruby-ivar">@btnJeu</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;button_jeu&quot;</span>)
@@ -216,7 +208,6 @@
     <span class="ruby-ivar">@btnProfil</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_profil&quot;</span>
 
     <span class="ruby-ivar">@switchTheme</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;switch_theme&quot;</span>)
-    <span class="ruby-ivar">@switchAudio</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;switch_audio&quot;</span>)
 
     <span class="ruby-comment"># récupération des boutons de changement de couleur de l&#39;interface</span>
     <span class="ruby-ivar">@red</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;ff0341&quot;</span>)
@@ -267,7 +258,7 @@
 
           
           <div class="method-source-code" id="gestionSignaux-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 81</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
 
     <span class="ruby-ivar">@btnProfil</span>.<span class="ruby-identifier">signal_connect</span>( <span class="ruby-string">&quot;clicked&quot;</span> ) { 
@@ -279,17 +270,39 @@
     }
 
     <span class="ruby-ivar">@switchTheme</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;notify::active&#39;</span>) {<span class="ruby-identifier">onSwitchTheme_activated</span>()}
-    <span class="ruby-ivar">@switchAudio</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;notify::active&#39;</span>) {<span class="ruby-identifier">onSwitchAudio_activated</span>()}
 
-    <span class="ruby-ivar">@red</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;couleur ROUGE sélectionnée&quot;</span>}
-    <span class="ruby-ivar">@purple</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;couleur VIOLET sélectionnée&quot;</span>}
-    <span class="ruby-ivar">@green</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;couleur VERT sélectionnée&quot;</span>}
-    <span class="ruby-ivar">@black</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;couleur NOIR sélectionnée&quot;</span>}
-    <span class="ruby-ivar">@orange</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;couleur ORANGE sélectionnée&quot;</span>}
-    <span class="ruby-ivar">@pink</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;couleur ROSE sélectionnée&quot;</span>}
+    <span class="ruby-ivar">@red</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+        <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">parametre</span>.<span class="ruby-identifier">couleur</span> = <span class="ruby-string">&quot;\#FF0341&quot;</span>
+        
+        <span class="ruby-identifier">onChange_parametre</span>()
+    }
+    <span class="ruby-ivar">@purple</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+        <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">parametre</span>.<span class="ruby-identifier">couleur</span> = <span class="ruby-string">&quot;\#AFA2FF&quot;</span>
+        
+        <span class="ruby-identifier">onChange_parametre</span>()
+    }
+    <span class="ruby-ivar">@green</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+        <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">parametre</span>.<span class="ruby-identifier">couleur</span> = <span class="ruby-string">&quot;\#92FF6E&quot;</span>
+        
+        <span class="ruby-identifier">onChange_parametre</span>()
+    }
+    <span class="ruby-ivar">@black</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+        <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">parametre</span>.<span class="ruby-identifier">couleur</span> = <span class="ruby-string">&quot;\#000000&quot;</span>
+        
+        <span class="ruby-identifier">onChange_parametre</span>()
+    }
+    <span class="ruby-ivar">@orange</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+        <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">parametre</span>.<span class="ruby-identifier">couleur</span> = <span class="ruby-string">&quot;\#FFAB46&quot;</span>
+        
+        <span class="ruby-identifier">onChange_parametre</span>()
+    }
+    <span class="ruby-ivar">@pink</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+        <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">parametre</span>.<span class="ruby-identifier">couleur</span> = <span class="ruby-string">&quot;\#FE63FF&quot;</span>
+        
+        <span class="ruby-identifier">onChange_parametre</span>()
+    }
 
     <span class="ruby-identifier">onChange_switchTheme</span>()
-    <span class="ruby-identifier">onChange_switchAudio</span>()
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -322,45 +335,9 @@
           <div class="method-source-code" id="onChange_parametre-source">
             <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 142</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">onChange_parametre</span>()
+    <span class="ruby-identifier">ajustementsCSS</span>()
     <span class="ruby-ivar">@save</span>.<span class="ruby-identifier">supprimerProfil</span>(<span class="ruby-identifier">@@profilActuel</span>)
     <span class="ruby-ivar">@save</span>.<span class="ruby-identifier">ajoutProfil</span>(<span class="ruby-identifier">@@profilActuel</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-onChange_switchAudio" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">onChange_switchAudio</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Change la valeur du switch Audio dans l&#39;interface</p>
-          
-          
-
-          
-          <div class="method-source-code" id="onChange_switchAudio-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 132</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">onChange_switchAudio</span>()
-    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">parametre</span>.<span class="ruby-identifier">effetSonore</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
-        <span class="ruby-ivar">@switchAudio</span>.<span class="ruby-identifier">set_active</span>(<span class="ruby-keyword">false</span>)
-    <span class="ruby-keyword">else</span> 
-        <span class="ruby-ivar">@switchAudio</span>.<span class="ruby-identifier">set_active</span>(<span class="ruby-keyword">true</span>)
-    <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -391,47 +368,13 @@
 
           
           <div class="method-source-code" id="onChange_switchTheme-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 115</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 132</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">onChange_switchTheme</span>()
     <span class="ruby-keyword">if</span> (<span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">parametre</span>.<span class="ruby-identifier">themeSombre</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
         <span class="ruby-ivar">@switchTheme</span>.<span class="ruby-identifier">set_active</span>(<span class="ruby-keyword">false</span>)
     <span class="ruby-keyword">else</span> 
         <span class="ruby-ivar">@switchTheme</span>.<span class="ruby-identifier">set_active</span>(<span class="ruby-keyword">true</span>)
     <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-onSwitchAudio_activated" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">onSwitchAudio_activated</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Méthode qui va changer la valeur du booleen effetSonore</p>
-          
-          
-
-          
-          <div class="method-source-code" id="onSwitchAudio_activated-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 125</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">onSwitchAudio_activated</span>()
-    <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">parametre</span>.<span class="ruby-identifier">effetSonore</span> = <span class="ruby-ivar">@switchAudio</span>.<span class="ruby-identifier">active?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
-    <span class="ruby-identifier">onChange_parametre</span>()
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -462,7 +405,7 @@
 
           
           <div class="method-source-code" id="onSwitchTheme_activated-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 107</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreParametre.rb, line 124</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">onSwitchTheme_activated</span>()
     <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">parametre</span>.<span class="ruby-identifier">themeSombre</span> = <span class="ruby-ivar">@switchTheme</span>.<span class="ruby-identifier">active?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
     <span class="ruby-identifier">onChange_parametre</span>()

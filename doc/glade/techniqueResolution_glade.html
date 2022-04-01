@@ -69,6 +69,8 @@
   
     <li><a href="../Interfaces/style_dark_css.html">style_dark.css</a>
   
+    <li><a href="../Interfaces/style_temp_css.html">style_temp.css</a>
+  
     <li><a href="../Partie/grilleAventure_txt.html">grilleAventure</a>
   
     <li><a href="../Partie/grillesEasy_txt.html">grillesEasy</a>
@@ -76,8 +78,6 @@
     <li><a href="../Partie/grillesHard_txt.html">grillesHard</a>
   
     <li><a href="../Partie/grillesMedium_txt.html">grillesMedium</a>
-  
-    <li><a href="../gestion_profil_glade.html">gestion_profil.glade</a>
   
     <li><a href="../glade/apropos_glade.html">apropos.glade</a>
   
@@ -112,8 +112,6 @@
     <li><a href="../glade/survie_nouvelle_partie_glade.html">survie_nouvelle_partie.glade</a>
   
     <li><a href="../glade/techniqueResolution_glade.html">techniqueResolution.glade</a>
-  
-    <li><a href="../settingsNurikabe_glade.html">settingsNurikabe.glade</a>
   
   </ul>
 </div>
@@ -156,7 +154,7 @@
           &lt;property name=&quot;can_focus&quot;&gt;False&lt;/property&gt;
           &lt;property name=&quot;label&quot; translatable=&quot;yes&quot;&gt;- Ilot de 1 :</pre>
 
-<p>Une case nombre “1” doit obligatoirement être entouré de 4 cases océan. &lt;/property&gt;</p>
+<p>Une case nombre “1” doit obligatoirement être entourée de 4 cases océan. &lt;/property&gt;</p>
 
 <pre>        &lt;property name=&quot;justify&quot;&gt;center&lt;/property&gt;
       &lt;/object&gt;
@@ -193,9 +191,9 @@
       &lt;object class=&quot;GtkLabel&quot;&gt;
         &lt;property name=&quot;visible&quot;&gt;True&lt;/property&gt;
         &lt;property name=&quot;can_focus&quot;&gt;False&lt;/property&gt;
-        &lt;property name=&quot;label&quot; translatable=&quot;yes&quot;&gt;- Case jouable isolé :</pre>
+        &lt;property name=&quot;label&quot; translatable=&quot;yes&quot;&gt;- Case jouable isolée :</pre>
 
-<p>Une case jouable isolé doit obligatoirement devenir une case océan. &lt;/property&gt;</p>
+<p>Une case jouable isolée doit obligatoirement devenir une case océan. &lt;/property&gt;</p>
 
 <pre>        &lt;property name=&quot;justify&quot;&gt;center&lt;/property&gt;
       &lt;/object&gt;
@@ -233,9 +231,9 @@
       &lt;object class=&quot;GtkLabel&quot;&gt;
         &lt;property name=&quot;visible&quot;&gt;True&lt;/property&gt;
         &lt;property name=&quot;can_focus&quot;&gt;False&lt;/property&gt;
-        &lt;property name=&quot;label&quot; translatable=&quot;yes&quot;&gt;- Case nombre cote à cote (diagonale) :</pre>
+        &lt;property name=&quot;label&quot; translatable=&quot;yes&quot;&gt;- Case nombre côte à côte (diagonale) :</pre>
 
-<p>Deux cases nombre cote à cote en diagonale doivent être séparé par deux cases océan. &lt;/property&gt;</p>
+<p>Deux cases nombre côte à côte en diagonale doivent être séparées par deux cases océan. &lt;/property&gt;</p>
 
 <pre>        &lt;property name=&quot;justify&quot;&gt;center&lt;/property&gt;
       &lt;/object&gt;
@@ -273,9 +271,9 @@
       &lt;object class=&quot;GtkLabel&quot;&gt;
         &lt;property name=&quot;visible&quot;&gt;True&lt;/property&gt;
         &lt;property name=&quot;can_focus&quot;&gt;False&lt;/property&gt;
-        &lt;property name=&quot;label&quot; translatable=&quot;yes&quot;&gt;- Case nombre cote à cote (ligne droite) :</pre>
+        &lt;property name=&quot;label&quot; translatable=&quot;yes&quot;&gt;- Case nombre côte à côte (ligne droite) :</pre>
 
-<p>Deux cases nombre cote à cote en ligne droite doivent être séparé par une case océan. &lt;/property&gt;</p>
+<p>Deux cases nombre côte à côte en ligne droite doivent être séparées par une case océan. &lt;/property&gt;</p>
 
 <pre>        &lt;property name=&quot;justify&quot;&gt;center&lt;/property&gt;
       &lt;/object&gt;
@@ -313,9 +311,9 @@
       &lt;object class=&quot;GtkLabel&quot;&gt;
         &lt;property name=&quot;visible&quot;&gt;True&lt;/property&gt;
         &lt;property name=&quot;can_focus&quot;&gt;False&lt;/property&gt;
-        &lt;property name=&quot;label&quot; translatable=&quot;yes&quot;&gt;- Expenssion de océan :</pre>
+        &lt;property name=&quot;label&quot; translatable=&quot;yes&quot;&gt;- Expansion de océan :</pre>
 
-<p>Il est interdit d&#39;avoir deux océans, pour cela il faut obligatoirement etendre au besoin un océan. &lt;/property&gt;</p>
+<p>Il est interdit d&#39;avoir deux océans, pour cela il faut obligatoirement étendre au besoin un océan. &lt;/property&gt;</p>
 
 <pre>        &lt;property name=&quot;justify&quot;&gt;center&lt;/property&gt;
       &lt;/object&gt;
@@ -352,9 +350,9 @@
       &lt;object class=&quot;GtkLabel&quot;&gt;
         &lt;property name=&quot;visible&quot;&gt;True&lt;/property&gt;
         &lt;property name=&quot;can_focus&quot;&gt;False&lt;/property&gt;
-        &lt;property name=&quot;label&quot; translatable=&quot;yes&quot;&gt;- Expenssion de l&#39;îles :</pre>
+        &lt;property name=&quot;label&quot; translatable=&quot;yes&quot;&gt;- Expansion de l&#39;île :</pre>
 
-<p>Une case jouable unique a coté d&#39;une case nombre  sera obligatoirement une case île. &lt;/property&gt;</p>
+<p>Une case jouable unique à coté d&#39;une case nombre  sera obligatoirement une case île. &lt;/property&gt;</p>
 
 <pre>          &lt;property name=&quot;justify&quot;&gt;center&lt;/property&gt;
         &lt;/object&gt;

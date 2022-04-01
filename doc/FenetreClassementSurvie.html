@@ -102,6 +102,33 @@
 
   <section class="description">
     
+<pre>@author Quenault Maxime
+
+Cette classe va permettre d&#39;afficher le classement de la difficulté séléctionnée.
+
+Voici les methodes de la classe FenetreClassementSurvie :
+
+- initialize : cette methode est le constructeur, elle recupere le fichier glade et initialise ses VI.
+- gestionSignaux : permet d&#39;attribuer des actions à tous les objets de l&#39;interface récupéré dans le constructeur.</pre>
+<ul><li>
+<p>getObjet : permet de recuperer l&#39;interface courante</p>
+</li><li>
+<p>recupeTab : permet de recuperer le tableau des scores de la grille courante</p>
+</li><li>
+<p>ajoutScore : permet d&#39;ajouter un score au classement et d&#39;actualiser l&#39;affichage</p>
+</li><li>
+<p>construction : permet de construire la grille si on commence une partie</p>
+</li><li>
+<p>affichageSore : permet d&#39;afficher le tableau des scores à l&#39;ecran.</p>
+
+<pre>Voici ses VI :
+
+@builder : represente le fichier glade
+@object : represente l&#39;interface de la classe</pre>
+</li></ul>
+
+<p>@boutonRetour : permet de revenir au menu parent @@boutonPartie : permet de lancer la partie @menuParent : represente l&#39;interface de menu parent, elle devra être affiché si on clique sur le bouton retour @interfaceGrille : represente l&#39;interface de la grille qui devra être afficher au besoin @pseudo{1..10} : represente le pseudo d&#39;un profil @score{1..10} : represente un score associé à un profil</p>
+
   </section>
 
   
@@ -168,7 +195,7 @@
 
         <div class="method-description">
           
-          <p>initialize :</p>
+          <p>initialize:</p>
 
 <pre>Cette methode est le constructeur de la classe FenetreClassementCLM, il permet de recuperer
 le fichier glade et tout les objets qui le compose. Ensuite nous attribuons les bonnes 
@@ -180,7 +207,7 @@ actions a chaque objets récupérés.</pre>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreClassementSurvie.rb, line 19</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreClassementSurvie.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">menuParent</span>)
 
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiseToi</span>
@@ -216,7 +243,6 @@ actions a chaque objets récupérés.</pre>
 
     <span class="ruby-ivar">@boutonPartie</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;btn_partie&quot;</span>)
     <span class="ruby-ivar">@boutonRetour</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;btn_retour&quot;</span>)
-    <span class="ruby-ivar">@titre</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&quot;titre&quot;</span>)
             
     <span class="ruby-comment"># Création d&#39;une interface grille</span>
     <span class="ruby-ivar">@interfaceGrille</span> = <span class="ruby-constant">FenetreGrilleSurvie</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@object</span>, <span class="ruby-keyword">self</span>)
@@ -256,13 +282,15 @@ actions a chaque objets récupérés.</pre>
 
         <div class="method-description">
           
-          
+          <p>affichageScore:</p>
+
+<pre>Affiche le classement des 10 meilleurs scores</pre>
           
           
 
           
           <div class="method-source-code" id="affichageScore-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreClassementSurvie.rb, line 109</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreClassementSurvie.rb, line 146</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageScore</span>()
 
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@tabScore</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
@@ -368,13 +396,16 @@ actions a chaque objets récupérés.</pre>
 
         <div class="method-description">
           
-          
+          <p>ajoutScore:</p>
+
+<pre>permet d&#39;ajouter un score au classmement des profils du mode de jeu,
+elle met à jour l&#39;affichage.</pre>
           
           
 
           
           <div class="method-source-code" id="ajoutScore-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreClassementSurvie.rb, line 80</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreClassementSurvie.rb, line 112</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajoutScore</span>
     <span class="ruby-identifier">unScore</span> = <span class="ruby-constant">Score</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@interfaceGrille</span>.<span class="ruby-identifier">getNbGrilles</span>, <span class="ruby-identifier">@@profilActuel</span>)
     <span class="ruby-ivar">@uneSave</span>.<span class="ruby-identifier">ajoutScore</span>(<span class="ruby-identifier">unScore</span>)
@@ -404,13 +435,16 @@ actions a chaque objets récupérés.</pre>
 
         <div class="method-description">
           
-          <p>génère la grille</p>
+          <p>construction:</p>
+
+<pre class="ruby"><span class="ruby-identifier">génère</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">grille</span>
+</pre>
           
           
 
           
           <div class="method-source-code" id="construction-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreClassementSurvie.rb, line 105</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreClassementSurvie.rb, line 139</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">construction</span>
     <span class="ruby-ivar">@interfaceGrille</span>.<span class="ruby-identifier">construction</span>
 <span class="ruby-keyword">end</span></pre>
@@ -437,7 +471,7 @@ actions a chaque objets récupérés.</pre>
 
         <div class="method-description">
           
-          <p>gestionSignaux :</p>
+          <p>gestionSignaux:</p>
 
 <pre>Cette methode permet d&#39;assigner des actions à chaques boutons récupérés dans le fichier galde.</pre>
           
@@ -445,7 +479,7 @@ actions a chaque objets récupérés.</pre>
 
           
           <div class="method-source-code" id="gestionSignaux-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreClassementSurvie.rb, line 90</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreClassementSurvie.rb, line 122</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
 
 <span class="ruby-ivar">@boutonRetour</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
@@ -454,7 +488,7 @@ actions a chaque objets récupérés.</pre>
 
 <span class="ruby-ivar">@boutonPartie</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
     <span class="ruby-identifier">construction</span>
-    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@interfaceGrille</span>.<span class="ruby-identifier">object</span>, <span class="ruby-string">&quot;Survie&quot;</span>) <span class="ruby-comment">#à modifier ensuite</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@interfaceGrille</span>.<span class="ruby-identifier">object</span>, <span class="ruby-string">&quot;Survie&quot;</span>)
 }
 
 <span class="ruby-keyword">end</span></pre>
@@ -481,7 +515,7 @@ actions a chaque objets récupérés.</pre>
 
         <div class="method-description">
           
-          <p>getObjet :</p>
+          <p>getObjet:</p>
 
 <pre>Cette methode permet d&#39;envoyer sont objet (interface) a l&#39;objet qui le demande.</pre>
 
@@ -491,7 +525,7 @@ actions a chaque objets récupérés.</pre>
 
           
           <div class="method-source-code" id="getObjet-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreClassementSurvie.rb, line 70</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreClassementSurvie.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getObjet</span>
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@object</span>
 <span class="ruby-keyword">end</span></pre>
@@ -518,13 +552,15 @@ actions a chaque objets récupérés.</pre>
 
         <div class="method-description">
           
-          
+          <p>recupeTab:</p>
+
+<pre>permet de recuperer le tableau des scores de la grille courante.</pre>
           
           
 
           
           <div class="method-source-code" id="recupeTab-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreClassementSurvie.rb, line 74</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreClassementSurvie.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">recupeTab</span>
     <span class="ruby-ivar">@uneSave</span> = <span class="ruby-constant">SauvegardeClassementSurvie</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">getNumGrille</span>)
     <span class="ruby-ivar">@tabScore</span> = <span class="ruby-ivar">@uneSave</span>.<span class="ruby-identifier">tabScore</span>

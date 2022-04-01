@@ -249,6 +249,7 @@ pour cela on récupére un boolean de la classe FenetreProfil et on agit en cons
     <span class="ruby-keyword">end</span>
 
     <span class="ruby-identifier">setStyle</span>(<span class="ruby-identifier">@@profilActuel</span>)
+    <span class="ruby-identifier">ajustementsCSS</span>()
 
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">gestionSignaux</span>
 
@@ -292,7 +293,7 @@ pour cela on récupére un boolean de la classe FenetreProfil et on agit en cons
 
           
           <div class="method-source-code" id="gestionSignaux-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreMenu.rb, line 122</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreMenu.rb, line 123</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
     <span class="ruby-ivar">@btn_libre</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@interfaceLibre</span>.<span class="ruby-identifier">getObjet</span>, <span class="ruby-string">&quot;Mode Libre&quot;</span>)
@@ -358,7 +359,7 @@ pour cela on récupére un boolean de la classe FenetreProfil et on agit en cons
 
           
           <div class="method-source-code" id="getObjet-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreMenu.rb, line 115</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreMenu.rb, line 116</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getObjet</span>
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@object</span>
 <span class="ruby-keyword">end</span></pre>

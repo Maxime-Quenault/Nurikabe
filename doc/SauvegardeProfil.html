@@ -232,7 +232,6 @@
             <span class="ruby-keyword">return</span> <span class="ruby-value">-1</span>
         <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;\n\nunProfil : #{unProfil}&quot;</span>
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">unProfil</span>)    
     <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&quot;Sauvegarde/SauvegardeProfil/listeProfil.dump&quot;</span>, <span class="ruby-string">&quot;wb&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@listeProfil</span>)) }
     <span class="ruby-ivar">@listeProfil</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">binread</span>(<span class="ruby-string">&quot;Sauvegarde/SauvegardeProfil/listeProfil.dump&quot;</span>))
@@ -268,7 +267,7 @@
 
           
           <div class="method-source-code" id="changerParametre-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 73</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">changerParametre</span>(<span class="ruby-identifier">unProfil</span>)
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unProfil</span>.<span class="ruby-identifier">pseudo</span>)
@@ -306,7 +305,7 @@
 
           
           <div class="method-source-code" id="chargerProfil-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 64</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">chargerProfil</span>(<span class="ruby-identifier">unPseudo</span>)
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unPseudo</span>)
@@ -344,7 +343,7 @@
 
           
           <div class="method-source-code" id="getNbProfil-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 56</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getNbProfil</span>
     <span class="ruby-identifier">nombre</span> = <span class="ruby-value">0</span>
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
@@ -381,7 +380,7 @@
 
           
           <div class="method-source-code" id="modifierAvatar-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 82</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">modifierAvatar</span>(<span class="ruby-identifier">uneImage</span>, <span class="ruby-identifier">profilActuel</span>)
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">profilActuel</span>.<span class="ruby-identifier">pseudo</span>
@@ -419,7 +418,7 @@
 
           
           <div class="method-source-code" id="sauvegarder-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 91</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sauvegarder</span>(<span class="ruby-identifier">unProfil</span>)
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unProfil</span>.<span class="ruby-identifier">pseudo</span>)
@@ -457,12 +456,11 @@
 
           
           <div class="method-source-code" id="suppAllProfil-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 37</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">suppAllProfil</span>
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">supprimerProfil</span>(<span class="ruby-identifier">key</span>)
     <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">print</span> <span class="ruby-ivar">@listeProfil</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -493,7 +491,7 @@
 
           
           <div class="method-source-code" id="supprimerProfil-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 44</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">supprimerProfil</span>(<span class="ruby-identifier">unProfil</span>)
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unProfil</span>.<span class="ruby-identifier">pseudo</span>)

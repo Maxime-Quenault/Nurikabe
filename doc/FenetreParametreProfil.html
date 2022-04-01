@@ -241,7 +241,6 @@
             <pre><span class="ruby-comment"># File Interfaces/FenetreParametreProfil.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
     <span class="ruby-ivar">@btnChangerProfils</span>.<span class="ruby-identifier">signal_connect</span>( <span class="ruby-string">&quot;clicked&quot;</span> ) {
-        <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;\nTu as clique sur profil&quot;</span>
         <span class="ruby-ivar">@interfaceProfil</span> = <span class="ruby-constant">FenetreProfil</span>.<span class="ruby-identifier">new</span>
         <span class="ruby-ivar">@interfaceProfil</span>.<span class="ruby-identifier">afficheToi</span>
         <span class="ruby-ivar">@save</span> = <span class="ruby-constant">SauvegardeProfil</span>.<span class="ruby-identifier">new</span>
@@ -252,7 +251,6 @@
         <span class="ruby-identifier">pixbuf</span> = <span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">imageJoueur</span>)
         <span class="ruby-identifier">pixbuf</span> = <span class="ruby-identifier">pixbuf</span>.<span class="ruby-identifier">scale_simple</span>(<span class="ruby-value">100</span>, <span class="ruby-value">100</span>, <span class="ruby-constant">Gdk</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">INTERP_BILINEAR</span>)
         <span class="ruby-ivar">@objectImage</span>.<span class="ruby-identifier">set_from_pixbuf</span>(<span class="ruby-identifier">pixbuf</span>)
-        <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;Changement profil #{@@profilActuel}&quot;</span>
         <span class="ruby-ivar">@objectPseudo</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-identifier">@@profilActuel</span>.<span class="ruby-identifier">pseudo</span>)  
     }
 

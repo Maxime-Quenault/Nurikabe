@@ -96,6 +96,31 @@
 
   <section class="description">
     
+<pre>@author Quenault Maxime
+
+Cette classe va permettre d&#39;afficher le choix de difficulté du mode de jeu.
+
+Voici les methodes de la classe FenetreSurvie :
+
+- initialize : cette methode est le constructeur, elle recupere le fichier glade et initialise ses VI.
+- gestionSignaux : permet d&#39;attribuer des actions à tous les objets de l&#39;interface récupéré dans le constructeur.</pre>
+<ul><li>
+<p>getObjet : permet de recuperer l&#39;interface courante</p>
+
+<pre>- construction : construit la partie en chargant une grille voulue
+
+Voici ses VI :
+
+@menuParent : represente l&#39;interface de menu parent, elle devra être affiché si on clique sur le bouton retour
+@builder : represente le fichier glade
+@object : represente l&#39;interface de l&#39;objet courent
+@btn_facile : selectionne le niveau de difficulté FACILE
+@btn_moyen : selectionne le niveau de difficulté MOYEN        
+@btn_difficile : selectionne le niveau de difficulté DIFFICILE
+@btn_retour : permet de revenir au menu parent
+@interfaceClassement : represente l&#39;interface qui devra être appelé au besoin</pre>
+</li></ul>
+
   </section>
 
   
@@ -161,7 +186,7 @@ actions a chaque objets récupérés.</pre>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreSurvie.rb, line 15</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreSurvie.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">menuParent</span>)
 
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiseToi</span>
@@ -219,14 +244,19 @@ actions a chaque objets récupérés.</pre>
 
         <div class="method-description">
           
-          <p>Construit la partie en chargant une grille voulue</p>
+          <p>construction:</p>
+
+<pre class="ruby"><span class="ruby-constant">Construit</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">partie</span> <span class="ruby-identifier">en</span> <span class="ruby-identifier">chargant</span> <span class="ruby-identifier">une</span> <span class="ruby-identifier">grille</span> <span class="ruby-identifier">voulue</span>
+</pre>
+
+<p>@param num_grille represente le numero de la grille</p>
           
           
 
           
           <div class="method-source-code" id="construction-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreSurvie.rb, line 84</span>
-     <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">construction</span>(<span class="ruby-identifier">num_grille</span>)
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreSurvie.rb, line 110</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">construction</span>(<span class="ruby-identifier">num_grille</span>)
             <span class="ruby-identifier">g</span>=<span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>()
             <span class="ruby-identifier">g</span>.<span class="ruby-identifier">difficulte</span>=<span class="ruby-ivar">@interfaceClassement</span>.<span class="ruby-identifier">difficulte</span>
             <span class="ruby-identifier">g</span>.<span class="ruby-identifier">chargerGrille</span>(<span class="ruby-identifier">num_grille</span>,<span class="ruby-ivar">@interfaceClassement</span>.<span class="ruby-identifier">difficulte</span>)
@@ -256,7 +286,7 @@ actions a chaque objets récupérés.</pre>
 
         <div class="method-description">
           
-          <p>gestionSignaux :</p>
+          <p>gestionSignaux:</p>
 
 <pre>Cette methode permet d&#39;assigner des actions à chaques boutons récupérés dans le fichier galde.</pre>
           
@@ -264,7 +294,7 @@ actions a chaque objets récupérés.</pre>
 
           
           <div class="method-source-code" id="gestionSignaux-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreSurvie.rb, line 55</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreSurvie.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
 
         <span class="ruby-ivar">@btn_facile</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
@@ -315,7 +345,7 @@ actions a chaque objets récupérés.</pre>
 
         <div class="method-description">
           
-          <p>getObjet :</p>
+          <p>getObjet:</p>
 
 <pre>Cette methode permet d&#39;envoyer sont objet (interface) a l&#39;objet qui le demande.</pre>
 
@@ -325,7 +355,7 @@ actions a chaque objets récupérés.</pre>
 
           
           <div class="method-source-code" id="getObjet-source">
-            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreSurvie.rb, line 47</span>
+            <pre><span class="ruby-comment"># File Interfaces/Survie/FenetreSurvie.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getObjet</span>
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@object</span>
 <span class="ruby-keyword">end</span></pre>
