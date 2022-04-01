@@ -5,17 +5,50 @@ load "./Partie/Partie.rb"
 load "./Interfaces/Fenetre.rb"
 load "Interfaces/FenetreGrille.rb"
 
+##
+# 	@author Lebouc Julian
+#
+#	Cette classe va permettre d'afficher la grille du mode de jeu puis de pouvoir y jouer.
+#
+#	Voici les methodes de la classe FenetreGrilleCLM :
+#
+#	- initialize : cette methode est le constructeur, elle recupere le fichier glade et initialise ses VI.
+#	- gestionSignaux : permet d'attribuer des actions à tous les objets de l'interface récupéré dans le constructeur.
+#   - construction : permet de constuire la grille courente
+#   - signaux_boutons : permet de gerer les signaux des bouton de la grille jouable
+#   - actualiseChrono : permet de gerer le chronometre en parallèle du jeu.
+#   - getTempsPartie : permet de recuperer le temps de la partie seulement quand elle est terminé.
+#   - 
+#
+#	Voici ses VI :
+#
+#	@fenetreClassement : represente le classement de la grille courente
+#   @affChrono : represente l'affichage du chronometre
+#   @builder : represente le fichier glade
+#   @object : represente l'interface courante
+#   @boutons : representes les boutons de la grille jouable
+#   @temps : represente le temps de resolution de la grille
+
 class FenetreGrilleCLM < FenetreGrille
     @fenetreClassement
     attr_accessor :object
 
+    ##
+	# initialize :
+	# 	Cette methode est le constructeur de la classe FenetreGrilleCLM, il permet de recuperer
+	#	le fichier glade et tout les objets qui le compose. Ensuite nous attribuons les bonnes 
+	#	actions a chaque objets récupérés.
+	#
+	# @param menuParent represente l'interface parent, elle sera util pour le bouton retour en arrière.
+    # @param fenetreClassement represente le classement du mode de jeu
     def initialize(menuParent, fenetreClassement)
         super(menuParent)
         @fenetreClassement=fenetreClassement
     end
 
     ##
-    # Récupère les boutons et créer tout les signaux correspondants
+    # gestionSignaux:
+    #   Récupère les boutons et créer tout les signaux correspondants
     def gestionSignaux
         super
         #Recuperation de la fenetre
@@ -31,7 +64,8 @@ class FenetreGrilleCLM < FenetreGrille
     end
 
     ##
-    # Créer une table de boutons correspondants aux cases de la grille
+    # construction:
+    #   Créer une table de boutons correspondants aux cases de la grille
     def construction
         @affChrono = Gtk::Label.new()
         @object.add(@affChrono)
@@ -75,7 +109,9 @@ class FenetreGrilleCLM < FenetreGrille
         actualiseChrono
     end
 
-    # Changes la couleur des boutons lorsqu'on clique dessus
+    ##
+    # signaux_boutons:
+    #   Changes la couleur des boutons lorsqu'on clique dessus
     def signaux_boutons(tableFrame)
         @boutons.each do |cle, val|
             if @@partie.grilleEnCours.matriceCases[cle[0]][cle[1]].is_a?(CaseJouable)
@@ -103,6 +139,9 @@ class FenetreGrilleCLM < FenetreGrille
         end
     end
 
+    ##
+    # actualiseChrono:
+    #   permet de gerer le chronometre en parallèle du jeu.
     def actualiseChrono
         Thread.new{
             while !@@partie.partieFinie?
@@ -112,6 +151,9 @@ class FenetreGrilleCLM < FenetreGrille
         } 
     end
 
+    ##
+    # getTempsPartie
+    #   permet de recuperer le temps de la partie seulement quand elle est terminé.
     def getTempsPartie
         if @@partie.partieFinie?
             return @temps
@@ -119,11 +161,3 @@ class FenetreGrilleCLM < FenetreGrille
     end
 
 end
-
-=begin
-if @@partie.grilleEnCours.matriceCases[i][j].is_a?(CaseNombre)
-    table.attach(Button.new(:label=> (@@partie.grilleEnCours.matriceCases[i][j].valeur).to_s), i, i+1, j, j+1)
-else
-    table.attach(Button.new(:label=> ""), i, i+1, j, j+1)
-end
-=end

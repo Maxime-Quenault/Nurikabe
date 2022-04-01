@@ -29,9 +29,9 @@ class Grille
 	@etoiles
 	@difficulte
 
-	FACILE = 0
-	MOYEN = 1
-	DIFFICILE = 2
+	FACILE ||= 0
+	MOYEN ||= 1
+	DIFFICILE ||= 2
 	#constructeur de test
 	def Grille.creer(num,h,l)
 		new(num,h,l)
