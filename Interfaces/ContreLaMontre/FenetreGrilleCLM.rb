@@ -5,6 +5,30 @@ load "./Partie/Partie.rb"
 load "./Interfaces/Fenetre.rb"
 load "Interfaces/FenetreGrille.rb"
 
+##
+# 	@author Lebouc Julian
+#
+#	Cette classe va permettre d'afficher la grille du mode de jeu puis de pouvoir y jouer.
+#
+#	Voici les methodes de la classe FenetreGrilleCLM :
+#
+#	- initialize : cette methode est le constructeur, elle recupere le fichier glade et initialise ses VI.
+#	- gestionSignaux : permet d'attribuer des actions à tous les objets de l'interface récupéré dans le constructeur.
+#   - construction : permet de constuire la grille courente
+#   - signaux_boutons : permet de gerer les signaux des bouton de la grille jouable
+#   - actualiseChrono : permet de gerer le chronometre en parallèle du jeu.
+#   - getTempsPartie : permet de recuperer le temps de la partie seulement quand elle est terminé.
+#   - 
+#
+#	Voici ses VI :
+#
+#	@fenetreClassement : represente le classement de la grille courente
+#   @affChrono : represente l'affichage du chronometre
+#   @builder : represente le fichier glade
+#   @object : represente l'interface courante
+#   @boutons : representes les boutons de la grille jouable
+#   @temps : represente le temps de resolution de la grille
+
 class FenetreGrilleCLM < FenetreGrille
     @fenetreClassement
     attr_accessor :object
@@ -129,7 +153,7 @@ class FenetreGrilleCLM < FenetreGrille
 
     ##
     # getTempsPartie
-    #   permet de recuêre le temps de la partie seulement quand elle est terminé.
+    #   permet de recuperer le temps de la partie seulement quand elle est terminé.
     def getTempsPartie
         if @@partie.partieFinie?
             return @temps

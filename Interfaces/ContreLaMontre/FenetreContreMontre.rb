@@ -12,6 +12,17 @@ load "Interfaces/ContreLaMontre/FenetreChoixGrilleCLM.rb"
 #	- initialize : cette methode est le constructeur, elle recupere le fichier glade et initialise ses VI.
 #	- gestionSignaux : permet d'attribuer des actions à tous les objets de l'interface récupéré dans le constructeur.
 #   - getObjet : permet de recuperer l'interface courante
+#
+#	Voici ses VI :
+#
+#	@menuParent : represente l'interface de menu parent, elle devra être affiché si on clique sur le bouton retour
+#	@builder : represente le fichier glade
+#	@object : represente l'interface de l'objet courent
+#	@btn_facile : selectionne le niveau de difficulté FACILE
+#	@btn_moyen : selectionne le niveau de difficulté MOYEN	
+#	@btn_difficile : selectionne le niveau de difficulté DIFFICILE
+#	@btn_retour : permet de revenir au menu parent
+#	@interfaceChoixGrille : represente l'interface qui devra être appelé au besoin
 
 class FenetreContreMontre < Fenetre
 
