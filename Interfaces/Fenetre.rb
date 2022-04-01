@@ -208,9 +208,9 @@ class Fenetre
         end 
     end 
 
-     #
-    # Ajuste la taille des cases de la grille pour la faire rentrer dans la fenêtre dynamiquement
-    # #case_chiffre, #case_vide, #case_indice, #case_noir, #case_point 
+    ##
+    # ajustementCSS :
+    # Ajuste la couleur des cases de la grille pour correspondre aux paramètre du profil actuel
     def ajustementsCSS()
         classList = Array.new
         File.delete("Interfaces/style_temp.css") if File.exist?("Interfaces/style_temp.css")

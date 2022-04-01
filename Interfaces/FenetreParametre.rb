@@ -29,6 +29,13 @@ load "Interfaces/FenetreGrille.rb"
             - @btnRetour        ==> id du bouton retour de l'interface paramètre 
             - @btnProfil        ==> id du bouton profils dans l'interface paramètre
             - @switchTheme      ==> id du bouton switchTheme dans l'interface paramètre
+
+            - @red              ==> bouton ROUGE du changement d'interface
+            - @green            ==> bouton VERT du changement d'interface
+            - @black            ==> bouton NOIR du changement d'interface
+            - @purple           ==> bouton VIOLET du changement d'interface
+            - @pink             ==> bouton ROSE du changement d'interface
+            - @orange           ==> bouton ORANGE du changement d'interface
 =end
 
 class FenetreParametre < Fenetre
@@ -85,34 +92,31 @@ class FenetreParametre < Fenetre
 
         @switchTheme.signal_connect('notify::active') {onSwitchTheme_activated()}
 
+        # Gestion des évènements relatifs au changement de couleur de l'interface
+        # À chaque bouton est associée une couleur en hexa
+        # Il ne reste plus qu'à changer mettre à jour cette couleur dans le profil actuel
         @red.signal_connect('clicked') {
             @@profilActuel.parametre.couleur = "\#FF0341"
-            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
             onChange_parametre()
         }
         @purple.signal_connect('clicked') {
             @@profilActuel.parametre.couleur = "\#AFA2FF"
-            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
             onChange_parametre()
         }
         @green.signal_connect('clicked') {
             @@profilActuel.parametre.couleur = "\#92FF6E"
-            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
             onChange_parametre()
         }
         @black.signal_connect('clicked') {
             @@profilActuel.parametre.couleur = "\#000000"
-            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
             onChange_parametre()
         }
         @orange.signal_connect('clicked') {
             @@profilActuel.parametre.couleur = "\#FFAB46"
-            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
             onChange_parametre()
         }
         @pink.signal_connect('clicked') {
             @@profilActuel.parametre.couleur = "\#FE63FF"
-            puts "COULEUR INTERFACE : #{@@profilActuel.parametre.couleur}"
             onChange_parametre()
         }
 
