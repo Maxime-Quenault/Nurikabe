@@ -1,6 +1,9 @@
 load "Chrono/Chronometre.rb"
 
-# Chrono qui decompte son temps pour les modes de jeu Survie
+
+# La classe ChronometreSurvie :::
+#       - hérite de la classe chronomètre
+#       - décompte son pour le mode de jeu survie
 class ChronometreSurvie < Chronometre
 
     # Constante du temps de départ du Chronometre
