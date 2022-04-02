@@ -4,7 +4,7 @@ load 'Partie/Partie.rb'
 
 
 ##
-#   @author Quenault Maxime
+#   @author Quenault Maxime / Vannier Allan 
 #   
 #   Cette classe permet de creer une fenetre. Elle gere egalement les changements d'interface.
 #   seulement les classes filles peuvent creer la classe Fenetre, la methode new est privé.
@@ -18,6 +18,12 @@ load 'Partie/Partie.rb'
 #   - deleteChildren : permet de supprimer tous les objets fils de la fenetre sauf la headerbar.
 #   - remove : permet de supprimer un objet de la fenetre.
 #   - quitter : permet de quitter le programme "proprement".
+#   - creerPartie : Creer et affecte une partie à la variable de classe partie avec la grille passée en paramètre
+#   - getNumGrille : permet d'obtenir le numero de la grille courante
+#   - setNumGrille : permet d'affecter un numero de grille courante
+#   - setStyle : Prend en paramètre un profil et change le style de la fenêtre en fonction du thème choisi par l'utilisateur
+#   - ajustementsCSS : permet d'ajuster la taille des cases de la grille pour la faire rentrer dans la fenêtre dynamiquement
+#   -
 #
 #   Voici ses VI : 
 #
@@ -30,6 +36,7 @@ load 'Partie/Partie.rb'
 #   @@window        : elle represente notre fenetre, elle est initialisé qu'une seul fois.
 #   @@partie        : représentre la partie courante
 #   @@profilActuel  : contient le profil actuel sélectionné par le joueur
+#   @@numGrille     : represente le numero de la grille actuellement en jeu
 
 
 $LARGEUR_FENETRE = 745
@@ -42,7 +49,7 @@ class Fenetre
     @@profilActuel = nil
     @@numGrille = nil
 
-    #private_method new
+    private_class_method new
 
     ##
     # changerInterface :
@@ -206,8 +213,9 @@ class Fenetre
         end 
     end 
 
-     #
-    # Ajuste la taille des cases de la grille pour la faire rentrer dans la fenêtre dynamiquement
+    ##
+    # ajustementsCSS:
+    #   Ajuste la taille des cases de la grille pour la faire rentrer dans la fenêtre dynamiquement
     # #case_chiffre, #case_vide, #case_indice, #case_noir, #case_point 
     def ajustementsCSS()
         classList = Array.new

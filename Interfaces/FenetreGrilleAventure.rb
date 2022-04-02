@@ -22,6 +22,15 @@ load "./Interfaces/Fenetre.rb"
     Les VC de la classe sont :::
         - @@partie  ==> partie en cours
 
+    Voici ses méthodes :::
+        - gestionSignaux : Récupère les boutons et créer tout les signaux correspondants 
+        - affiche_victoire : Affiche une popup de victoire
+        - construction : Construit la grille de boutons correpondants aux cases de la grille
+        - afficheGrille : Créer un affichage de la grille pour la librarie de grille
+        - signaux_boutons : Changes la couleur des boutons lorsqu'on clique dessus
+        - griserBoutons : permet de griser un bouton si il est inutilisable
+        - maj_boutons (version sans parametre): permet de changer l'etat du bouton courant
+        - maj_boutons (version avec parametre) : recupere les coordoné du bouton et change sont etat dans la table des boutons
 
 =end
 
@@ -43,7 +52,8 @@ class FenetreGrilleAventure < Fenetre
     end
 
     ##
-    # Récupère les boutons et créer tout les signaux correspondants
+    # gestionSignaux:
+    #   Récupère les boutons et créer tout les signaux correspondants
     def gestionSignaux
 
         #Recuperation de la fenetre
@@ -105,29 +115,32 @@ class FenetreGrilleAventure < Fenetre
 
     end
 
-   # Affiche une popup de victoire
-   def affiche_victoire
-    dialog = Gtk::Dialog.new
-    dialog.title = "Victoire"
-    dialog.set_default_size(300, 100)
-    dialog.child.add(Gtk::Label.new("Bravo, vous avez résolu le puzzle !"))
-    dialog.add_button(Gtk::Stock::CLOSE, Gtk::ResponseType::CLOSE)
-    dialog.set_default_response(Gtk::ResponseType::CANCEL)
+    ##
+    # affiche_victoire:
+    #    Affiche une popup de victoire
+    def affiche_victoire
+        dialog = Gtk::Dialog.new
+        dialog.title = "Victoire"
+        dialog.set_default_size(300, 100)
+        dialog.child.add(Gtk::Label.new("Bravo, vous avez résolu le puzzle !"))
+        dialog.add_button(Gtk::Stock::CLOSE, Gtk::ResponseType::CLOSE)
+        dialog.set_default_response(Gtk::ResponseType::CANCEL)
 
-    dialog.signal_connect("response") do |widget, response|
-        case response
-        when Gtk::ResponseType::CANCEL
-        p "Cancel"
-        when Gtk::ResponseType::CLOSE
-        p "Close"
-        dialog.destroy
+        dialog.signal_connect("response") do |widget, response|
+            case response
+            when Gtk::ResponseType::CANCEL
+            p "Cancel"
+            when Gtk::ResponseType::CLOSE
+            p "Close"
+            dialog.destroy
+            end
         end
+        dialog.show_all
     end
-    dialog.show_all
-end
 
     ##
-    # Construit la grille de boutons correpondants aux cases de la grille
+    # construction:
+    #   Construit la grille de boutons correpondants aux cases de la grille
     def construction
         taille_hauteur = @@partie.grilleEnCours.hauteur
         taille_largeur = @@partie.grilleEnCours.largeur
@@ -166,7 +179,13 @@ end
         tableFrame.show_all
     end
 
-	# Créer un affichage de la grille pour la librarie de grille
+	##
+    # afficheGrille:
+	#   Créer un affichage de la grille pour la librarie de grille
+    #
+    # @param hauteur represente la hauteur de la grille
+    # @param largeur represente la largeur de la grille
+    # @param grille represente la grille a afficher
     def afficheGrille(hauteur, largeur, grille)
         taille_hauteur = hauteur
         taille_largeur = largeur
@@ -206,7 +225,11 @@ end
         return tableFrame
     end
 
-    # Changes la couleur des boutons lorsqu'on clique dessus
+    ##
+    # signaux_boutons:
+    #   Changes la couleur des boutons lorsqu'on clique dessus
+    #
+    # @param tableFrame represente la table qui contient tous les boutons du jeu
     def signaux_boutons(tableFrame)
         @boutons.each do |cle, val|
             if @@partie.grilleEnCours.matriceCases[cle[0]][cle[1]].is_a?(CaseJouable)
@@ -229,6 +252,9 @@ end
         end
     end
 
+    ##
+    # griserBouton:
+    #   permet de griser un bouton si il est inutilisable
     def griserBoutons
         btn_undo = @builder.get_object('btn_undo')
         btn_redo = @builder.get_object('btn_redo')
@@ -247,6 +273,9 @@ end
         end
     end
 
+    ##
+    # maj_bouton:
+    #   permet de changer l'etat du bouton une fois cliqué, pour cela elle fait appel à une seconde methodes
     def maj_boutons
         @boutons.each do |cle, val|
             if @@partie.grilleEnCours.matriceCases[cle[0]][cle[1]].is_a?(CaseJouable)
@@ -255,7 +284,12 @@ end
         end
     end
 
-    #Change la couleur d'un bouton aux coordonnées passées en paramètres en fonction de l'état de la case correspondante
+    ##
+    # maj_bouton:
+    #   Change la couleur d'un bouton aux coordonnées passées en paramètres en fonction de l'état de la case correspondante
+    #
+    # @param i represente la coordoné x du bouton
+    # @param i represente la coordoné y du bouton
     def maj_bouton(i,j)
         if(@@partie.grilleEnCours.matriceCases[i][j].etat==0)
             @boutons[[i,j]].name = "case_vide"
@@ -270,11 +304,3 @@ end
     end
 
 end
-
-=begin
-if @@partie.grilleEnCours.matriceCases[i][j].is_a?(CaseNombre)
-    table.attach(Button.new(:label=> (@@partie.grilleEnCours.matriceCases[i][j].valeur).to_s), i, i+1, j, j+1)
-else
-    table.attach(Button.new(:label=> ""), i, i+1, j, j+1)
-end
-=end

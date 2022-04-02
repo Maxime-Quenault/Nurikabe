@@ -72,7 +72,8 @@ class FenetreParametre < Fenetre
     end
 
     ##
-    # Méthode qui gère les évènements liés aux signaux attribués aux différents composants du fichier glade
+	# gestionSignaux :
+	#	Cette methode permet d'assigner des actions à chaques boutons récupérés dans le fichier galde.
     def gestionSignaux
 
         @btnProfil.signal_connect( "clicked" ) { 
@@ -120,7 +121,8 @@ class FenetreParametre < Fenetre
     end
 
     ##
-    # Méthode qui va changer la valeur du booleen themeSombre
+    # onSwitchTheme_activated:
+    #   Méthode qui va changer la valeur du booleen themeSombre
     def onSwitchTheme_activated()
         @@profilActuel.parametre.themeSombre = @switchTheme.active? ? true : false
         onChange_parametre()
@@ -128,7 +130,8 @@ class FenetreParametre < Fenetre
     end
 
     ##
-    # Change la valeur du switch Theme dans l'interface
+    # onChange_switchTheme:
+    #   Change la valeur du switch Theme dans l'interface
     def onChange_switchTheme()
         if (@@profilActuel.parametre.themeSombre == false)
             @switchTheme.set_active(false)
@@ -138,7 +141,8 @@ class FenetreParametre < Fenetre
     end
 
     ##
-    # Méthode qui va mettre à jour les paramaètres en écrasant les anciennes données par les nouvelles
+    # onChange_parametre:
+    #   Méthode qui va mettre à jour les paramaètres en écrasant les anciennes données par les nouvelles
     def onChange_parametre()
         ajustementsCSS()
         @save.supprimerProfil(@@profilActuel)

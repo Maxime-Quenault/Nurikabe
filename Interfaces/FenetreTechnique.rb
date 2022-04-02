@@ -14,6 +14,8 @@ load "Interfaces/Fenetre.rb"
         - @btnRetour    ==> contient l'identifiant du bouton retour
         - @menuParent   ==> contient le fenêtre parente de la fenêtre courante
 
+    Voici ses méthode : 
+        - gestionSignaux : permet d'attribuer des actions à tous les objets de l'interface récupéré dans le constructeur.
 =end
 
 class FenetreTechnique < Fenetre
@@ -33,6 +35,9 @@ class FenetreTechnique < Fenetre
         self.gestionSignaux
     end
 
+    ##
+	# gestionSignaux :
+	#	Cette methode permet d'assigner des actions à chaques boutons récupérés dans le fichier galde.
     def gestionSignaux()
         @btnRetour.signal_connect( "clicked" ) {
             self.changerInterface(@menuParent, "Menu")

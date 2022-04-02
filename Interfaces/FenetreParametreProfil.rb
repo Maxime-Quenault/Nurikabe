@@ -3,6 +3,30 @@ load "Interfaces/Fenetre.rb"
 load "Interfaces/FenetreChoixAvatar.rb"
 load "Sauvegarde/SauvegardeProfil.rb"
 
+##
+#   Cette classe permet de gerer l'interface des parametre dans l'onglet "profil"
+#
+#   Voici ses méthodes :
+#
+#   - gestionSignaux : permet d'attribuer des actions à tous les objets de l'interface récupéré dans le constructeur. 
+#
+#   Voici ses VI : 
+#
+#   - @save : permet de stocker une sauvegarde qui contient la liste des profils
+#   - @builderProfil : represente l'objet contenant l'interface
+#   - @interfaceAvatar : represente l'interface à afficher pour le choix d'avatar
+#   - @object : represente l'interface à afficher
+#   - @objectImage : represente l'avatar du profil actuel
+#   - @objectPseudo : represente le label contenant le pseudo de l'utilisateur
+#   - @btn_changer_image : bouton de l'interface
+#   - @btnProfil : bouton de l'interface
+#   - @btnParametreJeu : bouton de l'interface
+#   - @btnRetour : bouton de l'interface
+#   - @btnChangerProfils : bouton de l'interface
+#   - @menuParametreJeu : represente l'interface qui devra être afficher lors d'un clique sur le bouton "@btnParametreJeu"
+#   - @menuParent : represente l'interface paretn qui devra être afficher lors d'un clique sur le bouton retour de l'interface
+
+
 class FenetreParametreProfil < Fenetre
 
     attr_accessor :object, :save
@@ -44,6 +68,9 @@ class FenetreParametreProfil < Fenetre
         @menuParent = menuParent
     end
 
+    ##
+	# gestionSignaux :
+	#	Cette methode permet d'assigner des actions à chaques boutons récupérés dans le fichier galde.
     def gestionSignaux
         @btnChangerProfils.signal_connect( "clicked" ) {
             @interfaceProfil = FenetreProfil.new

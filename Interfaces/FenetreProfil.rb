@@ -14,7 +14,7 @@ load "Sauvegarde/Profil.rb"
 #   Voici ses méthodes :
 #
 #   - initialize : est le constructeur de la classe, il va recuperer la listes des profils sauvegarder et initiliser une fenetre
-#   - setmargin : ??? (léo je te laisse ecrire)
+#   - setmargin : permet de gerer le placement de la popUp à l'ecran
 #   - afficheToi : permet d'afficher la fenetre avec tous les profils de la sauvegarde, gère egalement la suppresion et la création
 #   de nouveau profils.
 #   - event : permet de supprimer l'affichage de la fenetre profil quand on a selectionner/créé un profil
@@ -45,8 +45,7 @@ class FenetreProfil
 
     ##
     # setMargin :
-    #   ???
-    #
+    #   permet de gerer le placement de la popUp à l'ecran
     def setmargin(obj, top, bottom, left, right)
         obj.set_margin_top(top)
         obj.set_margin_bottom(bottom)

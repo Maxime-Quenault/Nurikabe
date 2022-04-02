@@ -1,5 +1,5 @@
 # Nurikabe
-Projet de création du jeu Puzzle Nurikabe réalisé en groupe. Licence Informatique 3eme année.
+Projet de création du jeu Puzzle Nurikabe dans le cadre du module Genie Logiciel 2, réalisé en groupe. Licence Informatique 3eme année.
 
 ## Contributeurs:
 - LEBOUC Julian

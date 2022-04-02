@@ -1,6 +1,25 @@
 require 'gtk3'
 include Gtk
 
+##
+#   @author Trottier Leo
+#
+#   Cette classe permet de gerer l'affichage de la popUp du choix d'avatar.
+#
+#   Voici ses méthodes :  
+#
+#   - setmargin : permet de gerer le placement de la popUp à l'ecran
+#   - afficheToi : cette methode epremt d'afficher la popUp du choix d'avatar.
+#   - event : Cette méthode permet de cacher la fenetre lorsque l'utilisateur a choisi/créé un profil
+#   - destruction : Cette méthode permet de supprimer la fenetre si l'utilisateur la ferme. Elle met donc le boolean "@quit" à jour.
+#
+#   Voici ses VI :
+#
+#   - @quit : permet de definir si oui ou non la popUp doit être afficher, elle est lu par la classe qui fait appel à l'affichage de la popUp
+#   - @popUpAvatar : represente la fenetre qui sera affiché
+#   - @choixAvatar : represente l'image choisi par l'utilisateur, cette VI sera recuperer par la classe qui fait appel à l'affichage de la popUp
+
+
 class FenetreChoixAvatar
 
     attr_accessor :choixAvatar, :quit
@@ -13,7 +32,7 @@ class FenetreChoixAvatar
 
     ##
     # setMargin :
-    #   ???
+    #   permet de gerer le placement de la popUp à l'ecran
     #
     def setmargin(obj, top, bottom, left, right)
         obj.set_margin_top(top)
@@ -23,6 +42,10 @@ class FenetreChoixAvatar
         return obj
     end
 
+    ##
+    # afficheToi:
+    #   cette methode epremt d'afficher la popUp du choix d'avatar.
+    #   
     def afficheToi
         @popUpAvatar = Window.new()
         @popUpAvatar.set_title("Modifier avatar")

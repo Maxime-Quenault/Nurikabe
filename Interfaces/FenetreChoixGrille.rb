@@ -6,7 +6,25 @@ load "./Interfaces/FenetreGrille.rb"
 load "./Grille/LectureGrille.rb"
 
 ##
-# Affiches les différentes grilles parmis lesquelles l'utilisateur peut choisir
+#   Affiches les différentes grilles parmis lesquelles l'utilisateur peut choisir
+#
+#
+#   Voici ses méthodes : 
+#
+#   - gestionSignaux : permet d'affecter un role a chaque objet de l'interface
+#   - afficheGrille : permet d'afficher la grille à l'ecran
+#   - initGrilles : permet d'initialiser la liste de grille qui devra être affichée
+#   - construction : permet de construire la grille qui sera cliqué
+#
+#   Voici ses VI :
+#
+#   - @difficulte : represente la difficulté choisi par le joueur
+#   - @builder : represente le fichier glade
+#   - @object : represente l'interface courante
+#   - @boutons : representes les boutons de la grille jouable
+#   - @menuParent : represetne l'interface parent qui sera afficher si le joueur clique sur retour
+#   - @interfaceGrille : represetne l'interface grille
+#   - @btn_retour : represente le bouton retour
 class FenetreChoixGrille < Fenetre
 
     attr_accessor :object
@@ -26,6 +44,9 @@ class FenetreChoixGrille < Fenetre
         self.gestionSignaux
     end
 
+    ##
+    # gestionSignaux:
+    #   permet de gerer les signaux des objets du buildeur
     def gestionSignaux
         
         # Recuperation de la fenetre
@@ -42,6 +63,11 @@ class FenetreChoixGrille < Fenetre
 
     end
 
+    ##
+    # afficheGrille:
+    #   permet d'afficher une grille
+    #
+    # @param id represente l'identifiant de la grille à afficher
 	def afficheGrille(id)
 
         @grid_grilles = @builder.get_object('grid_grilles')
@@ -82,7 +108,11 @@ class FenetreChoixGrille < Fenetre
 
     end
 
-	# Initialise la liste de grilles à afficher dans la librairie
+    ##
+    # initGrilles:
+	#   Initialise la liste de grilles à afficher dans la librairie
+    #
+    # @param uneDifficulte represetne le niveau de difficulté choisi pour afficher les bonnes grilles
     def initGrilles(uneDifficulte)
 
         @pos_v = 0
@@ -98,7 +128,11 @@ class FenetreChoixGrille < Fenetre
 
     end
 
-    #Créer une table de boutons correspondants aux cases de la grille
+    ##
+    # construction:
+    #   Créer une table de boutons correspondants aux cases de la grille
+    #
+    # @param num_grille represente le numero de la grille qui devra être construit pour plus tard être jouable
     def construction(num_grille)
         if (unePartie = @@profilActuel.chercherPartie(num_grille, @difficulte)) == nil
             g=Grille.creer()

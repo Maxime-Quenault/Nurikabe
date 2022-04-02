@@ -14,6 +14,9 @@ load "Interfaces/Fenetre.rb"
         - @btnRetour    ==> contient l'identifiant du bouton retour
         - @menuParent   ==> contient le fenêtre parente de la fenêtre courante
 
+    Voici ses methodes :::
+        - gestionSignaux : permet de gerer les signaux des objets du buildeur
+
 =end
 
 class FenetreAPropos < Fenetre

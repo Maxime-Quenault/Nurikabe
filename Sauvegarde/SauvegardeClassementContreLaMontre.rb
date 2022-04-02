@@ -4,6 +4,22 @@ include Gtk
 load "Sauvegarde/Score.rb"
 load "Sauvegarde/SauvegardeProfil.rb"
 
+##
+#   @author Trottier Leo / Quenault Maxime
+#
+#   Cette classe permet de sauvegarder les 10 meilleurs temps d'une grille du mode de jeu "Contre la Montre".
+#
+#   Voici ses methodes :
+#
+#   - ajoutScore : permet d'ajouter dynamiquement un score dans le tableau des scores en conservant le top 10
+#   - getNbScoreOccupe : permet d'obtenir le nombre de score déjà enregistré
+#
+#   Voici ses VI :
+#
+#   - @numeroGrille : represente le numero de la grille à qui appartient le tableau des scores
+#   - @tabScore : represente le tableau des scores (fichier marchall)
+#   - @nbScoreOccupe : represente le nombre de scores déjà présent dans le tableau des scores
+
 class SauvegardeClassementContreLaMontre
 
     attr_accessor :tabScore, :nbScoreOccupe
@@ -21,10 +37,12 @@ class SauvegardeClassementContreLaMontre
         end
     end
 
-        #
-    # ici quand j'ajoute un score je trie le tableau des scores en même temps
-    # ce qui permet de toujours garder un tableau de score de 10 de longueur et des scores toujours triés
+    ##
+    # ajoutScore:
+    #   ici quand j'ajoute un score je trie le tableau des scores en même temps
+    #   ce qui permet de toujours garder un tableau de score de 10 de longueur et des scores toujours triés
     #
+    # @param unScore represente le score à ajouter au tableau des scores
     def ajoutScore(unScore)
         tabTampon = Array.new(10)
         i = 0
@@ -51,6 +69,9 @@ class SauvegardeClassementContreLaMontre
         File.open("Sauvegarde/SauvegardeScore/scoreContreLaMontre#{@numeroGrille}.dump", "wb") { |file| file.write(Marshal.dump(@tabScore)) }
     end
 
+    ##
+    # getNbScoreOccupe:
+    #   permet d'obtenir le nombre de score déjà enregistré
     def getNbScoreOccupe
         nombre = 0
         @tabScore.each do |key, value|

@@ -1,23 +1,45 @@
 load "Sauvegarde/Score.rb"
 load "Sauvegarde/SauvegardeProfil.rb"
 
+##
+#   @author Trottier Leo / Quenault Maxime
+#
+#   Cette classe permet de sauvegarder les 10 meilleurs temps d'une difficulte du mode de jeu "Survie".
+#
+#   Voici ses methodes :
+#
+#   - ajoutScore : permet d'ajouter dynamiquement un score dans le tableau des scores en conservant le top 10
+#   - getNbScoreOccupe : permet d'obtenir le nombre de score déjà enregistré
+#
+#   Voici ses VI :
+#
+#   - @difficulte : represente le numero de la grille à qui appartient le tableau des scores
+#   - @tabScore : represente le tableau des scores (fichier marchall)
+#   - @nbScoreOccupe : represente le nombre de scores déjà présent dans le tableau des scores
+
 class SauvegardeClassementSurvie
 
     attr_accessor :tabScore, :nbScoreOccupe
 
-    def initialize(numGrille)
-        @numeroGrille = numGrille
+    def initialize(difficulte)
+        @difficulte = difficulte
 
-        if(!File.exist?("Sauvegarde/SauvegardeScore/scoreSurvie#{@numeroGrille}.dump"))
+        if(!File.exist?("Sauvegarde/SauvegardeScore/scoreSurvie#{@difficulte}.dump"))
             @tabScore = Array.new(10)
             @nbScoreOccupe = 0; 
-            File.open("Sauvegarde/SauvegardeScore/scoreSurvie#{@numeroGrille}.dump", "wb") { |file| file.write(Marshal.dump(@tabScore)) }
+            File.open("Sauvegarde/SauvegardeScore/scoreSurvie#{@difficulte}.dump", "wb") { |file| file.write(Marshal.dump(@tabScore)) }
         else
-            @tabScore = Marshal.load(File.binread("Sauvegarde/SauvegardeScore/scoreSurvie#{@numeroGrille}.dump"))
+            @tabScore = Marshal.load(File.binread("Sauvegarde/SauvegardeScore/scoreSurvie#{@difficulte}.dump"))
             @nbScoreOccupe = self.getNbScoreOccupe
         end
     end
 
+    ##
+    # ajoutScore:
+    #   ici quand j'ajoute un score je trie le tableau des scores en même temps
+    #   ce qui permet de toujours garder un tableau de score de 10 de longueur et des scores toujours triés
+    #
+    # @param unScore represente le score à ajouter au tableau des scores
     def ajoutScore(unScore)
         i = 0
         flagAjoute = 0
@@ -39,10 +61,13 @@ class SauvegardeClassementSurvie
             @tabScore.insert(i, unScore)
         end
 
-        File.open("Sauvegarde/SauvegardeScore/scoreSurvie#{@numeroGrille}.dump", "wb") { |file| file.write(Marshal.dump(@tabScore)) }
+        File.open("Sauvegarde/SauvegardeScore/scoreSurvie#{@difficulte}.dump", "wb") { |file| file.write(Marshal.dump(@tabScore)) }
 
     end
 
+    ##
+    # getNbScoreOccupe:
+    #   permet d'obtenir le nombre de score déjà enregistré
     def getNbScoreOccupe
         nombre = 0
         @tabScore.each do |key, value|
