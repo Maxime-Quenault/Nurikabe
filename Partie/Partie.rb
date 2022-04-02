@@ -447,13 +447,13 @@ class Partie
       droiteNonJouable=true
     end
     
-    if(gaucheNonJouable && !droiteNonJouable && basNonJouable && !hautNonJouable && @grilleEnCours.matriceCases[i][j-1].etat==0)
+    if(gaucheNonJouable && !droiteNonJouable && basNonJouable && !hautNonJouable && @grilleEnCours.matriceCases[i+1][j-1].etat!=1)
       return [i+1,j-1]
-    elsif(gaucheNonJouable && !droiteNonJouable && !basNonJouable && hautNonJouable && @grilleEnCours.matriceCases[i][j+1].etat==0)
+    elsif(gaucheNonJouable && !droiteNonJouable && !basNonJouable && hautNonJouable && @grilleEnCours.matriceCases[i+1][j+1].etat!=1)
       return [i+1,j+1]
-    elsif(!gaucheNonJouable && droiteNonJouable && basNonJouable && !hautNonJouable && @grilleEnCours.matriceCases[i+1][j].etat==0) 
+    elsif(!gaucheNonJouable && droiteNonJouable && basNonJouable && !hautNonJouable && @grilleEnCours.matriceCases[i-1][j-1].etat!=1) 
       return [i-1,j-1]
-    elsif(!gaucheNonJouable && droiteNonJouable && !basNonJouable && hautNonJouable && @grilleEnCours.matriceCases[i-1][j].etat==0)
+    elsif(!gaucheNonJouable && droiteNonJouable && !basNonJouable && hautNonJouable && @grilleEnCours.matriceCases[i-1][j+1].etat!=1)
       return [i-1,j+1]
     else
       return nil
