@@ -32,7 +32,7 @@
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">- Ilot de 1 : 
 Une case nombre "1" doit obligatoirement
-être entouré de 4 cases océan.
+être entourée de 4 cases océan.
 </property>
             <property name="justify">center</property>
           </object>
@@ -69,8 +69,8 @@ Une case nombre "1" doit obligatoirement
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">- Case jouable isolé : 
-Une case jouable isolé doit obligatoirement
+            <property name="label" translatable="yes">- Case jouable isolée : 
+Une case jouable isolée doit obligatoirement
 devenir une case océan.
 </property>
             <property name="justify">center</property>
@@ -109,9 +109,9 @@ devenir une case océan.
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">- Case nombre cote à cote (diagonale) :
-Deux cases nombre cote à cote en diagonale
-doivent être séparé par deux cases océan.
+            <property name="label" translatable="yes">- Case nombre côte à côte (diagonale) :
+Deux cases nombre côte à côte en diagonale
+doivent être séparées par deux cases océan.
 </property>
             <property name="justify">center</property>
           </object>
@@ -149,9 +149,9 @@ doivent être séparé par deux cases océan.
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">- Case nombre cote à cote (ligne droite) : 
-Deux cases nombre cote à cote en ligne droite
-doivent être séparé par une case océan.
+            <property name="label" translatable="yes">- Case nombre côte à côte (ligne droite) : 
+Deux cases nombre côte à côte en ligne droite
+doivent être séparées par une case océan.
 </property>
             <property name="justify">center</property>
           </object>
@@ -189,9 +189,9 @@ doivent être séparé par une case océan.
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">- Expenssion de océan : 
+            <property name="label" translatable="yes">- Expansion de océan : 
 Il est interdit d'avoir deux océans, pour cela
-il faut obligatoirement etendre au besoin
+il faut obligatoirement étendre au besoin
 un océan.
 </property>
             <property name="justify">center</property>
@@ -229,8 +229,8 @@ un océan.
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">- Expenssion de l'îles : 
-Une case jouable unique a coté d'une case
+            <property name="label" translatable="yes">- Expansion de l'île : 
+Une case jouable unique à coté d'une case
 nombre  sera obligatoirement une case île.
 </property>
             <property name="justify">center</property>
