@@ -1,1 +1,1 @@
-#case_chiffre, #case_vide, #case_indice, #case_noir, #case_point{ font-size: 62.0px; min-width: 66.0px; min-height: 62.0px; }
+#case_noir { background: #FF0341; } #case_point, #case_chiffre { color : #FF0341; }

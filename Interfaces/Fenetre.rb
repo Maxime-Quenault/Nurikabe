@@ -49,8 +49,6 @@ class Fenetre
     @@profilActuel = nil
     @@numGrille = nil
 
-    private_class_method new
-
     ##
     # changerInterface :
     #   Cette classe gère le changement d'interface, pour cela elle commence par supprimer
