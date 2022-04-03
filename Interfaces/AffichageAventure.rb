@@ -117,10 +117,12 @@ class AffichageAventure < Fenetre
 
     # Déclaration du bouton de retour situé dans le coin supérieur gauche de la fenetre
     @retour = monBuildeur.get_object('btn_retour')
+    @retour.name = "retour_fleche"
 
     # Déclaration des boutons de déplacement de la barre située en bas de fenêtre
     @bouton = Array.new()
     @bouton[0] = monBuildeur.get_object('btn_grille_1')
+    @bouton[0].name = "active_aventure"
     @bouton[1] = monBuildeur.get_object('btn_grille_2')
     @bouton[2] = monBuildeur.get_object('btn_grille_3')
     @bouton[3] = monBuildeur.get_object('btn_grille_4')
@@ -133,11 +135,15 @@ class AffichageAventure < Fenetre
 
     # Déclaration des boutons de changement de difficulté situés en haut de la fenêtre
     @modeFacile = monBuildeur.get_object('btn_facile')
+    @modeFacile.name = "active_aventure"
+    @modeFacile.set_sensitive(false)
     @modeNormal = monBuildeur.get_object('btn_normal')
     @modeHard = monBuildeur.get_object('btn_difficile')
 
     # Déclaration des boutons de déplacement Suivant et Précédent situés sur les côtés de la fenêtre
     @btnPreced = monBuildeur.get_object('btn_grille_preced')
+    @btnPreced.set_sensitive(false)
+    @btnPreced.name = "btn_disabled"
     @btnSuivant = monBuildeur.get_object('btn_grille_suiv')
 
     # Déclaration de l'image centrale de la fenêtre
@@ -420,15 +426,43 @@ class AffichageAventure < Fenetre
     # On associe le bouton Précédent avec la méthode grillePrecedente de la classe Aventure
     @btnPreced.signal_connect('clicked'){
       self.boutonPreced()
+      if(@aventure.getPosCourante < 10)
+        @bouton[@aventure.getPosCourante + 1].name = "btn_pagination"
+      end
+      
+      @bouton[@aventure.getPosCourante].name = "active_aventure"
+
+      @btnSuivant.set_sensitive(true)
+      @btnSuivant.name = ""
+
+      if(@aventure.getPosCourante == 0)
+        @btnPreced.set_sensitive(false)
+        @btnPreced.name = "btn_disabled"
+      end
     }
 
     # On associe le bouton Suivant avec la méthode prochaineGrille de la classe Aventure
     @btnSuivant.signal_connect('clicked'){
       self.boutonSuiv()
+      if(@aventure.getPosCourante > 0)
+        @bouton[@aventure.getPosCourante - 1].name = "btn_pagination"
+      end
+      
+      @bouton[@aventure.getPosCourante].name = "active_aventure"
+
+      @btnPreced.set_sensitive(true)
+      @btnPreced.name = ""
+
+      if(@aventure.getPosCourante == 9)
+        @btnSuivant.set_sensitive(false)
+        @btnSuivant.name = "btn_disabled"
+      end
     }
 
     # On associe le bouton facile avec la méthode de choix de difficulté de la classe Aventure
     @modeFacile.signal_connect('clicked'){
+      @modeFacile.name = "active_aventure"
+      @modeFacile.set_sensitive(false)
       self.deplacementAventure(0)
       @aventure.placerSurGrille(0)
       self.affichageEtoile(@aventure.getEtoileCourante())
@@ -493,35 +527,84 @@ class AffichageAventure < Fenetre
 
     @bouton[0].signal_connect('clicked'){
       self.setEffetBouton(0)
+      enleverActive()
+      btnNonDisabled()
+      @btnPreced.set_sensitive(false)
+      @btnPreced.name = "btn_disabled"
+      @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[1].signal_connect('clicked'){
       self.setEffetBouton(1)
+      enleverActive()
+      btnNonDisabled()
+      @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[2].signal_connect('clicked'){
       self.setEffetBouton(2)
+      enleverActive()
+      btnNonDisabled()
+      @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[3].signal_connect('clicked'){
       self.setEffetBouton(3)
+      enleverActive()
+      btnNonDisabled()
+      @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[4].signal_connect('clicked'){
       self.setEffetBouton(4)
+      enleverActive()
+      btnNonDisabled()
+      @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[5].signal_connect('clicked'){
       self.setEffetBouton(5)
+      enleverActive()
+      btnNonDisabled()
+      @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[6].signal_connect('clicked'){
       self.setEffetBouton(6)
+      enleverActive()
+      btnNonDisabled()
+      @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[7].signal_connect('clicked'){
       self.setEffetBouton(7)
+      enleverActive()
+      btnNonDisabled()
+      @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[8].signal_connect('clicked'){
       self.setEffetBouton(8)
+      enleverActive()
+      btnNonDisabled()
+      @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[9].signal_connect('clicked'){
       self.setEffetBouton(9)
+      enleverActive()
+      btnNonDisabled()
+      @btnSuivant.set_sensitive(false)
+      @btnSuivant.name = "btn_disabled"
+      @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
 
+  end
+
+  def enleverActive
+    i = 0
+    while i < 10
+      @bouton[i].name = "btn_pagination"
+      i += 1
+    end
+  end
+
+  def btnNonDisabled
+    @btnPreced.set_sensitive(true)
+    @btnPreced.name = ""
+    @btnSuivant.set_sensitive(true)
+    @btnSuivant.name = ""
   end
 
 end
