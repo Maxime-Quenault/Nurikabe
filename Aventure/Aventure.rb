@@ -91,6 +91,18 @@ class Aventure
 
   end
 
+  def getNbEtoiles
+    return @@nbEtoiles.to_s
+  end
+
+  def getPalierNormal
+    return PALIER_NORMAL.to_s
+  end
+
+  def getPalierHard
+    return PALIER_HARD.to_s
+  end
+
   # Lien entre les différentes aventures
   # Méthode d'accès en ecriture qui édite le lien de cette aventure avec la précédente(si il y en a)
   def setPrecedent(aventurePreced)
