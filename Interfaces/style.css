@@ -210,13 +210,17 @@ headerbar {
     transition: 0.1s ease-in-out;  
 }
 
-#btn_pagination {
+#btnBorder {
     border: 2px solid @main_color;
 }
 
 #boxEtoiles {
     margin-top: 8px;
     margin-right: 8px;
+}
+
+#nbEtoiles {
+    color: black;
 }
 
 /******************/

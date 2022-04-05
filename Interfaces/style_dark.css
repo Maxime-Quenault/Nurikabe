@@ -186,8 +186,28 @@ headerbar {
     border-radius: 0;  
 }
 
-#bouton_aventure_active  {
-    background: red;
+#active_aventure  {
+    background: white;
+    color: black;
+    border: 2px solid blue;
+}
+
+#btn_disabled {
+    background: @main_color_grey;
+    transition: 0.1s ease-in-out;  
+}
+
+#btnBorder {
+    border: 2px solid @main_color;
+}
+
+#boxEtoiles {
+    margin-top: 8px;
+    margin-right: 8px;
+}
+
+#nbEtoiles {
+    color: white;
 }
 
 /******************/
