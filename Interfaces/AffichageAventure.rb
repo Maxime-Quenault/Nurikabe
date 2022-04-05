@@ -124,21 +124,31 @@ class AffichageAventure < Fenetre
     @bouton[0] = monBuildeur.get_object('btn_grille_1')
     @bouton[0].name = "active_aventure"
     @bouton[1] = monBuildeur.get_object('btn_grille_2')
+    @bouton[1].name = "btnBorder"
     @bouton[2] = monBuildeur.get_object('btn_grille_3')
+    @bouton[2].name = "btnBorder"
     @bouton[3] = monBuildeur.get_object('btn_grille_4')
+    @bouton[3].name = "btnBorder"
     @bouton[4] = monBuildeur.get_object('btn_grille_5')
+    @bouton[4].name = "btnBorder"
     @bouton[5] = monBuildeur.get_object('btn_grille_6')
+    @bouton[5].name = "btnBorder"
     @bouton[6] = monBuildeur.get_object('btn_grille_7')
+    @bouton[6].name = "btnBorder"
     @bouton[7] = monBuildeur.get_object('btn_grille_8')
+    @bouton[7].name = "btnBorder"
     @bouton[8] = monBuildeur.get_object('btn_grille_9')
+    @bouton[8].name = "btnBorder"
     @bouton[9] = monBuildeur.get_object('btn_grille_10')
+    @bouton[9].name = "btnBorder"
 
     # Déclaration des boutons de changement de difficulté situés en haut de la fenêtre
     @modeFacile = monBuildeur.get_object('btn_facile')
     @modeFacile.name = "active_aventure"
-    @modeFacile.set_sensitive(false)
     @modeNormal = monBuildeur.get_object('btn_normal')
+    @modeNormal.name = "btnBorder"
     @modeHard = monBuildeur.get_object('btn_difficile')
+    @modeHard.name = "btnBorder"
 
     # Déclaration des boutons de déplacement Suivant et Précédent situés sur les côtés de la fenêtre
     @btnPreced = monBuildeur.get_object('btn_grille_preced')
@@ -159,6 +169,15 @@ class AffichageAventure < Fenetre
     @imgEtoile[2] = monBuildeur.get_object('etoile_3')
     @imgEtoile[3] = monBuildeur.get_object('etoile_4')
     @imgEtoile[4] = monBuildeur.get_object('etoile_5')
+
+    @nbEtoilesTotal = monBuildeur.get_object('nbEtoilesTotal')
+    @nbEtoilesTotal.set_text(@aventure.getNbEtoiles)
+
+    @nbEtoilesNormal = monBuildeur.get_object('nbEtoilesNormal')
+    @nbEtoilesNormal.set_text(@aventure.getPalierNormal)
+
+    @nbEtoilesDifficile = monBuildeur.get_object('nbEtoilesDifficile')
+    @nbEtoilesDifficile.set_text(@aventure.getPalierHard)
 
     # on sauvegarde le menu parent via une variable d'instance
     @menuParent = menuParent
@@ -306,35 +325,35 @@ class AffichageAventure < Fenetre
       @imgEtoile[3].set_from_file("Image/etoile_sombre.png")
       @imgEtoile[4].set_from_file("Image/etoile_sombre.png")
     when 1
-      @imgEtoile[0].set_from_file("Image/etoile2.png")
+      @imgEtoile[0].set_from_file("Image/star.png")
       @imgEtoile[1].set_from_file("Image/etoile_sombre.png")
       @imgEtoile[2].set_from_file("Image/etoile_sombre.png")
       @imgEtoile[3].set_from_file("Image/etoile_sombre.png")
       @imgEtoile[4].set_from_file("Image/etoile_sombre.png")
     when 2
-      @imgEtoile[0].set_from_file("Image/etoile2.png")
-      @imgEtoile[1].set_from_file("Image/etoile2.png")
+      @imgEtoile[0].set_from_file("Image/star.png")
+      @imgEtoile[1].set_from_file("Image/star.png")
       @imgEtoile[2].set_from_file("Image/etoile_sombre.png")
       @imgEtoile[3].set_from_file("Image/etoile_sombre.png")
       @imgEtoile[4].set_from_file("Image/etoile_sombre.png")
     when 3
-      @imgEtoile[0].set_from_file("Image/etoile2.png")
-      @imgEtoile[1].set_from_file("Image/etoile2.png")
-      @imgEtoile[2].set_from_file("Image/etoile2.png")
+      @imgEtoile[0].set_from_file("Image/star.png")
+      @imgEtoile[1].set_from_file("Image/star.png")
+      @imgEtoile[2].set_from_file("Image/star.png")
       @imgEtoile[3].set_from_file("Image/etoile_sombre.png")
       @imgEtoile[4].set_from_file("Image/etoile_sombre.png")
     when 4
-      @imgEtoile[0].set_from_file("Image/etoile2.png")
-      @imgEtoile[1].set_from_file("Image/etoile2.png")
-      @imgEtoile[2].set_from_file("Image/etoile2.png")
-      @imgEtoile[3].set_from_file("Image/etoile2.png")
+      @imgEtoile[0].set_from_file("Image/star.png")
+      @imgEtoile[1].set_from_file("Image/star.png")
+      @imgEtoile[2].set_from_file("Image/star.png")
+      @imgEtoile[3].set_from_file("Image/star.png")
       @imgEtoile[4].set_from_file("Image/etoile_sombre.png")
     when 5
-      @imgEtoile[0].set_from_file("Image/etoile2.png")
-      @imgEtoile[1].set_from_file("Image/etoile2.png")
-      @imgEtoile[2].set_from_file("Image/etoile2.png")
-      @imgEtoile[3].set_from_file("Image/etoile2.png")
-      @imgEtoile[4].set_from_file("Image/etoile2.png")
+      @imgEtoile[0].set_from_file("Image/star.png")
+      @imgEtoile[1].set_from_file("Image/star.png")
+      @imgEtoile[2].set_from_file("Image/star.png")
+      @imgEtoile[3].set_from_file("Image/star.png")
+      @imgEtoile[4].set_from_file("Image/star.png")
     end
 
   end
@@ -427,7 +446,7 @@ class AffichageAventure < Fenetre
     @btnPreced.signal_connect('clicked'){
       self.boutonPreced()
       if(@aventure.getPosCourante < 10)
-        @bouton[@aventure.getPosCourante + 1].name = "btn_pagination"
+        @bouton[@aventure.getPosCourante + 1].name = "btnBorder"
       end
       
       @bouton[@aventure.getPosCourante].name = "active_aventure"
@@ -445,7 +464,7 @@ class AffichageAventure < Fenetre
     @btnSuivant.signal_connect('clicked'){
       self.boutonSuiv()
       if(@aventure.getPosCourante > 0)
-        @bouton[@aventure.getPosCourante - 1].name = "btn_pagination"
+        @bouton[@aventure.getPosCourante - 1].name = "btnBorder"
       end
       
       @bouton[@aventure.getPosCourante].name = "active_aventure"
@@ -461,13 +480,20 @@ class AffichageAventure < Fenetre
 
     # On associe le bouton facile avec la méthode de choix de difficulté de la classe Aventure
     @modeFacile.signal_connect('clicked'){
+      self.btnPalierNameVide
       @modeFacile.name = "active_aventure"
-      @modeFacile.set_sensitive(false)
       self.deplacementAventure(0)
       @aventure.placerSurGrille(0)
       self.affichageEtoile(@aventure.getEtoileCourante())
       self.affichageTemps()
       self.affichageImageGrille()
+
+      self.enleverActiveBtnPagination()
+      @bouton[0].name = "active_aventure"
+
+      self.ajouterActiveFleche()
+      @btnPreced.set_sensitive(false)
+      @btnPreced.name = "btn_disabled"
     }
 
     # On associe le bouton normal avec la méthode de choix de difficulté de la classe Aventure
@@ -478,10 +504,18 @@ class AffichageAventure < Fenetre
 
       if(@aventure.estDebloquee(1))
 
+        self.btnPalierNameVide
+        @modeNormal.name = "active_aventure"
+
         if(@aventure.choixDifficulte(1))
-          #uneAv = @aventure.clone()
           self.deplacementAventure(1)
-          #@aventureFacile = uneAv
+
+          self.enleverActiveBtnPagination()
+          @bouton[0].name = "active_aventure"
+  
+          self.ajouterActiveFleche()
+          @btnPreced.set_sensitive(false)
+          @btnPreced.name = "btn_disabled"
         end
 
         @aventure.placerSurGrille(0)
@@ -500,8 +534,18 @@ class AffichageAventure < Fenetre
 
       if(@aventure.estDebloquee(2))
 
+        self.btnPalierNameVide
+        @modeHard.name = "active_aventure"
+
         if(@aventure.choixDifficulte(2))
           self.deplacementAventure(2)
+
+          self.enleverActiveBtnPagination()
+          @bouton[0].name = "active_aventure"
+  
+          self.ajouterActiveFleche()
+          @btnPreced.set_sensitive(false)
+          @btnPreced.name = "btn_disabled"
         end
 
         @aventure.choixDifficulte(2)
@@ -527,64 +571,64 @@ class AffichageAventure < Fenetre
 
     @bouton[0].signal_connect('clicked'){
       self.setEffetBouton(0)
-      enleverActive()
-      btnNonDisabled()
+      self.enleverActiveBtnPagination()
+      self.ajouterActiveFleche()
       @btnPreced.set_sensitive(false)
       @btnPreced.name = "btn_disabled"
       @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[1].signal_connect('clicked'){
       self.setEffetBouton(1)
-      enleverActive()
-      btnNonDisabled()
+      self.enleverActiveBtnPagination()
+      self.ajouterActiveFleche()
       @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[2].signal_connect('clicked'){
       self.setEffetBouton(2)
-      enleverActive()
-      btnNonDisabled()
+      self.enleverActiveBtnPagination()
+      self.ajouterActiveFleche()
       @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[3].signal_connect('clicked'){
       self.setEffetBouton(3)
-      enleverActive()
-      btnNonDisabled()
+      self.enleverActiveBtnPagination()
+      self.ajouterActiveFleche()
       @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[4].signal_connect('clicked'){
       self.setEffetBouton(4)
-      enleverActive()
-      btnNonDisabled()
+      self.enleverActiveBtnPagination()
+      self.ajouterActiveFleche()
       @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[5].signal_connect('clicked'){
       self.setEffetBouton(5)
-      enleverActive()
-      btnNonDisabled()
+      self.enleverActiveBtnPagination()
+      self.ajouterActiveFleche()
       @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[6].signal_connect('clicked'){
       self.setEffetBouton(6)
-      enleverActive()
-      btnNonDisabled()
+      self.enleverActiveBtnPagination()
+      self.ajouterActiveFleche()
       @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[7].signal_connect('clicked'){
       self.setEffetBouton(7)
-      enleverActive()
-      btnNonDisabled()
+      self.enleverActiveBtnPagination()
+      self.ajouterActiveFleche()
       @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[8].signal_connect('clicked'){
       self.setEffetBouton(8)
-      enleverActive()
-      btnNonDisabled()
+      self.enleverActiveBtnPagination()
+      self.ajouterActiveFleche()
       @bouton[@aventure.getPosCourante].name = "active_aventure"
     }
     @bouton[9].signal_connect('clicked'){
       self.setEffetBouton(9)
-      enleverActive()
-      btnNonDisabled()
+      self.enleverActiveBtnPagination()
+      self.ajouterActiveFleche()
       @btnSuivant.set_sensitive(false)
       @btnSuivant.name = "btn_disabled"
       @bouton[@aventure.getPosCourante].name = "active_aventure"
@@ -592,19 +636,25 @@ class AffichageAventure < Fenetre
 
   end
 
-  def enleverActive
+  def enleverActiveBtnPagination
     i = 0
     while i < 10
-      @bouton[i].name = "btn_pagination"
+      @bouton[i].name = "btnBorder"
       i += 1
     end
   end
 
-  def btnNonDisabled
+  def ajouterActiveFleche
     @btnPreced.set_sensitive(true)
     @btnPreced.name = ""
     @btnSuivant.set_sensitive(true)
     @btnSuivant.name = ""
+  end
+
+  def btnPalierNameVide
+    @modeFacile.name = "btnBorder"
+    @modeNormal.name = "btnBorder"
+    @modeHard.name = "btnBorder"
   end
 
 end
