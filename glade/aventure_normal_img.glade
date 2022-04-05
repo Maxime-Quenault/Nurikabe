@@ -41,7 +41,8 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkLabel" id="nbEtoiles">
+                  <object class="GtkLabel" id="nbEtoilesTotal">
+                    <property name="name">nbEtoiles</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <attributes>
