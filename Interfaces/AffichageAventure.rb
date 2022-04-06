@@ -295,7 +295,7 @@ class AffichageAventure < Fenetre
 
   # Méthode qui modifie l'affichage du temps de la grille
   def affichageTemps
-    chaine = (@aventure.getTempsCourant()/3600).to_i.to_s + "h" + (@aventure.getTempsCourant()/60).to_i.to_s + "m" + @aventure.getTempsCourant().to_s + "s"
+    chaine = (@aventure.getTempsCourant()/3600).to_i.to_s + "h" + (@aventure.getTempsCourant()/60).to_i.to_s + "m" + (@aventure.getTempsCourant()%60).to_s + "s"
     @tempsGrille.set_text(chaine)
   end
 
