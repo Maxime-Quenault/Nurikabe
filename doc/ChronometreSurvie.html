@@ -97,8 +97,13 @@
   </h1>
 
   <section class="description">
-    
-<p>Chrono qui decompte son temps pour les modes de jeu Survie</p>
+    <dl class="rdoc-list note-list"><dt>La classe <a href="ChronometreSurvie.html"><code>ChronometreSurvie</code></a> :
+<dd><ul><li>
+<p>hérite de la classe chronomètre</p>
+</li><li>
+<p>décompte son pour le mode de jeu survie</p>
+</li></ul>
+</dd></dl>
 
   </section>
 
@@ -152,7 +157,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Chrono/ChronometreSurvie.rb, line 9</span>
+            <pre><span class="ruby-comment"># File Chrono/ChronometreSurvie.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">ChronometreSurvie</span>.<span class="ruby-identifier ruby-title">creer</span>()
     <span class="ruby-identifier">new</span>()
 <span class="ruby-keyword">end</span></pre>
@@ -190,7 +195,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Chrono/ChronometreSurvie.rb, line 14</span>
+            <pre><span class="ruby-comment"># File Chrono/ChronometreSurvie.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>()
     <span class="ruby-keyword">super</span>()
     <span class="ruby-ivar">@temps</span> = <span class="ruby-constant">CHRONOMETRE_BASE_TEMPS</span>
@@ -232,7 +237,7 @@
 
           
           <div class="method-source-code" id="ajouteTemps-source">
-            <pre><span class="ruby-comment"># File Chrono/ChronometreSurvie.rb, line 33</span>
+            <pre><span class="ruby-comment"># File Chrono/ChronometreSurvie.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouteTemps</span>(<span class="ruby-identifier">unBonus</span>)
     <span class="ruby-ivar">@temps</span><span class="ruby-operator">+=</span><span class="ruby-identifier">unBonus</span>
 <span class="ruby-keyword">end</span></pre>
@@ -265,7 +270,7 @@
 
           
           <div class="method-source-code" id="retireTemps-source">
-            <pre><span class="ruby-comment"># File Chrono/ChronometreSurvie.rb, line 38</span>
+            <pre><span class="ruby-comment"># File Chrono/ChronometreSurvie.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retireTemps</span>(<span class="ruby-identifier">unMalus</span>)
     <span class="ruby-ivar">@temps</span> <span class="ruby-operator">-=</span> <span class="ruby-identifier">unMalus</span>
 <span class="ruby-keyword">end</span></pre>
@@ -298,7 +303,7 @@
 
           
           <div class="method-source-code" id="top-source">
-            <pre><span class="ruby-comment"># File Chrono/ChronometreSurvie.rb, line 20</span>
+            <pre><span class="ruby-comment"># File Chrono/ChronometreSurvie.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">top</span>()
     <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">estEnPause?</span>())
         <span class="ruby-identifier">fin</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>

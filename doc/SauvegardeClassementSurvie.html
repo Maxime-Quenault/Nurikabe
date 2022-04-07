@@ -94,6 +94,26 @@
 
   <section class="description">
     
+<p>@author Trottier Leo / Quenault Maxime</p>
+
+<p>Cette classe permet de sauvegarder les 10 meilleurs temps d&#39;une difficulte du mode de jeu “Survie”.</p>
+
+<p>Voici ses methodes :</p>
+<ul><li>
+<p>ajoutScore : permet d&#39;ajouter dynamiquement un score dans le tableau des scores en conservant le top 10</p>
+</li><li>
+<p>getNbScoreOccupe : permet d&#39;obtenir le nombre de score déjà enregistré</p>
+</li></ul>
+
+<p>Voici ses VI :</p>
+<ul><li>
+<p>@difficulte : represente le numero de la grille à qui appartient le tableau des scores</p>
+</li><li>
+<p>@tabScore : represente le tableau des scores (fichier marchall)</p>
+</li><li>
+<p>@nbScoreOccupe : represente le nombre de scores déjà présent dans le tableau des scores</p>
+</li></ul>
+
   </section>
 
   
@@ -151,7 +171,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(numGrille)</span>
+            class="method-args">(difficulte)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -166,16 +186,16 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeClassementSurvie.rb, line 8</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">numGrille</span>)
-    <span class="ruby-ivar">@numeroGrille</span> = <span class="ruby-identifier">numGrille</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeClassementSurvie.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">difficulte</span>)
+    <span class="ruby-ivar">@difficulte</span> = <span class="ruby-identifier">difficulte</span>
 
-    <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;Sauvegarde/SauvegardeScore/scoreSurvie#{@numeroGrille}.dump&quot;</span>))
+    <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;Sauvegarde/SauvegardeScore/scoreSurvie#{@difficulte}.dump&quot;</span>))
         <span class="ruby-ivar">@tabScore</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">10</span>)
         <span class="ruby-ivar">@nbScoreOccupe</span> = <span class="ruby-value">0</span>; 
-        <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;Sauvegarde/SauvegardeScore/scoreSurvie#{@numeroGrille}.dump&quot;</span>, <span class="ruby-string">&quot;wb&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@tabScore</span>)) }
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;Sauvegarde/SauvegardeScore/scoreSurvie#{@difficulte}.dump&quot;</span>, <span class="ruby-string">&quot;wb&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@tabScore</span>)) }
     <span class="ruby-keyword">else</span>
-        <span class="ruby-ivar">@tabScore</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">binread</span>(<span class="ruby-node">&quot;Sauvegarde/SauvegardeScore/scoreSurvie#{@numeroGrille}.dump&quot;</span>))
+        <span class="ruby-ivar">@tabScore</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">binread</span>(<span class="ruby-node">&quot;Sauvegarde/SauvegardeScore/scoreSurvie#{@difficulte}.dump&quot;</span>))
         <span class="ruby-ivar">@nbScoreOccupe</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getNbScoreOccupe</span>
     <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -210,13 +230,18 @@
 
         <div class="method-description">
           
-          
+          <p>ajoutScore:</p>
+
+<pre>ici quand j&#39;ajoute un score je trie le tableau des scores en même temps
+ce qui permet de toujours garder un tableau de score de 10 de longueur et des scores toujours triés</pre>
+
+<p>@param unScore represente le score à ajouter au tableau des scores</p>
           
           
 
           
           <div class="method-source-code" id="ajoutScore-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeClassementSurvie.rb, line 21</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeClassementSurvie.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajoutScore</span>(<span class="ruby-identifier">unScore</span>)
     <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
     <span class="ruby-identifier">flagAjoute</span> = <span class="ruby-value">0</span>
@@ -238,7 +263,7 @@
         <span class="ruby-ivar">@tabScore</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">unScore</span>)
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;Sauvegarde/SauvegardeScore/scoreSurvie#{@numeroGrille}.dump&quot;</span>, <span class="ruby-string">&quot;wb&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@tabScore</span>)) }
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;Sauvegarde/SauvegardeScore/scoreSurvie#{@difficulte}.dump&quot;</span>, <span class="ruby-string">&quot;wb&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@tabScore</span>)) }
 
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -264,13 +289,15 @@
 
         <div class="method-description">
           
-          
+          <p>getNbScoreOccupe:</p>
+
+<pre>permet d&#39;obtenir le nombre de score déjà enregistré</pre>
           
           
 
           
           <div class="method-source-code" id="getNbScoreOccupe-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeClassementSurvie.rb, line 46</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeClassementSurvie.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getNbScoreOccupe</span>
     <span class="ruby-identifier">nombre</span> = <span class="ruby-value">0</span>
     <span class="ruby-ivar">@tabScore</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>

@@ -96,6 +96,30 @@
 
   <section class="description">
     
+<p>@author Trottier Leo / Quenault Maxime</p>
+
+<p>Cette classe permet de gerer les profils.</p>
+
+<p>Voici ses méthodes :</p>
+<ul><li>
+<p>ajouterPartie : permet d&#39;ajouter une partie dans la liste des partie déjà commencé par un profils</p>
+</li><li>
+<p>chercherPartie : permet de chercher une partie pour savoir si elle a déjà été commencé ou non</p>
+</li><li>
+<p><a href="Profil.html#method-i-to_s"><code>to_s</code></a> : permet d&#39;afficher un profil par son pseudo</p>
+</li></ul>
+
+<p>Voici ses VI :</p>
+<ul><li>
+<p>@imageJoueur : represente le chemin d&#39;accès à l&#39;avatar du profil</p>
+</li><li>
+<p>@pseudo : represente le pseudo du profil</p>
+</li><li>
+<p>@parametre : represente les parametre du profil</p>
+</li><li>
+<p>@listePartieCommence : represente une liste de toute les partie commencé par le profil</p>
+</li></ul>
+
   </section>
 
   
@@ -233,7 +257,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 7</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">unPseudo</span>)
     <span class="ruby-ivar">@imageJoueur</span> = <span class="ruby-string">&quot;Image/utilisateur.png&quot;</span>
     <span class="ruby-ivar">@pseudo</span> = <span class="ruby-identifier">unPseudo</span>
@@ -286,13 +310,17 @@
 
         <div class="method-description">
           
-          
+          <p>ajouterPartie:</p>
+
+<pre>permet d&#39;ajouter une partie dans la liste des partie déjà commencé par un profils</pre>
+
+<p>@param unPartie represente la partie à ajouter à la liste</p>
           
           
 
           
           <div class="method-source-code" id="ajouterPartie-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 29</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouterPartie</span>(<span class="ruby-identifier">unePartie</span>)
     <span class="ruby-ivar">@listePartieCommence</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">unePartie</span>)
     <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;Sauvegarde/SauvegardeGrille/listeGrille#{@pseudo}.dump&quot;</span>, <span class="ruby-string">&quot;wb&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@listePartieCommence</span>)) }
@@ -320,13 +348,18 @@
 
         <div class="method-description">
           
-          
+          <p>chercherPartie:</p>
+
+<pre class="ruby"><span class="ruby-identifier">permet</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">chercher</span> <span class="ruby-identifier">une</span> <span class="ruby-identifier">partie</span> <span class="ruby-identifier">pour</span> <span class="ruby-identifier">savoir</span> <span class="ruby-identifier">si</span> <span class="ruby-identifier">elle</span> <span class="ruby-identifier">a</span> <span class="ruby-identifier">déjà</span> <span class="ruby-identifier">été</span> <span class="ruby-identifier">commencé</span> <span class="ruby-identifier">ou</span> <span class="ruby-identifier">non</span>
+</pre>
+
+<p>@param numero represente l&#39;indentifiant de la grille @param difficulte represente la difficulté de la grille</p>
           
           
 
           
           <div class="method-source-code" id="chercherPartie-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 34</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">chercherPartie</span>(<span class="ruby-identifier">numero</span>, <span class="ruby-identifier">difficulte</span>)
     <span class="ruby-ivar">@listePartieCommence</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">numero</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">numero</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">difficulte</span><span class="ruby-operator">==</span><span class="ruby-identifier">difficulte</span>
@@ -358,14 +391,17 @@
 
         <div class="method-description">
           
-          
+          <p><a href="Profil.html#method-i-to_s"><code>to_s</code></a>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">affiche</span> <span class="ruby-identifier">le</span> <span class="ruby-identifier">pseudo</span> <span class="ruby-identifier">du</span> <span class="ruby-identifier">profil</span>
+</pre>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 43</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>()
+            <pre><span class="ruby-comment"># File Sauvegarde/Profil.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
     <span class="ruby-identifier">pseudo</span>
 <span class="ruby-keyword">end</span></pre>
           </div>

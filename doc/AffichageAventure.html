@@ -85,15 +85,21 @@
     
     <li ><a href="#method-i-affichageTemps">#affichageTemps</a>
     
+    <li ><a href="#method-i-ajouterActiveFleche">#ajouterActiveFleche</a>
+    
     <li ><a href="#method-i-boutonPreced">#boutonPreced</a>
     
     <li ><a href="#method-i-boutonSuiv">#boutonSuiv</a>
+    
+    <li ><a href="#method-i-btnPalierNameVide">#btnPalierNameVide</a>
     
     <li ><a href="#method-i-compterNombreEtoile">#compterNombreEtoile</a>
     
     <li ><a href="#method-i-deplacementAventure">#deplacementAventure</a>
     
     <li ><a href="#method-i-destruction">#destruction</a>
+    
+    <li ><a href="#method-i-enleverActiveBtnPagination">#enleverActiveBtnPagination</a>
     
     <li ><a href="#method-i-gestionSignaux">#gestionSignaux</a>
     
@@ -519,27 +525,43 @@
 
   <span class="ruby-comment"># Déclaration du bouton de retour situé dans le coin supérieur gauche de la fenetre</span>
   <span class="ruby-ivar">@retour</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_retour&#39;</span>)
+  <span class="ruby-ivar">@retour</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;retour_fleche&quot;</span>
 
   <span class="ruby-comment"># Déclaration des boutons de déplacement de la barre située en bas de fenêtre</span>
   <span class="ruby-ivar">@bouton</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">0</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_1&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">1</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_2&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">2</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_3&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">3</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_4&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">4</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_5&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">5</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_6&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">5</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">6</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_7&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">6</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">7</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_8&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">7</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">8</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_9&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">8</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">9</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_10&#39;</span>)
+  <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">9</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
 
   <span class="ruby-comment"># Déclaration des boutons de changement de difficulté situés en haut de la fenêtre</span>
   <span class="ruby-ivar">@modeFacile</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_facile&#39;</span>)
+  <span class="ruby-ivar">@modeFacile</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
   <span class="ruby-ivar">@modeNormal</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_normal&#39;</span>)
+  <span class="ruby-ivar">@modeNormal</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
   <span class="ruby-ivar">@modeHard</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_difficile&#39;</span>)
+  <span class="ruby-ivar">@modeHard</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
 
   <span class="ruby-comment"># Déclaration des boutons de déplacement Suivant et Précédent situés sur les côtés de la fenêtre</span>
   <span class="ruby-ivar">@btnPreced</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_preced&#39;</span>)
+  <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+  <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_disabled&quot;</span>
   <span class="ruby-ivar">@btnSuivant</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_grille_suiv&#39;</span>)
 
   <span class="ruby-comment"># Déclaration de l&#39;image centrale de la fenêtre</span>
@@ -555,6 +577,15 @@
   <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;etoile_3&#39;</span>)
   <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;etoile_4&#39;</span>)
   <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>] = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;etoile_5&#39;</span>)
+
+  <span class="ruby-ivar">@nbEtoilesTotal</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;nbEtoilesTotal&#39;</span>)
+  <span class="ruby-ivar">@nbEtoilesTotal</span>.<span class="ruby-identifier">set_text</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getNbEtoiles</span>)
+
+  <span class="ruby-ivar">@nbEtoilesNormal</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;nbEtoilesNormal&#39;</span>)
+  <span class="ruby-ivar">@nbEtoilesNormal</span>.<span class="ruby-identifier">set_text</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPalierNormal</span>)
+
+  <span class="ruby-ivar">@nbEtoilesDifficile</span> = <span class="ruby-identifier">monBuildeur</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;nbEtoilesDifficile&#39;</span>)
+  <span class="ruby-ivar">@nbEtoilesDifficile</span>.<span class="ruby-identifier">set_text</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPalierHard</span>)
 
   <span class="ruby-comment"># on sauvegarde le menu parent via une variable d&#39;instance</span>
   <span class="ruby-ivar">@menuParent</span> = <span class="ruby-identifier">menuParent</span>
@@ -604,7 +635,7 @@
 
           
           <div class="method-source-code" id="affichageEtoile-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 293</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 318</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageEtoile</span>(<span class="ruby-identifier">nbEtoiles</span>)
 
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">nbEtoiles</span>
@@ -615,35 +646,35 @@
     <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
     <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
   <span class="ruby-keyword">when</span> <span class="ruby-value">1</span>
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
     <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
     <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
     <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
     <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
   <span class="ruby-keyword">when</span> <span class="ruby-value">2</span>
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
     <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
     <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
     <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
   <span class="ruby-keyword">when</span> <span class="ruby-value">3</span>
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
     <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
     <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
   <span class="ruby-keyword">when</span> <span class="ruby-value">4</span>
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
     <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile_sombre.png&quot;</span>)
   <span class="ruby-keyword">when</span> <span class="ruby-value">5</span>
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
-    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/etoile2.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
+    <span class="ruby-ivar">@imgEtoile</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/star.png&quot;</span>)
   <span class="ruby-keyword">end</span>
 
 <span class="ruby-keyword">end</span></pre>
@@ -682,7 +713,7 @@
 
           
           <div class="method-source-code" id="affichageImageGrille-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 282</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 307</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageImageGrille</span>
   <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>() <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
     <span class="ruby-ivar">@img_centre</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-string">&quot;Image/grilleVide.png&quot;</span>)
@@ -719,7 +750,7 @@
 
           
           <div class="method-source-code" id="affichageNewDiff-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 244</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 269</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageNewDiff</span>(<span class="ruby-identifier">unNumero</span>)
  <span class="ruby-identifier">dialog</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span>.<span class="ruby-identifier">new</span>()
  <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Nouvelle Difficulté&quot;</span>
@@ -775,10 +806,46 @@
 
           
           <div class="method-source-code" id="affichageTemps-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 272</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 297</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageTemps</span>
-  <span class="ruby-identifier">chaine</span> = (<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getTempsCourant</span>()<span class="ruby-operator">/</span><span class="ruby-value">3600</span>).<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;h&quot;</span> <span class="ruby-operator">+</span> (<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getTempsCourant</span>()<span class="ruby-operator">/</span><span class="ruby-value">60</span>).<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;m&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getTempsCourant</span>().<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;s&quot;</span>
+  <span class="ruby-identifier">chaine</span> = (<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getTempsCourant</span>()<span class="ruby-operator">/</span><span class="ruby-value">3600</span>).<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;h&quot;</span> <span class="ruby-operator">+</span> (<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getTempsCourant</span>()<span class="ruby-operator">/</span><span class="ruby-value">60</span>).<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;m&quot;</span> <span class="ruby-operator">+</span> (<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getTempsCourant</span>()<span class="ruby-operator">%</span><span class="ruby-value">60</span>).<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;s&quot;</span>
   <span class="ruby-ivar">@tempsGrille</span>.<span class="ruby-identifier">set_text</span>(<span class="ruby-identifier">chaine</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ajouterActiveFleche" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ajouterActiveFleche</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ajouterActiveFleche-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 647</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouterActiveFleche</span>
+  <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+  <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-ivar">@btnSuivant</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+  <span class="ruby-ivar">@btnSuivant</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -809,7 +876,7 @@
 
           
           <div class="method-source-code" id="boutonPreced-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 345</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 370</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">boutonPreced</span>
     <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">grillePrecedente</span>()
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageEtoile</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>())
@@ -845,12 +912,47 @@
 
           
           <div class="method-source-code" id="boutonSuiv-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 337</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 362</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">boutonSuiv</span>
     <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">prochaineGrille</span>()
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageEtoile</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>())
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageTemps</span>()
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageImageGrille</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-btnPalierNameVide" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">btnPalierNameVide</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="btnPalierNameVide-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 654</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">btnPalierNameVide</span>
+  <span class="ruby-ivar">@modeFacile</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
+  <span class="ruby-ivar">@modeNormal</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
+  <span class="ruby-ivar">@modeHard</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -881,7 +983,7 @@
 
           
           <div class="method-source-code" id="compterNombreEtoile-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 364</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 389</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">compterNombreEtoile</span>()
 
   <span class="ruby-identifier">temps</span> = (<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_f</span>).<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@temps1</span>
@@ -952,7 +1054,7 @@
 
           
           <div class="method-source-code" id="deplacementAventure-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 353</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 378</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">deplacementAventure</span>(<span class="ruby-identifier">uneDiff</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">uneDiff</span>
   <span class="ruby-keyword">when</span> <span class="ruby-value">0</span>
@@ -992,10 +1094,47 @@
 
           
           <div class="method-source-code" id="destruction-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 238</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 263</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">destruction</span>
   <span class="ruby-constant">Gtk</span>.<span class="ruby-identifier">main_quit</span>
   <span class="ruby-keyword">return</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-enleverActiveBtnPagination" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">enleverActiveBtnPagination</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="enleverActiveBtnPagination-source">
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 639</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enleverActiveBtnPagination</span>
+  <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">10</span>
+    <span class="ruby-ivar">@bouton</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
+    <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -1026,7 +1165,7 @@
 
           
           <div class="method-source-code" id="gestionSignaux-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 409</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 434</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
 
   <span class="ruby-comment"># On associe le bouton Retour avec la méthode de fermeture du mode Aventure</span>
@@ -1041,20 +1180,55 @@
   <span class="ruby-comment"># On associe le bouton Précédent avec la méthode grillePrecedente de la classe Aventure</span>
   <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">boutonPreced</span>()
+    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">10</span>)
+      <span class="ruby-ivar">@bouton</span>[<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-ivar">@bouton</span>[<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
+
+    <span class="ruby-ivar">@btnSuivant</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+    <span class="ruby-ivar">@btnSuivant</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;&quot;</span>
+
+    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+      <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+      <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_disabled&quot;</span>
+    <span class="ruby-keyword">end</span>
   }
 
   <span class="ruby-comment"># On associe le bouton Suivant avec la méthode prochaineGrille de la classe Aventure</span>
   <span class="ruby-ivar">@btnSuivant</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">boutonSuiv</span>()
+    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+      <span class="ruby-ivar">@bouton</span>[<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btnBorder&quot;</span>
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-ivar">@bouton</span>[<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
+
+    <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+    <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;&quot;</span>
+
+    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span> <span class="ruby-operator">==</span> <span class="ruby-value">9</span>)
+      <span class="ruby-ivar">@btnSuivant</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+      <span class="ruby-ivar">@btnSuivant</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_disabled&quot;</span>
+    <span class="ruby-keyword">end</span>
   }
 
   <span class="ruby-comment"># On associe le bouton facile avec la méthode de choix de difficulté de la classe Aventure</span>
   <span class="ruby-ivar">@modeFacile</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">btnPalierNameVide</span>
+    <span class="ruby-ivar">@modeFacile</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">deplacementAventure</span>(<span class="ruby-value">0</span>)
     <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">placerSurGrille</span>(<span class="ruby-value">0</span>)
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageEtoile</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>())
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageTemps</span>()
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageImageGrille</span>()
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">enleverActiveBtnPagination</span>()
+    <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ajouterActiveFleche</span>()
+    <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+    <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_disabled&quot;</span>
   }
 
   <span class="ruby-comment"># On associe le bouton normal avec la méthode de choix de difficulté de la classe Aventure</span>
@@ -1065,10 +1239,18 @@
 
     <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">estDebloquee</span>(<span class="ruby-value">1</span>))
 
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">btnPalierNameVide</span>
+      <span class="ruby-ivar">@modeNormal</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
+
       <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">choixDifficulte</span>(<span class="ruby-value">1</span>))
-        <span class="ruby-comment">#uneAv = @aventure.clone()</span>
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">deplacementAventure</span>(<span class="ruby-value">1</span>)
-        <span class="ruby-comment">#@aventureFacile = uneAv</span>
+
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">enleverActiveBtnPagination</span>()
+        <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
+
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ajouterActiveFleche</span>()
+        <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_disabled&quot;</span>
       <span class="ruby-keyword">end</span>
 
       <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">placerSurGrille</span>(<span class="ruby-value">0</span>)
@@ -1087,8 +1269,18 @@
 
     <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">estDebloquee</span>(<span class="ruby-value">2</span>))
 
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">btnPalierNameVide</span>
+      <span class="ruby-ivar">@modeHard</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
+
       <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">choixDifficulte</span>(<span class="ruby-value">2</span>))
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">deplacementAventure</span>(<span class="ruby-value">2</span>)
+
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">enleverActiveBtnPagination</span>()
+        <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
+
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ajouterActiveFleche</span>()
+        <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_disabled&quot;</span>
       <span class="ruby-keyword">end</span>
 
       <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">choixDifficulte</span>(<span class="ruby-value">2</span>)
@@ -1114,33 +1306,67 @@
 
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">0</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">enleverActiveBtnPagination</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ajouterActiveFleche</span>()
+    <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+    <span class="ruby-ivar">@btnPreced</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_disabled&quot;</span>
+    <span class="ruby-ivar">@bouton</span>[<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
   }
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">1</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">enleverActiveBtnPagination</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ajouterActiveFleche</span>()
+    <span class="ruby-ivar">@bouton</span>[<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
   }
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">2</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">enleverActiveBtnPagination</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ajouterActiveFleche</span>()
+    <span class="ruby-ivar">@bouton</span>[<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
   }
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">3</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">enleverActiveBtnPagination</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ajouterActiveFleche</span>()
+    <span class="ruby-ivar">@bouton</span>[<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
   }
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">4</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">enleverActiveBtnPagination</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ajouterActiveFleche</span>()
+    <span class="ruby-ivar">@bouton</span>[<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
   }
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">5</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">5</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">enleverActiveBtnPagination</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ajouterActiveFleche</span>()
+    <span class="ruby-ivar">@bouton</span>[<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
   }
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">6</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">6</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">enleverActiveBtnPagination</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ajouterActiveFleche</span>()
+    <span class="ruby-ivar">@bouton</span>[<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
   }
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">7</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">7</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">enleverActiveBtnPagination</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ajouterActiveFleche</span>()
+    <span class="ruby-ivar">@bouton</span>[<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
   }
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">8</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">8</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">enleverActiveBtnPagination</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ajouterActiveFleche</span>()
+    <span class="ruby-ivar">@bouton</span>[<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
   }
   <span class="ruby-ivar">@bouton</span>[<span class="ruby-value">9</span>].<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setEffetBouton</span>(<span class="ruby-value">9</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">enleverActiveBtnPagination</span>()
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ajouterActiveFleche</span>()
+    <span class="ruby-ivar">@btnSuivant</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+    <span class="ruby-ivar">@btnSuivant</span>.<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;btn_disabled&quot;</span>
+    <span class="ruby-ivar">@bouton</span>[<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getPosCourante</span>].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;active_aventure&quot;</span>
   }
 
 <span class="ruby-keyword">end</span></pre>
@@ -1173,7 +1399,7 @@
 
           
           <div class="method-source-code" id="getCouleurFenetre-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 181</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 206</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getCouleurFenetre</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@couleurFenetre</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1206,7 +1432,7 @@
 
           
           <div class="method-source-code" id="getCouleurGeneral-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 192</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 217</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getCouleurGeneral</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@couleurBase</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1239,7 +1465,7 @@
 
           
           <div class="method-source-code" id="getCouleurSecondaire-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 202</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 227</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getCouleurSecondaire</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@couleurVisible</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1276,7 +1502,7 @@
 
           
           <div class="method-source-code" id="getObject-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 176</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 201</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getObject</span>
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@fenetre</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1309,7 +1535,7 @@
 
           
           <div class="method-source-code" id="setBackground-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 212</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 237</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setBackground</span>(<span class="ruby-identifier">bouton</span>, <span class="ruby-identifier">couleur</span>)
   <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">bg</span> = <span class="ruby-identifier">couleur</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1342,7 +1568,7 @@
 
           
           <div class="method-source-code" id="setBackgroundBoutons-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 217</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 242</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setBackgroundBoutons</span>(<span class="ruby-identifier">indice</span>, <span class="ruby-identifier">couleurUnique</span>, <span class="ruby-identifier">couleurStandard</span>)
   <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">length</span>()
     <span class="ruby-keyword">if</span>(<span class="ruby-identifier">i</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">indice</span>)
@@ -1381,7 +1607,7 @@
 
           
           <div class="method-source-code" id="setCouleurFenetre-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 186</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 211</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setCouleurFenetre</span>(<span class="ruby-identifier">uneCouleur</span>)
   <span class="ruby-ivar">@couleurFenetre</span> = <span class="ruby-identifier">uneCouleur</span>
   <span class="ruby-constant">Gtk</span>.<span class="ruby-identifier">gtk_widget_modify_bg</span>(<span class="ruby-ivar">@fenetre</span>, <span class="ruby-constant">GTK_STATE_NORMAL</span>, <span class="ruby-ivar">@couleurFenetre</span>);
@@ -1415,7 +1641,7 @@
 
           
           <div class="method-source-code" id="setCouleurGeneral-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 197</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 222</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setCouleurGeneral</span>(<span class="ruby-identifier">couleur</span>)
   <span class="ruby-ivar">@couleurBase</span> = <span class="ruby-identifier">couleur</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1448,7 +1674,7 @@
 
           
           <div class="method-source-code" id="setCouleurSecondaire-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 207</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 232</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setCouleurSecondaire</span>(<span class="ruby-identifier">couleur</span>)
   <span class="ruby-ivar">@couleurVisible</span> = <span class="ruby-identifier">couleur</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1481,7 +1707,7 @@
 
           
           <div class="method-source-code" id="setEffetBouton-source">
-            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 228</span>
+            <pre><span class="ruby-comment"># File Interfaces/AffichageAventure.rb, line 253</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setEffetBouton</span>(<span class="ruby-identifier">indice</span>)
   <span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">placerSurGrille</span>(<span class="ruby-identifier">indice</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">affichageEtoile</span>(<span class="ruby-ivar">@aventure</span>.<span class="ruby-identifier">getEtoileCourante</span>())

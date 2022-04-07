@@ -106,6 +106,36 @@
 
   <section class="description">
     
+<p>@author Quenault Maxime / Trottier Leo</p>
+
+<p>Cette classe permet de gerer la sauvegarde des profil dans un fichier marchal.</p>
+
+<p>Voici ses methodes :</p>
+<ul><li>
+<p>ajoutProfil : permet d&#39;ajouter un profil à la liste de profil</p>
+</li><li>
+<p>suppAllProfil : permet de supprimer tous les profils de la liste</p>
+</li><li>
+<p>supprimerProfil : permet de supprimer un profil de la liste</p>
+</li><li>
+<p>getNbProfil : permet de recuperer le nombre de profil sauvegardé</p>
+</li><li>
+<p>chargerProfil : permet de charger un profil</p>
+</li><li>
+<p>changerParametre : permet de mettre à jour les parametre du profil</p>
+</li><li>
+<p>modifierAvatar : permet de mettre à jour l&#39;avatar du profil</p>
+</li><li>
+<p>sauvegarder : permet de sauvegarder le profil actuelle (mettre a jour la liste)</p>
+</li></ul>
+
+<p>Voici ses VI :</p>
+<ul><li>
+<p>@listeProfil : represente la liste des profils sauvegardé</p>
+</li><li>
+<p>@nbProfil : represente le nombre de profil sauvegardé</p>
+</li></ul>
+
   </section>
 
   
@@ -178,7 +208,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 13</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>()
     <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-string">&quot;Sauvegarde/SauvegardeProfil/listeProfil.dump&quot;</span>))
         <span class="ruby-ivar">@listeProfil</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
@@ -219,13 +249,17 @@
 
         <div class="method-description">
           
-          
+          <p>ajoutProfil:</p>
+
+<pre>permet d&#39;ajouter un profil à la liste de profil</pre>
+
+<p>@param unProfil represente le profil à ajouter</p>
           
           
 
           
           <div class="method-source-code" id="ajoutProfil-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 23</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajoutProfil</span>(<span class="ruby-identifier">unProfil</span>)
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unProfil</span>.<span class="ruby-identifier">pseudo</span>)
@@ -261,13 +295,18 @@
 
         <div class="method-description">
           
-          
+          <p>changerParametre:</p>
+
+<pre class="ruby"><span class="ruby-identifier">permet</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">mettre</span> <span class="ruby-identifier">à</span> <span class="ruby-identifier">jour</span> <span class="ruby-identifier">les</span> <span class="ruby-identifier">parametre</span> <span class="ruby-identifier">du</span> <span class="ruby-identifier">profil</span>
+</pre>
+
+<p>@param unProfil represente le profil dont les parametre doivent être changé</p>
           
           
 
           
           <div class="method-source-code" id="changerParametre-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 71</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 118</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">changerParametre</span>(<span class="ruby-identifier">unProfil</span>)
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unProfil</span>.<span class="ruby-identifier">pseudo</span>)
@@ -299,13 +338,18 @@
 
         <div class="method-description">
           
-          
+          <p>chargerProfil:</p>
+
+<pre class="ruby"><span class="ruby-identifier">permet</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">charger</span> <span class="ruby-identifier">un</span> <span class="ruby-identifier">profil</span>
+</pre>
+
+<p>@param unPseudo represente le pseudo du profil à charger</p>
           
           
 
           
           <div class="method-source-code" id="chargerProfil-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 62</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 104</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">chargerProfil</span>(<span class="ruby-identifier">unPseudo</span>)
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unPseudo</span>)
@@ -337,13 +381,16 @@
 
         <div class="method-description">
           
-          
+          <p>getNbProfil</p>
+
+<pre class="ruby"><span class="ruby-identifier">permet</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">recuperer</span> <span class="ruby-identifier">le</span> <span class="ruby-identifier">nombre</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">profil</span> <span class="ruby-identifier">sauvegardé</span>
+</pre>
           
           
 
           
           <div class="method-source-code" id="getNbProfil-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 54</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 91</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getNbProfil</span>
     <span class="ruby-identifier">nombre</span> = <span class="ruby-value">0</span>
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
@@ -374,13 +421,17 @@
 
         <div class="method-description">
           
-          
+          <p>modifierAvatar:</p>
+
+<pre>permet de mettre à jour l&#39;avatar du profil</pre>
+
+<p>@param uneImage represente le lien de l&#39;image pour le nouvel avatar du profil @param profilActuel represente le profil dont l&#39;avatar doit être mis à jour</p>
           
           
 
           
           <div class="method-source-code" id="modifierAvatar-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 80</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 133</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">modifierAvatar</span>(<span class="ruby-identifier">uneImage</span>, <span class="ruby-identifier">profilActuel</span>)
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">profilActuel</span>.<span class="ruby-identifier">pseudo</span>
@@ -412,13 +463,18 @@
 
         <div class="method-description">
           
-          
+          <p>sauvegarde:</p>
+
+<pre class="ruby"><span class="ruby-identifier">permet</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">sauvegarder</span> <span class="ruby-identifier">un</span> <span class="ruby-identifier">profil</span>
+</pre>
+
+<p>@param unProfil represente le profil qui doit être suavergardé</p>
           
           
 
           
           <div class="method-source-code" id="sauvegarder-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 89</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 147</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sauvegarder</span>(<span class="ruby-identifier">unProfil</span>)
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unProfil</span>.<span class="ruby-identifier">pseudo</span>)
@@ -450,13 +506,16 @@
 
         <div class="method-description">
           
-          
+          <p>suppAllProfil</p>
+
+<pre class="ruby"><span class="ruby-identifier">permet</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">supprimer</span> <span class="ruby-identifier">tous</span> <span class="ruby-identifier">les</span> <span class="ruby-identifier">profils</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">liste</span>
+</pre>
           
           
 
           
           <div class="method-source-code" id="suppAllProfil-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 36</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">suppAllProfil</span>
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">supprimerProfil</span>(<span class="ruby-identifier">key</span>)
@@ -485,13 +544,18 @@
 
         <div class="method-description">
           
-          
+          <p>supprimerProfil</p>
+
+<pre class="ruby"><span class="ruby-identifier">permet</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">supprimer</span> <span class="ruby-identifier">un</span> <span class="ruby-identifier">profil</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">liste</span>
+</pre>
+
+<p>@param unProfil represente le profil a supprimer</p>
           
           
 
           
           <div class="method-source-code" id="supprimerProfil-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 42</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeProfil.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">supprimerProfil</span>(<span class="ruby-identifier">unProfil</span>)
     <span class="ruby-ivar">@listeProfil</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">pseudo</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unProfil</span>.<span class="ruby-identifier">pseudo</span>)

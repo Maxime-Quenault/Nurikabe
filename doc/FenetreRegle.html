@@ -107,6 +107,10 @@
 </li></ul>
 </dd></dl>
 
+<p>Voici ses méthode : </p>
+
+<pre>- gestionSignaux : permet d&#39;attribuer des actions à tous les objets de l&#39;interface récupéré dans le constructeur.</pre>
+
   </section>
 
   
@@ -166,7 +170,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreRegle.rb, line 23</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreRegle.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">menuParent</span>)
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiseToi</span>
 
@@ -210,13 +214,15 @@
 
         <div class="method-description">
           
-          
+          <p>gestionSignaux :</p>
+
+<pre>Cette methode permet d&#39;assigner des actions à chaques boutons récupérés dans le fichier galde.</pre>
           
           
 
           
           <div class="method-source-code" id="gestionSignaux-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreRegle.rb, line 36</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreRegle.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>()
     <span class="ruby-ivar">@btnRetour</span>.<span class="ruby-identifier">signal_connect</span>( <span class="ruby-string">&quot;clicked&quot;</span> ) {
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@menuParent</span>, <span class="ruby-string">&quot;Menu&quot;</span>)

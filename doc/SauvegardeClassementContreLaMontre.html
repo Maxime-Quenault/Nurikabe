@@ -94,6 +94,26 @@
 
   <section class="description">
     
+<p>@author Trottier Leo / Quenault Maxime</p>
+
+<p>Cette classe permet de sauvegarder les 10 meilleurs temps d&#39;une grille du mode de jeu “Contre la Montre”.</p>
+
+<p>Voici ses methodes :</p>
+<ul><li>
+<p>ajoutScore : permet d&#39;ajouter dynamiquement un score dans le tableau des scores en conservant le top 10</p>
+</li><li>
+<p>getNbScoreOccupe : permet d&#39;obtenir le nombre de score déjà enregistré</p>
+</li></ul>
+
+<p>Voici ses VI :</p>
+<ul><li>
+<p>@numeroGrille : represente le numero de la grille à qui appartient le tableau des scores</p>
+</li><li>
+<p>@tabScore : represente le tableau des scores (fichier marchall)</p>
+</li><li>
+<p>@nbScoreOccupe : represente le nombre de scores déjà présent dans le tableau des scores</p>
+</li></ul>
+
   </section>
 
   
@@ -166,7 +186,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeClassementContreLaMontre.rb, line 11</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeClassementContreLaMontre.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">numGrille</span>)
     <span class="ruby-ivar">@numeroGrille</span> = <span class="ruby-identifier">numGrille</span>
 
@@ -210,13 +230,18 @@
 
         <div class="method-description">
           
-          <p>ici quand j&#39;ajoute un score je trie le tableau des scores en même temps ce qui permet de toujours garder un tableau de score de 10 de longueur et des scores toujours triés</p>
+          <p>ajoutScore:</p>
+
+<pre>ici quand j&#39;ajoute un score je trie le tableau des scores en même temps
+ce qui permet de toujours garder un tableau de score de 10 de longueur et des scores toujours triés</pre>
+
+<p>@param unScore represente le score à ajouter au tableau des scores</p>
           
           
 
           
           <div class="method-source-code" id="ajoutScore-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeClassementContreLaMontre.rb, line 28</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeClassementContreLaMontre.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajoutScore</span>(<span class="ruby-identifier">unScore</span>)
     <span class="ruby-identifier">tabTampon</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">10</span>)
     <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
@@ -265,13 +290,15 @@
 
         <div class="method-description">
           
-          
+          <p>getNbScoreOccupe:</p>
+
+<pre>permet d&#39;obtenir le nombre de score déjà enregistré</pre>
           
           
 
           
           <div class="method-source-code" id="getNbScoreOccupe-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeClassementContreLaMontre.rb, line 54</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/SauvegardeClassementContreLaMontre.rb, line 75</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getNbScoreOccupe</span>
     <span class="ruby-identifier">nombre</span> = <span class="ruby-value">0</span>
     <span class="ruby-ivar">@tabScore</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>

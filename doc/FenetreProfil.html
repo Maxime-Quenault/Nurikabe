@@ -106,7 +106,7 @@
 <ul><li>
 <p>initialize : est le constructeur de la classe, il va recuperer la listes des profils sauvegarder et initiliser une fenetre</p>
 </li><li>
-<p>setmargin : ??? (léo je te laisse ecrire)</p>
+<p>setmargin : permet de gerer le placement de la popUp à l&#39;ecran</p>
 </li><li>
 <p>afficheToi : permet d&#39;afficher la fenetre avec tous les profils de la sauvegarde, gère egalement la suppresion et la création</p>
 </li></ul>
@@ -258,7 +258,7 @@ Elle permet aussi de gerer la suppresion des profils ou la création.</pre>
 
           
           <div class="method-source-code" id="afficheToi-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreProfil.rb, line 64</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreProfil.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficheToi</span>
     <span class="ruby-ivar">@popUpProfil</span> = <span class="ruby-constant">Window</span>.<span class="ruby-identifier">new</span>()
     <span class="ruby-ivar">@save</span> = <span class="ruby-constant">SauvegardeProfil</span>.<span class="ruby-identifier">new</span>
@@ -389,7 +389,7 @@ Elle permet aussi de gerer la suppresion des profils ou la création.</pre>
 
           
           <div class="method-source-code" id="destruction-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreProfil.rb, line 176</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreProfil.rb, line 175</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">destruction</span>()
     <span class="ruby-ivar">@quit</span> = <span class="ruby-keyword">true</span>
     <span class="ruby-constant">Gtk</span>.<span class="ruby-identifier">main_quit</span>
@@ -426,7 +426,7 @@ Elle permet aussi de gerer la suppresion des profils ou la création.</pre>
 
           
           <div class="method-source-code" id="event-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreProfil.rb, line 168</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreProfil.rb, line 167</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">event</span>(<span class="ruby-identifier">popUpProfil</span>)
     <span class="ruby-identifier">popUpProfil</span>.<span class="ruby-identifier">hide</span>
     <span class="ruby-constant">Gtk</span>.<span class="ruby-identifier">main_quit</span>  
@@ -456,13 +456,13 @@ Elle permet aussi de gerer la suppresion des profils ou la création.</pre>
           
           <p>setMargin :</p>
 
-<pre>???</pre>
+<pre>permet de gerer le placement de la popUp à l&#39;ecran</pre>
           
           
 
           
           <div class="method-source-code" id="setmargin-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreProfil.rb, line 50</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreProfil.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setmargin</span>(<span class="ruby-identifier">obj</span>, <span class="ruby-identifier">top</span>, <span class="ruby-identifier">bottom</span>, <span class="ruby-identifier">left</span>, <span class="ruby-identifier">right</span>)
     <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">set_margin_top</span>(<span class="ruby-identifier">top</span>)
     <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">set_margin_bottom</span>(<span class="ruby-identifier">bottom</span>)

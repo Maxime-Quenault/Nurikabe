@@ -105,6 +105,10 @@
 </li><li>
 <p>@menuParent   ==&gt; contient le fenêtre parente de la fenêtre courante</p>
 </li></ul>
+</dd><dt>Voici ses methodes :
+<dd><ul><li>
+<p>gestionSignaux : permet de gerer les signaux des objets du buildeur</p>
+</li></ul>
 </dd></dl>
 
   </section>
@@ -166,7 +170,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreAPropos.rb, line 23</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreAPropos.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">menuParent</span>)
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiseToi</span>
 
@@ -216,7 +220,7 @@
 
           
           <div class="method-source-code" id="gestionSignaux-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreAPropos.rb, line 36</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreAPropos.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>()
     <span class="ruby-ivar">@btnRetour</span>.<span class="ruby-identifier">signal_connect</span>( <span class="ruby-string">&quot;clicked&quot;</span> ) {
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerInterface</span>(<span class="ruby-ivar">@menuParent</span>, <span class="ruby-string">&quot;Menu&quot;</span>)

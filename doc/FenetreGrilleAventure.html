@@ -131,6 +131,24 @@
 <dd><ul><li>
 <p>@@partie  ==&gt; partie en cours</p>
 </li></ul>
+</dd><dt>Voici ses méthodes :
+<dd><ul><li>
+<p>gestionSignaux : Récupère les boutons et créer tout les signaux correspondants </p>
+</li><li>
+<p><a href="FenetreGrilleAventure.html#method-i-affiche_victoire"><code>affiche_victoire</code></a> : Affiche une popup de victoire</p>
+</li><li>
+<p>construction : Construit la grille de boutons correpondants aux cases de la grille</p>
+</li><li>
+<p>afficheGrille : Créer un affichage de la grille pour la librarie de grille</p>
+</li><li>
+<p><a href="FenetreGrilleAventure.html#method-i-signaux_boutons"><code>signaux_boutons</code></a> : Changes la couleur des boutons lorsqu&#39;on clique dessus</p>
+</li><li>
+<p>griserBoutons : permet de griser un bouton si il est inutilisable</p>
+</li><li>
+<p><a href="FenetreGrilleAventure.html#method-i-maj_boutons"><code>maj_boutons</code></a> (version sans parametre): permet de changer l&#39;etat du bouton courant</p>
+</li><li>
+<p><a href="FenetreGrilleAventure.html#method-i-maj_boutons"><code>maj_boutons</code></a> (version avec parametre) : recupere les coordoné du bouton et change sont etat dans la table des boutons</p>
+</li></ul>
 </dd></dl>
 
   </section>
@@ -205,7 +223,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 33</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">menuParent</span>,<span class="ruby-identifier">fenetreAventure</span>)
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialiseToi</span>
     <span class="ruby-ivar">@popover</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Popover</span>.<span class="ruby-identifier">new</span>
@@ -248,13 +266,18 @@
 
         <div class="method-description">
           
-          <p>Créer un affichage de la grille pour la librarie de grille</p>
+          <p>afficheGrille:</p>
+
+<pre class="ruby"><span class="ruby-constant">Créer</span> <span class="ruby-identifier">un</span> <span class="ruby-identifier">affichage</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">grille</span> <span class="ruby-identifier">pour</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">librarie</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">grille</span>
+</pre>
+
+<p>@param hauteur represente la hauteur de la grille @param largeur represente la largeur de la grille @param grille represente la grille a afficher</p>
           
           
 
           
           <div class="method-source-code" id="afficheGrille-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 170</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 189</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficheGrille</span>(<span class="ruby-identifier">hauteur</span>, <span class="ruby-identifier">largeur</span>, <span class="ruby-identifier">grille</span>)
     <span class="ruby-identifier">taille_hauteur</span> = <span class="ruby-identifier">hauteur</span>
     <span class="ruby-identifier">taille_largeur</span> = <span class="ruby-identifier">largeur</span>
@@ -316,14 +339,17 @@
 
         <div class="method-description">
           
-          <p>Affiche une popup de victoire</p>
+          <p><a href="FenetreGrilleAventure.html#method-i-affiche_victoire"><code>affiche_victoire</code></a>:</p>
+
+<pre class="ruby"><span class="ruby-constant">Affiche</span> <span class="ruby-identifier">une</span> <span class="ruby-identifier">popup</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">victoire</span>
+</pre>
           
           
 
           
           <div class="method-source-code" id="affiche_victoire-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 109</span>
-   <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affiche_victoire</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 121</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affiche_victoire</span>
     <span class="ruby-identifier">dialog</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Victoire&quot;</span>
     <span class="ruby-identifier">dialog</span>.<span class="ruby-identifier">set_default_size</span>(<span class="ruby-value">300</span>, <span class="ruby-value">100</span>)
@@ -365,13 +391,16 @@
 
         <div class="method-description">
           
-          <p>Construit la grille de boutons correpondants aux cases de la grille</p>
+          <p>construction:</p>
+
+<pre class="ruby"><span class="ruby-constant">Construit</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">grille</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">boutons</span> <span class="ruby-identifier">correpondants</span> <span class="ruby-identifier">aux</span> <span class="ruby-identifier">cases</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">grille</span>
+</pre>
           
           
 
           
           <div class="method-source-code" id="construction-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 131</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 144</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">construction</span>
     <span class="ruby-identifier">taille_hauteur</span> = <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">hauteur</span>
     <span class="ruby-identifier">taille_largeur</span> = <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">largeur</span>
@@ -432,13 +461,16 @@
 
         <div class="method-description">
           
-          <p>Récupère les boutons et créer tout les signaux correspondants</p>
+          <p>gestionSignaux:</p>
+
+<pre class="ruby"><span class="ruby-constant">Récupère</span> <span class="ruby-identifier">les</span> <span class="ruby-identifier">boutons</span> <span class="ruby-identifier">et</span> <span class="ruby-identifier">créer</span> <span class="ruby-identifier">tout</span> <span class="ruby-identifier">les</span> <span class="ruby-identifier">signaux</span> <span class="ruby-identifier">correspondants</span>
+</pre>
           
           
 
           
           <div class="method-source-code" id="gestionSignaux-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 47</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">gestionSignaux</span>
 
     <span class="ruby-comment">#Recuperation de la fenetre</span>
@@ -522,13 +554,16 @@
 
         <div class="method-description">
           
-          
+          <p>griserBouton:</p>
+
+<pre class="ruby"><span class="ruby-identifier">permet</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">griser</span> <span class="ruby-identifier">un</span> <span class="ruby-identifier">bouton</span> <span class="ruby-identifier">si</span> <span class="ruby-identifier">il</span> <span class="ruby-identifier">est</span> <span class="ruby-identifier">inutilisable</span>
+</pre>
           
           
 
           
           <div class="method-source-code" id="griserBoutons-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 232</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 258</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">griserBoutons</span>
     <span class="ruby-identifier">btn_undo</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_undo&#39;</span>)
     <span class="ruby-identifier">btn_redo</span> = <span class="ruby-ivar">@builder</span>.<span class="ruby-identifier">get_object</span>(<span class="ruby-string">&#39;btn_redo&#39;</span>)
@@ -569,13 +604,17 @@
 
         <div class="method-description">
           
-          <p>Change la couleur d&#39;un bouton aux coordonnées passées en paramètres en fonction de l&#39;état de la case correspondante</p>
+          <p><a href="FenetreGrilleAventure.html#method-i-maj_bouton"><code>maj_bouton</code></a>:</p>
+
+<pre>Change la couleur d&#39;un bouton aux coordonnées passées en paramètres en fonction de l&#39;état de la case correspondante</pre>
+
+<p>@param i represente la coordoné x du bouton @param i represente la coordoné y du bouton</p>
           
           
 
           
           <div class="method-source-code" id="maj_bouton-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 259</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 293</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">maj_bouton</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>)
     <span class="ruby-keyword">if</span>(<span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>)
         <span class="ruby-ivar">@boutons</span>[[<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>]].<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;case_vide&quot;</span>
@@ -611,13 +650,15 @@
 
         <div class="method-description">
           
-          
+          <p><a href="FenetreGrilleAventure.html#method-i-maj_bouton"><code>maj_bouton</code></a>:</p>
+
+<pre>permet de changer l&#39;etat du bouton une fois cliqué, pour cela elle fait appel à une seconde methodes</pre>
           
           
 
           
           <div class="method-source-code" id="maj_boutons-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 250</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 279</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">maj_boutons</span>
     <span class="ruby-ivar">@boutons</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cle</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">cle</span>[<span class="ruby-value">0</span>]][<span class="ruby-identifier">cle</span>[<span class="ruby-value">1</span>]].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>)
@@ -648,13 +689,17 @@
 
         <div class="method-description">
           
-          <p>Changes la couleur des boutons lorsqu&#39;on clique dessus</p>
+          <p><a href="FenetreGrilleAventure.html#method-i-signaux_boutons"><code>signaux_boutons</code></a>:</p>
+
+<pre>Changes la couleur des boutons lorsqu&#39;on clique dessus</pre>
+
+<p>@param tableFrame represente la table qui contient tous les boutons du jeu</p>
           
           
 
           
           <div class="method-source-code" id="signaux_boutons-source">
-            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 210</span>
+            <pre><span class="ruby-comment"># File Interfaces/FenetreGrilleAventure.rb, line 233</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">signaux_boutons</span>(<span class="ruby-identifier">tableFrame</span>)
     <span class="ruby-ivar">@boutons</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cle</span>, <span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@partie</span>.<span class="ruby-identifier">grilleEnCours</span>.<span class="ruby-identifier">matriceCases</span>[<span class="ruby-identifier">cle</span>[<span class="ruby-value">0</span>]][<span class="ruby-identifier">cle</span>[<span class="ruby-value">1</span>]].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseJouable</span>)

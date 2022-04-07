@@ -99,6 +99,12 @@
     
     <li ><a href="#method-i-getGrilleCourante">#getGrilleCourante</a>
     
+    <li ><a href="#method-i-getNbEtoiles">#getNbEtoiles</a>
+    
+    <li ><a href="#method-i-getPalierHard">#getPalierHard</a>
+    
+    <li ><a href="#method-i-getPalierNormal">#getPalierNormal</a>
+    
     <li ><a href="#method-i-getPosCourante">#getPosCourante</a>
     
     <li ><a href="#method-i-getTempsCourant">#getTempsCourant</a>
@@ -341,7 +347,7 @@
   <span class="ruby-ivar">@posCourante</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@difficulte</span> = <span class="ruby-identifier">uneDifficulte</span>
 
-  <span class="ruby-identifier">@@nbEtoiles</span> = <span class="ruby-value">40</span>
+  <span class="ruby-identifier">@@nbEtoiles</span> = <span class="ruby-value">0</span>
   <span class="ruby-comment"># Ici on initialise le tableau de sorte que seule la première difficulté(Facile) soit débloquée</span>
   <span class="ruby-identifier">@@difficulteAcquise</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
   <span class="ruby-identifier">@@difficulteAcquise</span>[<span class="ruby-value">0</span>] = <span class="ruby-keyword">true</span>
@@ -385,7 +391,7 @@
 
           
           <div class="method-source-code" id="assezEtoiles-3F-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 204</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 216</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">assezEtoiles?</span>(<span class="ruby-identifier">unNombre</span>)
   <span class="ruby-keyword">return</span> (<span class="ruby-identifier">@@nbEtoiles</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">unNombre</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -418,7 +424,7 @@
 
           
           <div class="method-source-code" id="choixDifficulte-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 212</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 224</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">choixDifficulte</span>(<span class="ruby-identifier">uneDiff</span>)
   <span class="ruby-keyword">return</span>((<span class="ruby-identifier">uneDiff</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">uneDiff</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">3</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">@@difficulteAcquise</span>[<span class="ruby-identifier">uneDiff</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span>))
 <span class="ruby-keyword">end</span></pre>
@@ -451,7 +457,7 @@
 
           
           <div class="method-source-code" id="difficultePrecedente-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 178</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 190</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">difficultePrecedente</span>
   <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@precedenteDiff</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-ivar">@precedenteDiff</span>
@@ -486,7 +492,7 @@
 
           
           <div class="method-source-code" id="difficulteSuivante-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 185</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 197</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">difficulteSuivante</span>
   <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@suivanteDiff</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-ivar">@suivanteDiff</span>
@@ -521,7 +527,7 @@
 
           
           <div class="method-source-code" id="estDebloquee-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 198</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 210</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estDebloquee</span>(<span class="ruby-identifier">uneDiff</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">@@difficulteAcquise</span>[<span class="ruby-identifier">uneDiff</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -554,7 +560,7 @@
 
           
           <div class="method-source-code" id="etoilesEnPlus-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 193</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 205</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">etoilesEnPlus</span>(<span class="ruby-identifier">desEtoiles</span>)
   <span class="ruby-identifier">@@nbEtoiles</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">desEtoiles</span>
 <span class="ruby-keyword">end</span></pre>
@@ -587,7 +593,7 @@
 
           
           <div class="method-source-code" id="generationAventure-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 106</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 118</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">generationAventure</span>(<span class="ruby-identifier">nbNiveau</span>,<span class="ruby-identifier">uneDiff</span>)
   <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">nbNiveau</span>
     <span class="ruby-ivar">@desGrilles</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>()
@@ -623,7 +629,7 @@
 
           
           <div class="method-source-code" id="getDifficulte-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 173</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 185</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getDifficulte</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@difficulte</span>
 <span class="ruby-keyword">end</span></pre>
@@ -656,7 +662,7 @@
 
           
           <div class="method-source-code" id="getEtoileCourante-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 135</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 147</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getEtoileCourante</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@desEtoiles</span>[<span class="ruby-ivar">@posCourante</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -689,9 +695,108 @@
 
           
           <div class="method-source-code" id="getGrilleCourante-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 169</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 181</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getGrilleCourante</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@desGrilles</span>[<span class="ruby-ivar">@posCourante</span>];
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getNbEtoiles" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getNbEtoiles</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="getNbEtoiles-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getNbEtoiles</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">@@nbEtoiles</span>.<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getPalierHard" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getPalierHard</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="getPalierHard-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getPalierHard</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">PALIER_HARD</span>.<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getPalierNormal" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getPalierNormal</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="getPalierNormal-source">
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getPalierNormal</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">PALIER_NORMAL</span>.<span class="ruby-identifier">to_s</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -722,7 +827,7 @@
 
           
           <div class="method-source-code" id="getPosCourante-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 164</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 176</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getPosCourante</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@posCourante</span>
 <span class="ruby-keyword">end</span></pre>
@@ -755,7 +860,7 @@
 
           
           <div class="method-source-code" id="getTempsCourant-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 148</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 160</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getTempsCourant</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@desTemps</span>[<span class="ruby-ivar">@posCourante</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -788,7 +893,7 @@
 
           
           <div class="method-source-code" id="grillePrecedente-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 114</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 126</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">grillePrecedente</span>
   <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@posCourante</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
     <span class="ruby-ivar">@posCourante</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
@@ -823,7 +928,7 @@
 
           
           <div class="method-source-code" id="placerSurGrille-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 128</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 140</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">placerSurGrille</span>(<span class="ruby-identifier">numero</span>)
   <span class="ruby-keyword">if</span>((<span class="ruby-identifier">numero</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">numero</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@desGrilles</span>.<span class="ruby-identifier">length</span>()))
     <span class="ruby-ivar">@posCourante</span> = <span class="ruby-identifier">numero</span>
@@ -858,7 +963,7 @@
 
           
           <div class="method-source-code" id="prochaineGrille-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 121</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 133</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prochaineGrille</span>
   <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@posCourante</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">9</span>)
     <span class="ruby-ivar">@posCourante</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
@@ -893,7 +998,7 @@
 
           
           <div class="method-source-code" id="setEtoileCourante-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 140</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 152</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setEtoileCourante</span>(<span class="ruby-identifier">unNombre</span>)
   <span class="ruby-keyword">if</span>(<span class="ruby-identifier">unNombre</span> <span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getEtoileCourante</span>())
     <span class="ruby-identifier">etoilesEnPlus</span>(<span class="ruby-identifier">unNombre</span> <span class="ruby-operator">-</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getEtoileCourante</span>())
@@ -929,7 +1034,7 @@
 
           
           <div class="method-source-code" id="setPrecedent-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 96</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 108</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setPrecedent</span>(<span class="ruby-identifier">aventurePreced</span>)
     <span class="ruby-ivar">@precedenteDiff</span> = <span class="ruby-identifier">aventurePreced</span>
 <span class="ruby-keyword">end</span></pre>
@@ -962,7 +1067,7 @@
 
           
           <div class="method-source-code" id="setSuivant-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 101</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 113</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setSuivant</span>(<span class="ruby-identifier">aventureSuiv</span>)
   <span class="ruby-ivar">@suivanteDiff</span> = <span class="ruby-identifier">aventureSuiv</span>
 <span class="ruby-keyword">end</span></pre>
@@ -995,7 +1100,7 @@
 
           
           <div class="method-source-code" id="setTempsCourant-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 153</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 165</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setTempsCourant</span>(<span class="ruby-identifier">unTemps</span>)
   <span class="ruby-keyword">if</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">getTempsCourant</span>() <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
     <span class="ruby-ivar">@desTemps</span>[<span class="ruby-ivar">@posCourante</span>] = <span class="ruby-identifier">unTemps</span>
@@ -1034,7 +1139,7 @@
 
           
           <div class="method-source-code" id="unlockDifficulte-source">
-            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 219</span>
+            <pre><span class="ruby-comment"># File Aventure/Aventure.rb, line 231</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unlockDifficulte</span>
   <span class="ruby-comment"># Dans le cas où seule la difficulté Facile est débloquée</span>
   <span class="ruby-keyword">if</span>((<span class="ruby-ivar">@difficulte</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">@@difficulteAcquise</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>))

@@ -105,8 +105,19 @@
   </h1>
 
   <section class="description">
-    
-<p>Représente le Chrono du Nurikabe</p>
+    <dl class="rdoc-list note-list"><dt>La classe <a href="Chronometre.html"><code>Chronometre</code></a> :
+<dd><ul><li>
+<p>représente le système de chronomètre présent dans certains modes du jeu du Nurikabe.</p>
+</li><li>
+<p>est capable de faire accroître un chronomètre en partant de 0 (Contre-La-Montre)</p>
+</li></ul>
+</dd><dt>Les VI de la classe sont :
+<dd><ul><li>
+<p>@temps    ==&gt; temps restant ou temps en cours</p>
+</li><li>
+<p>@pause    ==&gt; boolean indiquant si le jeu est en pause</p>
+</li></ul>
+</dd></dl>
 <dl class="rdoc-list note-list"><dt>La classe Chronomètre :
 <dd><ul><li>
 <p>permet de gérer le chronomètre de la partie</p>
@@ -146,7 +157,7 @@
 
         <div class="method-description">
         
-        
+        <p>Accès en lecture aux VI</p>
         
         </div>
       </div>
@@ -172,7 +183,7 @@
 
         <div class="method-description">
         
-        
+        <p>Accès en lecture aux VI</p>
         
         </div>
       </div>
@@ -206,7 +217,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 14</span>
+            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Chronometre</span>.<span class="ruby-identifier ruby-title">creer</span>()
     <span class="ruby-identifier">new</span>()
 <span class="ruby-keyword">end</span></pre>
@@ -247,7 +258,7 @@
 
           
           <div class="method-source-code" id="ajouteTemps-source">
-            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 74</span>
+            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 86</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouteTemps</span>(<span class="ruby-identifier">unMalus</span>)
     <span class="ruby-ivar">@temps</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">unMalus</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -280,7 +291,7 @@
 
           
           <div class="method-source-code" id="demarre-source">
-            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 50</span>
+            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 58</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">demarre</span>()
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">enlevePause</span>()
     <span class="ruby-ivar">@debut</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
@@ -315,7 +326,7 @@
 
           
           <div class="method-source-code" id="enlevePause-source">
-            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 63</span>
+            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enlevePause</span>()
     <span class="ruby-ivar">@pause</span> = <span class="ruby-keyword">false</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -348,7 +359,7 @@
 
           
           <div class="method-source-code" id="estEnPause-3F-source">
-            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 45</span>
+            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estEnPause?</span>()
     <span class="ruby-keyword">return</span> <span class="ruby-ivar">@pause</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span>
 <span class="ruby-keyword">end</span></pre>
@@ -381,7 +392,7 @@
 
           
           <div class="method-source-code" id="estNul-3F-source">
-            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 40</span>
+            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estNul?</span>()
     <span class="ruby-keyword">return</span> <span class="ruby-ivar">@temps</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -414,7 +425,7 @@
 
           
           <div class="method-source-code" id="getTemps-source">
-            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 68</span>
+            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 79</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getTemps</span>()
     <span class="ruby-identifier">top</span>()
     <span class="ruby-keyword">return</span> <span class="ruby-ivar">@temps</span>
@@ -448,7 +459,7 @@
 
           
           <div class="method-source-code" id="metEnPause-source">
-            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 57</span>
+            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 66</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">metEnPause</span>()
     <span class="ruby-ivar">@pause</span> = <span class="ruby-keyword">true</span> 
     <span class="ruby-identifier">top</span>()
@@ -482,7 +493,7 @@
 
           
           <div class="method-source-code" id="top-source">
-            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 27</span>
+            <pre><span class="ruby-comment"># File Chrono/Chronometre.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">top</span>()
     <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">estEnPause?</span>())
         <span class="ruby-identifier">fin</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>

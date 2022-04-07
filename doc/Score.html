@@ -100,6 +100,34 @@
 
   <section class="description">
     
+<p>@author Quenault Maxime</p>
+
+<p>Cette classe permet de gerer les scores du mode Contre la Montre, un score est un temps en seconde.</p>
+
+<p>Voici ses méthodes :</p>
+<ul><li>
+<p>getHeures : permet d&#39;obtenir le nombre d&#39;heures du score</p>
+</li><li>
+<p>getMinutes : permet d&#39;obtenir le nombre de minutes du score</p>
+</li><li>
+<p>getSecondes : permet d&#39;obtenir le nombre de secondes du score</p>
+</li><li>
+<p>getTempsEnSecondes : permet d&#39;obtenir le score complet en seconde</p>
+</li><li>
+<p><a href="Score.html#method-i-to_s"><code>to_s</code></a> : affiche le score en seconde</p>
+</li></ul>
+
+<p>Voici ses VI :</p>
+<ul><li>
+<p>@heures : representes le nombre d&#39;heure</p>
+</li><li>
+<p>@minutes : representes le nombre de minutes</p>
+</li><li>
+<p>@secondes : representes le nombre de secondes</p>
+</li><li>
+<p>@profil : representes le profil auquel appartient le score</p>
+</li></ul>
+
   </section>
 
   
@@ -117,48 +145,9 @@
       </header>
 
       
-      <div id="attribute-i-heures" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">heures</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-minutes" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">minutes</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
       <div id="attribute-i-profil" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">profil</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-secondes" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">secondes</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -198,7 +187,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Score.rb, line 4</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/Score.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">unTemps</span>, <span class="ruby-identifier">unProfil</span>)
     <span class="ruby-ivar">@heures</span> = <span class="ruby-identifier">unTemps</span><span class="ruby-operator">/</span><span class="ruby-value">3600</span>
     <span class="ruby-identifier">unTemps</span> = <span class="ruby-identifier">unTemps</span><span class="ruby-operator">%</span><span class="ruby-value">3600</span>
@@ -241,13 +230,15 @@
 
         <div class="method-description">
           
-          
+          <p>getHeures:</p>
+
+<pre>permet d&#39;obtenir le nombre d&#39;heures du score</pre>
           
           
 
           
           <div class="method-source-code" id="getHeures-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Score.rb, line 16</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/Score.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getHeures</span>
     <span class="ruby-ivar">@heures</span>
 <span class="ruby-keyword">end</span></pre>
@@ -274,13 +265,15 @@
 
         <div class="method-description">
           
-          
+          <p>getMinutes:</p>
+
+<pre>permet d&#39;obtenir le nombre de minutes du score</pre>
           
           
 
           
           <div class="method-source-code" id="getMinutes-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Score.rb, line 20</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/Score.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getMinutes</span>
     <span class="ruby-ivar">@minutes</span>
 <span class="ruby-keyword">end</span></pre>
@@ -307,13 +300,15 @@
 
         <div class="method-description">
           
-          
+          <p>getSecondes:</p>
+
+<pre>permet d&#39;obtenir le nombre de secondes du score</pre>
           
           
 
           
           <div class="method-source-code" id="getSecondes-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Score.rb, line 24</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/Score.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getSecondes</span>
     <span class="ruby-ivar">@secondes</span>
 <span class="ruby-keyword">end</span></pre>
@@ -340,13 +335,15 @@
 
         <div class="method-description">
           
-          
+          <p>getTempsEnSecondes:</p>
+
+<pre>permet d&#39;obtenir le score complet en seconde</pre>
           
           
 
           
           <div class="method-source-code" id="getTempsEnSecondes-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Score.rb, line 28</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/Score.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getTempsEnSecondes</span>
     <span class="ruby-identifier">unTemps</span> = <span class="ruby-ivar">@secondes</span> <span class="ruby-operator">+</span> (<span class="ruby-ivar">@minutes</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>) <span class="ruby-operator">+</span> (<span class="ruby-ivar">@heures</span> <span class="ruby-operator">*</span> <span class="ruby-value">3600</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -373,13 +370,16 @@
 
         <div class="method-description">
           
-          
+          <p><a href="Score.html#method-i-to_s"><code>to_s</code></a>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">affiche</span> <span class="ruby-identifier">le</span> <span class="ruby-identifier">score</span> <span class="ruby-identifier">en</span> <span class="ruby-identifier">seconde</span>
+</pre>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Score.rb, line 33</span>
+            <pre><span class="ruby-comment"># File Sauvegarde/Score.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
     <span class="ruby-node">&quot;#{self.getTempsEnSecondes}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
