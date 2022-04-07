@@ -83,7 +83,7 @@ class Aventure
     @posCourante = 0
     @difficulte = uneDifficulte
 
-    @@nbEtoiles = 40
+    @@nbEtoiles = 0
     # Ici on initialise le tableau de sorte que seule la première difficulté(Facile) soit débloquée
     @@difficulteAcquise = Array.new()
     @@difficulteAcquise[0] = true
